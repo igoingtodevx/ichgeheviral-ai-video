@@ -1,69 +1,110 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import React, { useState } from "react";
+import { Navbar } from "../components/Navbar";
+import { Hero } from "../components/Hero";
+import { TransformationScrubber } from "../components/TransformationScrubber";
+import { HowItWorks } from "../components/HowItWorks";
+import { FounderSection } from "../components/FounderSection";
+import { VideoShowcase } from "../components/VideoShowcase";
+import { GeneratorShell } from "../components/GeneratorShell";
+import { ValueComparison } from "../components/ValueComparison";
+import { FAQ } from "../components/FAQ";
+import { FinalCTA } from "../components/FinalCTA";
+import { Footer } from "../components/Footer";
+import { VideoModal } from "../components/VideoModal";
+import { VideoShowcaseItem } from "../lib/types";
+
+export default function LandingPage() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalVideoSrc, setModalVideoSrc] = useState("/media/videos/golden-pool-run1.mp4");
+  const [modalTitle, setModalTitle] = useState("IchGeheViral — Golden V1 Reel (63.1s)");
+  const [isFounderModal, setIsFounderModal] = useState(false);
+
+  const handleOpenDemoVideo = () => {
+    setModalVideoSrc("/media/videos/golden-pool-run1.mp4");
+    setModalTitle("Golden V1 Pool Transformation (63.1s Full Reel)");
+    setIsFounderModal(false);
+    setModalOpen(true);
+  };
+
+  const handleOpenFounderVideo = () => {
+    // When a founder video file is provided, it goes here; fallback to demo video in the interim
+    setModalVideoSrc("/media/videos/golden-pool-run1.mp4");
+    setModalTitle("Kurz erklärt: Timo über IchGeheViral");
+    setIsFounderModal(true);
+    setModalOpen(true);
+  };
+
+  const handleSelectShowcaseVideo = (item: VideoShowcaseItem) => {
+    setModalVideoSrc(item.videoSrc);
+    setModalTitle(`${item.title} (${item.duration})`);
+    setIsFounderModal(false);
+    setModalOpen(true);
+  };
+
+  const scrollToGenerator = () => {
+    const el = document.getElementById("generator");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className="relative min-h-screen flex flex-col bg-[#07060B] text-slate-100 font-sans selection:bg-purple-600 selection:text-white">
+      {/* Top Navbar */}
+      <Navbar
+        onOpenVideo={handleOpenDemoVideo}
+        onScrollToGenerator={scrollToGenerator}
+      />
+
+      {/* Main Content Flow */}
+      <main className="flex-1">
+        {/* Section 1: Hero Viewport */}
+        <Hero
+          onOpenVideo={handleOpenDemoVideo}
+          onScrollToGenerator={scrollToGenerator}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+        {/* Section 2: Product Proof & Interactive 8-State Scrubber */}
+        <TransformationScrubber onOpenVideo={handleOpenDemoVideo} />
+
+        {/* Section 3: How It Works (3 Steps) */}
+        <HowItWorks />
+
+        {/* Section 4: Founder Video Section (Timo) */}
+        <FounderSection
+          onScrollToGenerator={scrollToGenerator}
+          onOpenFounderModal={handleOpenFounderVideo}
+        />
+
+        {/* Section 5: Real Video Showcase & Contact Sheet */}
+        <VideoShowcase onSelectVideo={handleSelectShowcaseVideo} />
+
+        {/* Interactive Product Interaction: Generator Shell */}
+        <GeneratorShell onOpenVideo={handleOpenDemoVideo} />
+
+        {/* Section 6: Why This Instead of Manual Editing */}
+        <ValueComparison />
+
+        {/* Section 8: FAQ Accordion */}
+        <FAQ />
+
+        {/* Section 7: Final Conversion CTA */}
+        <FinalCTA onScrollToGenerator={scrollToGenerator} />
       </main>
+
+      {/* Section 9: Minimal Footer */}
+      <Footer />
+
+      {/* Modal for Cinematic Video Playback */}
+      <VideoModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        videoSrc={modalVideoSrc}
+        title={modalTitle}
+        isFounderVideo={isFounderModal}
+      />
     </div>
   );
 }

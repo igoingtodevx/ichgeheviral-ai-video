@@ -1,26 +1,106 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-bg: #07060b;
+  --color-brand-card: #0d0b18;
+  --color-brand-card-hover: #141026;
+  --color-brand-surface: #181232;
+  --color-brand-border: rgba(255, 255, 255, 0.08);
+  --color-brand-border-glow: rgba(139, 92, 246, 0.35);
+  --color-brand-violet: #8b5cf6;
+  --color-brand-purple: #7c3aed;
+  --color-brand-indigo: #6366f1;
+  --color-brand-cyan: #38bdf8;
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-color: #07060b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #07060b;
+  color: #f8fafc;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  selection-background-color: #7c3aed;
+  selection-color: #ffffff;
+}
+
+/* Subtle background radial glows */
+.radial-glow-hero {
+  background: radial-gradient(circle 600px at 50% 10%, rgba(124, 58, 237, 0.18), transparent 70%),
+              radial-gradient(circle 500px at 80% 20%, rgba(56, 189, 248, 0.12), transparent 70%);
+}
+
+.radial-glow-section {
+  background: radial-gradient(circle 500px at 50% 50%, rgba(139, 92, 246, 0.08), transparent 70%);
+}
+
+/* Hairline glass borders */
+.glass-border {
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-panel {
+  background: rgba(13, 11, 24, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(139, 92, 246, 0.35);
+  background: rgba(20, 16, 38, 0.85);
+}
+
+/* Electric glow buttons */
+.btn-electric {
+  background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+  box-shadow: 0 0 24px -4px rgba(124, 58, 237, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-electric:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 32px 0 rgba(124, 58, 237, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.btn-electric:active {
+  transform: translateY(0px);
+}
+
+/* Phone Mockup Shadows & Reflections */
+.phone-chassis {
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9),
+              0 0 50px -10px rgba(124, 58, 237, 0.25),
+              0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+/* Hand-drawn editorial font / handwriting look */
+.handwriting {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-style: italic;
+  letter-spacing: -0.01em;
+}
+
+/* Subtle grid line mask */
+.grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Scrubber thumb custom styling */
+input[type="range"] {
+  accent-color: #8b5cf6;
 }
