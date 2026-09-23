@@ -133,25 +133,14 @@ export function FounderSection({ onScrollToGenerator, onOpenFounderModal }: Foun
                   <div className="absolute bottom-4 left-4 z-10 hidden sm:block text-xs text-slate-300 font-medium">
                     Klicke zum Ansehen der persönlichen Vorstellung
                   </div>
+
+                  {/* Bottom Right Status Badge */}
+                  <div className="absolute bottom-4 right-4 z-10 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md border border-white/15 text-[11px] font-mono text-violet-300 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
+                    <span>IN VORBEREITUNG</span>
+                  </div>
                 </>
               )}
-            </div>
-
-            {/* Editorial Annotation Top Right */}
-            <div className="hidden lg:block absolute -top-8 -right-6 z-20 pointer-events-none">
-              <div className="text-violet-300 handwriting text-sm tracking-wide">
-                Echte Einblicke. Kein Marketing-Blabla. Einfach erklärt. ✦
-              </div>
-              <svg
-                className="w-14 h-8 text-violet-400/70 ml-auto mr-8 transform rotate-6"
-                viewBox="0 0 100 50"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M 10,10 Q 50,40 90,20" />
-                <path d="M 82,14 L 90,20 L 80,26" />
-              </svg>
             </div>
           </div>
         </div>

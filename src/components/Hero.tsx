@@ -13,7 +13,7 @@ export function Hero({ onOpenVideo, onScrollToGenerator }: HeroProps) {
   return (
     <section className="relative overflow-hidden pt-8 pb-16 lg:pt-16 lg:pb-24 radial-glow-hero">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 xl:gap-14 items-center">
           {/* Left Column: Messaging & Conversion */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
             {/* Telemetry Eyebrow */}
@@ -77,7 +77,7 @@ export function Hero({ onOpenVideo, onScrollToGenerator }: HeroProps) {
           </div>
 
           {/* Right Column: Hero Visual Asset (Phone Mockup) */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+          <div className="lg:col-span-5 flex justify-center">
             <PhoneMockup onPlayFull={onOpenVideo} />
           </div>
         </div>
