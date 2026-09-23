@@ -18,20 +18,19 @@ import { VideoShowcaseItem } from "../lib/types";
 export default function LandingPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalVideoSrc, setModalVideoSrc] = useState("/media/videos/golden-pool-run1.mp4");
-  const [modalTitle, setModalTitle] = useState("IchGeheViral — Golden V1 Reel (63.1s)");
+  const [modalTitle, setModalTitle] = useState("IchGeheViral — Beispiel-Reel (63s)");
   const [isFounderModal, setIsFounderModal] = useState(false);
 
   const handleOpenDemoVideo = () => {
     setModalVideoSrc("/media/videos/golden-pool-run1.mp4");
-    setModalTitle("Golden V1 Pool Transformation (63.1s Full Reel)");
+    setModalTitle("Pool-Transformation (63s Reel)");
     setIsFounderModal(false);
     setModalOpen(true);
   };
 
   const handleOpenFounderVideo = () => {
-    // When a founder video file is provided, it goes here; fallback to demo video in the interim
-    setModalVideoSrc("/media/videos/golden-pool-run1.mp4");
-    setModalTitle("Kurz erklärt: Timo über IchGeheViral");
+    setModalVideoSrc("");
+    setModalTitle("Kurz erklärt von Timo");
     setIsFounderModal(true);
     setModalOpen(true);
   };

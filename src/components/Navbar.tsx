@@ -1,4 +1,4 @@
-"useclient";
+"use client";
 
 import React, { useState } from "react";
 import { ArrowRight, Menu, X, Play } from "lucide-react";
@@ -23,7 +23,7 @@ export function Navbar({ onOpenVideo, onScrollToGenerator }: NavbarProps) {
             </span>
           </div>
           <span className="hidden sm:inline-block rounded px-1.5 py-0.5 text-[10px] font-mono tracking-widest text-violet-400 bg-violet-950/60 border border-violet-800/40">
-            AI V1
+            AI VIDEO
           </span>
         </a>
 
@@ -120,14 +120,14 @@ export function Navbar({ onOpenVideo, onScrollToGenerator }: NavbarProps) {
               onClick={() => setMobileMenuOpen(false)}
               className="py-1 hover:text-violet-400"
             >
-              So funktioniert's
+              So funktioniert es
             </a>
             <a
               href="#founder"
               onClick={() => setMobileMenuOpen(false)}
               className="py-1 hover:text-violet-400"
             >
-              Gründer-Video (Timo)
+              Kurz erklärt (Timo)
             </a>
             <a
               href="#showcase"

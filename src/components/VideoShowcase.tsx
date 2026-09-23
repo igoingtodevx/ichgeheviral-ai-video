@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { SHOWCASE_VIDEOS } from "../lib/constants";
-import { Play, Sparkles, Layers, Clock, Eye } from "lucide-react";
+import { Play, Layers, Clock } from "lucide-react";
 import { VideoShowcaseItem } from "../lib/types";
 
 interface VideoShowcaseProps {
@@ -10,7 +10,6 @@ interface VideoShowcaseProps {
 }
 
 export function VideoShowcase({ onSelectVideo }: VideoShowcaseProps) {
-  const [activeTab, setActiveTab] = useState<"all" | "pools" | "contact-sheets">("all");
 
   return (
     <section id="showcase" className="relative py-20 lg:py-28 overflow-hidden">
@@ -25,7 +24,7 @@ export function VideoShowcase({ onSelectVideo }: VideoShowcaseProps) {
           </h2>
           <p className="text-base sm:text-lg text-slate-300">
             Keine Mockups, keine Photoshop-Collagen. Hier sind die tatsächlichen 60+ Sekunden 
-            Videoergebnisse aus der validierten Golden V1 Pipeline.
+            Videoergebnisse aus der automatisierten Pipeline.
           </p>
         </div>
 
@@ -45,6 +44,7 @@ export function VideoShowcase({ onSelectVideo }: VideoShowcaseProps) {
                 <img
                   src={item.posterSrc}
                   alt={item.title}
+                  loading="lazy"
                   className="w-full h-full object-cover group-hover/video:scale-105 transition-transform duration-500"
                 />
 
@@ -71,7 +71,7 @@ export function VideoShowcase({ onSelectVideo }: VideoShowcaseProps) {
                 <div className="absolute bottom-4 inset-x-4 z-10 text-white">
                   <div className="text-xs font-mono text-violet-300 mb-1 flex items-center gap-2">
                     <Layers className="w-3.5 h-3.5" />
-                    <span>8 Bauphasen // 7 Omni-Transitions</span>
+                    <span>8 Bauphasen · Nahtlose Übergänge</span>
                   </div>
                   <h4 className="text-base sm:text-lg font-bold line-clamp-1">
                     {item.title}
@@ -83,7 +83,7 @@ export function VideoShowcase({ onSelectVideo }: VideoShowcaseProps) {
               <div className="space-y-3">
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                   <span className="font-semibold text-white font-mono text-xs uppercase block mb-1">
-                    Verwendeter Prompt:
+                    Verwendetes Konzept:
                   </span>
                   &ldquo;{item.concept}&rdquo;
                 </p>
@@ -117,13 +117,13 @@ export function VideoShowcase({ onSelectVideo }: VideoShowcaseProps) {
                 Vollständiges Phasen-Sheet beider Runs
               </h3>
               <p className="text-sm text-slate-300 leading-relaxed mb-4">
-                Jede Phase wird als 2K-Masterbild gerendert, bevor die Videomodelle 
-                die Übergänge interpolieren. Das garantiert 100% stabile Geometrien 
-                ohne das typische Verschwimmen herkömmlicher KI-Video-Tools.
+                Jede Phase wird mit konsistenter Kameraperspektive berechnet, bevor die Übergänge 
+                fließend animiert werden. Das sorgt für stabile Geometrien und verhindert das typische 
+                Springen unzusammenhängender KI-Clips.
               </p>
               <div className="flex items-center gap-2 text-xs font-mono text-emerald-400">
                 <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                <span>Zero Halluzinationen · Getestet auf 63.1s Dauer</span>
+                <span>Stabile Bildkontinuität · 60+ Sekunden Gesamtlaufzeit</span>
               </div>
             </div>
 
@@ -131,7 +131,8 @@ export function VideoShowcase({ onSelectVideo }: VideoShowcaseProps) {
               <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
                 <img
                   src="/media/contact-sheets/run1-contact-sheet.jpg"
-                  alt="Golden V1 Kontaktbogen aller 8 Phasen"
+                  alt="Kontaktbogen aller 8 Phasen"
+                  loading="lazy"
                   className="w-full h-auto object-cover"
                 />
               </div>

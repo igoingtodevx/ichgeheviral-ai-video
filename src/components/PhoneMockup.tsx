@@ -34,7 +34,7 @@ export function PhoneMockup({ onPlayFull }: PhoneMockupProps) {
           </span>
         </div>
         <p className="text-[10px] text-slate-400 leading-snug pt-0.5">
-          Hook, 8 Bauzustände, 7 Transitions, Raumakustik.
+          Vollständiges Reel mit natürlicher Umgebungsakustik.
         </p>
       </div>
 
@@ -45,10 +45,9 @@ export function PhoneMockup({ onPlayFull }: PhoneMockupProps) {
         </div>
         <div>
           <div className="text-xs font-bold text-white flex items-center gap-1">
-            <span>+278%</span>
-            <span className="text-[9px] font-mono text-emerald-400">RETENTION</span>
+            <span>Vorher & Nachher</span>
           </div>
-          <p className="text-[9px] text-slate-400">Vorher-Nachher Faszination</p>
+          <p className="text-[9px] text-slate-400">Fokus auf Verweildauer</p>
         </div>
       </div>
 
@@ -90,11 +89,14 @@ export function PhoneMockup({ onPlayFull }: PhoneMockupProps) {
         </div>
 
         {/* Phone Screen Area (9:16 Aspect Ratio) */}
-        <div className="relative aspect-[9/19] sm:aspect-[9/18.5] w-full overflow-hidden rounded-[38px] bg-black">
-          {/* Main Video */}
+        <div
+          onClick={onPlayFull}
+          className="relative aspect-[9/19] sm:aspect-[9/18.5] w-full overflow-hidden rounded-[38px] bg-black cursor-pointer"
+        >
+          {/* Main Video: 2 MB optimized preview loop for instant mobile loading */}
           <video
             ref={videoRef}
-            src="/media/videos/golden-pool-run1.mp4"
+            src="/media/videos/hero-preview-loop.mp4"
             poster="/media/videos/hero-poster.jpg"
             autoPlay
             loop
@@ -144,44 +146,32 @@ export function PhoneMockup({ onPlayFull }: PhoneMockupProps) {
                 </div>
 
                 <p className="text-[11px] text-slate-100 font-normal leading-snug line-clamp-2 drop-shadow-sm">
-                  Schottergarten zu 300k€ Luxus-Pooloase mit Wasserfall & Spa. 
-                  Komplett autonom generiert.
+                  Schottergarten zur Luxus-Pooloase mit Wasserfall & Spa. 
+                  Vollautomatisch generiert.
                 </p>
 
                 <div className="flex items-center gap-2 pt-0.5 text-[10px] text-violet-300 font-mono">
                   <span className="inline-block w-1.5 h-1.5 rounded-full bg-violet-400 animate-ping" />
-                  <span>Golden V1 // 63.1s Reel</span>
+                  <span>60+ Sekunden · 9:16 Format</span>
                 </div>
               </div>
 
-              {/* TikTok / Reels Right Action Rail */}
-              <div className="flex flex-col items-center gap-3 pb-1 text-white">
-                <div className="flex flex-col items-center">
-                  <div className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center hover:scale-110 transition-transform">
-                    <Heart className="w-4 h-4 text-red-400 fill-red-400" />
-                  </div>
-                  <span className="text-[10px] font-semibold mt-0.5">14.2K</span>
+              {/* TikTok / Reels Right Action Rail (Clean without fake metric numbers) */}
+              <div className="flex flex-col items-center gap-3.5 pb-1 text-white">
+                <div className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center hover:scale-110 transition-transform">
+                  <Heart className="w-4 h-4 text-red-400 fill-red-400" />
                 </div>
 
-                <div className="flex flex-col items-center">
-                  <div className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center">
-                    <MessageCircle className="w-4 h-4 text-white" />
-                  </div>
-                  <span className="text-[10px] font-semibold mt-0.5">389</span>
+                <div className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center">
+                  <MessageCircle className="w-4 h-4 text-white" />
                 </div>
 
-                <div className="flex flex-col items-center">
-                  <div className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center">
-                    <Bookmark className="w-4 h-4 text-amber-300 fill-amber-300/40" />
-                  </div>
-                  <span className="text-[10px] font-semibold mt-0.5">2.1K</span>
+                <div className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center">
+                  <Bookmark className="w-4 h-4 text-amber-300 fill-amber-300/40" />
                 </div>
 
-                <div className="flex flex-col items-center">
-                  <div className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center">
-                    <Share2 className="w-4 h-4 text-white" />
-                  </div>
-                  <span className="text-[10px] font-semibold mt-0.5">Teilen</span>
+                <div className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center">
+                  <Share2 className="w-4 h-4 text-white" />
                 </div>
               </div>
             </div>

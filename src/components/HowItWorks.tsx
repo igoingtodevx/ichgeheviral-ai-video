@@ -9,22 +9,22 @@ export function HowItWorks() {
       num: "01",
       icon: MessageSquarePlus,
       title: "Idee oder Thema eingeben",
-      desc: "Beschreibe dein Bau- oder Transformations-Konzept in wenigen Sätzen oder wähle eine unserer Vorlagen.",
-      detail: "Prompt-Normalisierung & 2K-Designlock",
+      desc: "Beschreibe deine gewünschte Transformation in wenigen Sätzen oder wähle eines unserer bewährten Beispiele.",
+      detail: "Strukturierte Vorlage",
     },
     {
       num: "02",
       icon: Cpu,
       title: "KI generiert das 60s Reel",
-      desc: "Die Pipeline berechnet 8 kohärente Zwischenphasen und synthetisiert 7 nahtlose Videoübergänge inklusive Raumakustik.",
-      detail: "100% stabile Kameraperspektive",
+      desc: "Das System generiert aufeinander abgestimmte Zwischenphasen und verbindet sie über flüssige Videoübergänge mit natürlichem Raumklang.",
+      detail: "Stabile Kameraperspektive",
     },
     {
       num: "03",
       icon: DownloadCloud,
       title: "Herunterladen & Posten",
       desc: "Lade das fertige 9:16 Video direkt herunter und poste es sofort auf TikTok, Instagram Reels oder YouTube Shorts.",
-      detail: "Fertig geschnitten ohne Nachbearbeitung",
+      detail: "Direkt postbar für Social Media",
     },
   ];
 
@@ -34,7 +34,7 @@ export function HowItWorks() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-mono font-bold tracking-widest text-violet-400 uppercase">
-            SO FUNKTIONIERT'S
+            SO FUNKTIONIERT&apos;S
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-2 mb-4">
             In 3 einfachen Schritten zum viralen Reel.
@@ -46,7 +46,7 @@ export function HowItWorks() {
 
         {/* 3 Steps Unboxed Flow */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 relative">
-          {steps.map((step, idx) => {
+          {steps.map((step) => {
             const Icon = step.icon;
             return (
               <div

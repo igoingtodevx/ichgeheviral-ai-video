@@ -1,19 +1,19 @@
 "use client";
 
 import React from "react";
-import { Check, X, ShieldAlert, Sparkles } from "lucide-react";
+import { Check, X } from "lucide-react";
 
 export function ValueComparison() {
   const rows = [
     {
       feature: "Produktionsaufwand",
-      igv: "1 Prompt eingeben – der Rest läuft autark",
+      igv: "1 Idee eingeben – der Rest läuft automatisiert",
       manual: "Stundenlanges Keyframing, Masking & Schneiden",
       genericAi: "Dutzende Prompts für unzusammenhängende Clips",
     },
     {
       feature: "Kameraperspektive & Architektur",
-      igv: "100% Perspektiv-Lock über alle Bauphasen",
+      igv: "Konsistente Kameraperspektive über alle Bauphasen",
       manual: "Aufwendiges 3D-Tracking nötig",
       genericAi: "Springende Winkel, wechselnde Hausformen",
     },
@@ -31,7 +31,7 @@ export function ValueComparison() {
     },
     {
       feature: "Ausgabeformat",
-      igv: "Natives 9:16 MP4 mit Raumakustik",
+      igv: "Natives 9:16 MP4 mit synchronisiertem Sound",
       manual: "Export über separate Schnitt-Software",
       genericAi: "Oft 16:9 quer, ohne passende Akustik",
     },

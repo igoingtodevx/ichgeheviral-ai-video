@@ -1,12 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { GOLDEN_V1_STATES } from "../lib/constants";
-import { Sparkles, Sliders, Eye, Play, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Sparkles, Sliders, Play } from "lucide-react";
 
 export function TransformationScrubber({ onOpenVideo }: { onOpenVideo?: () => void }) {
-  const [activeStateIndex, setActiveStateIndex] = useState(7); // default to final oasis (State 8)
+  const [activeStateIndex, setActiveStateIndex] = useState(7); // default to final oasis (Phase 8)
   const [compareMode, setCompareMode] = useState(false);
 
   const currentState = GOLDEN_V1_STATES[activeStateIndex];
@@ -22,15 +21,15 @@ export function TransformationScrubber({ onOpenVideo }: { onOpenVideo?: () => vo
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
           <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 bg-violet-950/60 border border-violet-700/40 text-xs font-mono text-violet-300 mb-4">
             <Sparkles className="w-3.5 h-3.5 text-violet-400" />
-            <span>ECHTE GOLDEN V1 PIPELINE-EVIDENCE</span>
+            <span>AUFEINANDER ABGESTIMMTE BAUPHASEN</span>
           </div>
 
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
-            Wie aus einem Prompt 8 reale Phasen werden.
+            Wie aus deiner Idee 8 reale Phasen werden.
           </h2>
 
           <p className="text-sm sm:text-lg text-slate-300 leading-relaxed">
-            Keine Halluzinationen. Das System berechnet eine kohärente bauliche Transformation. 
+            Konsistente Transformation statt zusammengewürfelter Einzelclips. 
             Bewege den Regler oder klicke auf die Bauabschnitte, um jeden echten Zwischenzustand zu prüfen.
           </p>
         </div>
@@ -67,7 +66,7 @@ export function TransformationScrubber({ onOpenVideo }: { onOpenVideo?: () => vo
                   className="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold text-white bg-violet-600/30 border border-violet-500/40 hover:bg-violet-600/50 transition-all"
                 >
                   <Play className="w-3.5 h-3.5 fill-current" />
-                  <span>Fertiges 63s Reel abspielen</span>
+                  <span>Fertiges Reel ansehen</span>
                 </button>
               )}
             </div>
@@ -76,32 +75,34 @@ export function TransformationScrubber({ onOpenVideo }: { onOpenVideo?: () => vo
           {/* Media Viewport */}
           <div className="my-6 sm:my-8">
             {compareMode ? (
-              /* Split Comparison View: State 1 vs. State 8 */
+              /* Split Comparison View: Phase 1 vs. Current Phase */
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-                {/* Before: State 1 */}
+                {/* Before: Phase 1 */}
                 <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 bg-black aspect-[4/3] sm:aspect-[9/14]">
                   <img
                     src={initialState.imageSrc}
                     alt="Ausgangszustand Vorher"
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                   <div className="absolute top-3 left-3 z-10 px-2.5 py-0.5 rounded bg-black/75 backdrop-blur-md border border-white/15 text-[11px] font-mono font-bold text-amber-300">
-                    VORHER // State 01
+                    VORHER // Phase 1
                   </div>
                   <div className="absolute bottom-3 inset-x-3 z-10 p-2.5 rounded-lg bg-black/80 backdrop-blur-md border border-white/10 text-[11px] text-slate-300">
                     {initialState.description}
                   </div>
                 </div>
 
-                {/* After: Current State */}
+                {/* After: Current Phase */}
                 <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border border-violet-500/40 bg-black aspect-[4/3] sm:aspect-[9/14] shadow-2xl">
                   <img
                     src={currentState.imageSrc}
                     alt="Aktueller Zustand Nachher"
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                   <div className="absolute top-3 left-3 z-10 px-2.5 py-0.5 rounded bg-violet-950/80 backdrop-blur-md border border-violet-500/40 text-[11px] font-mono font-bold text-violet-300">
-                    NACHHER // State 0{currentState.phaseNumber} ({currentState.title})
+                    NACHHER // Phase {currentState.phaseNumber} ({currentState.title})
                   </div>
                   <div className="absolute bottom-3 inset-x-3 z-10 p-2.5 rounded-lg bg-black/80 backdrop-blur-md border border-white/10 text-[11px] text-slate-300">
                     {currentState.description}
@@ -109,21 +110,22 @@ export function TransformationScrubber({ onOpenVideo }: { onOpenVideo?: () => vo
                 </div>
               </div>
             ) : (
-              /* Single Focused State with Telemetry Metadata */
+              /* Single Focused State with Context */
               <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border border-white/15 bg-black max-w-4xl mx-auto aspect-[4/3] sm:aspect-[16/9] shadow-2xl">
                 <img
                   src={currentState.imageSrc}
                   alt={currentState.title}
+                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
 
-                {/* Top Corner Telemetry Badges */}
+                {/* Top Corner Badges */}
                 <div className="absolute top-3 sm:top-4 left-3 sm:left-4 z-10 flex flex-wrap gap-2">
                   <div className="px-2.5 sm:px-3 py-1 rounded-md bg-black/80 backdrop-blur-md border border-white/15 text-[11px] sm:text-xs font-mono font-bold text-white">
                     {currentState.stageName}
                   </div>
                   <div className="px-2.5 py-1 rounded-md bg-violet-950/80 backdrop-blur-md border border-violet-700/50 text-[10px] sm:text-[11px] font-mono text-violet-300 hidden sm:inline-block">
-                    2K RESOLUTION // 1536×2752
+                    HOCHAUFLÖSEND · 9:16
                   </div>
                 </div>
 
@@ -141,7 +143,7 @@ export function TransformationScrubber({ onOpenVideo }: { onOpenVideo?: () => vo
 
                     <div className="shrink-0 text-left sm:text-right hidden sm:block">
                       <span className="block text-[10px] font-mono uppercase tracking-widest text-slate-400">
-                        Technischer Meilenstein
+                        Phasen-Fokus
                       </span>
                       <span className="text-xs font-mono text-emerald-400 font-medium">
                         {currentState.technicalMilestone}
@@ -190,6 +192,7 @@ export function TransformationScrubber({ onOpenVideo }: { onOpenVideo?: () => vo
                         src={state.imageSrc}
                         alt={state.title}
                         className="w-full h-full object-cover"
+                        loading="lazy"
                       />
                     </div>
                     <span className="block text-[9px] sm:text-[10px] font-mono font-semibold truncate text-white">

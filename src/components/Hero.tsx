@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ArrowRight, Play, CheckCircle2, Sparkles, ShieldCheck, Zap, Film } from "lucide-react";
+import { ArrowRight, Play, CheckCircle2, ShieldCheck, Zap, Film } from "lucide-react";
 import { PhoneMockup } from "./PhoneMockup";
 
 interface HeroProps {
@@ -19,7 +19,7 @@ export function Hero({ onOpenVideo, onScrollToGenerator }: HeroProps) {
             {/* Telemetry Eyebrow */}
             <div className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 bg-[#120F25] border border-violet-500/30 text-xs font-mono tracking-wider text-violet-300 mb-6">
               <span className="w-2 h-2 rounded-full bg-violet-400 animate-ping" />
-              <span>AUTONOMER KI-REEL-GENERATOR // V1 VALIDATED</span>
+              <span>60+ SEKUNDEN · 9:16 · VOLLAUTOMATISCH</span>
             </div>
 
             {/* Monolithic Headline */}
@@ -34,11 +34,10 @@ export function Hero({ onOpenVideo, onScrollToGenerator }: HeroProps) {
 
             {/* Subheadline */}
             <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed mb-8">
-              Gib dem System ein Konzept oder ein Vorher-Nachher-Thema.
-              Unsere Pipeline berechnet die visuelle Architektur, generiert 8 kohärente 
-              Transformations-Zustände, berechnet flüssige Videoübergänge und liefert 
-              ein fertiges <span className="text-white font-semibold">60+ Sekunden 9:16 Video</span> mit 
-              nativer Akustik.
+              Gib dem System eine Idee oder ein Vorher-Nachher-Thema.
+              Es generiert eine zusammenhängende visuelle Transformation, flüssige Videoübergänge 
+              und liefert ein fertiges <span className="text-white font-semibold">60+ Sekunden 9:16 Reel</span> mit 
+              authentischer Umgebungsakustik.
             </p>
 
             {/* CTA Action Row */}
@@ -72,7 +71,7 @@ export function Hero({ onOpenVideo, onScrollToGenerator }: HeroProps) {
               </div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>100% Kameraperspektiv-Lock</span>
+                <span>Konsistente Kameraperspektive</span>
               </div>
             </div>
           </div>
@@ -91,11 +90,11 @@ export function Hero({ onOpenVideo, onScrollToGenerator }: HeroProps) {
               <Film className="w-5 h-5 text-violet-300" />
             </div>
             <h3 className="text-lg font-bold text-white mb-2">
-              Virale Bau- & Transformations-Reels
+              Transformations- & Bau-Reels
             </h3>
             <p className="text-sm text-slate-300 leading-relaxed">
-              Vom verkommenen Hinterhof zur Luxus-Pooloase. Physikalisch logische Bauabschnitte, 
-              die das Gehirn fesseln und für maximale Verweildauer sorgen.
+              Vom einfachen Hinterhof zur modernen Pooloase. Nachvollziehbare Bauabschnitte, 
+              die Zuschauer fesseln und für hohe Verweildauer sorgen.
             </p>
           </div>
 
@@ -105,11 +104,11 @@ export function Hero({ onOpenVideo, onScrollToGenerator }: HeroProps) {
               <ShieldCheck className="w-5 h-5 text-sky-300" />
             </div>
             <h3 className="text-lg font-bold text-white mb-2">
-              Exakte Architektur-Kontinuität
+              Stabile visuelle Kontinuität
             </h3>
             <p className="text-sm text-slate-300 leading-relaxed">
-              Kein Springen der Kameraperspektive. Das Gebäude, die Zäune und die Grundstücksgrenzen 
-              bleiben über alle 8 Phasen millimetergenau verankert.
+              Kein Springen der Kameraperspektive. Das Gebäude, die Zäune und die Umgebung 
+              bleiben über alle Bauphasen stabil verankert.
             </p>
           </div>
 
@@ -119,11 +118,11 @@ export function Hero({ onOpenVideo, onScrollToGenerator }: HeroProps) {
               <Zap className="w-5 h-5 text-indigo-300" />
             </div>
             <h3 className="text-lg font-bold text-white mb-2">
-              Alles automatisiert in der Cloud
+              Vollautomatisierter Ablauf
             </h3>
             <p className="text-sm text-slate-300 leading-relaxed">
-              2K-Bildmodelle, Video-Transitionen und die finale Video-Assemblierung 
-              laufen autark in unserer Cloud-GPU-Pipeline ab.
+              Kein Schnittaufwand nötig. Bildaufbau, Video-Übergänge und das finale Zusammenfügen 
+              laufen vollautomatisch im Hintergrund ab.
             </p>
           </div>
         </div>
