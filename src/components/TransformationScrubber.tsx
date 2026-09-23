@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { GOLDEN_V1_STATES } from "../lib/constants";
-import { Sparkles, Sliders, Play } from "lucide-react";
+import { Sliders, Play } from "lucide-react";
 
 export function TransformationScrubber({ onOpenVideo }: { onOpenVideo?: () => void }) {
   const [activeStateIndex, setActiveStateIndex] = useState(7); // default to final oasis (Phase 8)
@@ -19,8 +19,7 @@ export function TransformationScrubber({ onOpenVideo }: { onOpenVideo?: () => vo
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
-          <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 bg-violet-950/60 border border-violet-700/40 text-xs font-mono text-violet-300 mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-violet-400" />
+          <div className="inline-flex items-center rounded-full px-3.5 py-1 bg-violet-950/60 border border-violet-700/40 text-xs font-mono text-violet-300 mb-4">
             <span>AUFEINANDER ABGESTIMMTE BAUPHASEN</span>
           </div>
 

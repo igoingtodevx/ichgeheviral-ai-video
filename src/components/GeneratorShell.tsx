@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { PRESET_CONCEPTS } from "../lib/constants";
 import { api } from "../lib/api/client";
 import { VideoJob } from "../lib/types";
-import { Sparkles, ArrowRight, Loader2, CheckCircle2, Download, RefreshCw, Info } from "lucide-react";
+import { ArrowRight, Loader2, CheckCircle2, Download, RefreshCw, Info } from "lucide-react";
 
 export function GeneratorShell({ onOpenVideo }: { onOpenVideo?: (videoSrc: string) => void }) {
   const [prompt, setPrompt] = useState(
@@ -94,8 +94,7 @@ export function GeneratorShell({ onOpenVideo }: { onOpenVideo?: (videoSrc: strin
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 bg-violet-950/60 border border-violet-700/40 text-xs font-mono text-violet-300 mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-violet-400" />
+          <div className="inline-flex items-center rounded-full px-3.5 py-1 bg-violet-950/60 border border-violet-700/40 text-xs font-mono text-violet-300 mb-4">
             <span>INTERAKTIVE VORSCHAU</span>
           </div>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ArrowRight, Sparkles, Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 
 export function FinalCTA({ onScrollToGenerator }: { onScrollToGenerator: () => void }) {
   return (
@@ -12,8 +12,7 @@ export function FinalCTA({ onScrollToGenerator }: { onScrollToGenerator: () => v
           <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-violet-600/30 blur-3xl pointer-events-none" />
 
           <div className="relative z-10 max-w-2xl mx-auto space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 bg-violet-950/80 border border-violet-600/40 text-xs font-mono text-violet-300">
-              <Sparkles className="w-3.5 h-3.5 text-violet-400" />
+            <div className="inline-flex items-center rounded-full px-4 py-1.5 bg-violet-950/80 border border-violet-600/40 text-xs font-mono text-violet-300">
               <span>JETZT STARTEN</span>
             </div>
 
