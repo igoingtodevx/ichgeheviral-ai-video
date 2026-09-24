@@ -24,12 +24,12 @@ export function TransformationScrubber({ onOpenVideo }: { onOpenVideo?: () => vo
           </div>
 
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
-            Wie aus deiner Idee 8 reale Phasen werden.
+            Wie aus deiner Idee 8 aufeinander abgestimmte Phasen werden.
           </h2>
 
           <p className="text-sm sm:text-lg text-slate-300 leading-relaxed">
             Konsistente Transformation statt zusammengewürfelter Einzelclips. 
-            Bewege den Regler oder klicke auf die Bauabschnitte, um jeden echten Zwischenzustand zu prüfen.
+            Bewege den Regler oder klicke auf die Bauabschnitte, um jeden generierten Zwischenzustand zu prüfen.
           </p>
         </div>
 

@@ -23,86 +23,107 @@ async function runAudit() {
     ],
   });
 
-  // 1. Desktop Audit (1440x900)
+  // 1. Desktop 1440px
   console.log("Auditing Desktop (1440x900)...");
-  const desktopPage = await browser.newPage();
-  await desktopPage.setViewport({ width: 1440, height: 900, deviceScaleFactor: 1 });
-  await desktopPage.goto(BASE_URL, { waitUntil: "domcontentloaded", timeout: 15000 });
+  const p1440 = await browser.newPage();
+  await p1440.setViewport({ width: 1440, height: 900, deviceScaleFactor: 1 });
+  await p1440.goto(BASE_URL, { waitUntil: "domcontentloaded", timeout: 15000 });
   await new Promise((r) => setTimeout(r, 2000));
+  await p1440.screenshot({ path: path.join(OUTPUT_DIR, "desktop_1440_hero.png") });
+  console.log("Captured desktop_1440_hero.png");
 
-  await desktopPage.screenshot({ path: path.join(OUTPUT_DIR, "desktop_01_hero.png") });
-  console.log("Captured desktop_01_hero.png");
+  // Scroll to pipeline
+  const pipelineEl = await p1440.$("#pipeline");
+  if (pipelineEl) {
+    await pipelineEl.scrollIntoView();
+    await new Promise((r) => setTimeout(r, 800));
+    await p1440.screenshot({ path: path.join(OUTPUT_DIR, "desktop_1440_pipeline.png") });
+    console.log("Captured desktop_1440_pipeline.png");
+  }
 
-  await desktopPage.evaluate(() => window.scrollTo(0, 950));
-  await new Promise((r) => setTimeout(r, 1200));
-  await desktopPage.screenshot({ path: path.join(OUTPUT_DIR, "desktop_02_pipeline.png") });
-  console.log("Captured desktop_02_pipeline.png");
+  // Scroll to founder
+  const founderEl = await p1440.$("#founder");
+  if (founderEl) {
+    await founderEl.scrollIntoView();
+    await new Promise((r) => setTimeout(r, 800));
+    await p1440.screenshot({ path: path.join(OUTPUT_DIR, "desktop_1440_founder.png") });
+    console.log("Captured desktop_1440_founder.png");
+  }
 
-  await desktopPage.evaluate(() => window.scrollTo(0, 2000));
-  await new Promise((r) => setTimeout(r, 1200));
-  await desktopPage.screenshot({ path: path.join(OUTPUT_DIR, "desktop_03_founder_showcase.png") });
-  console.log("Captured desktop_03_founder_showcase.png");
+  // Scroll to generator
+  const genEl = await p1440.$("#generator");
+  if (genEl) {
+    await genEl.scrollIntoView();
+    await new Promise((r) => setTimeout(r, 800));
+    await p1440.screenshot({ path: path.join(OUTPUT_DIR, "desktop_1440_generator.png") });
+    console.log("Captured desktop_1440_generator.png");
+  }
 
-  await desktopPage.evaluate(() => window.scrollTo(0, 3100));
-  await new Promise((r) => setTimeout(r, 1200));
-  await desktopPage.screenshot({ path: path.join(OUTPUT_DIR, "desktop_04_generator_value.png") });
-  console.log("Captured desktop_04_generator_value.png");
+  await p1440.close();
 
-  await desktopPage.evaluate(() => window.scrollTo(0, 4200));
-  await new Promise((r) => setTimeout(r, 1200));
-  await desktopPage.screenshot({ path: path.join(OUTPUT_DIR, "desktop_05_faq_cta.png") });
-  console.log("Captured desktop_05_faq_cta.png");
+  // 2. Desktop 1280px
+  console.log("Auditing Desktop (1280x800)...");
+  const p1280 = await browser.newPage();
+  await p1280.setViewport({ width: 1280, height: 800, deviceScaleFactor: 1 });
+  await p1280.goto(BASE_URL, { waitUntil: "domcontentloaded", timeout: 15000 });
+  await new Promise((r) => setTimeout(r, 1500));
+  await p1280.screenshot({ path: path.join(OUTPUT_DIR, "desktop_1280_hero.png") });
+  console.log("Captured desktop_1280_hero.png");
+  await p1280.close();
 
-  await desktopPage.close();
+  // 3. Tablet 1024px
+  console.log("Auditing Tablet (1024x768)...");
+  const p1024 = await browser.newPage();
+  await p1024.setViewport({ width: 1024, height: 768, deviceScaleFactor: 1 });
+  await p1024.goto(BASE_URL, { waitUntil: "domcontentloaded", timeout: 15000 });
+  await new Promise((r) => setTimeout(r, 1500));
+  await p1024.screenshot({ path: path.join(OUTPUT_DIR, "tablet_1024_hero.png") });
+  console.log("Captured tablet_1024_hero.png");
+  await p1024.close();
 
-  // 2. Mobile Audit (390x844 - iPhone 14 size)
+  // 4. Mobile 390px (iPhone 14)
   console.log("Auditing Mobile (390x844)...");
-  const mobilePage = await browser.newPage();
-  await mobilePage.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
-  await mobilePage.goto(BASE_URL, { waitUntil: "domcontentloaded", timeout: 15000 });
-  await new Promise((r) => setTimeout(r, 2000));
+  const p390 = await browser.newPage();
+  await p390.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
+  await p390.goto(BASE_URL, { waitUntil: "domcontentloaded", timeout: 15000 });
+  await new Promise((r) => setTimeout(r, 1500));
+  await p390.screenshot({ path: path.join(OUTPUT_DIR, "mobile_390_hero.png") });
+  console.log("Captured mobile_390_hero.png");
 
-  await mobilePage.screenshot({ path: path.join(OUTPUT_DIR, "mobile_01_hero.png") });
-  console.log("Captured mobile_01_hero.png");
+  // Scroll mobile to phone
+  await p390.evaluate(() => window.scrollTo(0, 500));
+  await new Promise((r) => setTimeout(r, 800));
+  await p390.screenshot({ path: path.join(OUTPUT_DIR, "mobile_390_phone.png") });
+  console.log("Captured mobile_390_phone.png");
 
-  await mobilePage.evaluate(() => window.scrollTo(0, 950));
-  await new Promise((r) => setTimeout(r, 1200));
-  await mobilePage.screenshot({ path: path.join(OUTPUT_DIR, "mobile_02_scrubber.png") });
-  console.log("Captured mobile_02_scrubber.png");
+  // Scroll mobile to generator
+  const genMobile = await p390.$("#generator");
+  if (genMobile) {
+    await genMobile.scrollIntoView();
+    await new Promise((r) => setTimeout(r, 800));
+    await p390.screenshot({ path: path.join(OUTPUT_DIR, "mobile_390_generator.png") });
+    console.log("Captured mobile_390_generator.png");
+  }
 
-  await mobilePage.evaluate(() => window.scrollTo(0, 2100));
-  await new Promise((r) => setTimeout(r, 1200));
-  await mobilePage.screenshot({ path: path.join(OUTPUT_DIR, "mobile_03_founder.png") });
-  console.log("Captured mobile_03_founder.png");
+  await p390.close();
 
-  await mobilePage.evaluate(() => window.scrollTo(0, 3000));
-  await new Promise((r) => setTimeout(r, 1200));
-  await mobilePage.screenshot({ path: path.join(OUTPUT_DIR, "mobile_04_showcase.png") });
-  console.log("Captured mobile_04_showcase.png");
-
-  await mobilePage.evaluate(() => window.scrollTo(0, 4200));
-  await new Promise((r) => setTimeout(r, 1200));
-  await mobilePage.screenshot({ path: path.join(OUTPUT_DIR, "mobile_05_generator.png") });
-  console.log("Captured mobile_05_generator.png");
-
-  await mobilePage.close();
-
-  // 3. Overflow Audit across mobile breakpoints
+  // 5. Overflow Verification across all breakpoints (1440, 1280, 1024, 414, 390, 375)
+  console.log("Testing horizontal overflow across all required breakpoints...");
   const checkPage = await browser.newPage();
-  const viewports = [360, 375, 390, 414];
-  for (const w of viewports) {
+  const testViewports = [1440, 1280, 1024, 414, 390, 375];
+  for (const w of testViewports) {
     await checkPage.setViewport({ width: w, height: 800 });
     await checkPage.goto(BASE_URL, { waitUntil: "domcontentloaded", timeout: 10000 });
-    await new Promise((r) => setTimeout(r, 500));
+    await new Promise((r) => setTimeout(r, 400));
     const overflow = await checkPage.evaluate(() => {
       return document.documentElement.scrollWidth > window.innerWidth;
     });
-    console.log(`Viewport ${w}px horizontal overflow: ${overflow ? "FAILED ❌" : "PASSED ✅ (0 overflow)"}`);
+    console.log(`Viewport ${w}px: ${overflow ? "FAILED ❌ (horizontal overflow detected)" : "PASSED ✅ (0 overflow)"}`);
   }
   await checkPage.close();
 
   await browser.close();
-  console.log("Visual audit capture finished successfully!");
+  console.log("Visual audit completed successfully!");
 }
 
 runAudit().catch((err) => {

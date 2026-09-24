@@ -8,7 +8,7 @@ import { ArrowRight, Loader2, CheckCircle2, Download, RefreshCw, Info } from "lu
 
 export function GeneratorShell({ onOpenVideo }: { onOpenVideo?: (videoSrc: string) => void }) {
   const [prompt, setPrompt] = useState(
-    "Ugly backyard zu moderner Luxus-Pooloase mit Naturstein-Wasserfall, eingelassenem Spa & Pergola"
+    "Verwilderter Hinterhof → moderne Luxus-Pooloase mit Travertin-Terrasse, Naturstein-Wasserfall & Pergola"
   );
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [currentJob, setCurrentJob] = useState<VideoJob | null>(null);
@@ -148,15 +148,15 @@ export function GeneratorShell({ onOpenVideo }: { onOpenVideo?: (videoSrc: strin
                   Vorschlag wählen:
                 </span>
                 <div className="flex flex-wrap gap-2">
-                  {PRESET_CONCEPTS.map((concept, idx) => (
+                  {PRESET_CONCEPTS.map((item) => (
                     <button
-                      key={idx}
+                      key={item.id}
                       type="button"
-                      onClick={() => handlePresetClick(concept)}
+                      onClick={() => handlePresetClick(item.prompt)}
                       disabled={isSubmitting}
-                      className="text-xs text-left px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 hover:border-violet-500/40 transition-all font-sans"
+                      className="text-xs px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 hover:border-violet-500/40 transition-all font-sans"
                     >
-                      {concept.split("→")[0]} → {concept.split("→")[1]?.slice(0, 30)}...
+                      {item.label}
                     </button>
                   ))}
                 </div>

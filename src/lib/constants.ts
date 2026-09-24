@@ -79,7 +79,7 @@ export const SHOWCASE_VIDEOS: VideoShowcaseItem[] = [
   {
     id: "pool-run1",
     title: "Hinterhof zu moderner Luxus-Pooloase",
-    concept: "Ugly backyard to modern rectangular luxury pool with integrated spa, waterfall and pergola",
+    concept: "Verwilderter Hinterhof zu moderner Rechteck-Pooloase mit integriertem Spa, Wasserfall und Pergola",
     duration: "63s",
     resolution: "720×1280 (720p)",
     stateCount: 8,
@@ -91,7 +91,7 @@ export const SHOWCASE_VIDEOS: VideoShowcaseItem[] = [
   {
     id: "pool-run2",
     title: "Mediterrane Lagunen-Oase mit Naturstein",
-    concept: "Mediterranean villa backyard with an organic lagoon-style luxury pool, natural stone waterfall & spa",
+    concept: "Mediterraner Garten zu organischem Naturstein-Lagunenpool mit Wasserfall und Palmenbepflanzung",
     duration: "63s",
     resolution: "720×1280 (720p)",
     stateCount: 8,
@@ -102,11 +102,33 @@ export const SHOWCASE_VIDEOS: VideoShowcaseItem[] = [
   },
 ];
 
-export const PRESET_CONCEPTS = [
-  "Ugly backyard → Moderne minimalistische Luxus-Pooloase mit Travertin-Terrasse & Wasserfall",
-  "Mediterrane Finca → Organischer Naturstein-Lagunenpool mit Spa & Palmenbepflanzung",
-  "Verwilderter Garten → High-End Rechteck-Pool mit eingelassener Sitzecke & Abendlicht",
-  "Schotterfläche → Kompakte Design-Pooloase mit Pergola & warmer Holzterrasse",
+export interface PresetConcept {
+  id: string;
+  label: string;
+  prompt: string;
+}
+
+export const PRESET_CONCEPTS: PresetConcept[] = [
+  {
+    id: "pool-travertin",
+    label: "Hinterhof → Luxus-Pool & Travertin",
+    prompt: "Verwilderter Hinterhof → moderne Luxus-Pooloase mit Travertin-Terrasse, Naturstein-Wasserfall & Pergola",
+  },
+  {
+    id: "finca-lagune",
+    label: "Mediterrane Finca → Naturstein-Lagune",
+    prompt: "Mediterrane Finca → organischer Naturstein-Lagunenpool mit Spa & Palmenbepflanzung",
+  },
+  {
+    id: "garten-rechteck",
+    label: "Verwilderter Garten → Rechteck-Pool",
+    prompt: "Verwilderter Garten → High-End Rechteck-Pool mit eingelassener Sitzecke & Abendlicht",
+  },
+  {
+    id: "schotter-pergola",
+    label: "Schotterfläche → Pooloase mit Pergola",
+    prompt: "Schotterfläche → kompakte Design-Pooloase mit Pergola & warmer Holzterrasse",
+  },
 ];
 
 export const FAQ_ITEMS = [
