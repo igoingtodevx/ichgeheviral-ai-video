@@ -13,7 +13,7 @@ export interface SocialProofPage {
   has_more: boolean;
 }
 
-const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "").replace(/\/$/, "");
+const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "https://aivideo-pool-automation-pipeline-production.up.railway.app").replace(/\/$/, "");
 
 export const hasSocialProofApi = Boolean(API_BASE);
 
