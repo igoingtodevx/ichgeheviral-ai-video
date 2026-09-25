@@ -6,7 +6,7 @@ import { Hero } from "../components/Hero";
 import { TransformationScrubber } from "../components/TransformationScrubber";
 import { HowItWorks } from "../components/HowItWorks";
 import { FounderSection } from "../components/FounderSection";
-import { VideoShowcase } from "../components/VideoShowcase";
+import { VideoShowcase } from "../components/VideoShowcase";\nimport { SocialProofFeed } from "../components/SocialProofFeed";
 import { GeneratorShell } from "../components/GeneratorShell";
 import { ValueComparison } from "../components/ValueComparison";
 import { FAQ } from "../components/FAQ";
@@ -79,6 +79,9 @@ export default function LandingPage() {
 
         {/* Section 5: Real Video Showcase & Contact Sheet */}
         <VideoShowcase onSelectVideo={handleSelectShowcaseVideo} />
+
+        {/* Live customer proof managed by the owner */}
+        <SocialProofFeed />
 
         {/* Interactive Product Interaction: Generator Shell */}
         <GeneratorShell onOpenVideo={handleOpenDemoVideo} />
