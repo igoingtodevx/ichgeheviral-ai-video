@@ -37,3 +37,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 
 - Social proof CMS: protected `/admin` upload area with newest-first public proof feed.
+
+- Production deploys are connected to Vercel from `main`.
