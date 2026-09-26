@@ -116,7 +116,14 @@ body {
 
 .site-shell {
   background: var(--theme-bg);
+  padding-bottom: 5.25rem;
   transition: background-color 220ms ease;
+}
+
+@media (min-width: 640px) {
+  .site-shell {
+    padding-bottom: 4.75rem;
+  }
 }
 
 /* Theme surface remapping keeps one codebase while making all five palettes coherent. */
