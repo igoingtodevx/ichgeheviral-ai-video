@@ -48,6 +48,12 @@ export function Navbar({ onOpenVideo, onScrollToGenerator }: NavbarProps) {
             Keine Credits
           </a>
           <a
+            href="#potential-rechner"
+            className="hover:text-white transition-colors duration-150"
+          >
+            Rechner
+          </a>
+          <a
             href="#how-it-works"
             className="hover:text-white transition-colors duration-150"
           >
@@ -127,6 +133,13 @@ export function Navbar({ onOpenVideo, onScrollToGenerator }: NavbarProps) {
               className="py-1 text-amber-300 font-semibold hover:text-amber-200"
             >
               Keine Credits
+            </a>
+            <a
+              href="#potential-rechner"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-1 hover:text-violet-400"
+            >
+              Potenzial-Rechner
             </a>
             <a
               href="#how-it-works"
