@@ -28,31 +28,30 @@ export function Navbar({ onOpenVideo, onScrollToGenerator }: NavbarProps) {
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
+          <a
+            href="#showcase"
+            className="hover:text-white transition-colors duration-150"
+          >
+            Ergebnisse
+          </a>
           <a
             href="#pipeline"
             className="hover:text-white transition-colors duration-150"
           >
-            Transformation
+            Viral-Logik
+          </a>
+          <a
+            href="#no-credits"
+            className="text-amber-300 hover:text-amber-200 font-semibold transition-colors duration-150 flex items-center gap-1.5"
+          >
+            Keine Credits
           </a>
           <a
             href="#how-it-works"
             className="hover:text-white transition-colors duration-150"
           >
             Ablauf
-          </a>
-          <a
-            href="#founder"
-            className="hover:text-white transition-colors duration-150 flex items-center gap-1.5"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
-            Timo erklärt
-          </a>
-          <a
-            href="#showcase"
-            className="hover:text-white transition-colors duration-150"
-          >
-            Beispiele
           </a>
           <a
             href="#generator"
@@ -97,7 +96,7 @@ export function Navbar({ onOpenVideo, onScrollToGenerator }: NavbarProps) {
         {/* Mobile Hamburger Toggle */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden flex items-center p-2 text-slate-300 hover:text-white"
+          className="lg:hidden flex items-center p-2 text-slate-300 hover:text-white"
           aria-label="Menü öffnen"
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -106,42 +105,42 @@ export function Navbar({ onOpenVideo, onScrollToGenerator }: NavbarProps) {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-white/10 bg-[#0A0815] px-6 py-6 space-y-4">
+        <div className="lg:hidden border-b border-white/10 bg-[#0A0815] px-6 py-6 space-y-4">
           <nav className="flex flex-col space-y-3 text-base text-slate-200">
+            <a
+              href="#showcase"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-1 hover:text-violet-400"
+            >
+              Ergebnisse
+            </a>
             <a
               href="#pipeline"
               onClick={() => setMobileMenuOpen(false)}
               className="py-1 hover:text-violet-400"
             >
-              Transformation
+              Viral-Logik
+            </a>
+            <a
+              href="#no-credits"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-1 text-amber-300 font-semibold hover:text-amber-200"
+            >
+              Keine Credits
             </a>
             <a
               href="#how-it-works"
               onClick={() => setMobileMenuOpen(false)}
               className="py-1 hover:text-violet-400"
             >
-              So funktioniert es
-            </a>
-            <a
-              href="#founder"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-1 hover:text-violet-400"
-            >
-              Kurz erklärt (Timo)
-            </a>
-            <a
-              href="#showcase"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-1 hover:text-violet-400"
-            >
-              Beispiel-Reels
+              Ablauf
             </a>
             <a
               href="#generator"
               onClick={() => setMobileMenuOpen(false)}
               className="py-1 hover:text-violet-400"
             >
-              Generator Shell
+              Generator
             </a>
             <a
               href="#faq"

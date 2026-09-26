@@ -2,7 +2,7 @@
 
 import React from "react";
 import { SHOWCASE_VIDEOS } from "../lib/constants";
-import { Play, Layers, Clock } from "lucide-react";
+import { Play, Layers, Clock, Check, Eye } from "lucide-react";
 import { VideoShowcaseItem } from "../lib/types";
 
 interface VideoShowcaseProps {
@@ -10,22 +10,42 @@ interface VideoShowcaseProps {
 }
 
 export function VideoShowcase({ onSelectVideo }: VideoShowcaseProps) {
+  const coreFacts = [
+    "8 aufeinander aufbauende Phasen",
+    "Konsistente Kameraperspektive",
+    "60+ Sekunden Laufzeit",
+    "Natives 9:16 MP4",
+  ];
 
   return (
-    <section id="showcase" className="relative py-20 lg:py-28 overflow-hidden">
+    <section id="showcase" className="relative py-20 lg:py-28 overflow-hidden scroll-mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-mono font-bold tracking-widest text-violet-400 uppercase">
-            ECHTE ERGEBNISSE
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-2 mb-4">
-            Reels, die mit IchGeheViral generiert wurden.
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 bg-[#14102c] border border-violet-500/40 text-xs font-mono font-bold tracking-widest text-violet-300 uppercase mb-4">
+            <Eye className="w-3.5 h-3.5 text-violet-400" />
+            <span>ECHTE PIPELINE-ERGEBNISSE</span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-1 mb-4">
+            Schau dir an, was tatsächlich herauskommt.
           </h2>
-          <p className="text-base sm:text-lg text-slate-300">
-            Keine Mockups, keine Photoshop-Collagen. Hier sind die tatsächlichen 60+ Sekunden 
-            Videoergebnisse aus der automatisierten Pipeline.
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+            Keine Mockups. Keine zusammengeschnittene Fake-Demo. Diese Reels stammen aus der tatsächlichen 
+            IchGeheViral-Pipeline — entwickelt für maximale Verweildauer auf TikTok, Instagram und YouTube.
           </p>
+        </div>
+
+        {/* 4 Core Facts Strip */}
+        <div className="max-w-4xl mx-auto mb-14 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+          {coreFacts.map((fact, i) => (
+            <div
+              key={i}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/[0.04] border border-white/[0.1] text-xs sm:text-sm font-mono text-slate-200"
+            >
+              <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+              <span>{fact}</span>
+            </div>
+          ))}
         </div>
 
         {/* Showcase Grid */}
@@ -33,7 +53,7 @@ export function VideoShowcase({ onSelectVideo }: VideoShowcaseProps) {
           {SHOWCASE_VIDEOS.map((item) => (
             <div
               key={item.id}
-              className="glass-panel rounded-3xl p-6 sm:p-7 border border-white/[0.08] hover:border-violet-500/40 transition-all duration-300 group flex flex-col justify-between"
+              className="glass-panel rounded-3xl p-6 sm:p-7 border border-white/[0.09] hover:border-violet-500/50 transition-all duration-300 group flex flex-col justify-between shadow-2xl"
             >
               {/* Vertical Reel Card Area */}
               <div
@@ -52,7 +72,7 @@ export function VideoShowcase({ onSelectVideo }: VideoShowcaseProps) {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/30" />
 
                 {/* Floating Play Trigger */}
-                <div className="absolute inset-0 m-auto w-16 h-16 rounded-full bg-violet-600/90 text-white flex items-center justify-center shadow-xl group-hover/video:scale-110 group-hover/video:bg-violet-600 transition-all">
+                <div className="absolute inset-0 m-auto w-16 h-16 rounded-full bg-violet-600/95 text-white flex items-center justify-center shadow-xl group-hover/video:scale-110 group-hover/video:bg-violet-500 transition-all">
                   <Play className="w-6 h-6 fill-white translate-x-0.5" />
                 </div>
 
@@ -114,26 +134,25 @@ export function VideoShowcase({ onSelectVideo }: VideoShowcaseProps) {
                 Qualitätssicherung
               </span>
               <h3 className="text-2xl font-bold text-white mb-3">
-                Vollständiges Phasen-Sheet beider Runs
+                Vollständiges Phasen-Sheet
               </h3>
               <p className="text-sm text-slate-300 leading-relaxed mb-4">
-                Jede Phase wird mit konsistenter Kameraperspektive berechnet, bevor die Übergänge 
-                fließend animiert werden. Das sorgt für stabile Geometrien und verhindert das typische 
-                Springen unzusammenhängender KI-Clips.
+                Jede Phase wird mit konsistenter Kameraperspektive berechnet, bevor die Übergänge fließend gerendert werden. 
+                Das verhindert das typische Springen unzusammenhängender KI-Clips.
               </p>
-              <div className="flex items-center gap-2 text-xs font-mono text-emerald-400">
+              <div className="inline-flex items-center gap-2 text-xs font-mono text-slate-400">
                 <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 <span>Stabile Bildkontinuität · 60+ Sekunden Gesamtlaufzeit</span>
               </div>
             </div>
 
             <div className="md:col-span-7">
-              <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black">
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group cursor-pointer bg-black">
                 <img
                   src="/media/contact-sheets/run1-contact-sheet.jpg"
                   alt="Kontaktbogen aller 8 Phasen"
                   loading="lazy"
-                  className="w-full h-auto object-cover"
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </div>

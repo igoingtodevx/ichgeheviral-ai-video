@@ -24,10 +24,10 @@ export function PhoneMockup({ onPlayFull }: PhoneMockupProps) {
       {/* Background ambient lighting halo behind phone */}
       <div className="absolute -inset-4 sm:-inset-6 rounded-[48px] bg-gradient-to-tr from-violet-600/30 via-indigo-500/20 to-sky-400/25 blur-3xl opacity-75 pointer-events-none -z-10" />
 
-      {/* Callout 1: Left outside phone chassis (Desktop only, ample clearance) */}
-      <div className="hidden xl:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#120F25]/95 border border-violet-500/35 backdrop-blur-md text-xs font-mono text-violet-300 shadow-xl absolute right-full mr-5 top-24 z-30 pointer-events-none select-none whitespace-nowrap">
-        <span className="w-1.5 h-1.5 rounded-full bg-violet-400" />
-        <span>Vollautomatisch</span>
+      {/* Callout 1: Left beside phone chassis */}
+      <div className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#120F25]/95 border border-violet-500/40 backdrop-blur-md text-xs font-mono text-violet-300 shadow-2xl absolute -left-4 lg:-left-6 top-20 z-30 pointer-events-none select-none whitespace-nowrap">
+        <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
+        <span>Maximales Viralpotenzial</span>
       </div>
 
       {/* Phone Chassis Container */}
@@ -130,10 +130,10 @@ export function PhoneMockup({ onPlayFull }: PhoneMockupProps) {
         </div>
       </div>
 
-      {/* Callout 2: Right outside phone chassis (Desktop only, ample clearance) */}
-      <div className="hidden xl:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#120F25]/95 border border-sky-500/35 backdrop-blur-md text-xs font-mono text-sky-300 shadow-xl absolute left-full ml-5 bottom-28 z-30 pointer-events-none select-none whitespace-nowrap">
-        <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
-        <span>60+ Sekunden</span>
+      {/* Callout 2: Right beside phone chassis */}
+      <div className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#120F25]/95 border border-amber-500/40 backdrop-blur-md text-xs font-mono text-amber-300 shadow-2xl absolute -right-4 lg:-right-6 bottom-24 z-30 pointer-events-none select-none whitespace-nowrap">
+        <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+        <span>Keine Credits · 60s Reel</span>
       </div>
     </div>
   );

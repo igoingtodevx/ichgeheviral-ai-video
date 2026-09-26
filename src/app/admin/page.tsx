@@ -89,12 +89,15 @@ export default function SocialProofAdminPage() {
 
   useEffect(() => {
     if (!file) {
-      setPreviewUrl(null);
+      queueMicrotask(() => setPreviewUrl(null));
       return;
     }
     const url = URL.createObjectURL(file);
-    setPreviewUrl(url);
-    return () => URL.revokeObjectURL(url);
+    const frame = requestAnimationFrame(() => setPreviewUrl(url));
+    return () => {
+      cancelAnimationFrame(frame);
+      URL.revokeObjectURL(url);
+    };
   }, [file]);
 
   const loadItems = async () => {
@@ -103,9 +106,9 @@ export default function SocialProofAdminPage() {
   };
 
   useEffect(() => {
-    const saved = window.sessionStorage.getItem(TOKEN_KEY) || "";
+    const saved = typeof window !== "undefined" ? window.sessionStorage.getItem(TOKEN_KEY) || "" : "";
     if (!saved || !hasSocialProofApi) {
-      setChecking(false);
+      queueMicrotask(() => setChecking(false));
       return;
     }
     checkSocialProofAdmin(saved)

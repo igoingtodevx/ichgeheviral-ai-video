@@ -3,13 +3,14 @@
 import React, { useState } from "react";
 import { Navbar } from "../components/Navbar";
 import { Hero } from "../components/Hero";
-import { TransformationScrubber } from "../components/TransformationScrubber";
-import { HowItWorks } from "../components/HowItWorks";
-import { FounderSection } from "../components/FounderSection";
 import { VideoShowcase } from "../components/VideoShowcase";
 import { SocialProofFeed } from "../components/SocialProofFeed";
+import { TransformationScrubber } from "../components/TransformationScrubber";
+import { NoCreditsSection } from "../components/NoCreditsSection";
+import { HowItWorks } from "../components/HowItWorks";
 import { GeneratorShell } from "../components/GeneratorShell";
 import { ValueComparison } from "../components/ValueComparison";
+import { FounderSection } from "../components/FounderSection";
 import { FAQ } from "../components/FAQ";
 import { FinalCTA } from "../components/FinalCTA";
 import { Footer } from "../components/Footer";
@@ -26,13 +27,6 @@ export default function LandingPage() {
     setModalVideoSrc("/media/videos/golden-pool-run1.mp4");
     setModalTitle("Pool-Transformation (63s Reel)");
     setIsFounderModal(false);
-    setModalOpen(true);
-  };
-
-  const handleOpenFounderVideo = () => {
-    setModalVideoSrc("");
-    setModalTitle("Kurz erklärt von Timo");
-    setIsFounderModal(true);
     setModalOpen(true);
   };
 
@@ -60,44 +54,44 @@ export default function LandingPage() {
 
       {/* Main Content Flow */}
       <main className="flex-1">
-        {/* Section 1: Hero Viewport */}
+        {/* Section 1: Hero Viewport + 3 High-Impact USPs */}
         <Hero
           onOpenVideo={handleOpenDemoVideo}
           onScrollToGenerator={scrollToGenerator}
         />
 
-        {/* Section 2: Product Proof & Interactive 8-State Scrubber */}
-        <TransformationScrubber onOpenVideo={handleOpenDemoVideo} />
-
-        {/* Section 3: How It Works (3 Steps) */}
-        <HowItWorks />
-
-        {/* Section 4: Founder Video Section (Timo) */}
-        <FounderSection
-          onScrollToGenerator={scrollToGenerator}
-          onOpenFounderModal={handleOpenFounderVideo}
-        />
-
-        {/* Section 5: Real Video Showcase & Contact Sheet */}
+        {/* Section 2: Real Video Showcase Early & Strong */}
         <VideoShowcase onSelectVideo={handleSelectShowcaseVideo} />
 
-        {/* Live customer proof managed by the owner */}
+        {/* Section 3: Live Social Proof (managed in /admin, renders when items exist) */}
         <SocialProofFeed />
 
-        {/* Interactive Product Interaction: Generator Shell */}
+        {/* Section 4: Viral Mechanics & Interactive 8-State Pipeline Proof */}
+        <TransformationScrubber onOpenVideo={handleOpenDemoVideo} />
+
+        {/* Section 5: "KEINE CREDITS" High-Contrast Visual Break */}
+        <NoCreditsSection onScrollToGenerator={scrollToGenerator} />
+
+        {/* Section 6: Radically Simplified 3-Step Flow */}
+        <HowItWorks />
+
+        {/* Section 7: Interactive Generator with Presets */}
         <GeneratorShell onOpenVideo={handleOpenDemoVideo} />
 
-        {/* Section 6: Why This Instead of Manual Editing */}
+        {/* Section 8: Clear 2-Column Comparison (Generic AI vs IchGeheViral) */}
         <ValueComparison />
 
-        {/* Section 8: FAQ Accordion */}
+        {/* Section 9: Authentic Founder Note from Timo */}
+        <FounderSection onScrollToGenerator={scrollToGenerator} />
+
+        {/* Section 10: Buying-Oriented FAQ Accordion */}
         <FAQ />
 
-        {/* Section 7: Final Conversion CTA */}
+        {/* Section 11: Final Conversion CTA */}
         <FinalCTA onScrollToGenerator={scrollToGenerator} />
       </main>
 
-      {/* Section 9: Minimal Footer */}
+      {/* Section 12: Minimal Footer */}
       <Footer />
 
       {/* Modal for Cinematic Video Playback */}

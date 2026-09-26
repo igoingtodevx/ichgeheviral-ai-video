@@ -26,12 +26,11 @@ function formatDate(value: string) {
 export function SocialProofFeed() {
   const [items, setItems] = useState<SocialProofItem[]>([]);
   const [hasMore, setHasMore] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(hasSocialProofApi);
   const [loadingMore, setLoadingMore] = useState(false);
 
   useEffect(() => {
     if (!hasSocialProofApi) {
-      setLoading(false);
       return;
     }
     fetchSocialProof(PAGE_SIZE, 0)
@@ -69,13 +68,16 @@ export function SocialProofFeed() {
         <div className="max-w-3xl mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 rounded-full px-3.5 py-1 bg-emerald-950/40 border border-emerald-500/25 text-xs font-mono text-emerald-300 mb-4">
             <TrendingUp className="w-3.5 h-3.5" />
-            <span>LIVE SOCIAL PROOF</span>
+            <span>ECHTE ERGEBNISSE AUS DER PRAXIS</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
-            Aktuelle Ergebnisse.
+            Nicht unsere Meinung. <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-sky-400">
+              Die Ergebnisse.
+            </span>
           </h2>
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-            Neue Kundenstimmen, Aufrufzahlen und echte Clips werden hier laufend ergänzt.
+            Veröffentlichte Kundenstimmen, Aufrufzahlen und echte Clips direkt aus dem System.
             Die neuesten Ergebnisse stehen immer zuerst.
           </p>
         </div>

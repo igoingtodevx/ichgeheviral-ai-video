@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { PRESET_CONCEPTS } from "../lib/constants";
 import { api } from "../lib/api/client";
 import { VideoJob } from "../lib/types";
-import { ArrowRight, Loader2, CheckCircle2, Download, RefreshCw, Info } from "lucide-react";
+import { ArrowRight, Loader2, CheckCircle2, Download, RefreshCw, Info, Sparkles } from "lucide-react";
 
 export function GeneratorShell({ onOpenVideo }: { onOpenVideo?: (videoSrc: string) => void }) {
   const [prompt, setPrompt] = useState(
@@ -90,21 +90,25 @@ export function GeneratorShell({ onOpenVideo }: { onOpenVideo?: (videoSrc: strin
   };
 
   return (
-    <section id="generator" className="relative py-20 lg:py-28 bg-[#090714] border-t border-b border-white/[0.06] overflow-hidden">
+    <section id="generator" className="relative py-20 lg:py-28 bg-[#090714] border-t border-b border-white/[0.06] overflow-hidden scroll-mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center rounded-full px-3.5 py-1 bg-violet-950/60 border border-violet-700/40 text-xs font-mono text-violet-300 mb-4">
-            <span>INTERAKTIVE VORSCHAU</span>
+          <div className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 bg-[#14102c] border border-violet-500/40 text-xs font-mono font-bold tracking-widest text-violet-300 uppercase mb-4">
+            <Sparkles className="w-3.5 h-3.5 text-violet-400" />
+            <span>INTERAKTIVER GENERATOR</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
-            Probiere den Generator aus.
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4 leading-tight">
+            Deine Idee. <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-indigo-300 to-sky-400">
+              Unser System macht das Reel daraus.
+            </span>
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-300">
-            Formuliere dein gewünschtes Transformations-Konzept und sieh, wie 
-            die automatisierte Pipeline daraus ein fertiges 60+ Sekunden Reel aufbaut.
+          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            Formuliere dein gewünschtes Transformations-Thema oder wähle eine Vorlage.
+            Erlebe, wie die automatisierte Pipeline daraus ein fertiges 60+ Sekunden Reel aufbaut.
           </p>
         </div>
 

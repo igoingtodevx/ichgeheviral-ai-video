@@ -12,7 +12,7 @@ export function FAQ() {
   };
 
   return (
-    <section id="faq" className="relative py-20 lg:py-28 border-t border-white/[0.06] overflow-hidden">
+    <section id="faq" className="relative py-20 lg:py-28 border-t border-white/[0.06] overflow-hidden scroll-mt-20">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-14">

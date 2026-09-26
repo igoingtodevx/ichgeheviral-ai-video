@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { GOLDEN_V1_STATES } from "../lib/constants";
-import { Sliders, Play } from "lucide-react";
+import { Sliders, Play, Sparkles, Check } from "lucide-react";
 
 export function TransformationScrubber({ onOpenVideo }: { onOpenVideo?: () => void }) {
   const [activeStateIndex, setActiveStateIndex] = useState(7); // default to final oasis (Phase 8)
@@ -11,30 +11,125 @@ export function TransformationScrubber({ onOpenVideo }: { onOpenVideo?: () => vo
   const currentState = GOLDEN_V1_STATES[activeStateIndex];
   const initialState = GOLDEN_V1_STATES[0];
 
+  const viralMechanisms = [
+    {
+      num: "01",
+      tag: "SEKUNDE 0–3",
+      title: "Scroll Stop",
+      desc: "Starker Ausgangszustand: Ein verwilderter Garten erzeugt sofort Neugier und die unausgesprochene Erwartung: Was wird hier gebaut?",
+      imageSrc: "/media/states/run1/state_01.jpg",
+      highlight: "Erzeugt sofortige Neugier",
+    },
+    {
+      num: "02",
+      tag: "SEKUNDE 4–45",
+      title: "Kontinuierlicher Fortschritt",
+      desc: "Aufeinander aufbauende Zwischenphasen statt isolierter Clips. Jede Sekunde liefert neuen sichtbaren Baufortschritt, der den Loop offen hält.",
+      imageSrc: "/media/states/run1/state_04.jpg",
+      highlight: "Hält Aufmerksamkeit hoch",
+    },
+    {
+      num: "03",
+      tag: "SEKUNDE 46–63",
+      title: "Final Reveal & Payoff",
+      desc: "Der visuelle Payoff: Das fertige Luxusergebnis belohnt das Weiterschauen bis zum Ende und treibt Kommentare, Saves und Weiterleitungen.",
+      imageSrc: "/media/states/run1/state_08.jpg",
+      highlight: "Maximaler visueller Payoff",
+    },
+    {
+      num: "04",
+      tag: "PLATTFORM-NATIV",
+      title: "Social-First Nativ",
+      desc: "9:16 Vollformat, 60+ Sekunden Laufzeit und passender Raumklang — maßgeschneidert für den Algorithmus von TikTok, Instagram und YouTube.",
+      imageSrc: "/media/videos/hero-poster.jpg",
+      highlight: "Sofort postfertig",
+    },
+  ];
+
   return (
-    <section id="pipeline" className="relative py-16 sm:py-20 lg:py-28 bg-[#090714] border-t border-b border-white/[0.06] overflow-hidden">
+    <section id="pipeline" className="relative py-20 lg:py-28 bg-[#090714] border-t border-b border-white/[0.06] overflow-hidden scroll-mt-20">
       {/* Background Subtle Gradient */}
       <div className="absolute inset-0 radial-glow-section pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
-          <div className="inline-flex items-center rounded-full px-3.5 py-1 bg-violet-950/60 border border-violet-700/40 text-xs font-mono text-violet-300 mb-4">
-            <span>AUFEINANDER ABGESTIMMTE BAUPHASEN</span>
+        {/* Section Header: Viral-Mechanik as Primary Focus */}
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 bg-[#14102c] border border-violet-500/40 text-xs font-mono font-bold tracking-widest text-violet-300 uppercase mb-4">
+            <Sparkles className="w-3.5 h-3.5 text-violet-400" />
+            <span>DIE VIRALITÄTS-LOGIK</span>
           </div>
 
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
-            Wie aus deiner Idee 8 aufeinander abgestimmte Phasen werden.
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4 leading-tight">
+            Nicht einfach KI-generiert. <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-indigo-300 to-sky-400">
+              Fürs Weiterschauen aufgebaut.
+            </span>
           </h2>
 
-          <p className="text-sm sm:text-lg text-slate-300 leading-relaxed">
-            Konsistente Transformation statt zusammengewürfelter Einzelclips. 
-            Bewege den Regler oder klicke auf die Bauabschnitte, um jeden generierten Zwischenzustand zu prüfen.
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+            Zuschauer bleiben nicht hängen, weil ein Video „KI“ ist — sondern weil die Dramaturgie fesselt. 
+            Vier Mechanismen machen den Unterschied zwischen 3 Sekunden Abbruch und Millionen Views:
           </p>
         </div>
 
-        {/* Interactive Workspace Card */}
+        {/* 4 Viral Mechanism Cards with Real Pipeline Assets */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
+          {viralMechanisms.map((mech) => (
+            <div
+              key={mech.num}
+              className="glass-panel rounded-2xl overflow-hidden border border-white/[0.09] hover:border-violet-500/40 transition-all duration-300 flex flex-col group shadow-xl"
+            >
+              {/* Asset Thumbnail Header */}
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
+                <img
+                  src={mech.imageSrc}
+                  alt={mech.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
+                <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-black/75 backdrop-blur-md border border-white/15 text-[10px] font-mono font-bold text-violet-300">
+                  {mech.tag}
+                </div>
+                <div className="absolute top-2.5 right-2.5 text-xs font-mono font-black text-white/50">
+                  {mech.num}
+                </div>
+              </div>
+
+              {/* Card Body */}
+              <div className="p-5 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-base font-bold text-white mb-2 tracking-tight">
+                    {mech.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+                    {mech.desc}
+                  </p>
+                </div>
+
+                <div className="pt-3 border-t border-white/[0.06] flex items-center gap-1.5 text-xs font-mono text-emerald-400">
+                  <Check className="w-3.5 h-3.5 shrink-0" />
+                  <span>{mech.highlight}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Interactive Workspace Card - The Interactive Proof */}
         <div className="glass-panel rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-10 border border-white/[0.09] shadow-2xl">
+          <div className="text-center max-w-2xl mx-auto mb-8">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-violet-400 block mb-1">
+              INTERAKTIVER BEWEIS
+            </span>
+            <h3 className="text-xl sm:text-2xl font-bold text-white">
+              Prüfe alle 8 Bauphasen im Detail
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-300 mt-1">
+              Bewege den Schieberegler oder nutze den Vorher/Nachher-Modus, um die konsistente Kameraperspektive zu prüfen.
+            </p>
+          </div>
+
           {/* Controls Bar */}
           <div className="flex flex-wrap items-center justify-between gap-3 pb-5 border-b border-white/[0.08]">
             <div className="flex items-center gap-2 sm:gap-3">

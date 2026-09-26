@@ -133,28 +133,28 @@ export const PRESET_CONCEPTS: PresetConcept[] = [
 
 export const FAQ_ITEMS = [
   {
-    question: "Was genau macht IchGeheViral anders als normale KI-Video-Generatoren?",
+    question: "Kann Viralität garantiert werden?",
     answer:
-      "Klassische KI-Video-Tools generieren kurze 4-Sekunden-Clips, bei denen Kamera, Umgebung und Details von Schnitt zu Schnitt springen. IchGeheViral hält die Kameraperspektive über die gesamte Verwandlung stabil und verbindet aufeinander abgestimmte Bauphasen zu einem zusammenhängenden 60+ Sekunden Reel ohne Stilbrüche.",
+      "Nein — eine garantierte View-Zahl oder garantierte Viralität wäre unseriös. Was IchGeheViral liefert, ist ein Aufbau mit maximalem Viralpotenzial: Ein sofortiger Scroll-Stop in den ersten Sekunden, kontinuierlicher visueller Fortschritt über 8 Bauphasen und ein starker Final-Reveal, der die Watch-Time auf TikTok, Reels und Shorts maximiert.",
   },
   {
-    question: "Welches Format haben die fertigen Videos?",
+    question: "Brauche ich Credits für die Erstellung?",
     answer:
-      "Die Videos werden nativ im 9:16 Hochformat (720×1280 / 720p) mit 24fps exportiert. Sie enthalten echte, passende Umgebungsakustik und sind sofort fertig zum Veröffentlichen auf TikTok, Instagram Reels und YouTube Shorts.",
+      "Nein. Bei IchGeheViral gibt es für dich kein unübersichtliches Credit-System, bei dem jeder Klick oder Fehlversuch ein Punktekonto leert. Du erstellst dein Video transparent ohne komplizierte Token-Rechnerei.",
   },
   {
-    question: "Funktioniert das System aktuell nur für Swimmingpools?",
+    question: "Muss ich Kenntnisse im Videoschnitt haben?",
     answer:
-      "Aktuell ist die automatisierte Bau-Transformation für Pool- und Außenanlagen validiert. Die zugrundeliegende Architektur ist universell auf Transformations- und Bauprozesse ausgelegt – weitere Formate folgen schrittweise.",
+      "Nein, überhaupt nicht. Du gibst lediglich deine Idee oder dein Vorher-Nachher-Thema ein. Den Bildaufbau, die flüssigen Phasenübergänge und die passende Umgebungsakustik generiert das System vollautomatisch.",
   },
   {
-    question: "Wie lange dauert die Generierung eines kompletten 60s Videos?",
+    question: "Welches Format und welche Länge erhalte ich?",
     answer:
-      "Die vollständige Berechnung aller aufeinander abgestimmten Phasen und nahtlosen Videoübergänge beansprucht aktuell etwa 10 bis 15 Minuten Rechenzeit. Sobald der Renderjob abgeschlossen ist, steht die MP4-Datei direkt zum Herunterladen bereit.",
+      "Du erhältst ein fertiges 9:16 Video im MP4-Format mit über 60 Sekunden Laufzeit (720×1280 bei 24fps) inklusive synchronisierter Umgebungsakustik — sofort bereit zum Posten auf TikTok, Instagram Reels und YouTube Shorts.",
   },
   {
-    question: "Benötige ich eigene Software oder Vorkenntnisse im Videoschnitt?",
+    question: "Welche Videoarten werden aktuell unterstützt?",
     answer:
-      "Nein. Du gibst lediglich deine Idee in Textform ein. Du musst weder Keyframes setzen noch Schnittprogramme beherrschen. Das fertige Video wird direkt per Download ausgeliefert.",
+      "Aktuell ist die Pipeline für bauliche Transformationen und Außenanlagen (wie Poolbau, Garten- und Terrassenprojekte) validiert und live einsatzbereit. Weitere Transformationsformate folgen schrittweise nach vollständiger Validierung.",
   },
 ];

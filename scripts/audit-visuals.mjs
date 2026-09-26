@@ -4,7 +4,7 @@ import path from "path";
 
 const CHROMIUM_PATH = "/usr/bin/chromium";
 const OUTPUT_DIR = "/home/deploy/ichgeheviral-ai-video/screenshots";
-const BASE_URL = "http://127.0.0.1:3456";
+const BASE_URL = process.env.BASE_URL || "http://127.0.0.1:3000";
 
 if (!fs.existsSync(OUTPUT_DIR)) {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
