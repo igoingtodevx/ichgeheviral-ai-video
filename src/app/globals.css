@@ -116,12 +116,15 @@ body {
 
 .site-shell {
   background: var(--theme-bg);
-  padding-bottom: 5.25rem;
   transition: background-color 220ms ease;
 }
 
+.theme-preview-active .site-shell {
+  padding-bottom: 5.25rem;
+}
+
 @media (min-width: 640px) {
-  .site-shell {
+  .theme-preview-active .site-shell {
     padding-bottom: 4.75rem;
   }
 }
