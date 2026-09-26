@@ -13,12 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "IchGeheViral — Eine Idee. Dein fertiges 60s Reel. Vollautomatisch.",
+  title: "IchGeheViral — Reels für maximales Viralpotenzial",
   description:
-    "Der autonome KI-Video-Agent für Creator & Brands. Verwandelt ein simples Thema in kohärente Transformations-Phasen, nahtlose Videoübergänge und ein fertiges 60+ Sekunden 9:16 Video.",
+    "Aus einer Idee entsteht automatisch ein fertiges 60+ Sekunden 9:16 Transformations-Reel — mit sichtbarer Progression, starkem Final-Reveal und ohne Credit-System.",
   openGraph: {
-    title: "IchGeheViral — Autonomer KI-Video-Generator",
-    description: "Aus einer Idee wird ein virales 60+ Sekunden Reel. Vollautomatisch mit nativer Akustik und konsistenter Architektur.",
+    title: "IchGeheViral — Reels für maximales Viralpotenzial",
+    description:
+      "Automatisch erstellte Transformations-Reels für TikTok, Instagram Reels und YouTube Shorts — 60+ Sekunden, 9:16 und ohne Credit-System.",
     siteName: "IchGeheViral",
     locale: "de_DE",
     type: "website",
@@ -31,8 +32,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="de" className={`${geistSans.variable} ${geistMono.variable} h-full`}>
-      <body className="min-h-screen bg-[#07060B] text-slate-100 antialiased selection:bg-purple-600 selection:text-white">
+    <html
+      lang="de"
+      data-theme="violet"
+      className={`${geistSans.variable} ${geistMono.variable} h-full`}
+    >
+      <body className="min-h-screen bg-[#07060B] text-slate-100 antialiased">
         {children}
       </body>
     </html>
