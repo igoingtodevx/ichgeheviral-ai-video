@@ -7,12 +7,14 @@ import { VideoShowcase } from "../components/VideoShowcase";
 import { SocialProofFeed } from "../components/SocialProofFeed";
 import { TransformationScrubber } from "../components/TransformationScrubber";
 import { NoCreditsSection } from "../components/NoCreditsSection";
+import { RevenueCalculator } from "../components/RevenueCalculator";
 import { HowItWorks } from "../components/HowItWorks";
 import { GeneratorShell } from "../components/GeneratorShell";
 import { ValueComparison } from "../components/ValueComparison";
 import { FounderSection } from "../components/FounderSection";
 import { FAQ } from "../components/FAQ";
 import { FinalCTA } from "../components/FinalCTA";
+import { ThemeSwitcher } from "../components/ThemeSwitcher";
 import { Footer } from "../components/Footer";
 import { VideoModal } from "../components/VideoModal";
 import { VideoShowcaseItem } from "../lib/types";
@@ -45,56 +47,45 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="relative min-h-screen flex flex-col bg-[#07060B] text-slate-100 font-sans selection:bg-purple-600 selection:text-white">
-      {/* Top Navbar */}
+    <div className="site-shell relative min-h-screen flex flex-col text-slate-100 font-sans">
       <Navbar
         onOpenVideo={handleOpenDemoVideo}
         onScrollToGenerator={scrollToGenerator}
       />
 
-      {/* Main Content Flow */}
       <main className="flex-1">
-        {/* Section 1: Hero Viewport + 3 High-Impact USPs */}
         <Hero
           onOpenVideo={handleOpenDemoVideo}
           onScrollToGenerator={scrollToGenerator}
         />
 
-        {/* Section 2: Real Video Showcase Early & Strong */}
         <VideoShowcase onSelectVideo={handleSelectShowcaseVideo} />
 
-        {/* Section 3: Live Social Proof (managed in /admin, renders when items exist) */}
         <SocialProofFeed />
 
-        {/* Section 4: Viral Mechanics & Interactive 8-State Pipeline Proof */}
         <TransformationScrubber onOpenVideo={handleOpenDemoVideo} />
 
-        {/* Section 5: "KEINE CREDITS" High-Contrast Visual Break */}
         <NoCreditsSection onScrollToGenerator={scrollToGenerator} />
 
-        {/* Section 6: Radically Simplified 3-Step Flow */}
+        <RevenueCalculator />
+
         <HowItWorks />
 
-        {/* Section 7: Interactive Generator with Presets */}
         <GeneratorShell onOpenVideo={handleOpenDemoVideo} />
 
-        {/* Section 8: Clear 2-Column Comparison (Generic AI vs IchGeheViral) */}
         <ValueComparison />
 
-        {/* Section 9: Authentic Founder Note from Timo */}
         <FounderSection onScrollToGenerator={scrollToGenerator} />
 
-        {/* Section 10: Buying-Oriented FAQ Accordion */}
         <FAQ />
 
-        {/* Section 11: Final Conversion CTA */}
         <FinalCTA onScrollToGenerator={scrollToGenerator} />
       </main>
 
-      {/* Section 12: Minimal Footer */}
       <Footer />
 
-      {/* Modal for Cinematic Video Playback */}
+      <ThemeSwitcher />
+
       <VideoModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
