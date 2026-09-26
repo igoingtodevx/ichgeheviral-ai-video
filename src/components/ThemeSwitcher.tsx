@@ -9,31 +9,11 @@ const THEMES: Array<{
   label: string;
   swatch: string;
 }> = [
-  {
-    id: "violet",
-    label: "Violett",
-    swatch: "linear-gradient(135deg, #7c3aed, #38bdf8)",
-  },
-  {
-    id: "ocean",
-    label: "Blau",
-    swatch: "linear-gradient(135deg, #2563eb, #22d3ee)",
-  },
-  {
-    id: "emerald",
-    label: "Emerald",
-    swatch: "linear-gradient(135deg, #059669, #2dd4bf)",
-  },
-  {
-    id: "coral",
-    label: "Coral",
-    swatch: "linear-gradient(135deg, #e11d48, #fb7185)",
-  },
-  {
-    id: "light",
-    label: "Hell",
-    swatch: "linear-gradient(135deg, #f8fafc, #cbd5e1)",
-  },
+  { id: "violet", label: "Violett", swatch: "linear-gradient(135deg, #7c3aed, #38bdf8)" },
+  { id: "ocean", label: "Blau", swatch: "linear-gradient(135deg, #2563eb, #22d3ee)" },
+  { id: "emerald", label: "Emerald", swatch: "linear-gradient(135deg, #059669, #2dd4bf)" },
+  { id: "coral", label: "Coral", swatch: "linear-gradient(135deg, #e11d48, #fb7185)" },
+  { id: "light", label: "Hell", swatch: "linear-gradient(135deg, #f8fafc, #f59e0b)" },
 ];
 
 const STORAGE_KEY = "igv-preview-theme";
@@ -44,13 +24,27 @@ function isThemeId(value: string | null): value is ThemeId {
 
 export function ThemeSwitcher() {
   const [activeTheme, setActiveTheme] = useState<ThemeId>("violet");
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("themes") !== "1") {
+      document.documentElement.dataset.theme = "violet";
+      return;
+    }
+
+    document.documentElement.classList.add("theme-preview-active");
+    setVisible(true);
+
     const storedTheme = window.localStorage.getItem(STORAGE_KEY);
     const nextTheme: ThemeId = isThemeId(storedTheme) ? storedTheme : "violet";
 
     setActiveTheme(nextTheme);
     document.documentElement.dataset.theme = nextTheme;
+
+    return () => {
+      document.documentElement.classList.remove("theme-preview-active");
+    };
   }, []);
 
   const selectTheme = (theme: ThemeId) => {
@@ -58,6 +52,8 @@ export function ThemeSwitcher() {
     document.documentElement.dataset.theme = theme;
     window.localStorage.setItem(STORAGE_KEY, theme);
   };
+
+  if (!visible) return null;
 
   return (
     <aside
