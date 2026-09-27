@@ -1,6 +1,15 @@
-import { CreateJobRequest, VideoJob } from "../types";
+/**
+ * Client boundary for the public purchase entry point.
+ *
+ * Per the production backend contract, `POST /checkout` is the ONLY
+ * public purchase entry point. A generation job is created exclusively
+ * by a verified, paid Shopify webhook — never directly by the frontend.
+ * There is intentionally no client method that calls `/jobs`.
+ */
 
-const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "https://aivideo-pool-automation-pipeline-production.up.railway.app").replace(/\/$/, "");
+const API_BASE = (
+  process.env.NEXT_PUBLIC_API_URL || "https://aivideo-pool-automation-pipeline-production.up.railway.app"
+).replace(/\/$/, "");
 
 export interface CheckoutRequest {
   concept: string;
@@ -12,12 +21,8 @@ export interface CheckoutResponse {
   checkout_url: string;
 }
 
-export class JobApiClient {
-  private baseUrl: string;
-
-  constructor(baseUrl: string = API_BASE) {
-    this.baseUrl = baseUrl;
-  }
+class CheckoutApiClient {
+  constructor(private baseUrl: string = API_BASE) {}
 
   async createCheckout(req: CheckoutRequest): Promise<CheckoutResponse> {
     if (!this.baseUrl) throw new Error("Checkout-Backend ist nicht verbunden.");
@@ -33,40 +38,6 @@ export class JobApiClient {
     }
     return payload as CheckoutResponse;
   }
-
-  async createJob(req: CreateJobRequest): Promise<VideoJob> {
-    if (this.baseUrl) {
-      const res = await fetch(`${this.baseUrl}/jobs`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", ...(req.idempotency_key ? { "Idempotency-Key": req.idempotency_key } : {}) },
-        body: JSON.stringify({ concept: req.concept }),
-      });
-      if (!res.ok) throw new Error(`Failed to create job: ${res.statusText}`);
-      return await res.json();
-    }
-    return this.createMockJob(req.concept);
-  }
-
-  async getJob(jobId: string): Promise<VideoJob> {
-    if (this.baseUrl) {
-      const res = await fetch(`${this.baseUrl}/jobs/${jobId}`);
-      if (!res.ok) throw new Error(`Failed to fetch job ${jobId}`);
-      return await res.json();
-    }
-    return this.getMockJob(jobId);
-  }
-
-  getVideoUrl(jobId: string): string {
-    return this.baseUrl ? `${this.baseUrl}/jobs/${jobId}/video` : "/media/videos/golden-pool-run1.mp4";
-  }
-
-  private createMockJob(concept: string): VideoJob {
-    return { id: `job_mock_${Date.now().toString(36)}`, concept, status: "queued", progress: { phase: "queued", completed: 0, total: 15, percent: 0, details: "Job in Warteschlange eingereiht" }, cost: null, error: null, final_video_url: null, created_at: new Date().toISOString(), updated_at: new Date().toISOString() };
-  }
-
-  private getMockJob(jobId: string): VideoJob {
-    return { id: jobId, concept: "Backyard to luxury pool oasis", status: "completed", progress: { phase: "completed", completed: 15, total: 15, percent: 100, details: "Render fertiggestellt (63.1s MP4)" }, cost: 7.26, error: null, final_video_url: "/media/videos/golden-pool-run1.mp4", created_at: new Date(Date.now() - 600000).toISOString(), updated_at: new Date().toISOString() };
-  }
 }
 
-export const api = new JobApiClient();
+export const api = new CheckoutApiClient();

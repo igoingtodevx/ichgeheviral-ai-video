@@ -135,7 +135,7 @@ export const FAQ_ITEMS = [
   {
     question: "Kann Viralität garantiert werden?",
     answer:
-      "Nein — eine garantierte View-Zahl oder garantierte Viralität wäre unseriös. Was IchGeheViral liefert, ist ein Aufbau mit maximalem Viralpotenzial: Ein sofortiger Scroll-Stop in den ersten Sekunden, kontinuierlicher visueller Fortschritt über 8 Bauphasen und ein starker Final-Reveal, der die Watch-Time auf TikTok, Reels und Shorts maximiert.",
+      "Nein — eine garantierte View-Zahl oder garantierte Viralität wäre unseriös. Was IchGeheViral liefert, ist ein Aufbau mit maximalem Viralpotenzial: Ein sofortiger Scroll-Stop in den ersten Sekunden, kontinuierlicher visueller Fortschritt über 8 Bauphasen und ein starker Final-Reveal. Dieser Aufbau ist darauf ausgelegt, Aufmerksamkeit und Watch-Time auf TikTok, Reels und Shorts zu fördern.",
   },
   {
     question: "Brauche ich Credits für die Erstellung?",

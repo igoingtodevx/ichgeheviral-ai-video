@@ -1,190 +1,73 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowRight, Menu, X, Play } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Menu, X } from "lucide-react";
 
-interface NavbarProps {
-  onOpenVideo?: () => void;
-  onScrollToGenerator?: () => void;
-}
+const LINKS = [
+  { href: "#ergebnisse", label: "Ergebnisse" },
+  { href: "#so-funktionierts", label: "So funktioniert's" },
+  { href: "#keine-credits", label: "Keine Credits" },
+  { href: "#preise", label: "Preise" },
+  { href: "#faq", label: "FAQ" },
+];
 
-export function Navbar({ onOpenVideo, onScrollToGenerator }: NavbarProps) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+export function Navbar() {
+  const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/[0.07] bg-[#07060B]/85 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-18">
-        {/* Brand Wordmark */}
-        <a href="#" className="flex items-center gap-2 group">
-          <div className="flex items-center text-xl sm:text-2xl font-bold tracking-tight text-white">
-            <span>IchGehe</span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-indigo-300 to-sky-400 pl-0.5">
-              Viral
-            </span>
-          </div>
-          <span className="hidden sm:inline-block rounded px-1.5 py-0.5 text-[10px] font-mono tracking-widest text-violet-400 bg-violet-950/60 border border-violet-800/40">
-            AI VIDEO
-          </span>
-        </a>
+    <header className="sticky top-0 z-50 border-b border-[#e7e3df] bg-white/95 backdrop-blur">
+      <div className="mx-auto flex h-[68px] max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="text-xl font-black tracking-[-0.05em] text-[#101114]">
+          IchGehe<span className="text-[#ff8600]">Viral</span>
+        </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
-          <a
-            href="#showcase"
-            className="hover:text-white transition-colors duration-150"
-          >
-            Ergebnisse
-          </a>
-          <a
-            href="#pipeline"
-            className="hover:text-white transition-colors duration-150"
-          >
-            Viral-Logik
-          </a>
-          <a
-            href="#no-credits"
-            className="text-amber-300 hover:text-amber-200 font-semibold transition-colors duration-150 flex items-center gap-1.5"
-          >
-            Keine Credits
-          </a>
-          <a
-            href="#potential-rechner"
-            className="hover:text-white transition-colors duration-150"
-          >
-            Rechner
-          </a>
-          <a
-            href="#how-it-works"
-            className="hover:text-white transition-colors duration-150"
-          >
-            Ablauf
-          </a>
-          <a
-            href="#generator"
-            className="hover:text-white transition-colors duration-150"
-          >
-            Generator
-          </a>
-          <a
-            href="#faq"
-            className="hover:text-white transition-colors duration-150"
-          >
-            FAQ
-          </a>
+        <nav className="hidden items-center gap-7 text-sm font-semibold text-[#555a62] lg:flex">
+          {LINKS.map((link) => (
+            <a key={link.href} href={link.href} className="transition hover:text-[#101114]">
+              {link.label}
+            </a>
+          ))}
         </nav>
 
-        {/* Desktop Actions */}
-        <div className="hidden sm:flex items-center gap-3">
-          {onOpenVideo && (
-            <button
-              onClick={onOpenVideo}
-              className="flex items-center gap-2 px-3.5 py-2 text-xs font-mono uppercase tracking-wider text-slate-300 hover:text-white rounded-lg border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all"
-            >
-              <Play className="w-3.5 h-3.5 text-violet-400 fill-violet-400/40" />
-              <span>Demo</span>
-            </button>
-          )}
-          <a
-            href="#generator"
-            onClick={(e) => {
-              if (onScrollToGenerator) {
-                e.preventDefault();
-                onScrollToGenerator();
-              }
-            }}
-            className="btn-electric flex items-center gap-1.5 rounded-lg px-4 py-2 text-xs font-semibold tracking-wide text-white"
+        <div className="flex items-center gap-3">
+          <Link
+            href="/kundenbereich"
+            className="hidden items-center gap-2 rounded-full bg-[#ff8600] px-5 py-3 text-xs font-black text-white transition hover:bg-[#e97800] sm:inline-flex"
           >
-            <span>Video erstellen</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </a>
+            Studio öffnen <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="grid h-10 w-10 place-items-center rounded-full border border-[#e7e3df] text-[#101114] lg:hidden"
+            aria-label="Menü öffnen"
+            aria-expanded={open}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
-
-        {/* Mobile Hamburger Toggle */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden flex items-center p-2 text-slate-300 hover:text-white"
-          aria-label="Menü öffnen"
-        >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
       </div>
 
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden border-b border-white/10 bg-[#0A0815] px-6 py-6 space-y-4">
-          <nav className="flex flex-col space-y-3 text-base text-slate-200">
-            <a
-              href="#showcase"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-1 hover:text-violet-400"
-            >
-              Ergebnisse
-            </a>
-            <a
-              href="#pipeline"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-1 hover:text-violet-400"
-            >
-              Viral-Logik
-            </a>
-            <a
-              href="#no-credits"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-1 text-amber-300 font-semibold hover:text-amber-200"
-            >
-              Keine Credits
-            </a>
-            <a
-              href="#potential-rechner"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-1 hover:text-violet-400"
-            >
-              Potenzial-Rechner
-            </a>
-            <a
-              href="#how-it-works"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-1 hover:text-violet-400"
-            >
-              Ablauf
-            </a>
-            <a
-              href="#generator"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-1 hover:text-violet-400"
-            >
-              Generator
-            </a>
-            <a
-              href="#faq"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-1 hover:text-violet-400"
-            >
-              Häufige Fragen
-            </a>
-          </nav>
-          <div className="pt-4 border-t border-white/10 flex flex-col gap-3">
-            {onOpenVideo && (
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenVideo();
-                }}
-                className="w-full py-2.5 rounded-lg border border-white/15 text-sm font-medium text-slate-200 flex items-center justify-center gap-2"
+      {open && (
+        <div className="border-t border-[#e7e3df] bg-white px-4 py-4 lg:hidden">
+          <nav className="flex flex-col gap-1">
+            {LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="rounded-lg px-3 py-3 text-sm font-bold text-[#33373d] hover:bg-[#f7f7f5]"
               >
-                <Play className="w-4 h-4 text-violet-400" />
-                Demo-Reel ansehen (63s)
-              </button>
-            )}
-            <a
-              href="#generator"
-              onClick={() => setMobileMenuOpen(false)}
-              className="btn-electric w-full py-2.5 rounded-lg text-sm font-semibold text-center text-white flex items-center justify-center gap-2"
+                {link.label}
+              </a>
+            ))}
+            <Link
+              href="/kundenbereich"
+              className="mt-2 flex items-center justify-center gap-2 rounded-full bg-[#ff8600] px-5 py-3 text-sm font-black text-white"
             >
-              <span>Jetzt Reel erstellen</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
-          </div>
+              Studio öffnen <ArrowRight className="h-4 w-4" />
+            </Link>
+          </nav>
         </div>
       )}
     </header>
