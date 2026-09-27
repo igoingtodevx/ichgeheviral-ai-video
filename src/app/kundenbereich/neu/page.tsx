@@ -9,7 +9,6 @@ import {
   Loader2,
   LockKeyhole,
   ShieldCheck,
-  Sparkles,
 } from "lucide-react";
 import { api } from "../../../lib/api/client";
 import { PRESET_CONCEPTS } from "../../../lib/constants";
@@ -68,7 +67,7 @@ export default function NewReelPage() {
                 <span className="text-xs font-black uppercase tracking-[0.14em] text-[#8a8e94]">Schritt 1</span>
                 <h2 className="mt-1 text-xl font-black">Pool-Stil auswählen</h2>
               </div>
-              <Sparkles className="h-6 w-6 text-[#6d5dfc]" />
+              <LockKeyhole className="h-6 w-6 text-[#6d5dfc]" />
             </div>
 
             <div className="mt-5 grid gap-4 md:grid-cols-2">

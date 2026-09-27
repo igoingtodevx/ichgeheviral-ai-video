@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Download, Film, Play, Plus, Sparkles } from "lucide-react";
+import { ArrowRight, Download, Film, Play, Plus } from "lucide-react";
 import { STUDIO_REELS } from "../../lib/studio";
 
 export default function StudioDashboardPage() {
@@ -9,16 +9,15 @@ export default function StudioDashboardPage() {
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-[#dfdaff] bg-[#f5f3ff] px-3 py-2 text-[11px] font-black uppercase tracking-[0.14em] text-[#5d4de1]">
-              <Sparkles className="h-3.5 w-3.5" />
-              2 echte Beispiel-Reels
+            <span className="text-xs font-black uppercase tracking-[0.16em] text-[#5d4de1]">
+              Beispiel-Reels
             </span>
             <h1 className="mt-4 text-4xl font-black tracking-[-0.055em] text-[#101114] sm:text-5xl">
               Meine Reels
             </h1>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-[#686c73] sm:text-base">
               Hier findest du deine fertigen Pool-Reels. Zum Start zeigen wir zwei reale Beispiele
-              aus der freigegebenen Poolbau-Pipeline.
+              aus der aktuellen Poolbau-Kategorie.
             </p>
           </div>
 

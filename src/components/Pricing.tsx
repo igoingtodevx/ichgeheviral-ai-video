@@ -11,7 +11,7 @@ export function Pricing() {
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <span className="text-xs font-black uppercase tracking-[0.18em] text-[#5947e8]">
-            Preise &amp; Zugang
+            Starte deine erste Transformation
           </span>
           <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
             Kein Credit-System. Ein klarer Checkout.
