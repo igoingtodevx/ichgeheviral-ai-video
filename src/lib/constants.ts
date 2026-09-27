@@ -128,7 +128,7 @@ export const FAQ_ITEMS = [
   {
     question: "Kann Viralität garantiert werden?",
     answer:
-      "Nein — eine garantierte View-Zahl oder garantierte Viralität wäre unseriös. Was IchGeheViral liefert, ist ein Aufbau mit maximalem Viralpotenzial: Ein sofortiger Scroll-Stop in den ersten Sekunden, kontinuierlicher visueller Fortschritt über 8 Bauphasen und ein starker Final-Reveal. Dieser Aufbau ist darauf ausgelegt, Aufmerksamkeit und Watch-Time auf TikTok, Reels und Shorts zu fördern.",
+      "Nein — eine garantierte View-Zahl oder garantierte Viralität wäre unseriös. Was IchGeheViral liefert, ist ein klarer Spannungsbogen: ein starker Einstieg, kontinuierlicher visueller Fortschritt über 8 Phasen und ein Final-Reveal. Dieser Aufbau ist darauf ausgelegt, Aufmerksamkeit und Watch-Time auf TikTok, Reels und Shorts zu fördern.",
   },
   {
     question: "Brauche ich Credits für die Erstellung?",
@@ -148,6 +148,6 @@ export const FAQ_ITEMS = [
   {
     question: "Welche Videoarten werden aktuell unterstützt?",
     answer:
-      "Aktuell ist IchGeheViral ausschließlich für Poolbau-Transformationen freigegeben. Verfügbar sind ein moderner rechteckiger Luxus-Pool und eine mediterrane organische Lagunen-Variante. Garten-, Terrassen-, Haus-, Innenraum- oder andere Transformationskategorien werden erst nach separater Validierung freigeschaltet.",
+      "Aktuell ist IchGeheViral auf Poolbau-Transformationen fokussiert. Verfügbar sind ein moderner rechteckiger Luxus-Pool und eine mediterrane organische Lagunen-Variante. Garten-, Terrassen-, Haus-, Innenraum- oder andere Transformationskategorien werden erst nach eigener Prüfung ergänzt.",
   },
 ];

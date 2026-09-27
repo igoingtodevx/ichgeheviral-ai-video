@@ -23,7 +23,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white text-[#101114]">
       <div className="grid h-7 place-items-center bg-[#101114] text-[10px] font-black uppercase tracking-[0.16em] text-white">
-        KI-VIDEOS FÜR MAXIMALES VIRALPOTENZIAL
+        TRANSFORMATIONS-REELS FÜR STARKEN CONTENT
       </div>
 
       <Navbar />

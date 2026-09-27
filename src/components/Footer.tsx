@@ -20,7 +20,7 @@ export function Footer() {
             <b className="text-base text-white">
               IchGehe<span className="text-[#6d5dfc]">Viral</span>
             </b>
-            <div>AI Video Engine</div>
+            <div>Transformations-Reels</div>
           </div>
 
           <nav className="flex flex-wrap gap-x-4 gap-y-2">

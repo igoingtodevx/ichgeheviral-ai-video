@@ -49,12 +49,12 @@ export const STUDIO_REELS: StudioReel[] = [
 
 export const PRODUCTION_STEPS = [
   {
-    title: "Pool-Stil bestätigt",
-    description: "Die freigegebene Pool-Variante und das feste Zielbild stehen fest.",
+    title: "Transformation bestätigt",
+    description: "Die freigegebene Transformation und das feste Zielbild stehen fest.",
   },
   {
     title: "8 Bauzustände",
-    description: "Vom Ausgangszustand bis zur fertigen Pooloase entstehen acht aufeinander aufbauende Bilder.",
+    description: "Vom Ausgangszustand bis zum fertigen Zielbild entstehen acht aufeinander aufbauende Bilder.",
   },
   {
     title: "7 Übergänge",
@@ -66,6 +66,6 @@ export const PRODUCTION_STEPS = [
   },
   {
     title: "Finales Reel",
-    description: "Alle Phasen werden zu einem fertigen vertikalen 60+ Sekunden MP4 zusammengesetzt.",
+    description: "Alle Phasen werden zu deinem fertigen vertikalen Reel mit über 60 Sekunden Laufzeit zusammengesetzt.",
   },
 ] as const;

@@ -31,18 +31,6 @@ body {
   color: #ffffff;
 }
 
-/* Subtle violet glow used behind the hero / final CTA */
-.radial-glow {
-  background: radial-gradient(circle at 50% 20%, rgba(109, 93, 252, 0.12), transparent 55%);
-}
-
-/* Serif accent for a small number of emotionally important words */
-.accent-serif {
-  font-family: Georgia, "Times New Roman", serif;
-  font-style: italic;
-  font-weight: 400;
-}
-
 input[type="range"] {
   accent-color: var(--color-brand);
 }

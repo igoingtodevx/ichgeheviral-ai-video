@@ -34,6 +34,7 @@ export default async function ReelDetailPage({
               src={reel.videoSrc}
               poster={reel.posterSrc}
               controls
+              preload="metadata"
               playsInline
               className="aspect-[9/16] w-full rounded-[20px] bg-black object-cover"
             />
@@ -80,7 +81,7 @@ export default async function ReelDetailPage({
                 href="/kundenbereich/produktion"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#dedbe7] bg-white px-6 py-4 text-sm font-black text-[#101114] transition hover:border-[#b9b0ff]"
               >
-                Produktionsablauf ansehen
+                Entstehung ansehen
               </Link>
             </div>
 

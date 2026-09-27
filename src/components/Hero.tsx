@@ -9,42 +9,40 @@ const FACTS: [string, string][] = [
   ["60+ Sek.", "fertiges Reel"],
   ["9:16", "Shortform-nativ"],
   ["8", "Transformationsphasen"],
-  ["0", "Credits zu zählen"],
+  ["1", "erste Kategorie"],
 ];
 
 export function Hero({ onOpenVideo }: { onOpenVideo: () => void }) {
   const demo = SHOWCASE_VIDEOS[0];
 
   return (
-    <section className="radial-glow overflow-hidden pt-14 sm:pt-20">
+    <section className="overflow-hidden bg-white pt-14 sm:pt-20">
       <div className="mx-auto max-w-6xl px-4 text-center sm:px-6 lg:px-8">
-        <span className="inline-flex rounded-full border border-[#dfdaff] bg-[#f7f5ff] px-3 py-2 text-[11px] font-black uppercase tracking-[0.14em] text-[#5947e8]">
-          Für Aufmerksamkeit, Fortschritt &amp; Payoff gebaut
-        </span>
+        <p className="text-xs font-black uppercase tracking-[0.18em] text-[#5947e8]">
+          Transformations-Reels · Poolbau als erste Kategorie
+        </p>
 
         <h1 className="mx-auto mt-6 max-w-5xl text-5xl font-black leading-[0.98] tracking-[-0.065em] text-[#101114] sm:text-7xl lg:text-[80px]">
-          Pool-Transformationen, gebaut für{" "}
-          <span className="accent-serif text-[#6d5dfc]">maximales Viralpotenzial</span>.
+          Aus Veränderungen werden{" "}
+          <span className="text-[#6d5dfc]">Videos, die Menschen stoppen.</span>
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-[#686c73] sm:text-lg">
-          Vom Ausgangszustand bis zur fertigen Pooloase: IchGeheViral erstellt ein zusammenhängendes
-          60+ Sekunden Reel mit acht sichtbaren Bauphasen und starkem Final-Reveal. Kein Videoschnitt,
-          kein Zusammensetzen einzelner KI-Clips.
+          IchGeheViral baut aus einer Veränderung ein zusammenhängendes 60+ Sekunden Reel mit sichtbarem Fortschritt und starkem Final-Reveal. Poolbau ist die erste verfügbare Kategorie; weitere werden schrittweise ergänzt.
         </p>
 
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <Link
             href="/kundenbereich/neu"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-[#6d5dfc] px-7 py-4 text-sm font-black text-white shadow-[0_14px_38px_rgba(109,93,252,.24)] transition hover:bg-[#5947e8]"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-7 py-4 text-sm font-black text-white shadow-[0_14px_38px_rgba(109,93,252,.24)] transition hover:bg-[#5947e8]"
           >
-            Pool-Reel auswählen <ArrowRight className="h-4 w-4" />
+            Studio starten <ArrowRight className="h-4 w-4" />
           </Link>
           <button
             onClick={onOpenVideo}
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-[#d9d5d0] bg-white px-7 py-4 text-sm font-black text-[#101114] transition hover:border-[#b9b0ff]"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#d9d5d0] bg-white px-7 py-4 text-sm font-black text-[#101114] transition hover:border-[#b9b0ff]"
           >
-            <Play className="h-4 w-4 fill-[#6d5dfc] text-[#6d5dfc]" /> Echtes Ergebnis ansehen
+            <Play className="h-4 w-4 fill-[#6d5dfc] text-[#6d5dfc]" /> Beispiel-Reel ansehen
           </button>
         </div>
 
@@ -55,7 +53,7 @@ export function Hero({ onOpenVideo }: { onOpenVideo: () => void }) {
           >
             <img
               src={demo.posterSrc}
-              alt="Beispiel eines fertigen IchGeheViral Reels"
+              alt="Erstelltes Beispiel-Reel einer Poolbau-Transformation"
               className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
@@ -63,7 +61,7 @@ export function Hero({ onOpenVideo }: { onOpenVideo: () => void }) {
               <Play className="h-7 w-7 fill-current" />
             </span>
             <span className="absolute bottom-6 left-6 text-left text-white">
-              <b className="block text-lg">Echtes Ergebnis, kein Mockup</b>
+              <b className="block text-lg">Erstelltes Beispiel-Reel</b>
               <small className="text-white/75">
                 {demo.duration} · 9:16 · {demo.stateCount} Phasen
               </small>

@@ -13,13 +13,13 @@ export function TransformationShowcase({ onOpenVideo }: { onOpenVideo: (videoSrc
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <span className="text-xs font-black uppercase tracking-[0.18em] text-[#5947e8]">
-            Echtes Produkt, keine Grafik
+            Erstelltes Beispiel
           </span>
-          <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
+          <h2 className="mt-3 text-3xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
             Eine Idee. Ein zusammenhängendes Reel.
           </h2>
           <p className="mt-5 text-base leading-7 text-[#686c73] sm:text-lg">
-            Kein Zusammenschneiden einzelner KI-Clips. Das System baut mehrere aufeinander
+            Kein Zusammenschneiden einzelner Clips. Das System baut mehrere aufeinander
             abgestimmte Phasen auf einer stabilen Kameraperspektive auf — bis zum finalen Reveal.
           </p>
         </div>

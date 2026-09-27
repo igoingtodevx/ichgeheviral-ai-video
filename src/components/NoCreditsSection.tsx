@@ -4,14 +4,14 @@ import React from "react";
 import { CheckCircle2, XCircle } from "lucide-react";
 
 const TYPICAL = [
-  "Wie viele Credits habe ich noch übrig?",
-  "Was kostet mich der nächste Versuch?",
-  "Kurze Einzelclips ohne echten Spannungsbogen",
+  "Viele Einzelschritte bis zum fertigen Video",
+  "Unklare Ergebnisse bei jedem neuen Versuch",
+  "Kurze Clips ohne zusammenhängenden Spannungsbogen",
   "Manuelles Zusammensetzen in einer Schnitt-App",
 ];
 
 const IGV = [
-  "Du beschreibst das gewünschte Ergebnis",
+  "Du wählst eine freigegebene Transformation",
   "Du bekommst ein fertiges Video",
   "Ein zusammenhängendes 60+ Sekunden Reel",
   "Kein Zusammenschneiden einzelner Clips",
@@ -23,21 +23,20 @@ export function NoCreditsSection() {
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <span className="text-xs font-black uppercase tracking-[0.18em] text-[#5947e8]">
-            Kein Credit-Zählen
+            Klarer Ablauf
           </span>
-          <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
-            Du kaufst ein Ergebnis. Keine Guthaben-Rechnerei.
+          <h2 className="mt-3 text-3xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
+            Du bekommst ein Ergebnis. Keine Produktionsrechnung.
           </h2>
           <p className="mt-5 text-base leading-7 text-[#686c73] sm:text-lg">
-            Viele KI-Tools zwingen dich, in Credits, Tokens und Fehlversuchen zu denken.
-            Bei IchGeheViral bestellst du ein klar definiertes, fertiges Reel.
+            Du bestellst ein klar definiertes, fertiges Reel — ohne dich durch technische Einzelschritte oder einzelne Clips arbeiten zu müssen.
           </p>
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           <div className="rounded-[22px] border border-[#e6e4ef] bg-[#faf9fc] p-7 sm:p-8">
             <span className="text-xs font-black uppercase tracking-widest text-[#a1a5ab]">
-              Typisches KI-Tool
+              Klassischer Video-Workflow
             </span>
             <ul className="mt-5 space-y-4">
               {TYPICAL.map((item) => (
