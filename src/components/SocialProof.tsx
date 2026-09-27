@@ -27,7 +27,7 @@ export function SocialProof() {
             Nicht unsere Meinung. Die Ergebnisse.
           </h2>
           <p className="mt-5 text-base leading-7 text-[#686c73] sm:text-lg">
-            Echte veröffentlichte Kundenresultate — keine Mockups, keine erfundenen Zahlen.
+            Ausgewählte Beispiel-Reels aus der aktuellen Transformations-Engine.
           </p>
         </div>
 

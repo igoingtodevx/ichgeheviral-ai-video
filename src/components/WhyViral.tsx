@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Eye, Sparkles, Zap, Smartphone } from "lucide-react";
+import { Eye, Zap, Smartphone } from "lucide-react";
 
 const POINTS = [
   {
@@ -10,7 +10,7 @@ const POINTS = [
     desc: "Ein klarer Ausgangspunkt und ein sofort erkennbares Vorher erzeugen Neugier in der ersten Sekunde.",
   },
   {
-    icon: Sparkles,
+    icon: Zap,
     title: "Sichtbare Progression",
     desc: "Jede Phase verändert erkennbar etwas am Motiv — der Zuschauer bleibt dran, um zu sehen, was als Nächstes kommt.",
   },

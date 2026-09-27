@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Gauge, Home, PlusCircle, Sparkles, ExternalLink } from "lucide-react";
+import { Gauge, Home, PlusCircle, ExternalLink } from "lucide-react";
 import type { ReactNode } from "react";
 
 const NAV_ITEMS = [
@@ -48,7 +48,7 @@ export function StudioShell({ children }: { children: ReactNode }) {
           <div className="mt-auto px-4 pb-5">
             <div className="rounded-2xl border border-[#e3dfff] bg-[#f8f7ff] p-4">
               <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-[#6555e8]">
-                <Sparkles className="h-4 w-4" />
+                <Gauge className="h-4 w-4" />
                 Pool-Reels
               </div>
               <p className="mt-2 text-xs leading-5 text-[#777b82]">

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { Check, Circle, Pause, Play, RotateCcw, Sparkles } from "lucide-react";
+import { Check, Circle, Pause, Play, RotateCcw } from "lucide-react";
 import { PRODUCTION_STEPS, STUDIO_REELS } from "../../../lib/studio";
 
 const PHASE_LABELS = [
@@ -59,16 +59,14 @@ export default function ProductionDemoPage() {
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-[#dfdaff] bg-[#f5f3ff] px-3 py-2 text-[11px] font-black uppercase tracking-[0.14em] text-[#5d4de1]">
-              <Sparkles className="h-3.5 w-3.5" />
-              Interaktive Ablauf-Demo
+            <span className="text-xs font-black uppercase tracking-[0.16em] text-[#5d4de1]">
+              Erstellungsvorschau
             </span>
             <h1 className="mt-4 text-4xl font-black tracking-[-0.055em] sm:text-5xl">
-              So entsteht dein Pool-Reel.
+              Dein Reel entsteht.
             </h1>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-[#686c73] sm:text-base">
-              Diese Ansicht zeigt den Produktionsablauf anhand der echten Zustandsbilder eines bereits fertigen Beispiel-Reels.
-              Dabei wird kein neues Video erzeugt.
+              Sieh, wie aus einer Transformation ein fertiges Short-Form-Reel entsteht.
             </p>
           </div>
 
@@ -140,7 +138,7 @@ export default function ProductionDemoPage() {
 
           <aside className="rounded-[26px] border border-[#e4e1ec] bg-white p-5 shadow-[0_18px_60px_rgba(37,31,68,.06)] sm:p-6">
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-black">Produktion</h2>
+              <h2 className="text-lg font-black">Dein Reel entsteht</h2>
               {finished && (
                 <button
                   type="button"
