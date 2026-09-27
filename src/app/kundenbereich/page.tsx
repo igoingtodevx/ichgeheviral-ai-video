@@ -74,7 +74,7 @@ function StudioForm() {
               Starte dein nächstes Reel.
             </h1>
             <p className="mt-5 leading-7 text-[#686c73]">
-              Beschreibe deine Idee, wähle dein Paket und wechsle danach in den sicheren Checkout.
+              Beschreibe deine Idee, wähle dein Paket und wechsle danach zum sicheren Checkout.
               Die Produktion startet automatisch, sobald deine Bestellung bestätigt ist.
             </p>
 
