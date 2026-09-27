@@ -23,13 +23,13 @@ export function Hero({ onOpenVideo }: { onOpenVideo: () => void }) {
         </span>
 
         <h1 className="mx-auto mt-6 max-w-5xl text-5xl font-black leading-[0.98] tracking-[-0.065em] text-[#101114] sm:text-7xl lg:text-[80px]">
-          Videos, die für{" "}
-          <span className="accent-serif text-[#ff8600]">maximales Viralpotenzial</span> gebaut sind.
+          Pool-Transformationen, für{" "}
+          <span className="accent-serif text-[#ff8600]">maximales Viralpotenzial</span> gebaut.
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-[#686c73] sm:text-lg">
-          Du gibst eine Idee ein. IchGeheViral macht daraus ein zusammenhängendes 60+ Sekunden
-          Transformations-Reel — mit sichtbarem Fortschritt und starkem Finale. Kein Videoschnitt,
+          Vom Ausgangszustand bis zur fertigen Pooloase: IchGeheViral erstellt ein zusammenhängendes
+          60+ Sekunden Reel mit acht sichtbaren Bauphasen und starkem Final-Reveal. Kein Videoschnitt,
           kein Zusammensetzen einzelner KI-Clips.
         </p>
 
@@ -38,7 +38,7 @@ export function Hero({ onOpenVideo }: { onOpenVideo: () => void }) {
             href="/kundenbereich"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-[#ff8600] px-7 py-4 text-sm font-black text-white shadow-[0_14px_38px_rgba(255,134,0,.24)] transition hover:bg-[#e97800]"
           >
-            Eigenes Video starten <ArrowRight className="h-4 w-4" />
+            Pool-Reel auswählen <ArrowRight className="h-4 w-4" />
           </Link>
           <button
             onClick={onOpenVideo}

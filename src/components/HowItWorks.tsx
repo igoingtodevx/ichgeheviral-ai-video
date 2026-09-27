@@ -2,27 +2,27 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, DownloadCloud, MessageSquarePlus, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle2, DownloadCloud, Sparkles } from "lucide-react";
 import { PRESET_CONCEPTS } from "../lib/constants";
 
 const STEPS = [
   {
     num: "01",
-    icon: MessageSquarePlus,
-    title: "Beschreibe deine Idee",
-    desc: "Ein Satz reicht: Ausgangszustand und gewünschtes Endergebnis. Vorlagen helfen beim Einstieg.",
+    icon: CheckCircle2,
+    title: "Pool-Stil auswählen",
+    desc: "Du wählst zwischen den aktuell freigegebenen Pool-Transformationen. Keine Prompt-Eingabe nötig.",
   },
   {
     num: "02",
     icon: Sparkles,
     title: "IchGeheViral baut dein Reel",
-    desc: "Das System erstellt automatisch mehrere aufeinander abgestimmte Phasen und setzt sie zu einem fertigen Video zusammen.",
+    desc: "Das System erstellt acht aufeinander aufbauende Bauzustände und verbindet sie zu einem fertigen Poolbau-Reel.",
   },
   {
     num: "03",
     icon: DownloadCloud,
     title: "Herunterladen & posten",
-    desc: "Du erhältst ein fertiges vertikales 9:16-Reel — sofort bereit für TikTok, Reels oder Shorts.",
+    desc: "Du erhältst ein fertiges vertikales 9:16-Reel — bereit für TikTok, Instagram Reels oder YouTube Shorts.",
   },
 ];
 
@@ -35,7 +35,7 @@ export function HowItWorks() {
             Radikal einfach
           </span>
           <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
-            In 3 Schritten zum fertigen Reel.
+            In 3 Schritten zum fertigen Pool-Reel.
           </h2>
         </div>
 
@@ -53,13 +53,22 @@ export function HowItWorks() {
         </div>
 
         <div className="mt-10 rounded-[22px] border border-[#e7e3df] bg-white p-6 sm:p-8">
-          <b className="text-sm font-black uppercase tracking-wider text-[#101114]">
-            So sieht eine gute Eingabe aus
-          </b>
-          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <b className="text-sm font-black uppercase tracking-wider text-[#101114]">
+                Aktuell freigegebene Pool-Stile
+              </b>
+              <p className="mt-2 text-sm leading-6 text-[#686c73]">
+                Wir schalten nur Varianten frei, die zur aktuell validierten Poolbau-Pipeline passen.
+              </p>
+            </div>
+            <span className="text-xs font-bold text-[#a1a5ab]">Weitere Kategorien folgen erst nach Validierung.</span>
+          </div>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
             {PRESET_CONCEPTS.map((preset) => (
-              <div key={preset.id} className="rounded-xl border border-[#eee9e4] bg-[#faf9f7] p-4 text-sm leading-6 text-[#4f555d]">
-                {preset.prompt}
+              <div key={preset.id} className="rounded-2xl border border-[#eee9e4] bg-[#faf9f7] p-5">
+                <div className="text-sm font-black text-[#101114]">{preset.label}</div>
+                <p className="mt-2 text-sm leading-6 text-[#686c73]">{preset.description}</p>
               </div>
             ))}
           </div>
@@ -67,7 +76,7 @@ export function HowItWorks() {
             href="/kundenbereich"
             className="mt-6 inline-flex items-center gap-2 text-sm font-black text-[#ff8600] hover:text-[#e97800]"
           >
-            Eigene Idee eingeben <ArrowRight className="h-4 w-4" />
+            Pool-Stil auswählen <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </div>

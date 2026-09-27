@@ -35,7 +35,7 @@ export default function DatenschutzPage() {
             können technische Protokolldaten zur Auslieferung, Sicherheit und Fehleranalyse verarbeiten.
           </p>
 
-          <h3>Studio und Video-Konzept</h3>
+          <h3>Studio und Pool-Auswahl</h3>
           <p>
             Solange lediglich Inhalte auf der Website angesehen oder Werte im Reichweiten-Rechner verändert
             werden, werden die dort eingegebenen Rechnerwerte nach aktuellem Stand nur im Browser verarbeitet
@@ -43,8 +43,8 @@ export default function DatenschutzPage() {
           </p>
           <p>
             Wenn der kostenpflichtige Checkout aktiviert ist und Sie im Studio eine Bestellung starten, werden
-            das von Ihnen eingegebene Video-Konzept und die gewählte Paketvariante an unser Backend übertragen.
-            Das Backend speichert hierzu einen Bestellentwurf mit einer technischen Anfrage-ID, dem Konzept,
+            die von Ihnen ausgewählte Pool-Variante und die gewählte Paketvariante an unser Backend übertragen.
+            Das Backend speichert hierzu einen Bestellentwurf mit einer technischen Anfrage-ID, der ausgewählten Variante,
             der Paketwahl, Bearbeitungsstatus sowie technischen Shopify-Warenkorb- beziehungsweise Bestell-IDs.
             Diese Verarbeitung ist zur Durchführung des gewünschten Bestell- und Produktionsprozesses
             erforderlich und beruht auf Art. 6 Abs. 1 lit. b DSGVO.
@@ -55,14 +55,14 @@ export default function DatenschutzPage() {
             Der Checkout wird über Shopify bereitgestellt. Im eigentlichen Bezahlvorgang verarbeitet Shopify
             die für Bestellung und Zahlung erforderlichen Daten, etwa Kontakt-, Rechnungs- und Zahlungsdaten,
             nach den dort geltenden Bedingungen und Datenschutzhinweisen. Unser Backend übermittelt das
-            ausführliche Video-Konzept nicht an Shopify, sondern verwendet dort eine technische Anfrage-ID zur
+            ausgewählte Pool-Konzept nicht an Shopify, sondern verwendet dort eine technische Anfrage-ID zur
             Zuordnung der Bestellung.
           </p>
 
           <h3>KI-Produktion mit Runware</h3>
           <p>
             Für die eigentliche KI-gestützte Erstellung des Videos wird Runware eingesetzt. Hierfür werden die
-            für die Generierung erforderlichen, aus Ihrem Video-Konzept abgeleiteten Prompts sowie im
+            für die Generierung erforderlichen, aus der ausgewählten Pool-Variante abgeleiteten Prompts sowie im
             Produktionsprozess benötigte Bild- und Videodaten an den Dienst übermittelt. Die Verarbeitung dient
             der Vertragserfüllung gemäß Art. 6 Abs. 1 lit. b DSGVO.
           </p>

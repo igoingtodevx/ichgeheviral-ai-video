@@ -23,9 +23,9 @@ export default function AgbPage() {
           <h3>§ 2 Vertragsgegenstand</h3>
           <p>
             Gegenstand der Hauptleistung ist die Erstellung eines KI-gestützten, vertikalen
-            Transformations-Videos auf Grundlage des vom Kunden übermittelten Konzepts. Der aktuell dargestellte
-            Leistungsumfang umfasst insbesondere ein zusammenhängendes 9:16-Video mit einer Laufzeit von 60+
-            Sekunden und mehreren aufeinander aufbauenden Transformationsphasen.
+            Poolbau-Transformations-Videos auf Grundlage einer vom Kunden ausgewählten, freigegebenen
+            Pool-Variante. Der aktuell dargestellte Leistungsumfang umfasst insbesondere ein zusammenhängendes
+            9:16-Video mit einer Laufzeit von 60+ Sekunden und mehreren aufeinander aufbauenden Bauphasen.
           </p>
           <p>
             Soweit ein Paket zusätzlich einen Marketing-Kurs enthält, gehört dieser nur dann zum Vertragsumfang,
@@ -35,7 +35,7 @@ export default function AgbPage() {
           <h3>§ 3 Vertragsschluss und Zahlung</h3>
           <p>
             Die Darstellung der Leistungen auf der Website ist noch kein bindendes Vertragsangebot. Der Kunde
-            wählt sein Paket, beschreibt das gewünschte Video-Konzept und wird zum sicheren Checkout
+            wählt eine freigegebene Pool-Variante und sein Paket und wird zum sicheren Checkout
             weitergeleitet. Der Vertrag kommt im Rahmen des dortigen Bestellvorgangs nach Maßgabe der angezeigten
             Bestell- und Zahlungsbestätigung zustande.
           </p>
