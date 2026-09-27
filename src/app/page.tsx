@@ -23,7 +23,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white text-[#101114]">
       <div className="grid h-7 place-items-center bg-[#101114] text-[10px] font-black uppercase tracking-[0.16em] text-white">
-        KI-VIDEOS FÜR MAXIMALES VIRALPOTENZIAL
+        TRANSFORMATIONS-REELS FÜR MAXIMALE AUFMERKSAMKEIT
       </div>
 
       <Navbar />
@@ -32,8 +32,8 @@ export default function LandingPage() {
         <Hero onOpenVideo={() => setVideoSrc(SHOWCASE_VIDEOS[0].videoSrc)} />
         <TransformationShowcase onOpenVideo={setVideoSrc} />
         <WhyViral />
-        <HowItWorks />
         <PotentialCalculator />
+        <HowItWorks />
         <NoCreditsSection />
         <SocialProof />
         <FounderSection />

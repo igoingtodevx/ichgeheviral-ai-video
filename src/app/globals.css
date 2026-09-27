@@ -38,7 +38,7 @@ body {
 
 /* Serif accent for a small number of emotionally important words */
 .accent-serif {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-geist-sans), sans-serif;
   font-style: normal;
   font-weight: 600;
 }
