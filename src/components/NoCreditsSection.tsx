@@ -22,7 +22,7 @@ export function NoCreditsSection() {
     <section id="keine-credits" className="bg-white py-20 lg:py-28">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="text-xs font-black uppercase tracking-[0.18em] text-[#e97800]">
+          <span className="text-xs font-black uppercase tracking-[0.18em] text-[#5947e8]">
             Kein Credit-Zählen
           </span>
           <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
@@ -35,7 +35,7 @@ export function NoCreditsSection() {
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">
-          <div className="rounded-[22px] border border-[#e7e3df] bg-[#faf9f7] p-7 sm:p-8">
+          <div className="rounded-[22px] border border-[#e6e4ef] bg-[#faf9fc] p-7 sm:p-8">
             <span className="text-xs font-black uppercase tracking-widest text-[#a1a5ab]">
               Typisches KI-Tool
             </span>
@@ -49,14 +49,14 @@ export function NoCreditsSection() {
             </ul>
           </div>
 
-          <div className="rounded-[22px] border-2 border-[#ffb45f] bg-[#fff8ef] p-7 sm:p-8">
-            <span className="text-xs font-black uppercase tracking-widest text-[#e97800]">
+          <div className="rounded-[22px] border-2 border-[#b9b0ff] bg-[#f7f5ff] p-7 sm:p-8">
+            <span className="text-xs font-black uppercase tracking-widest text-[#5947e8]">
               IchGeheViral
             </span>
             <ul className="mt-5 space-y-4">
               {IGV.map((item) => (
                 <li key={item} className="flex gap-3 text-sm font-semibold leading-6 text-[#101114]">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#ff8600]" />
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#6d5dfc]" />
                   {item}
                 </li>
               ))}

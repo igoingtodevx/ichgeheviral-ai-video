@@ -17,10 +17,10 @@ export function SocialProof() {
   if (loaded && items.length === 0) return null;
 
   return (
-    <section className="bg-[#f7f7f5] py-20 lg:py-28">
+    <section className="bg-[#f7f7fb] py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="text-xs font-black uppercase tracking-[0.18em] text-[#e97800]">
+          <span className="text-xs font-black uppercase tracking-[0.18em] text-[#5947e8]">
             Echte Ergebnisse
           </span>
           <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
@@ -35,7 +35,7 @@ export function SocialProof() {
           {items.map((item) => (
             <article
               key={item.id}
-              className="overflow-hidden rounded-[22px] border border-[#e7e3df] bg-white shadow-[0_18px_50px_rgba(54,39,27,.08)]"
+              className="overflow-hidden rounded-[22px] border border-[#e6e4ef] bg-white shadow-[0_18px_50px_rgba(54,39,27,.08)]"
             >
               <div className="aspect-[4/5] overflow-hidden bg-[#111]">
                 {item.kind === "video" ? (

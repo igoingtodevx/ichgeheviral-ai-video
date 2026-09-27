@@ -12,7 +12,7 @@ export function TransformationShowcase({ onOpenVideo }: { onOpenVideo: (videoSrc
     <section id="ergebnisse" className="bg-white py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="text-xs font-black uppercase tracking-[0.18em] text-[#e97800]">
+          <span className="text-xs font-black uppercase tracking-[0.18em] text-[#5947e8]">
             Echtes Produkt, keine Grafik
           </span>
           <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
@@ -26,7 +26,7 @@ export function TransformationShowcase({ onOpenVideo }: { onOpenVideo: (videoSrc
 
         {/* Phase scrubber using the real generated states */}
         <div className="mt-14 grid gap-8 lg:grid-cols-[1.1fr_.9fr]">
-          <div className="overflow-hidden rounded-[24px] border border-[#eadfd5] bg-[#111] shadow-[0_24px_70px_rgba(89,49,20,.14)]">
+          <div className="overflow-hidden rounded-[24px] border border-[#e8e5f0] bg-[#111] shadow-[0_24px_70px_rgba(89,49,20,.14)]">
             <div className="aspect-[4/5] w-full">
               <img
                 src={current.imageSrc}
@@ -37,7 +37,7 @@ export function TransformationShowcase({ onOpenVideo }: { onOpenVideo: (videoSrc
           </div>
 
           <div className="flex flex-col justify-center">
-            <span className="text-xs font-black uppercase tracking-widest text-[#e97800]">
+            <span className="text-xs font-black uppercase tracking-widest text-[#5947e8]">
               {current.stageName}
             </span>
             <h3 className="mt-3 text-2xl font-black text-[#101114] sm:text-3xl">{current.title}</h3>
@@ -50,7 +50,7 @@ export function TransformationShowcase({ onOpenVideo }: { onOpenVideo: (videoSrc
                   onClick={() => setActiveState(i)}
                   aria-label={`Phase ${state.phaseNumber}: ${state.title}`}
                   className={`h-11 w-11 shrink-0 overflow-hidden rounded-xl border-2 transition ${
-                    i === activeState ? "border-[#ff8600]" : "border-transparent opacity-60 hover:opacity-100"
+                    i === activeState ? "border-[#6d5dfc]" : "border-transparent opacity-60 hover:opacity-100"
                   }`}
                 >
                   <img src={state.imageSrc} alt="" className="h-full w-full object-cover" />
@@ -69,7 +69,7 @@ export function TransformationShowcase({ onOpenVideo }: { onOpenVideo: (videoSrc
             <button
               key={video.id}
               onClick={() => onOpenVideo(video.videoSrc)}
-              className="group relative overflow-hidden rounded-[22px] border border-[#e7e3df] bg-[#111] text-left shadow-[0_18px_50px_rgba(54,39,27,.08)]"
+              className="group relative overflow-hidden rounded-[22px] border border-[#e6e4ef] bg-[#111] text-left shadow-[0_18px_50px_rgba(54,39,27,.08)]"
             >
               <div className="aspect-[4/5] overflow-hidden">
                 <img
@@ -79,7 +79,7 @@ export function TransformationShowcase({ onOpenVideo }: { onOpenVideo: (videoSrc
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
-              <span className="absolute inset-0 m-auto grid h-16 w-16 place-items-center rounded-full bg-[#ff8600] text-white shadow-[0_10px_30px_rgba(255,134,0,.4)]">
+              <span className="absolute inset-0 m-auto grid h-16 w-16 place-items-center rounded-full bg-[#6d5dfc] text-white shadow-[0_10px_30px_rgba(109,93,252,.32)]">
                 <Play className="h-6 w-6 fill-current" />
               </span>
               <div className="absolute bottom-5 left-5 right-5 text-white">

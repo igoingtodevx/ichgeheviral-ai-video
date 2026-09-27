@@ -18,7 +18,7 @@ export function Footer() {
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <b className="text-base text-white">
-              IchGehe<span className="text-[#ff8600]">Viral</span>
+              IchGehe<span className="text-[#6d5dfc]">Viral</span>
             </b>
             <div>AI Video Engine</div>
           </div>
