@@ -7,6 +7,7 @@ import { ArrowRight, Menu, X } from "lucide-react";
 const LINKS = [
   { href: "#ergebnisse", label: "Ergebnisse" },
   { href: "#so-funktionierts", label: "So funktioniert's" },
+  { href: "#rechner", label: "Rechner" },
   { href: "#keine-credits", label: "Keine Credits" },
   { href: "#preise", label: "Preise" },
   { href: "#faq", label: "FAQ" },
