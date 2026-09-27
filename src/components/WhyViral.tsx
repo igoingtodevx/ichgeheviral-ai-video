@@ -31,7 +31,7 @@ export function WhyViral() {
     <section className="bg-white py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="text-xs font-black uppercase tracking-[0.18em] text-[#e97800]">
+          <span className="text-xs font-black uppercase tracking-[0.18em] text-[#5947e8]">
             Warum das für Viralpotenzial gebaut ist
           </span>
           <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
@@ -43,10 +43,10 @@ export function WhyViral() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-px overflow-hidden rounded-[22px] border border-[#e7e3df] bg-[#e7e3df] md:grid-cols-4">
+        <div className="mt-12 grid gap-px overflow-hidden rounded-[22px] border border-[#e6e4ef] bg-[#e6e4ef] md:grid-cols-4">
           {POINTS.map(({ icon: Icon, title, desc }) => (
             <article key={title} className="bg-white p-7">
-              <Icon className="h-7 w-7 text-[#ff8600]" />
+              <Icon className="h-7 w-7 text-[#6d5dfc]" />
               <h3 className="mt-7 text-xl font-black text-[#101114]">{title}</h3>
               <p className="mt-3 text-sm leading-6 text-[#686c73]">{desc}</p>
             </article>

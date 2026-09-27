@@ -10,7 +10,7 @@ export function Pricing() {
     <section id="preise" className="bg-white py-20 lg:py-28">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="text-xs font-black uppercase tracking-[0.18em] text-[#e97800]">
+          <span className="text-xs font-black uppercase tracking-[0.18em] text-[#5947e8]">
             Preise &amp; Zugang
           </span>
           <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
@@ -29,14 +29,14 @@ export function Pricing() {
               key={pkg.id}
               className={
                 pkg.highlight
-                  ? "rounded-[24px] border-2 border-[#ffb45f] bg-[#fff8ef] p-7 sm:p-9"
-                  : "rounded-[24px] border border-[#e7e3df] bg-white p-7 sm:p-9"
+                  ? "rounded-[24px] border-2 border-[#b9b0ff] bg-[#f7f5ff] p-7 sm:p-9"
+                  : "rounded-[24px] border border-[#e6e4ef] bg-white p-7 sm:p-9"
               }
             >
               <span
                 className={
                   pkg.highlight
-                    ? "text-xs font-black uppercase tracking-widest text-[#e97800]"
+                    ? "text-xs font-black uppercase tracking-widest text-[#5947e8]"
                     : "text-xs font-black uppercase tracking-widest text-[#686c73]"
                 }
               >
@@ -52,18 +52,18 @@ export function Pricing() {
               <ul className="mt-6 space-y-3 text-sm text-[#4f555d]">
                 {pkg.features.map((feature) => (
                   <li key={feature} className="flex gap-2">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#ff8600]" />
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#6d5dfc]" />
                     {feature}
                   </li>
                 ))}
               </ul>
 
               <Link
-                href="/kundenbereich"
+                href="/kundenbereich/neu"
                 className={
                   pkg.highlight
-                    ? "mt-8 flex items-center justify-center gap-2 rounded-xl bg-[#ff8600] px-6 py-4 text-sm font-black text-white transition hover:bg-[#e97800]"
-                    : "mt-8 flex items-center justify-center gap-2 rounded-xl border border-[#e7e3df] bg-white px-6 py-4 text-sm font-black text-[#101114] transition hover:border-[#ffb45f]"
+                    ? "mt-8 flex items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-6 py-4 text-sm font-black text-white transition hover:bg-[#5947e8]"
+                    : "mt-8 flex items-center justify-center gap-2 rounded-xl border border-[#e6e4ef] bg-white px-6 py-4 text-sm font-black text-[#101114] transition hover:border-[#b9b0ff]"
                 }
               >
                 Zum Studio <ArrowRight className="h-4 w-4" />

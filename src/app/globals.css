@@ -2,14 +2,14 @@
 
 /*
  * IchGeheViral — light / editorial brand system.
- * Palette: white, warm off-white, deep ink, one confident orange.
+ * Palette: white, warm off-white, deep ink, one confident violet.
  */
 @theme {
   --color-ink: #101114;
-  --color-warm: #f7f7f5;
-  --color-border: #e7e3df;
-  --color-brand: #ff8600;
-  --color-brand-dark: #e97800;
+  --color-warm: #f7f7fb;
+  --color-border: #e6e4ef;
+  --color-brand: #6d5dfc;
+  --color-brand-dark: #5947e8;
   --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
@@ -31,9 +31,9 @@ body {
   color: #ffffff;
 }
 
-/* Subtle warm glow used behind the hero / final CTA */
+/* Subtle violet glow used behind the hero / final CTA */
 .radial-glow {
-  background: radial-gradient(circle at 50% 20%, rgba(255, 134, 0, 0.12), transparent 55%);
+  background: radial-gradient(circle at 50% 20%, rgba(109, 93, 252, 0.12), transparent 55%);
 }
 
 /* Serif accent for a small number of emotionally important words */

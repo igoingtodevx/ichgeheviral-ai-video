@@ -4,11 +4,11 @@ import React from "react";
 
 export function FounderSection() {
   return (
-    <section className="border-y border-[#e7e3df] bg-white py-20 lg:py-28">
+    <section className="border-y border-[#e6e4ef] bg-white py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-[1fr_.85fr]">
           <div>
-            <span className="text-xs font-black uppercase tracking-[0.18em] text-[#e97800]">
+            <span className="text-xs font-black uppercase tracking-[0.18em] text-[#5947e8]">
               Warum IchGeheViral
             </span>
             <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-5xl">
@@ -26,8 +26,8 @@ export function FounderSection() {
               </p>
             </div>
 
-            <div className="mt-8 flex items-center gap-4 border-t border-[#e7e3df] pt-6">
-              <div className="h-12 w-12 shrink-0 overflow-hidden rounded-full border border-[#e7e3df]">
+            <div className="mt-8 flex items-center gap-4 border-t border-[#e6e4ef] pt-6">
+              <div className="h-12 w-12 shrink-0 overflow-hidden rounded-full border border-[#e6e4ef]">
                 <img
                   src="/media/founder/timo-founder.jpg"
                   alt="Timo, Gründer von IchGeheViral"
@@ -43,7 +43,7 @@ export function FounderSection() {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-sm overflow-hidden rounded-[26px] border border-[#e7e3df] shadow-[0_24px_70px_rgba(59,42,25,.1)]">
+          <div className="relative mx-auto w-full max-w-sm overflow-hidden rounded-[26px] border border-[#e6e4ef] shadow-[0_24px_70px_rgba(59,42,25,.1)]">
             <img
               src="/media/founder/timo-founder-work.jpg"
               alt="Timo bei der Arbeit an IchGeheViral"

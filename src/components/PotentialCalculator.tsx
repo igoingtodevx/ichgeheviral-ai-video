@@ -29,9 +29,9 @@ function Field({
   icon: typeof Eye;
 }) {
   return (
-    <label className="block rounded-2xl border border-[#e7e3df] bg-white p-4 sm:p-5">
+    <label className="block rounded-2xl border border-[#e6e4ef] bg-white p-4 sm:p-5">
       <span className="mb-2.5 flex items-center gap-2 text-sm font-extrabold text-[#101114]">
-        <Icon className="h-4 w-4 text-[#ff8600]" />
+        <Icon className="h-4 w-4 text-[#6d5dfc]" />
         {label}
       </span>
       <div className="relative">
@@ -41,7 +41,7 @@ function Field({
           step={label === "Video-Aufrufe" ? "1000" : "0.1"}
           value={value}
           onChange={(event) => onChange(safeNumber(event.target.value))}
-          className="w-full rounded-xl border border-[#ddd7d1] bg-[#fffaf4] px-4 py-3 pr-11 text-lg font-black text-[#101114] outline-none transition focus:border-[#ff8600] focus:ring-2 focus:ring-[#ff8600]/10"
+          className="w-full rounded-xl border border-[#dddbe7] bg-[#faf9ff] px-4 py-3 pr-11 text-lg font-black text-[#101114] outline-none transition focus:border-[#6d5dfc] focus:ring-2 focus:ring-[#6d5dfc]/10"
         />
         {suffix && (
           <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-sm font-bold text-[#858991]">
@@ -70,10 +70,10 @@ export function PotentialCalculator() {
   }, [views, ctr, conversionRate, valuePerConversion]);
 
   return (
-    <section id="rechner" className="bg-[#f7f7f5] py-20 sm:py-24 lg:py-28">
+    <section id="rechner" className="bg-[#f7f7fb] py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="text-xs font-black uppercase tracking-[0.18em] text-[#e97800]">
+          <span className="text-xs font-black uppercase tracking-[0.18em] text-[#5947e8]">
             Reichweiten-Rechner
           </span>
           <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-5xl lg:text-6xl">
@@ -85,7 +85,7 @@ export function PotentialCalculator() {
         </div>
 
         <div className="mt-10 grid gap-5 lg:grid-cols-[1.08fr_.92fr] lg:gap-6">
-          <div className="rounded-[26px] border border-[#e7e3df] bg-white p-5 shadow-[0_18px_60px_rgba(61,45,31,.07)] sm:p-7">
+          <div className="rounded-[26px] border border-[#e6e4ef] bg-white p-5 shadow-[0_18px_60px_rgba(61,45,31,.07)] sm:p-7">
             <div className="grid gap-4 sm:grid-cols-2">
               <Field label="Video-Aufrufe" value={views} onChange={setViews} icon={Eye} />
               <Field label="Klickrate (CTR)" value={ctr} onChange={setCtr} suffix="%" icon={MousePointerClick} />
@@ -98,7 +98,7 @@ export function PotentialCalculator() {
           </div>
 
           <div className="overflow-hidden rounded-[26px] bg-[#101114] p-6 text-white shadow-[0_22px_60px_rgba(16,17,20,.14)] sm:p-7">
-            <span className="text-xs font-black uppercase tracking-[0.18em] text-[#ffad4d]">
+            <span className="text-xs font-black uppercase tracking-[0.18em] text-[#9b8fff]">
               Deine Beispielrechnung
             </span>
 
@@ -111,7 +111,7 @@ export function PotentialCalculator() {
                 <span className="text-sm text-white/65">Geschätzte Conversions</span>
                 <strong className="text-2xl font-black">{number.format(result.conversions)}</strong>
               </div>
-              <div className="rounded-2xl bg-[#ff8600] px-4 py-5 text-white">
+              <div className="rounded-2xl bg-[#6d5dfc] px-4 py-5 text-white">
                 <div className="text-xs font-black uppercase tracking-[0.14em] text-white/75">
                   Rechnerischer Umsatz
                 </div>
@@ -122,7 +122,7 @@ export function PotentialCalculator() {
             </div>
 
             <div className="mt-5 flex items-start gap-3 border-t border-white/10 pt-5 text-xs leading-5 text-white/55">
-              <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-[#ffad4d]" />
+              <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-[#9b8fff]" />
               <p>
                 Reine Beispielrechnung, keine Verdienst- oder Reichweitengarantie. Tatsächliche Ergebnisse hängen unter anderem von Zielgruppe, Angebot, Plattform und Distribution ab.
               </p>

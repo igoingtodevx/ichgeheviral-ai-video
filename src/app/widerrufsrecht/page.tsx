@@ -64,7 +64,7 @@ export default function WiderrufsrechtPage() {
 
           <h3>Muster-Widerrufsformular</h3>
           <p>Wenn Sie den Vertrag widerrufen wollen, können Sie folgende Erklärung verwenden:</p>
-          <div className="rounded-2xl border border-[#e5e0da] bg-[#fffaf4] p-5">
+          <div className="rounded-2xl border border-[#e5e0da] bg-[#faf9ff] p-5">
             <p>
               An {LEGAL_CONTACT.business}, {LEGAL_CONTACT.name}, {LEGAL_CONTACT.addressLines.join(", ")},
               E-Mail: {LEGAL_CONTACT.email}
