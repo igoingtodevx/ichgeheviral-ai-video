@@ -220,6 +220,13 @@ function StudioForm() {
                   </>
                 )}
               </button>
+
+              <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-[11px] font-semibold text-[#858991]">
+                <Link href="/agb" className="hover:text-[#e97800]">AGB</Link>
+                <Link href="/widerrufsrecht" className="hover:text-[#e97800]">Widerrufsrecht</Link>
+                <Link href="/datenschutz" className="hover:text-[#e97800]">Datenschutz</Link>
+                <Link href="/impressum" className="hover:text-[#e97800]">Impressum</Link>
+              </div>
             </form>
           </section>
         </div>
