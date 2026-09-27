@@ -226,6 +226,7 @@ function StudioForm() {
                 <Link href="/widerrufsrecht" className="hover:text-[#e97800]">Widerrufsrecht</Link>
                 <Link href="/datenschutz" className="hover:text-[#e97800]">Datenschutz</Link>
                 <Link href="/impressum" className="hover:text-[#e97800]">Impressum</Link>
+                <Link href="/kontakt" className="hover:text-[#e97800]">Kontakt</Link>
               </div>
             </form>
           </section>
