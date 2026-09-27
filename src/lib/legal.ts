@@ -5,7 +5,6 @@ export const LEGAL_CONTACT = {
   email: "support@enricha.de",
   alternateEmail: "enricha@web.de",
   phone: "+49 151 20280600",
-  taxNumber: "01680635143",
 } as const;
 
 export const LEGAL_SITE = {
