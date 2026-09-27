@@ -138,12 +138,12 @@ export const FAQ_ITEMS = [
   {
     question: "Muss ich Kenntnisse im Videoschnitt haben?",
     answer:
-      "Nein. Du wählst aktuell einen der freigegebenen Pool-Stile aus. Den Bildaufbau, die aufeinander abgestimmten Bauphasen, die Übergänge und die passende Umgebungsakustik erstellt das System automatisch.",
+      "Nein. Du wählst aktuell einen der verfügbaren Pool-Stile aus. Den Bildaufbau, die aufeinander abgestimmten Szenen, die Übergänge und die passende Atmosphäre erstellt das System automatisch.",
   },
   {
     question: "Welches Format und welche Länge erhalte ich?",
     answer:
-      "Du erhältst ein fertiges 9:16 Video im MP4-Format mit über 60 Sekunden Laufzeit (720×1280 bei 24fps) inklusive synchronisierter Umgebungsakustik — sofort bereit zum Posten auf TikTok, Instagram Reels und YouTube Shorts.",
+      "Du erhältst ein fertiges 9:16 Video im MP4-Format mit über 60 Sekunden Laufzeit (720×1280 bei 24fps) inklusive passender Klangatmosphäre — sofort bereit zum Posten auf TikTok, Instagram Reels und YouTube Shorts.",
   },
   {
     question: "Welche Videoarten werden aktuell unterstützt?",

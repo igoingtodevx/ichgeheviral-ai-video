@@ -53,16 +53,16 @@ export const PRODUCTION_STEPS = [
     description: "Die freigegebene Transformation und das feste Zielbild stehen fest.",
   },
   {
-    title: "8 Bauzustände",
-    description: "Vom Ausgangszustand bis zum fertigen Zielbild entstehen acht aufeinander aufbauende Bilder.",
+    title: "Szenen aufgebaut",
+    description: "Vom Ausgangszustand bis zum fertigen Zielbild entsteht ein klarer visueller Fortschritt.",
   },
   {
-    title: "7 Übergänge",
-    description: "Die Bauzustände werden als fortlaufende Transformations-Timelapse miteinander verbunden.",
+    title: "Übergänge abgestimmt",
+    description: "Die Szenen werden zu einer flüssigen Entwicklung miteinander verbunden.",
   },
   {
-    title: "Umgebungsakustik",
-    description: "Baustellen- und Umgebungsgeräusche ergänzen die visuellen Übergänge.",
+    title: "Atmosphäre ergänzt",
+    description: "Bild und Ton geben dem Reel die passende Atmosphäre.",
   },
   {
     title: "Finales Reel",

@@ -60,7 +60,7 @@ export default function ProductionDemoPage() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <span className="text-xs font-black uppercase tracking-[0.16em] text-[#5d4de1]">
-              Erstellungsvorschau
+              Reel-Erstellung
             </span>
             <h1 className="mt-4 text-4xl font-black tracking-[-0.055em] sm:text-5xl">
               Dein Reel entsteht.
