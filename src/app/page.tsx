@@ -6,6 +6,7 @@ import { Hero } from "../components/Hero";
 import { TransformationShowcase } from "../components/TransformationShowcase";
 import { WhyViral } from "../components/WhyViral";
 import { HowItWorks } from "../components/HowItWorks";
+import { PotentialCalculator } from "../components/PotentialCalculator";
 import { NoCreditsSection } from "../components/NoCreditsSection";
 import { SocialProof } from "../components/SocialProof";
 import { FounderSection } from "../components/FounderSection";
@@ -32,6 +33,7 @@ export default function LandingPage() {
         <TransformationShowcase onOpenVideo={setVideoSrc} />
         <WhyViral />
         <HowItWorks />
+        <PotentialCalculator />
         <NoCreditsSection />
         <SocialProof />
         <FounderSection />
