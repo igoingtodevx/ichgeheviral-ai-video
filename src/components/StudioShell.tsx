@@ -6,9 +6,9 @@ import { Gauge, Home, PlusCircle, ExternalLink } from "lucide-react";
 import type { ReactNode } from "react";
 
 const NAV_ITEMS = [
-  { href: "/kundenbereich", label: "Meine Reels", icon: Home },
-  { href: "/kundenbereich/neu", label: "Neues Reel", icon: PlusCircle },
-  { href: "/kundenbereich/produktion", label: "Produktionsansicht", icon: Gauge },
+  { href: "/kundenbereich", label: "Meine Reels", mobileLabel: "Meine Reels", icon: Home },
+  { href: "/kundenbereich/neu", label: "Neues Reel", mobileLabel: "Neues Reel", icon: PlusCircle },
+  { href: "/kundenbereich/produktion", label: "Dein Reel entsteht", mobileLabel: "Entstehung", icon: Gauge },
 ];
 
 export function StudioShell({ children }: { children: ReactNode }) {
@@ -49,10 +49,10 @@ export function StudioShell({ children }: { children: ReactNode }) {
             <div className="rounded-2xl border border-[#e3dfff] bg-[#f8f7ff] p-4">
               <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-[#6555e8]">
                 <Gauge className="h-4 w-4" />
-                Pool-Reels
+                Transformations-Reels
               </div>
               <p className="mt-2 text-xs leading-5 text-[#777b82]">
-                Aktuell freigegeben für validierte Poolbau-Transformationen.
+                Aktuell verfügbar: Poolbau. Weitere Kategorien werden schrittweise ergänzt.
               </p>
             </div>
             <Link
@@ -81,7 +81,7 @@ export function StudioShell({ children }: { children: ReactNode }) {
               </Link>
             </div>
             <nav className="flex overflow-x-auto px-3 pb-2">
-              {NAV_ITEMS.map(({ href, label, icon: Icon }) => {
+              {NAV_ITEMS.map(({ href, label, mobileLabel, icon: Icon }) => {
                 const active = pathname === href || (href !== "/kundenbereich" && pathname.startsWith(href));
                 return (
                   <Link
@@ -92,7 +92,8 @@ export function StudioShell({ children }: { children: ReactNode }) {
                     }`}
                   >
                     <Icon className="h-3.5 w-3.5" />
-                    {label}
+                    <span className="sm:hidden">{mobileLabel}</span>
+                    <span className="hidden sm:inline">{label}</span>
                   </Link>
                 );
               })}

@@ -21,13 +21,13 @@ export function SocialProof() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <span className="text-xs font-black uppercase tracking-[0.18em] text-[#5947e8]">
-            Echte Ergebnisse
+            Erstellte Beispiele
           </span>
           <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
-            Nicht unsere Meinung. Die Ergebnisse.
+            So kann eine Transformation aussehen.
           </h2>
           <p className="mt-5 text-base leading-7 text-[#686c73] sm:text-lg">
-            Ausgewählte Beispiel-Reels aus der aktuellen Transformations-Engine.
+            Ausgewählte Beispiel-Reels aus der aktuell verfügbaren Poolbau-Kategorie.
           </p>
         </div>
 
@@ -50,7 +50,7 @@ export function SocialProof() {
                 ) : (
                   <img
                     src={socialProofMediaUrl(item)}
-                    alt={item.title || "Kundenergebnis"}
+                    alt={item.title || "Beispiel-Reel"}
                     className="h-full w-full object-cover"
                   />
                 )}

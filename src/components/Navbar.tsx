@@ -8,7 +8,7 @@ const LINKS = [
   { href: "#ergebnisse", label: "Ergebnisse" },
   { href: "#so-funktionierts", label: "So funktioniert's" },
   { href: "#rechner", label: "Rechner" },
-  { href: "#keine-credits", label: "Keine Credits" },
+  { href: "#keine-credits", label: "Klarer Ablauf" },
   { href: "#preise", label: "Preise" },
   { href: "#faq", label: "FAQ" },
 ];
@@ -34,9 +34,9 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             href="/kundenbereich"
-            className="hidden items-center gap-2 rounded-full bg-[#6d5dfc] px-5 py-3 text-xs font-black text-white transition hover:bg-[#5947e8] sm:inline-flex"
+            className="hidden items-center gap-2 rounded-xl bg-[#6d5dfc] px-5 py-3 text-xs font-black text-white transition hover:bg-[#5947e8] sm:inline-flex"
           >
-            Studio öffnen <ArrowRight className="h-3.5 w-3.5" />
+            Studio starten <ArrowRight className="h-3.5 w-3.5" />
           </Link>
           <button
             onClick={() => setOpen((v) => !v)}
@@ -64,9 +64,9 @@ export function Navbar() {
             ))}
             <Link
               href="/kundenbereich"
-              className="mt-2 flex items-center justify-center gap-2 rounded-full bg-[#6d5dfc] px-5 py-3 text-sm font-black text-white"
+              className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-5 py-3 text-sm font-black text-white"
             >
-              Studio öffnen <ArrowRight className="h-4 w-4" />
+              Studio starten <ArrowRight className="h-4 w-4" />
             </Link>
           </nav>
         </div>

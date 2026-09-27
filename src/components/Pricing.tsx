@@ -14,12 +14,12 @@ export function Pricing() {
             Starte deine erste Transformation
           </span>
           <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
-            Kein Credit-System. Ein klarer Checkout.
+            Prelaunch ohne Preisversprechen.
           </h2>
           <p className="mt-5 text-[#686c73]">
             {PRICING_LAUNCHED
               ? "Wähle das passende Paket und starte direkt im sicheren Checkout."
-              : "Die Pakete stehen fest. Die finalen Verkaufspreise werden zum Start veröffentlicht — bis dahin kannst du dir das Studio bereits ansehen."}
+              : "Die Pakete stehen fest. Die finalen Verkaufspreise werden vor dem Start veröffentlicht — bis dahin kannst du dir das Studio und den Ablauf ansehen."}
           </p>
         </div>
 
@@ -40,7 +40,7 @@ export function Pricing() {
                     : "text-xs font-black uppercase tracking-widest text-[#686c73]"
                 }
               >
-                {pkg.addCourse ? "Mit Marketing-Kurs" : "AI-Video"}
+                {pkg.addCourse ? "Mit Marketing-Kurs" : "Transformations-Reel"}
               </span>
               <h3 className="mt-3 text-3xl font-black text-[#101114]">{pkg.name}</h3>
               <p className="mt-2 text-sm text-[#686c73]">{pkg.tagline}</p>
@@ -66,7 +66,7 @@ export function Pricing() {
                     : "mt-8 flex items-center justify-center gap-2 rounded-xl border border-[#e6e4ef] bg-white px-6 py-4 text-sm font-black text-[#101114] transition hover:border-[#b9b0ff]"
                 }
               >
-                Zum Studio <ArrowRight className="h-4 w-4" />
+                Studio starten <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           ))}

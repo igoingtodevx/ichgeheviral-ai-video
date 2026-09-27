@@ -52,7 +52,7 @@ export function HowItWorks() {
         <div className="mt-10 rounded-[22px] border border-[#e6e4ef] bg-white p-6 sm:p-8">
           <b className="text-sm font-black uppercase tracking-wider text-[#101114]">Aktuelle Kategorie</b>
           <p className="mt-2 text-sm leading-6 text-[#686c73]">
-            Poolbau ist die erste freigeschaltete Transformations-Kategorie. Weitere Kategorien folgen nach Validierung.
+            Poolbau ist die erste verfügbare Transformations-Kategorie. Weitere Kategorien werden schrittweise ergänzt.
           </p>
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
             {PRESET_CONCEPTS.map((preset) => (
@@ -64,10 +64,10 @@ export function HowItWorks() {
           </div>
           <div className="mt-6 flex flex-wrap gap-4">
             <Link href="/kundenbereich/neu" className="inline-flex items-center gap-2 text-sm font-black text-[#6d5dfc] hover:text-[#5947e8]">
-              Transformation starten <ArrowRight className="h-4 w-4" />
+              Studio starten <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link href="/kundenbereich/produktion" className="inline-flex items-center gap-2 text-sm font-black text-[#555a62] hover:text-[#101114]">
-              <Gauge className="h-4 w-4 text-[#6d5dfc]" /> Beispiel ansehen
+            <Link href="/kundenbereich/reel/modern-rechteckig" className="inline-flex items-center gap-2 text-sm font-black text-[#555a62] hover:text-[#101114]">
+              <Gauge className="h-4 w-4 text-[#6d5dfc]" /> Beispiel-Reel ansehen
             </Link>
           </div>
         </div>

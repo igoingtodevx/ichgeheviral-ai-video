@@ -76,7 +76,7 @@ export default function ProductionDemoPage() {
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-5 py-3.5 text-sm font-black text-white shadow-[0_12px_32px_rgba(109,93,252,.22)] transition hover:bg-[#5947e8]"
           >
             {running ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 fill-current" />}
-            {running ? "Demo pausieren" : finished ? "Demo erneut ansehen" : "Ablauf-Demo starten"}
+            {running ? "Entstehung pausieren" : finished ? "Entstehung erneut ansehen" : "Entstehung abspielen"}
           </button>
         </div>
 
@@ -84,7 +84,7 @@ export default function ProductionDemoPage() {
           <section className="overflow-hidden rounded-[26px] border border-[#e4e1ec] bg-white shadow-[0_18px_60px_rgba(37,31,68,.06)]">
             <div className="flex items-center justify-between border-b border-[#efedf3] px-5 py-4 sm:px-6">
               <div>
-                <div className="text-xs font-bold uppercase tracking-[0.14em] text-[#8a8e94]">Live-Vorschau</div>
+                <div className="text-xs font-bold uppercase tracking-[0.14em] text-[#8a8e94]">Aktueller Schritt</div>
                 <div className="mt-1 text-sm font-black">{PHASE_LABELS[phase]}</div>
               </div>
               <div className="rounded-full bg-[#f0edff] px-3 py-1.5 text-xs font-black text-[#5d4de1]">
@@ -198,7 +198,7 @@ export default function ProductionDemoPage() {
               </Link>
             ) : (
               <p className="mt-2 rounded-xl bg-[#f7f5ff] p-4 text-xs leading-5 text-[#665f7b]">
-                Diese Vorschau verwendet ein bereits fertiges Beispiel-Reel. Während der Demo wird kein neues Video erzeugt.
+                Hier siehst du den Aufbau Schritt für Schritt.
               </p>
             )}
           </aside>

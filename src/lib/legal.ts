@@ -9,5 +9,5 @@ export const LEGAL_CONTACT = {
 
 export const LEGAL_SITE = {
   name: "IchGeheViral",
-  product: "IchGeheViral AI-Video",
+  product: "IchGeheViral Transformations-Reel",
 } as const;

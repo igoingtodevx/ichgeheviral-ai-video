@@ -32,10 +32,10 @@ export function WhyViral() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <span className="text-xs font-black uppercase tracking-[0.18em] text-[#5947e8]">
-            Warum das für Viralpotenzial gebaut ist
+            Warum das Format funktioniert
           </span>
           <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
-            Nicht einfach generiert. Fürs Weiterschauen aufgebaut.
+            Ein klarer Aufbau für längeres Zuschauen.
           </h2>
           <p className="mt-5 text-base leading-7 text-[#686c73] sm:text-lg">
             Viralität lässt sich nicht garantieren. Was sich gezielt gestalten lässt, ist die Struktur,

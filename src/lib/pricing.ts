@@ -5,8 +5,8 @@
  * Shopify owns the final charge amount — these values are for display only
  * and must be updated here once the store's public prices are approved.
  *
- * Until `priceEUR` is set on a package, the UI shows a tasteful
- * "wird in Kürze freigeschaltet" state instead of a fake number.
+ * Until `priceEUR` is set on a package, the UI shows a clear prelaunch
+ * state instead of a fake number.
  */
 
 export interface ProductPackage {
@@ -25,13 +25,13 @@ export const PRICING_LAUNCHED = false;
 export const PACKAGES: ProductPackage[] = [
   {
     id: "ai-video",
-    name: "AI-Video",
-    tagline: "Ein fertiges Poolbau-Reel",
+    name: "Transformations-Reel",
+    tagline: "Ein fertiges Reel aus der aktuell verfügbaren Kategorie",
     priceEUR: null,
     addCourse: false,
     highlight: true,
     features: [
-      "1 fertiges 60+ Sekunden Reel",
+      "1 fertiges 60+ Sekunden Transformations-Reel",
       "Natives 9:16 Format",
       "8 aufeinander aufbauende Phasen",
       "Kein Videoschnitt nötig",
@@ -40,12 +40,12 @@ export const PACKAGES: ProductPackage[] = [
   },
   {
     id: "ai-video-course",
-    name: "AI-Video + Marketing-Kurs",
+    name: "Transformations-Reel + Marketing-Kurs",
     tagline: "Video plus Anleitung zur Auswertung",
     priceEUR: null,
     addCourse: true,
     features: [
-      "Alles aus „AI-Video“",
+      "Alles aus „Transformations-Reel“",
       "Zusätzlicher Marketing-Kurs",
       "Anleitung zur Content-Auswertung",
       "Ideal für den ersten Start",
@@ -54,7 +54,7 @@ export const PACKAGES: ProductPackage[] = [
 ];
 
 export function formatPrice(value: number | null): string {
-  if (value === null) return "Preis zum Start";
+  if (value === null) return "Preis folgt vor dem Verkaufsstart";
   return new Intl.NumberFormat("de-DE", {
     style: "currency",
     currency: "EUR",

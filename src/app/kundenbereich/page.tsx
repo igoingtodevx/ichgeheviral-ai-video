@@ -16,8 +16,8 @@ export default function StudioDashboardPage() {
               Meine Reels
             </h1>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-[#686c73] sm:text-base">
-              Hier findest du deine fertigen Pool-Reels. Zum Start zeigen wir zwei reale Beispiele
-              aus der aktuellen Poolbau-Kategorie.
+              Hier findest du deine fertigen Transformations-Reels. Zum Start zeigen wir zwei erstellte
+              Beispiele aus der aktuell verfügbaren Poolbau-Kategorie.
             </p>
           </div>
 
@@ -26,7 +26,7 @@ export default function StudioDashboardPage() {
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-5 py-3.5 text-sm font-black text-white shadow-[0_12px_32px_rgba(109,93,252,.22)] transition hover:bg-[#5947e8]"
           >
             <Plus className="h-4 w-4" />
-            Neues Pool-Reel
+            Neues Reel
           </Link>
         </div>
 
@@ -96,18 +96,17 @@ export default function StudioDashboardPage() {
                 Was passiert nach dem Klick?
               </span>
               <h2 className="mt-2 text-2xl font-black tracking-[-0.03em] sm:text-3xl">
-                Sieh dir die Produktionsansicht an.
+                So entsteht dein fertiges Reel.
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-white/60">
-                Die interaktive Demo zeigt anhand eines echten Beispiel-Reels, welche Schritte von der Pool-Auswahl
-                bis zum fertigen Reel sichtbar werden.
+                Sieh Schritt für Schritt, wie aus der gewählten Transformation ein fertiges Reel wird.
               </p>
             </div>
             <Link
               href="/kundenbereich/produktion"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-5 py-3.5 text-sm font-black text-white transition hover:bg-[#7d6eff]"
             >
-              Ablauf-Demo öffnen <ArrowRight className="h-4 w-4" />
+              Entstehung ansehen <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </section>

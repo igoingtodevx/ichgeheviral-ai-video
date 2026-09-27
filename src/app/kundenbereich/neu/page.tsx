@@ -50,13 +50,13 @@ export default function NewReelPage() {
       <div className="mx-auto max-w-5xl">
         <div>
           <span className="text-xs font-black uppercase tracking-[0.18em] text-[#5d4de1]">
-            Neues Pool-Reel
+            Neues Transformations-Reel
           </span>
           <h1 className="mt-3 text-4xl font-black tracking-[-0.055em] sm:text-5xl">
-            Welcher Pool-Stil soll es werden?
+            Welche Transformation möchtest du starten?
           </h1>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-[#686c73] sm:text-base">
-            Kein Prompt, kein komplizierter Generator. Wähle eine freigegebene Pool-Variante und danach dein Paket.
+            Ohne technische Einrichtung. Aktuell wählst du eine verfügbare Poolbau-Variante und danach dein Paket.
           </p>
         </div>
 
