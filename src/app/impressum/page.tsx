@@ -28,8 +28,6 @@ export default function ImpressumPage() {
             Alternative E-Mail: <a href={`mailto:${LEGAL_CONTACT.alternateEmail}`}>{LEGAL_CONTACT.alternateEmail}</a>
           </p>
 
-          <h3>Steuernummer</h3>
-          <p>{LEGAL_CONTACT.taxNumber}</p>
 
           <h3>Inhaltlich verantwortlich</h3>
           <p>{LEGAL_CONTACT.name}, Anschrift wie oben.</p>

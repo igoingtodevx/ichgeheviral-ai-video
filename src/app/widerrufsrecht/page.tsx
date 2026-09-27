@@ -16,8 +16,7 @@ export default function WiderrufsrechtPage() {
           <h3>Widerrufsrecht</h3>
           <p>
             Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen einen geschlossenen Vertrag
-            zu widerrufen. Die Widerrufsfrist beträgt grundsätzlich vierzehn Tage ab dem gesetzlich
-            maßgeblichen Beginn der Widerrufsfrist.
+            zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsschlusses.
           </p>
           <p>
             Um Ihr Widerrufsrecht auszuüben, müssen Sie uns mittels einer eindeutigen Erklärung, zum Beispiel
@@ -47,10 +46,20 @@ export default function WiderrufsrechtPage() {
 
           <h3>Beginn der Dienstleistung vor Ablauf der Widerrufsfrist</h3>
           <p>
-            Wird ausdrücklich verlangt, dass die Dienstleistung bereits während der Widerrufsfrist beginnt,
+            Verlangen Sie ausdrücklich, dass die Dienstleistung bereits während der Widerrufsfrist beginnt,
             kann bei einem Widerruf Wertersatz für den bis dahin erbrachten Anteil der Leistung geschuldet
-            sein. Ein vorzeitiges Erlöschen des Widerrufsrechts richtet sich nach den gesetzlichen
-            Voraussetzungen und setzt die hierfür erforderlichen ausdrücklichen Erklärungen voraus.
+            sein. Bei einer entgeltlichen Dienstleistung kann das Widerrufsrecht nach vollständiger
+            Erbringung unter den gesetzlichen Voraussetzungen erlöschen, wenn Sie dem vorzeitigen
+            Leistungsbeginn ausdrücklich zugestimmt und Ihre Kenntnis vom möglichen Erlöschen bestätigt haben.
+          </p>
+
+          <h3>Digitale Inhalte</h3>
+          <p>
+            Soweit ein gebuchtes Zusatzangebot in der Bereitstellung digitaler Inhalte besteht, die nicht auf
+            einem körperlichen Datenträger geliefert werden, gelten die besonderen gesetzlichen Voraussetzungen
+            für den Beginn der Vertragserfüllung und ein mögliches Erlöschen des Widerrufsrechts. Ein vorzeitiges
+            Erlöschen setzt insbesondere die gesetzlich erforderliche ausdrückliche Zustimmung, die Bestätigung
+            Ihrer Kenntnis über die Folge dieser Zustimmung und die erforderliche Vertragsbestätigung voraus.
           </p>
 
           <h3>Muster-Widerrufsformular</h3>
@@ -73,6 +82,8 @@ export default function WiderrufsrechtPage() {
             </p>
             <p>(*) Unzutreffendes streichen.</p>
           </div>
+
+          <p className="pt-4 text-sm text-[#858991]">Stand: September 2026</p>
         </div>
       </section>
     </LegalPage>

@@ -71,9 +71,10 @@ export default function AgbPage() {
 
           <h3>§ 7 Nutzbarkeit des Ergebnisses</h3>
           <p>
-            Der Kunde erhält das ausgelieferte Video zur eigenen Nutzung und Veröffentlichung, insbesondere auf
-            Social-Media-Plattformen. Zwingende Rechte Dritter sowie die Nutzungsbedingungen der jeweiligen
-            Plattformen bleiben unberührt.
+            Soweit dem Anbieter an dem ausgelieferten Ergebnis einräumbare Nutzungsrechte zustehen, erhält der
+            Kunde das Recht, das ausgelieferte Video für eigene Social-Media- und Marketingzwecke zu nutzen und
+            zu veröffentlichen. Rechte Dritter, die Lizenzbedingungen der bei der KI-Erstellung eingesetzten
+            Modelle sowie die Nutzungsbedingungen der jeweiligen Plattformen bleiben unberührt.
           </p>
 
           <h3>§ 8 Widerruf</h3>
@@ -90,7 +91,13 @@ export default function AgbPage() {
             Reichweiten- oder Umsatzprognosen bleibt der Kunde verantwortlich.
           </p>
 
-          <h3>§ 10 Schlussbestimmungen</h3>
+          <h3>§ 10 Verbraucherstreitbeilegung</h3>
+          <p>
+            Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer
+            Verbraucherschlichtungsstelle im Sinne des Verbraucherstreitbeilegungsgesetzes teilzunehmen.
+          </p>
+
+          <h3>§ 11 Schlussbestimmungen</h3>
           <p>
             Es gilt deutsches Recht unter Beachtung zwingender Verbraucherschutzvorschriften. Für Verbraucher
             gelten die gesetzlichen Gerichtsstände.
