@@ -17,7 +17,7 @@ export function FounderSection() {
             <div className="mt-6 space-y-4 text-base leading-7 text-[#686c73]">
               <p>
                 Aus einer einzigen Idee soll ein zusammenhängendes, veröffentlichungsfertiges
-                Transformations-Reel entstehen — ohne dass du selbst schneidest oder einzelne
+                Poolbau-Transformations-Reel entstehen — ohne dass du selbst schneidest oder einzelne
                 KI-Clips zusammensetzt.
               </p>
               <p>

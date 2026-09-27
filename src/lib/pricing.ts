@@ -26,7 +26,7 @@ export const PACKAGES: ProductPackage[] = [
   {
     id: "ai-video",
     name: "AI-Video",
-    tagline: "Ein fertiges Transformations-Reel",
+    tagline: "Ein fertiges Poolbau-Reel",
     priceEUR: null,
     addCourse: false,
     highlight: true,

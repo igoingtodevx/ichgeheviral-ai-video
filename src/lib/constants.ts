@@ -105,29 +105,22 @@ export const SHOWCASE_VIDEOS: VideoShowcaseItem[] = [
 export interface PresetConcept {
   id: string;
   label: string;
+  description: string;
   prompt: string;
 }
 
 export const PRESET_CONCEPTS: PresetConcept[] = [
   {
     id: "pool-travertin",
-    label: "Hinterhof → Luxus-Pool & Travertin",
-    prompt: "Verwilderter Hinterhof → moderne Luxus-Pooloase mit Travertin-Terrasse, Naturstein-Wasserfall & Pergola",
+    label: "Modern & rechteckig",
+    description: "Verwilderter Hinterhof → moderner Luxus-Pool mit Travertin, Wasserfall und Pergola.",
+    prompt: "Verwilderter Hinterhof → moderne Luxus-Pooloase mit rechteckigem Pool, Travertin-Terrasse, Naturstein-Wasserfall & Pergola",
   },
   {
     id: "finca-lagune",
-    label: "Mediterrane Finca → Naturstein-Lagune",
+    label: "Mediterrane Lagune",
+    description: "Mediterrane Außenanlage → organischer Naturstein-Lagunenpool mit Spa und Palmen.",
     prompt: "Mediterrane Finca → organischer Naturstein-Lagunenpool mit Spa & Palmenbepflanzung",
-  },
-  {
-    id: "garten-rechteck",
-    label: "Verwilderter Garten → Rechteck-Pool",
-    prompt: "Verwilderter Garten → High-End Rechteck-Pool mit eingelassener Sitzecke & Abendlicht",
-  },
-  {
-    id: "schotter-pergola",
-    label: "Schotterfläche → Pooloase mit Pergola",
-    prompt: "Schotterfläche → kompakte Design-Pooloase mit Pergola & warmer Holzterrasse",
   },
 ];
 
@@ -145,7 +138,7 @@ export const FAQ_ITEMS = [
   {
     question: "Muss ich Kenntnisse im Videoschnitt haben?",
     answer:
-      "Nein, überhaupt nicht. Du gibst lediglich deine Idee oder dein Vorher-Nachher-Thema ein. Den Bildaufbau, die flüssigen Phasenübergänge und die passende Umgebungsakustik generiert das System vollautomatisch.",
+      "Nein. Du wählst aktuell einen der freigegebenen Pool-Stile aus. Den Bildaufbau, die aufeinander abgestimmten Bauphasen, die Übergänge und die passende Umgebungsakustik erstellt das System automatisch.",
   },
   {
     question: "Welches Format und welche Länge erhalte ich?",
@@ -155,6 +148,6 @@ export const FAQ_ITEMS = [
   {
     question: "Welche Videoarten werden aktuell unterstützt?",
     answer:
-      "Aktuell ist die Pipeline für bauliche Transformationen und Außenanlagen (wie Poolbau, Garten- und Terrassenprojekte) validiert und live einsatzbereit. Weitere Transformationsformate folgen schrittweise nach vollständiger Validierung.",
+      "Aktuell ist IchGeheViral ausschließlich für Poolbau-Transformationen freigegeben. Verfügbar sind ein moderner rechteckiger Luxus-Pool und eine mediterrane organische Lagunen-Variante. Garten-, Terrassen-, Haus-, Innenraum- oder andere Transformationskategorien werden erst nach separater Validierung freigeschaltet.",
   },
 ];

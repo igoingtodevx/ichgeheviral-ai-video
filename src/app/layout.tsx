@@ -13,13 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "IchGeheViral — Videos für maximales Viralpotenzial",
+  title: "IchGeheViral — Pool-Reels für maximales Viralpotenzial",
   description:
-    "Aus einer Idee entsteht automatisch ein fertiges 60+ Sekunden 9:16 Transformations-Reel — mit sichtbarer Entwicklung, starkem Final-Reveal und ohne Credit-System.",
+    "Aus einer freigegebenen Pool-Transformation entsteht automatisch ein fertiges 60+ Sekunden 9:16 Reel mit acht Bauphasen, sichtbarer Entwicklung und starkem Final-Reveal.",
   openGraph: {
-    title: "IchGeheViral — Videos für maximales Viralpotenzial",
+    title: "IchGeheViral — Pool-Reels für maximales Viralpotenzial",
     description:
-      "Automatisch erstellte Transformations-Reels für TikTok, Instagram Reels und YouTube Shorts — 60+ Sekunden, 9:16, ohne Credit-System.",
+      "Automatisch erstellte Poolbau-Transformations-Reels für TikTok, Instagram Reels und YouTube Shorts — 60+ Sekunden, 9:16, ohne Credit-System.",
     siteName: "IchGeheViral",
     locale: "de_DE",
     type: "website",
