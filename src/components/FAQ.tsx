@@ -1,60 +1,41 @@
 "use client";
 
 import React, { useState } from "react";
-import { FAQ_ITEMS } from "../lib/constants";
 import { ChevronDown } from "lucide-react";
+import { FAQ_ITEMS } from "../lib/constants";
 
 export function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0); // first open by default
-
-  const toggle = (idx: number) => {
-    setOpenIndex(openIndex === idx ? null : idx);
-  };
+  const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative py-20 lg:py-28 border-t border-white/[0.06] overflow-hidden scroll-mt-20">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-14">
-          <span className="text-xs font-mono font-bold tracking-widest text-violet-400 uppercase">
-            HÄUFIGE FRAGEN
+    <section id="faq" className="bg-[#f7f7f5] py-20 lg:py-28">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <span className="text-xs font-black uppercase tracking-[0.18em] text-[#e97800]">
+            Häufige Fragen
           </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-2 mb-4">
+          <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
             Noch Fragen?
           </h2>
-          <p className="text-base sm:text-lg text-slate-300">
-            Hier findest du ehrliche und technische Antworten auf die wichtigsten Punkte.
-          </p>
         </div>
 
-        {/* Accordion List */}
-        <div className="space-y-3">
-          {FAQ_ITEMS.map((item, idx) => {
-            const isOpen = openIndex === idx;
+        <div className="mt-12 space-y-3">
+          {FAQ_ITEMS.map((item, i) => {
+            const isOpen = open === i;
             return (
-              <div
-                key={idx}
-                className="glass-panel rounded-2xl border border-white/[0.08] overflow-hidden transition-colors"
-              >
+              <div key={item.question} className="overflow-hidden rounded-2xl border border-[#e7e3df] bg-white">
                 <button
-                  onClick={() => toggle(idx)}
-                  className="w-full py-5 px-6 flex items-center justify-between text-left gap-4 hover:bg-white/[0.02] transition-colors"
+                  onClick={() => setOpen(isOpen ? null : i)}
                   aria-expanded={isOpen}
+                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
                 >
-                  <span className="text-base sm:text-lg font-semibold text-white">
-                    {item.question}
-                  </span>
-                  <div
-                    className={`w-7 h-7 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0 transition-transform duration-200 ${
-                      isOpen ? "rotate-180 bg-violet-600/30 border-violet-500/40" : ""
-                    }`}
-                  >
-                    <ChevronDown className="w-4 h-4 text-slate-300" />
-                  </div>
+                  <span className="text-base font-extrabold text-[#101114] sm:text-lg">{item.question}</span>
+                  <ChevronDown
+                    className={`h-5 w-5 shrink-0 text-[#ff8600] transition-transform ${isOpen ? "rotate-180" : ""}`}
+                  />
                 </button>
-
                 {isOpen && (
-                  <div className="px-6 pb-6 text-sm sm:text-base text-slate-300 leading-relaxed border-t border-white/[0.04] pt-4">
+                  <div className="border-t border-[#eee9e4] px-6 pb-6 pt-4 text-sm leading-6 text-[#686c73] sm:text-base">
                     {item.answer}
                   </div>
                 )}
