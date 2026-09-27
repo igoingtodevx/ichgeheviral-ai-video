@@ -1,0 +1,316 @@
+/* Final client polish for the two remaining candidates.
+   Light = exact Enricha orange (#FF8600) with stronger hierarchy.
+   Dark = existing Midnight Creator structure with the same hierarchy fixes.
+   No structural redesign: only visual emphasis on the areas Timo called out. */
+
+/* ================================================================
+   ORANGE / WHITE V2 — primary candidate
+   ================================================================ */
+.theme-blue{
+  --blue:#ff8600;
+  --blue2:#e97800;
+  --paper:#fff;
+  --alt:#f7f7f5;
+  --line:#e7e3df;
+  --red:#b53b36;
+  --red-deep:#a8322f;
+  --good:#258654;
+  --good-deep:#1d7548;
+  --good-soft:#effaf4;
+}
+
+.theme-blue .logo span{color:#ff8600}
+.theme-blue .hero{
+  background:
+    radial-gradient(circle at 50% 22%,rgba(255,134,0,.12) 0,rgba(255,134,0,.045) 31%,transparent 55%),
+    #fff;
+}
+.theme-blue .pill{border-color:#ffd7a8;background:#fff8ef;color:#e97800}
+.theme-blue .mini-cta,.theme-blue .center-cta,.theme-blue .optin button{background:#ff8600}
+.theme-blue .mini-cta:hover,.theme-blue .center-cta:hover,.theme-blue .optin button:hover{background:#e97800}
+
+/* Make the email capture impossible to miss without turning it into a banner. */
+.theme-blue .optin-shell{position:relative;z-index:3}
+.theme-blue .optin{
+  border:2px solid rgba(255,134,0,.48);
+  background:#fff;
+  box-shadow:0 18px 52px rgba(174,91,0,.16),0 0 0 5px rgba(255,134,0,.055);
+}
+.theme-blue .optin input{
+  border-radius:8px;
+  background:#fffaf4;
+  color:#151515;
+}
+.theme-blue .optin input::placeholder{color:#77736f}
+.theme-blue .form-note{color:#76716c!important}
+
+/* Recreate the strong visual stage around the hero video that worked in dark. */
+.theme-blue .video-wrap:before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  left:50%;
+  top:48%;
+  width:min(1120px,96vw);
+  height:72%;
+  border-radius:50%;
+  background:radial-gradient(ellipse,rgba(255,134,0,.18) 0,rgba(255,169,77,.085) 44%,transparent 72%);
+  filter:blur(2px);
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.theme-blue .video-gate{position:relative;z-index:1}
+.theme-blue .video-card{
+  border:1px solid #eadfd5;
+  box-shadow:0 32px 82px rgba(89,49,20,.19);
+}
+.theme-blue .play{background:#ff8600;box-shadow:0 10px 35px rgba(255,134,0,.34)}
+.theme-blue .fact-grid b{color:#ff8600}
+
+/* Calculator: treat it as a feature moment, not another generic white card. */
+.theme-blue .calculator{
+  position:relative;
+  overflow:hidden;
+  border:2px solid #ffc987;
+  background:linear-gradient(145deg,#fff 0,#fffaf4 100%);
+  box-shadow:0 26px 74px rgba(150,77,0,.14),0 0 0 6px rgba(255,134,0,.035);
+}
+.theme-blue .calculator:before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto;
+  height:5px;
+  background:linear-gradient(90deg,#ff8600,#ffad4d);
+}
+.theme-blue .calc-grid label b{color:#d96f00}
+.theme-blue .calc-result{
+  border:1px solid #ffd6a5;
+  background:#fff3e3;
+}
+.theme-blue .calc-result strong{color:#191919}
+.theme-blue .calc-money{
+  margin-top:10px;
+  padding:22px 18px 16px;
+  border-radius:13px;
+  background:#fff;
+  box-shadow:inset 0 0 0 1px #eee5dc;
+}
+.theme-blue .calc-money strong{color:#e57600}
+
+/* System vs hype: solid red/green, but tuned to the warm editorial palette. */
+.theme-blue .myth,
+.theme-blue .process{
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 16px 38px rgba(52,38,27,.12),inset 0 1px 0 rgba(255,255,255,.18);
+}
+.theme-blue .myth:after,
+.theme-blue .process:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(115deg,rgba(255,255,255,.10),transparent 34%,transparent 72%,rgba(0,0,0,.035));
+}
+.theme-blue .myth{
+  border:1px solid #9d2f2b!important;
+  background:linear-gradient(145deg,#bd413b 0%,var(--red-deep) 100%)!important;
+}
+.theme-blue .process{
+  border:1px solid #17663e!important;
+  background:linear-gradient(145deg,#2b8c59 0%,var(--good-deep) 100%)!important;
+}
+.theme-blue .myth>span,.theme-blue .myth h3,
+.theme-blue .process>span,.theme-blue .process h3{color:#fff}
+.theme-blue .myth li,.theme-blue .process li{color:rgba(255,255,255,.86)}
+.theme-blue .myth li::marker,.theme-blue .process li::marker{color:rgba(255,255,255,.95)}
+
+/* Steps: quieter background, stronger selectable states and explicit red/green semantics. */
+.theme-blue .interactive-steps{
+  border:1px solid #e4ded8;
+  border-radius:18px;
+  background:#fff;
+  overflow:hidden;
+  box-shadow:0 18px 52px rgba(59,42,25,.055);
+}
+.theme-blue .interactive-steps .step-card{
+  background:#fff;
+  border-color:#e8e1da;
+}
+.theme-blue .interactive-steps .step-card:hover{background:#fff9f2}
+.theme-blue .interactive-steps .step-card.active{
+  background:#fff4e7;
+  box-shadow:inset 0 0 0 2px #ff9b2e;
+}
+.theme-blue .step-detail{
+  border:2px solid #ffd3a0;
+  background:#fffdf9;
+  box-shadow:0 18px 48px rgba(112,61,14,.075);
+}
+.theme-blue .step-detail>span{background:#ff8600}
+.theme-blue .step-value-block{border-color:#e9e2dc;background:#fff}
+.theme-blue .step-mistake,
+.theme-blue .step-result{
+  position:relative;
+  overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 10px 24px rgba(52,38,27,.08);
+}
+.theme-blue .step-mistake{
+  border-color:#9d2f2b;
+  background:linear-gradient(145deg,#bd413b 0%,var(--red-deep) 100%);
+  color:#fff;
+}
+.theme-blue .step-result{
+  border-color:#17663e;
+  background:linear-gradient(145deg,#2b8c59 0%,var(--good-deep) 100%);
+  color:#fff;
+}
+.theme-blue .step-mistake>span,.theme-blue .step-result>span{color:rgba(255,255,255,.76)}
+.theme-blue .step-mistake p,.theme-blue .step-result p{color:rgba(255,255,255,.90)}
+
+/* Proof: portrait screenshots should not sit on a giant landscape stage. */
+.theme-blue .proof-section .proof-layout{
+  grid-template-columns:minmax(0,auto) 156px;
+  justify-content:center;
+  align-items:start;
+  column-gap:14px;
+}
+.theme-blue .proof-section .proof-main{
+  width:fit-content;
+  max-width:100%;
+  justify-self:center;
+  padding:7px;
+  border:1px solid #e9e2db;
+  border-radius:16px;
+  background:#fff;
+  box-shadow:0 18px 50px rgba(54,39,27,.12);
+}
+.theme-blue .proof-section .proof-main img{
+  width:auto;
+  max-width:100%;
+  max-height:560px;
+  border-radius:10px;
+}
+.theme-blue .proof-section .proof-thumbs button{
+  background:#fff;
+  border-color:#e8e0d8;
+}
+.theme-blue .proof-thumbs button.active{border-color:#ff8600}
+
+.theme-blue .final .kicker{color:#ffad4d}
+.theme-blue .final .optin button{background:#ff8600}
+.theme-blue .final .optin button:hover{background:#e97800}
+.theme-blue .faq summary:after{color:#ff8600}
+
+/* ================================================================
+   GRAPHITE V2 — secondary candidate
+   Keep what Timo liked, strengthen only the weak information hierarchy.
+   ================================================================ */
+.theme-graphite{
+  --good:#47d98a;
+  --good-soft:#0d2a20;
+}
+
+/* Hero opt-in needs to compete with the video instead of disappearing into the page. */
+.theme-graphite .optin{
+  border:2px solid rgba(99,216,255,.62);
+  background:#0d1b2e;
+  box-shadow:0 22px 64px rgba(0,0,0,.42),0 0 0 5px rgba(67,139,255,.08),0 0 44px rgba(67,139,255,.11);
+}
+.theme-graphite .optin input{
+  border-radius:8px;
+  background:#091523;
+  box-shadow:inset 0 0 0 1px #2a4464;
+}
+.theme-graphite .optin input:focus{box-shadow:inset 0 0 0 2px #63d8ff}
+
+/* Calculator becomes a clear visual stop. */
+.theme-graphite .calculator{
+  position:relative;
+  overflow:hidden;
+  border:2px solid #315e8e;
+  background:linear-gradient(145deg,#0b1828,#0e2034);
+  box-shadow:0 30px 80px rgba(0,0,0,.38),0 0 0 5px rgba(67,139,255,.045);
+}
+.theme-graphite .calculator:before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto;
+  height:4px;
+  background:linear-gradient(90deg,#438bff,#63d8ff);
+}
+.theme-graphite .calc-result{border:1px solid #2d527a;background:#112946}
+.theme-graphite .calc-money{
+  margin-top:10px;
+  padding:22px 18px 16px;
+  border-radius:13px;
+  background:#091725;
+  box-shadow:inset 0 0 0 1px #263f5d;
+}
+
+/* Preserve the strong red card, make the correct process equally unmistakable in green. */
+.theme-graphite .myth{
+  border:2px solid #72404b!important;
+  background:linear-gradient(145deg,#21151b,#1a1117)!important;
+  box-shadow:0 18px 42px rgba(0,0,0,.15);
+}
+.theme-graphite .myth>span,.theme-graphite .myth h3{color:#ff7773}
+.theme-graphite .process{
+  border:2px solid #2e8d62!important;
+  background:linear-gradient(145deg,#0d281e,#0b211a)!important;
+  box-shadow:0 18px 42px rgba(0,0,0,.16),0 0 32px rgba(71,217,138,.045);
+}
+.theme-graphite .process>span,.theme-graphite .process h3{color:var(--good)}
+.theme-graphite .process li::marker{color:var(--good)}
+
+/* Make all steps legible before interaction, then make the active state obvious. */
+.theme-graphite .interactive-steps{
+  border:1px solid #294564;
+  border-radius:18px;
+  background:#0b1727;
+  overflow:hidden;
+  box-shadow:0 24px 70px rgba(0,0,0,.22);
+}
+.theme-graphite .interactive-steps .step-card{
+  background:#0b1727;
+  border-color:#29415d;
+}
+.theme-graphite .interactive-steps .step-card:hover{background:#10243b}
+.theme-graphite .interactive-steps .step-card.active{
+  background:#132b47;
+  box-shadow:inset 0 0 0 2px #63b4ff,0 0 28px rgba(67,139,255,.075);
+}
+.theme-graphite .interactive-steps .step-card h3{color:#f7faff}
+.theme-graphite .interactive-steps .step-card p{color:#adbed2}
+.theme-graphite .step-detail{
+  border:2px solid #315b87;
+  background:#0a1828;
+  box-shadow:0 20px 58px rgba(0,0,0,.2);
+}
+.theme-graphite .step-value-block{background:#0d1c2e;border-color:#2a4564}
+.theme-graphite .step-mistake{
+  border-color:#6a3d49;
+  background:#21171d;
+}
+.theme-graphite .step-mistake>span{color:#ff7773}
+.theme-graphite .step-result{
+  border-color:#327f5c;
+  background:var(--good-soft);
+}
+.theme-graphite .step-result>span{color:var(--good)}
+
+@media(max-width:820px){
+  .theme-blue .proof-section .proof-main{
+    width:fit-content;
+    max-width:100%;
+    margin-inline:auto;
+  }
+  .theme-blue .proof-section .proof-thumbs{width:100%}
+}
+
+@media(max-width:600px){
+  .theme-blue .hero{background:radial-gradient(circle at 50% 12%,rgba(255,134,0,.12) 0,transparent 44%),#fff}
+  .theme-blue .video-wrap:before{width:120vw;height:64%}
+  .theme-blue .optin,.theme-graphite .optin{box-shadow:0 14px 38px rgba(0,0,0,.12)}
+  .theme-blue .calc-money,.theme-graphite .calc-money{padding:18px 14px 14px}
+}
