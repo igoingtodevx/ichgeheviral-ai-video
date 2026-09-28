@@ -22,7 +22,7 @@ export function Hero({ onOpenVideo }: { onOpenVideo: () => void }) {
           Transformations-Reels · Poolbau als erste Kategorie
         </p>
 
-        <h1 className="mx-auto mt-6 max-w-5xl text-5xl font-black leading-[0.98] tracking-[-0.065em] text-[#101114] sm:text-7xl lg:text-[80px]">
+        <h1 className="mx-auto mt-6 max-w-5xl text-4xl font-black leading-[0.98] tracking-[-0.065em] text-[#101114] sm:text-7xl lg:text-[80px]">
           Aus Veränderungen werden{" "}
           <span className="text-[#6d5dfc]">Videos, die Menschen stoppen.</span>
         </h1>
@@ -53,7 +53,7 @@ export function Hero({ onOpenVideo }: { onOpenVideo: () => void }) {
           >
             <img
               src={demo.posterSrc}
-              alt="Erstelltes Beispiel-Reel einer Poolbau-Transformation"
+              alt="Echtes Golden-V1-Beispiel einer Poolbau-Transformation"
               className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
@@ -61,9 +61,9 @@ export function Hero({ onOpenVideo }: { onOpenVideo: () => void }) {
               <Play className="h-7 w-7 fill-current" />
             </span>
             <span className="absolute bottom-6 left-6 text-left text-white">
-              <b className="block text-lg">Erstelltes Beispiel-Reel</b>
+              <b className="block text-lg">Echtes Golden-V1-Beispiel</b>
               <small className="text-white/75">
-                {demo.duration} · 9:16 · {demo.stateCount} Phasen
+                {demo.duration} · 9:16 · {demo.stateCount} Phasen · Poolbau
               </small>
             </span>
           </button>

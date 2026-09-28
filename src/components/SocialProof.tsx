@@ -1,7 +1,57 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { SHOWCASE_VIDEOS } from "../lib/constants";
 import { fetchSocialProof, socialProofMediaUrl, type SocialProofItem } from "../lib/socialProof";
+
+function GoldenV1Fallback() {
+  return (
+    <section className="bg-[#f7f7fb] py-20 lg:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="text-xs font-black uppercase tracking-[0.18em] text-[#5947e8]">
+            Echte Golden-V1-Beispiele
+          </span>
+          <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
+            Zwei fertige Poolbau-Reels.
+          </h2>
+          <p className="mt-5 text-base leading-7 text-[#686c73] sm:text-lg">
+            Die öffentliche Beispielbibliothek ist noch nicht mit weiteren Social-Proof-Einträgen
+            verbunden. Deshalb zeigen wir hier die beiden vorhandenen Golden-V1-MP4s — ohne
+            erfundene Kundenstatistiken.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-5 sm:grid-cols-2">
+          {SHOWCASE_VIDEOS.map((video) => (
+            <article
+              key={video.id}
+              className="overflow-hidden rounded-[22px] border border-[#e6e4ef] bg-white shadow-[0_18px_50px_rgba(54,39,27,.08)]"
+            >
+              <div className="aspect-[9/16] overflow-hidden bg-[#111]">
+                <video
+                  src={video.videoSrc}
+                  poster={video.posterSrc}
+                  controls
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="p-5">
+                <h3 className="text-lg font-extrabold text-[#101114]">{video.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-[#686c73]">
+                  Golden V1 · {video.duration} · {video.stateCount} Poolbau-Phasen
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export function SocialProof() {
   const [items, setItems] = useState<SocialProofItem[]>([]);
@@ -14,7 +64,7 @@ export function SocialProof() {
       .finally(() => setLoaded(true));
   }, []);
 
-  if (loaded && items.length === 0) return null;
+  if (!loaded || items.length === 0) return <GoldenV1Fallback />;
 
   return (
     <section className="bg-[#f7f7fb] py-20 lg:py-28">

@@ -11,7 +11,7 @@ const TYPICAL = [
 ];
 
 const IGV = [
-  "Du wählst eine freigegebene Transformation",
+  "Du klickst auf Generate und startest die Erstellung",
   "Du bekommst ein fertiges Video",
   "Ein zusammenhängendes 60+ Sekunden Reel",
   "Kein Zusammenschneiden einzelner Clips",

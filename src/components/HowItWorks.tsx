@@ -3,20 +3,19 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, DownloadCloud, Gauge } from "lucide-react";
-import { PRESET_CONCEPTS } from "../lib/constants";
 
 const STEPS = [
   {
     num: "01",
     icon: CheckCircle2,
-    title: "Transformation auswählen",
-    desc: "Du wählst den passenden Stil für dein Reel. Die Struktur und Umsetzung übernehmen wir.",
+    title: "Generate klicken",
+    desc: "Du brauchst keine Konzept- oder Stilmaske. Ein Klick genügt — die interne Variation bleibt im System.",
   },
   {
     num: "02",
     icon: CheckCircle2,
     title: "Dein Reel entsteht",
-    desc: "Aus der Transformation wird ein zusammenhängendes Short-Form-Video mit Fortschritt und Reveal-Moment.",
+    desc: "Aus der Poolbau-Transformation wird ein zusammenhängendes Short-Form-Video mit Fortschritt und Reveal-Moment.",
   },
   {
     num: "03",
@@ -51,22 +50,33 @@ export function HowItWorks() {
 
         <div className="mt-10 rounded-[22px] border border-[#e6e4ef] bg-white p-6 sm:p-8">
           <b className="text-sm font-black uppercase tracking-wider text-[#101114]">Aktuelle Kategorie</b>
-          <p className="mt-2 text-sm leading-6 text-[#686c73]">
-            Poolbau ist die erste verfügbare Transformations-Kategorie. Weitere Kategorien werden schrittweise ergänzt.
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-[#686c73]">
+            Poolbau ist die erste verfügbare Transformations-Kategorie. Die Auswahl der konkreten
+            Variante und die kontrollierte interne Variation bleiben bewusst im Hintergrund.
           </p>
-          <div className="mt-5 grid gap-3 sm:grid-cols-2">
-            {PRESET_CONCEPTS.map((preset) => (
-              <div key={preset.id} className="rounded-2xl border border-[#efedf3] bg-[#faf9fc] p-5">
-                <div className="text-sm font-black text-[#101114]">{preset.label}</div>
-                <p className="mt-2 text-sm leading-6 text-[#686c73]">{preset.description}</p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-3">
+            {[
+              ["Poolbau", "Eine klar abgegrenzte erste Nische"],
+              ["8 Phasen", "Sichtbarer Fortschritt bis zum Reveal"],
+              ["60+ Sek.", "Ein fertiges vertikales Reel"],
+            ].map(([label, description]) => (
+              <div key={label} className="rounded-2xl border border-[#efedf3] bg-[#faf9fc] p-5">
+                <div className="text-sm font-black text-[#101114]">{label}</div>
+                <p className="mt-2 text-sm leading-6 text-[#686c73]">{description}</p>
               </div>
             ))}
           </div>
           <div className="mt-6 flex flex-wrap gap-4">
-            <Link href="/kundenbereich/neu" className="inline-flex items-center gap-2 text-sm font-black text-[#6d5dfc] hover:text-[#5947e8]">
+            <Link
+              href="/kundenbereich/neu"
+              className="inline-flex items-center gap-2 text-sm font-black text-[#6d5dfc] hover:text-[#5947e8]"
+            >
               Studio starten <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link href="/kundenbereich/reel/modern-rechteckig" className="inline-flex items-center gap-2 text-sm font-black text-[#555a62] hover:text-[#101114]">
+            <Link
+              href="/kundenbereich/reel/modern-rechteckig"
+              className="inline-flex items-center gap-2 text-sm font-black text-[#555a62] hover:text-[#101114]"
+            >
               <Gauge className="h-4 w-4 text-[#6d5dfc]" /> Beispiel-Reel ansehen
             </Link>
           </div>

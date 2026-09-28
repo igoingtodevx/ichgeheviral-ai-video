@@ -30,14 +30,14 @@ export default function LandingPage() {
 
       <main>
         <Hero onOpenVideo={() => setVideoSrc(SHOWCASE_VIDEOS[0].videoSrc)} />
+        <Pricing />
+        <FounderSection />
+        <PotentialCalculator />
         <TransformationShowcase onOpenVideo={setVideoSrc} />
         <WhyViral />
         <HowItWorks />
-        <PotentialCalculator />
         <NoCreditsSection />
         <SocialProof />
-        <FounderSection />
-        <Pricing />
         <FAQ />
         <FinalCTA />
       </main>

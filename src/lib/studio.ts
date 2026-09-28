@@ -1,18 +1,22 @@
+export type StudioReelStatus = "Fertig" | "Marketing-Demo";
+
 export interface StudioReel {
   slug: string;
   title: string;
   subtitle: string;
-  status: "Fertig";
+  status: StudioReelStatus;
   duration: string;
   phaseCount: number;
-  videoSrc: string;
+  videoSrc: string | null;
   posterSrc: string;
   stateImages: string[];
   styleLabel: string;
   summary: string;
+  isDemo: boolean;
+  sourceLabel: string;
 }
 
-export const STUDIO_REELS: StudioReel[] = [
+export const REAL_STUDIO_REELS: StudioReel[] = [
   {
     slug: "modern-rechteckig",
     title: "Moderne Pooloase",
@@ -25,9 +29,11 @@ export const STUDIO_REELS: StudioReel[] = [
     stateImages: Array.from({ length: 8 }, (_, index) =>
       `/media/states/run1/state_${String(index + 1).padStart(2, "0")}.jpg`
     ),
-    styleLabel: "Modern & rechteckig",
+    styleLabel: "Golden V1 · Modern",
     summary:
       "Vom verwilderten Hinterhof bis zur fertigen modernen Pooloase in acht sichtbaren Bauphasen.",
+    isDemo: false,
+    sourceLabel: "Echte Golden-V1-MP4",
   },
   {
     slug: "mediterrane-lagune",
@@ -41,11 +47,77 @@ export const STUDIO_REELS: StudioReel[] = [
     stateImages: Array.from({ length: 8 }, (_, index) =>
       `/media/states/run2/state_${String(index + 1).padStart(2, "0")}.jpg`
     ),
-    styleLabel: "Mediterrane Lagune",
+    styleLabel: "Golden V1 · Mediterran",
     summary:
       "Eine mediterrane Außenanlage entwickelt sich Schritt für Schritt zur organischen Pool-Lagune.",
+    isDemo: false,
+    sourceLabel: "Echte Golden-V1-MP4",
   },
 ];
+
+const MARKETING_SEED_TITLES = [
+  "Stadtgarten mit Infinity-Pool",
+  "Kompakte Poolterrasse mit Naturstein",
+  "Hinterhof mit Abendbeleuchtung",
+  "Familienpool mit Loungezone",
+  "Mediterrane Gartenkante",
+  "Pooldeck aus warmem Holz",
+  "Minimalistische Betonoptik",
+  "Pool mit integrierter Sitzbank",
+  "Gartenhang mit Wasserlauf",
+  "Kleine Oase mit Außendusche",
+  "Naturstein-Pool mit Feuerstelle",
+  "Terrasse mit ruhiger Wasserlinie",
+  "Innenhof zur Wellness-Oase",
+  "Poolgarten mit Pergola",
+  "Baugrundstück zum Designgarten",
+  "Organische Lagunenform",
+  "Schmaler Garten, großer Reveal",
+  "Pool mit versenkter Lounge",
+  "Sommergarten mit Wasserfall",
+  "Modernes Becken im Altbauhof",
+  "Travertin-Terrasse mit Spa",
+  "Gartenumbau mit klarer Geometrie",
+  "Poolbereich mit mediterraner Bepflanzung",
+  "Wasserfläche zwischen Naturstein",
+  "Dachterrasse als Mini-Oase",
+  "Pool mit gestufter Holzterrasse",
+  "Lichtkonzept für die Abendstimmung",
+  "Finale Pooloase mit Outdoor-Küche",
+] as const;
+
+const MARKETING_SEED_POSTERS = Array.from(
+  { length: MARKETING_SEED_TITLES.length },
+  (_, index) => `/media/studio-seeds/marketing-demo-${String(index + 1).padStart(2, "0")}.jpg`
+);
+
+/**
+ * Marketing-only seed records keep the dashboard visually useful before real
+ * customer accounts exist. Their poster derivatives are made from existing
+ * Golden-V1 state frames; they intentionally do not point to a generated MP4.
+ */
+export const MARKETING_SEED_REELS: StudioReel[] = MARKETING_SEED_TITLES.map((title, index) => {
+  const posterSrc = MARKETING_SEED_POSTERS[index % MARKETING_SEED_POSTERS.length];
+  return {
+    slug: `marketing-demo-${String(index + 1).padStart(2, "0")}`,
+    title,
+    subtitle: "Marketing-Beispiel für eine Poolbau-Transformation",
+    status: "Marketing-Demo",
+    duration: "Demo-Ansicht",
+    phaseCount: 8,
+    videoSrc: null,
+    posterSrc,
+    stateImages: [posterSrc],
+    styleLabel: `Poolbau · Demo ${String(index + 1).padStart(2, "0")}`,
+    summary:
+      "Marketing-Demo-Ansicht zur Darstellung der Videobibliothek — kein separates MP4 und keine eigene Generation ausgelöst.",
+    isDemo: true,
+    sourceLabel: "Marketing-Demo · abgeleitete Poster-Ansicht",
+  };
+});
+
+/** All records used by the static demo routes. Real assets stay first and identifiable. */
+export const STUDIO_REELS: StudioReel[] = [...REAL_STUDIO_REELS, ...MARKETING_SEED_REELS];
 
 export const PRODUCTION_STEPS = [
   {
