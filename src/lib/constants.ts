@@ -136,9 +136,9 @@ export const FAQ_ITEMS = [
       "Nein. Bei IchGeheViral gibt es für dich kein unübersichtliches Credit-System, bei dem jeder Klick oder Fehlversuch ein Punktekonto leert. Du erstellst dein Video transparent ohne komplizierte Token-Rechnerei.",
   },
   {
-    question: "Muss ich Kenntnisse im Videoschnitt haben?",
+    question: "Muss ich ein Konzept auswählen oder einen Prompt schreiben?",
     answer:
-      "Nein. Du wählst aktuell einen der verfügbaren Pool-Stile aus. Den Bildaufbau, die aufeinander abgestimmten Szenen, die Übergänge und die passende Atmosphäre erstellt das System automatisch.",
+      "Nein. In der aktuellen Studioansicht genügt der Generate-Button. Konzept, Bildaufbau, aufeinander abgestimmte Szenen und interne Variation bleiben bewusst im Hintergrund.",
   },
   {
     question: "Welches Format und welche Länge erhalte ich?",
