@@ -83,7 +83,7 @@ export const SHOWCASE_VIDEOS: VideoShowcaseItem[] = [
     duration: "63s",
     resolution: "720×1280 (720p)",
     stateCount: 8,
-    posterSrc: "/media/videos/hero-poster.jpg",
+    posterSrc: "/media/states/run1/state_08.jpg",
     videoSrc: "/media/videos/golden-pool-run1.mp4",
     tag: "Moderne Pooloase",
     viewsEstimate: "",

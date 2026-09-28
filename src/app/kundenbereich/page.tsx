@@ -103,7 +103,7 @@ export default function StudioDashboardPage() {
             </h1>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-[#686c73] sm:text-base">
               Eine vollständige Videobibliothek für die Produktdarstellung: zwei echte Golden-V1-Reels
-              plus {MARKETING_SEED_REELS.length} klar markierte Demo-Einträge für die Marketingansicht.
+              plus {MARKETING_SEED_REELS.length} klar markierte Demo-Ansichten aus der Golden-V1-Visualwelt.
             </p>
           </div>
 
@@ -120,7 +120,7 @@ export default function StudioDashboardPage() {
           {[
             [String(totalReels), "Reels in dieser Ansicht"],
             [String(REAL_STUDIO_REELS.length), "echte Golden-V1-MP4s"],
-            [String(MARKETING_SEED_REELS.length), "Marketing-Demo-Einträge"],
+            [String(MARKETING_SEED_REELS.length), "Marketing-Demo-Ansichten"],
           ].map(([value, label]) => (
             <div key={label} className="rounded-2xl border border-[#e4e1ec] bg-white p-5">
               <div className="text-3xl font-black tracking-[-0.04em] text-[#101114]">{value}</div>
@@ -157,10 +157,10 @@ export default function StudioDashboardPage() {
             <div>
               <span className="text-xs font-black uppercase tracking-[0.16em] text-[#9b6b11]">Marketing-Demo</span>
               <h2 className="mt-2 text-xl font-black tracking-[-0.03em] text-[#101114]">
-                {MARKETING_SEED_REELS.length} Seed-Einträge für eine glaubwürdige Bibliotheksansicht
+                {MARKETING_SEED_REELS.length} Demo-Ansichten für die Marketingdarstellung
               </h2>
               <p className="mt-2 max-w-3xl text-sm leading-6 text-[#756b57]">
-                Diese Einträge sind Platzhalter für die Präsentation und nicht an Kundenkonten oder
+                Diese Ansichten sind Platzhalter für die Präsentation und nicht an Kundenkonten oder
                 echte Generierungen gebunden. Es wurden dafür keine zusätzlichen kostenpflichtigen Runs ausgelöst.
               </p>
             </div>

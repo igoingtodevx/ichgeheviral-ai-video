@@ -110,9 +110,9 @@ export const MARKETING_SEED_REELS: StudioReel[] = MARKETING_SEED_TITLES.map((tit
     stateImages: [posterSrc],
     styleLabel: `Poolbau · Demo ${String(index + 1).padStart(2, "0")}`,
     summary:
-      "Marketing-Demo-Eintrag zur Darstellung der Videobibliothek — keine separate Generation ausgelöst.",
+      "Marketing-Demo-Ansicht zur Darstellung der Videobibliothek — kein separates MP4 und keine eigene Generation ausgelöst.",
     isDemo: true,
-    sourceLabel: "Marketing-Demo · Seed-Daten",
+    sourceLabel: "Marketing-Demo · abgeleitete Poster-Ansicht",
   };
 });
 

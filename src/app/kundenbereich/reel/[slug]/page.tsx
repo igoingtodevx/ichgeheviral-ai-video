@@ -122,7 +122,7 @@ export default async function ReelDetailPage({
             {reel.isDemo && (
               <div className="mt-6 rounded-2xl border border-[#f0dfb8] bg-[#fffaf0] p-4 text-sm leading-6 text-[#756b57]">
                 <strong className="text-[#9b6b11]">Marketing-Demo:</strong> Dieser Eintrag ist eine
-                Seed-Karte für die Bibliotheksdarstellung und keinem Kundenkonto zugeordnet.
+                abgeleitete Poster-Ansicht für die Bibliotheksdarstellung und keinem Kundenkonto zugeordnet.
               </div>
             )}
 

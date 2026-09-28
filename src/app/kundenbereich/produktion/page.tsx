@@ -60,13 +60,14 @@ export default function ProductionDemoPage() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <span className="text-xs font-black uppercase tracking-[0.16em] text-[#5d4de1]">
-              Reel-Erstellung
+              Visuelle Produktionsdemo
             </span>
             <h1 className="mt-4 text-4xl font-black tracking-[-0.055em] sm:text-5xl">
               Dein Reel entsteht.
             </h1>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-[#686c73] sm:text-base">
-              Sieh, wie aus einer Transformation ein fertiges Short-Form-Reel entsteht.
+              Diese visuelle Vorschau zeigt anhand eines vorhandenen Golden-V1-Beispiels, wie aus einer
+              Poolbau-Transformation ein fertiges Short-Form-Reel entsteht. Sie startet keinen echten Job.
             </p>
           </div>
 
@@ -76,7 +77,7 @@ export default function ProductionDemoPage() {
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-5 py-3.5 text-sm font-black text-white shadow-[0_12px_32px_rgba(109,93,252,.22)] transition hover:bg-[#5947e8]"
           >
             {running ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 fill-current" />}
-            {running ? "Entstehung pausieren" : finished ? "Entstehung erneut ansehen" : "Entstehung abspielen"}
+            {running ? "Demo pausieren" : finished ? "Demo erneut ansehen" : "Demo abspielen"}
           </button>
         </div>
 
@@ -84,7 +85,7 @@ export default function ProductionDemoPage() {
           <section className="overflow-hidden rounded-[26px] border border-[#e4e1ec] bg-white shadow-[0_18px_60px_rgba(37,31,68,.06)]">
             <div className="flex items-center justify-between border-b border-[#efedf3] px-5 py-4 sm:px-6">
               <div>
-                <div className="text-xs font-bold uppercase tracking-[0.14em] text-[#8a8e94]">Aktueller Schritt</div>
+                <div className="text-xs font-bold uppercase tracking-[0.14em] text-[#8a8e94]">Aktueller Schritt · 8 visuelle Phasen</div>
                 <div className="mt-1 text-sm font-black">{PHASE_LABELS[phase]}</div>
               </div>
               <div className="rounded-full bg-[#f0edff] px-3 py-1.5 text-xs font-black text-[#5d4de1]">
@@ -104,7 +105,7 @@ export default function ProductionDemoPage() {
                   className="object-cover"
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-5 pb-5 pt-16 text-white">
-                  <div className="text-xs font-bold text-white/65">Bauphase {phase + 1} von 8</div>
+                  <div className="text-xs font-bold text-white/65">Visuelle Phase {phase + 1} von 8</div>
                   <div className="mt-1 text-xl font-black">{PHASE_LABELS[phase]}</div>
                 </div>
               </div>
@@ -123,7 +124,7 @@ export default function ProductionDemoPage() {
                       className={`relative aspect-[4/5] overflow-hidden rounded-lg border-2 ${
                         phase === index ? "border-[#6d5dfc]" : "border-transparent opacity-65 hover:opacity-100"
                       }`}
-                      aria-label={`Bauphase ${index + 1} ansehen`}
+                      aria-label={`Visuelle Phase ${index + 1} ansehen`}
                     >
                       <Image src={src} alt="" fill sizes="110px" className="object-cover" />
                       <span className="absolute bottom-1 left-1 rounded bg-black/65 px-1.5 py-0.5 text-[9px] font-black text-white">
@@ -138,7 +139,7 @@ export default function ProductionDemoPage() {
 
           <aside className="rounded-[26px] border border-[#e4e1ec] bg-white p-5 shadow-[0_18px_60px_rgba(37,31,68,.06)] sm:p-6">
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-black">Dein Reel entsteht</h2>
+              <h2 className="text-lg font-black">5 Produktionsschritte</h2>
               {finished && (
                 <button
                   type="button"
@@ -150,6 +151,10 @@ export default function ProductionDemoPage() {
                 </button>
               )}
             </div>
+
+            <p className="mt-2 text-xs leading-5 text-[#858991]">
+              Ein Produktionsschritt kann mehrere visuelle Phasen enthalten.
+            </p>
 
             <div className="mt-3 h-2 overflow-hidden rounded-full bg-[#efedf4]">
               <div
@@ -190,15 +195,20 @@ export default function ProductionDemoPage() {
             </div>
 
             {finished ? (
-              <Link
-                href="/kundenbereich/reel/modern-rechteckig"
-                className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-5 py-4 text-sm font-black text-white"
-              >
-                Fertiges Reel ansehen
-              </Link>
+              <>
+                <Link
+                  href="/kundenbereich/reel/modern-rechteckig"
+                  className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-5 py-4 text-sm font-black text-white"
+                >
+                  Golden-V1-Beispiel ansehen
+                </Link>
+                <p className="mt-3 text-center text-[11px] leading-5 text-[#858991]">
+                  Vorhandenes Beispielasset · kein neu erzeugter Kundenjob
+                </p>
+              </>
             ) : (
               <p className="mt-2 rounded-xl bg-[#f7f5ff] p-4 text-xs leading-5 text-[#665f7b]">
-                Hier siehst du den Aufbau Schritt für Schritt.
+                Visuelle Produktionsdemo: Hier siehst du den Aufbau Schritt für Schritt — ohne echten Job und ohne Download.
               </p>
             )}
           </aside>

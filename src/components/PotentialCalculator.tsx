@@ -3,11 +3,12 @@
 import React, { useMemo, useState } from "react";
 import { BarChart3, SlidersHorizontal } from "lucide-react";
 
+// Matches the old IchGeheViral.de calculator: 30 uploads/month and nearest-25€ rounding.
 const VIDEOS_PER_MONTH = 30;
 const RPM_EUR = 1.5;
-const MIN_VIEWS_PER_VIDEO = 10_000;
-const MAX_VIEWS_PER_VIDEO = 1_000_000;
-const VIEW_STEP = 10_000;
+const MIN_VIEWS_PER_VIDEO = 5_000;
+const MAX_VIEWS_PER_VIDEO = 500_000;
+const VIEW_STEP = 5_000;
 const DEFAULT_VIEWS_PER_VIDEO = 100_000;
 
 const numberFormatter = new Intl.NumberFormat("de-DE");
@@ -30,7 +31,7 @@ export function PotentialCalculator() {
 
   const result = useMemo(() => {
     const monthlyViews = viewsPerVideo * VIDEOS_PER_MONTH;
-    const estimatedMonthlyRevenue = (monthlyViews / 1_000) * RPM_EUR;
+    const estimatedMonthlyRevenue = Math.round(((monthlyViews * RPM_EUR) / 1_000) / 25) * 25;
     return { monthlyViews, estimatedMonthlyRevenue };
   }, [viewsPerVideo]);
 

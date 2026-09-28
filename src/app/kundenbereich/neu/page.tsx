@@ -1,12 +1,12 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { ArrowRight, Check, Download, Gauge, Layers3 } from "lucide-react";
+import { ArrowRight, Check, Gauge, Layers3, Smartphone } from "lucide-react";
 
 const BENEFITS = [
   ["60+ Sek.", "fertiges vertikales Reel", Gauge],
   ["8 Phasen", "sichtbarer Aufbau bis zum Reveal", Layers3],
-  ["MP4", "bereit für Short-Form-Plattformen", Download],
+  ["9:16", "Short-Form-Format", Smartphone],
 ] as const;
 
 export default function NewReelPage() {
@@ -42,6 +42,11 @@ export default function NewReelPage() {
                 Drücke Generate. Die Produktionsansicht zeigt dir anschließend, wie aus dem
                 Ausgangszustand ein fertiges Reel mit sichtbarem Fortschritt entsteht.
               </p>
+              <p className="mt-5 max-w-xl rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-xs leading-5 text-white/55">
+                <strong className="text-white/80">Visuelle Demo:</strong> Generate startet hier
+                keinen echten Job und keinen Download. Du siehst den Ablauf anhand eines vorhandenen
+                Golden-V1-Beispiels.
+              </p>
 
               <button
                 type="button"
@@ -55,7 +60,7 @@ export default function NewReelPage() {
             <div className="rounded-[24px] border border-white/10 bg-white/[0.05] p-5">
               <div className="text-xs font-black uppercase tracking-[0.14em] text-white/45">Was du erhältst</div>
               <ul className="mt-4 space-y-3">
-                {["Ein zusammenhängendes Reel", "Interne Konzeptvariation", "Keine Credit-Rechnung"].map((item) => (
+                {["Ein zusammenhängendes Reel", "Kontrollierte kreative Variation", "Keine Credits in der Demo"].map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm font-semibold text-white/80">
                     <Check className="h-4 w-4 shrink-0 text-[#9b8fff]" />
                     {item}
