@@ -49,13 +49,13 @@ export function HowItWorks() {
         </div>
 
         <div className="mt-10 rounded-[22px] border border-[#e6e4ef] bg-white p-6 sm:p-8">
-          <b className="text-sm font-black uppercase tracking-wider text-[#101114]">Aktuelle Kategorie</b>
+          <b className="text-sm font-black uppercase tracking-wider text-[#101114]">Poolbau im Studio</b>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[#686c73]">
-            Poolbau ist aktuell verfügbar. Welche Variante am besten passt, wird im Hintergrund gewählt.
+            Klare Vorher-Nachher-Geschichten mit sichtbarer Entwicklung bis zum fertigen Ergebnis.
           </p>
           <div className="mt-5 grid gap-3 sm:grid-cols-3">
             {[
-              ["Poolbau", "Eine klar abgegrenzte erste Nische"],
+              ["Poolbau", "Eine klare Kategorie für sichtbare Veränderungen"],
               ["8 Szenen", "Sichtbare Entwicklung bis zum fertigen Ergebnis"],
               ["60+ Sek.", "Ein fertiges vertikales Reel"],
             ].map(([label, description]) => (

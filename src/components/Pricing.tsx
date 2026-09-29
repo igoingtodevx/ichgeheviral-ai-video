@@ -14,12 +14,12 @@ export function Pricing() {
             Dein Einstieg
           </span>
           <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
-            Pakete stehen fest. Preise folgen.
+            Pakete für deinen Content
           </h2>
           <p className="mt-5 text-[#686c73]">
             {PRICING_LAUNCHED
               ? "Wähle das passende Paket und starte direkt im sicheren Checkout."
-              : "Die Pakete stehen fest. Die finalen Verkaufspreise werden vor dem Start veröffentlicht — bis dahin kannst du dir das Studio und den Ablauf ansehen."}
+              : "Wähle den Umfang, der zu deinem nächsten Content-Projekt passt."}
           </p>
         </div>
 

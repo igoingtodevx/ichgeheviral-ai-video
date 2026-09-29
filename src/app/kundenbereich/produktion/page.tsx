@@ -60,14 +60,14 @@ export default function ProductionDemoPage() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <span className="text-xs font-black uppercase tracking-[0.16em] text-[#5d4de1]">
-              Ablauf-Vorschau
+              Reel-Ablauf
             </span>
             <h1 className="mt-4 text-4xl font-black tracking-[-0.055em] sm:text-5xl">
-              So läuft die Erstellung ab.
+              So entsteht dein Reel.
             </h1>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-[#686c73] sm:text-base">
-              Diese Vorschau zeigt anhand eines vorbereiteten Poolbau-Beispiels, wie aus einer
-              Veränderung ein fertiges Short-Form-Reel entsteht. Hier wird noch kein echtes Video erstellt.
+              Vom Ausgangszustand bis zum fertigen Ergebnis – acht Szenen machen jede Veränderung
+              sichtbar und führen zu einem klaren Finale.
             </p>
           </div>
 
@@ -77,7 +77,7 @@ export default function ProductionDemoPage() {
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-5 py-3.5 text-sm font-black text-white shadow-[0_12px_32px_rgba(109,93,252,.22)] transition hover:bg-[#5947e8]"
           >
             {running ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 fill-current" />}
-            {running ? "Vorschau pausieren" : finished ? "Vorschau erneut ansehen" : "Vorschau abspielen"}
+            {running ? "Ablauf pausieren" : finished ? "Ablauf erneut ansehen" : "Ablauf abspielen"}
           </button>
         </div>
 
@@ -202,15 +202,9 @@ export default function ProductionDemoPage() {
                 >
                   Beispiel ansehen
                 </Link>
-                <p className="mt-3 text-center text-[11px] leading-5 text-[#858991]">
-                  Vorschau · kein neuer Job gestartet
-                </p>
+
               </>
-            ) : (
-              <p className="mt-2 rounded-xl bg-[#f7f5ff] p-4 text-xs leading-5 text-[#665f7b]">
-                Vorschau: Hier siehst du den Aufbau Schritt für Schritt — ohne echten Job und ohne Download.
-              </p>
-            )}
+            ) : null}
           </aside>
         </div>
       </div>

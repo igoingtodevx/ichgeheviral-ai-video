@@ -76,7 +76,7 @@ export function SocialProof() {
             So kann eine Transformation aussehen.
           </h2>
           <p className="mt-5 text-base leading-7 text-[#686c73] sm:text-lg">
-            Ausgewählte Beispiel-Reels aus der aktuell verfügbaren Poolbau-Kategorie.
+            Ausgewählte Poolbau-Reels aus dem IchGeheViral Studio.
           </p>
         </div>
 

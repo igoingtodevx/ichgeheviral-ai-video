@@ -28,7 +28,7 @@ export function Hero({ onOpenVideo }: { onOpenVideo: () => void }) {
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-[#686c73] sm:text-lg">
-          IchGeheViral macht aus einer Veränderung ein zusammenhängendes 60+ Sekunden Reel: vom Ausgangspunkt bis zum fertigen Ergebnis. Poolbau ist aktuell die erste Kategorie; weitere folgen schrittweise.
+          IchGeheViral macht aus einer Veränderung ein zusammenhängendes 60+ Sekunden Reel: vom Ausgangspunkt bis zum fertigen Ergebnis. Poolbau ist das erste Transformations-Format im Studio.
         </p>
 
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">

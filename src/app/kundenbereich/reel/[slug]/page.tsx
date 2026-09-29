@@ -52,10 +52,10 @@ export default async function ReelDetailPage({
                 <div className="absolute inset-x-5 bottom-5">
                   <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.14em] text-white/80">
                     <Eye className="h-3.5 w-3.5" />
-                    Vorschau
+                    Beispielansicht
                   </span>
                   <p className="mt-3 text-sm leading-5 text-white/70">
-                    Vorbereitete Vorschau für deine Präsentation.
+                    Beispielansicht für deine Präsentation.
                   </p>
                 </div>
               </div>
@@ -71,7 +71,7 @@ export default async function ReelDetailPage({
               }`}
             >
               {reel.isDemo ? <Eye className="h-3.5 w-3.5" /> : <Check className="h-3.5 w-3.5" />}
-              {reel.isDemo ? "Vorschau" : "Reel fertig"}
+              {reel.isDemo ? "Beispielansicht" : "Reel fertig"}
             </span>
             <h1 className="mt-4 text-4xl font-black tracking-[-0.055em] text-[#101114] sm:text-5xl">
               {reel.title}
@@ -82,12 +82,12 @@ export default async function ReelDetailPage({
               <div className="rounded-2xl border border-[#e4e1ec] bg-white p-4">
                 <PlayCircle className="h-5 w-5 text-[#6d5dfc]" />
                 <div className="mt-3 text-xs font-bold uppercase tracking-wider text-[#989ca2]">{reel.isDemo ? "Ansicht" : "Laufzeit"}</div>
-                <div className="mt-1 text-lg font-black">{reel.isDemo ? "Bildvorschau" : reel.duration}</div>
+                <div className="mt-1 text-lg font-black">{reel.isDemo ? "Ansicht" : reel.duration}</div>
               </div>
               <div className="rounded-2xl border border-[#e4e1ec] bg-white p-4">
                 <Layers3 className="h-5 w-5 text-[#6d5dfc]" />
                 <div className="mt-3 text-xs font-bold uppercase tracking-wider text-[#989ca2]">{reel.isDemo ? "Umfang" : "Szenen"}</div>
-                <div className="mt-1 text-lg font-black">{reel.isDemo ? "1 Bild" : reel.phaseCount}</div>
+                <div className="mt-1 text-lg font-black">{reel.isDemo ? "1 Ansicht" : reel.phaseCount}</div>
               </div>
               <div className="rounded-2xl border border-[#e4e1ec] bg-white p-4">
                 <Gauge className="h-5 w-5 text-[#6d5dfc]" />
@@ -108,7 +108,7 @@ export default async function ReelDetailPage({
                 </a>
               ) : (
                 <span className="inline-flex items-center justify-center gap-2 rounded-xl border border-dashed border-[#dedbe7] bg-[#faf9fd] px-6 py-4 text-sm font-black text-[#858991]">
-                  Vorschau · kein Download
+                  Nur ansehen
                 </span>
               )}
               <Link
@@ -119,16 +119,9 @@ export default async function ReelDetailPage({
               </Link>
             </div>
 
-            {reel.isDemo && (
-              <div className="mt-6 rounded-2xl border border-[#f0dfb8] bg-[#fffaf0] p-4 text-sm leading-6 text-[#756b57]">
-                <strong className="text-[#9b6b11]">Vorschau:</strong> Dieses Beispiel ist für deine
-                Präsentation vorbereitet.
-              </div>
-            )}
-
             <div className="mt-9">
               <h2 className="text-xl font-black tracking-[-0.03em]">
-                {reel.isDemo ? "Vorschau" : "Die 8 Szenen"}
+                {reel.isDemo ? "Beispielansicht" : "Die 8 Szenen"}
               </h2>
               <div className={`mt-4 grid gap-2 ${reel.isDemo ? "max-w-[120px] grid-cols-1" : "grid-cols-4 sm:grid-cols-8"}`}>
                 {reel.stateImages.map((src, index) => (

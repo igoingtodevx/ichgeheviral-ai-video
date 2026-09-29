@@ -24,8 +24,8 @@ export function FounderSection() {
                 zusammenhängendes Transformations-Reel macht.
               </p>
               <p>
-                Timos persönliche Erklärung erscheint hier, sobald die Aufnahme vorliegt. Bis dahin
-                kannst du dir direkt oben das fertige Beispiel ansehen.
+                Timo zeigt dir, worauf es bei einem starken Transformations-Reel ankommt – von der
+                ersten Idee bis zum fertigen Ergebnis.
               </p>
             </div>
 
@@ -73,13 +73,13 @@ export function FounderSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-black/10" />
                 <div className="absolute inset-x-6 bottom-6 text-white sm:inset-x-8 sm:bottom-8">
                   <span className="inline-flex rounded-full border border-white/20 bg-black/30 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-white/80">
-                    Timos Video folgt
+                    Timos Perspektive
                   </span>
                   <div className="mt-3 text-2xl font-black tracking-[-0.03em] sm:text-3xl">
-                    Timos persönliche Erklärung
+                    Vom Projekt zum fertigen Reel
                   </div>
                   <p className="mt-2 max-w-md text-sm leading-6 text-white/70">
-                    Sobald die Aufnahme vorliegt, erscheint sie hier.
+                    Ein klarer Ablauf, vom ersten Bild bis zur finalen Szene.
                   </p>
                 </div>
               </div>

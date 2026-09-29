@@ -49,10 +49,10 @@ export function StudioShell({ children }: { children: ReactNode }) {
             <div className="rounded-2xl border border-[#e3dfff] bg-[#f8f7ff] p-4">
               <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-[#6555e8]">
                 <Gauge className="h-4 w-4" />
-                Transformations-Reels
+                Poolbau-Reels
               </div>
               <p className="mt-2 text-xs leading-5 text-[#777b82]">
-                Aktuell verfügbar: Poolbau. Weitere Kategorien werden schrittweise ergänzt.
+                Klare Vorher-Nachher-Geschichten für dein Studio.
               </p>
             </div>
             <Link

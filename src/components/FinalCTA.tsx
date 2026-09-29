@@ -13,7 +13,8 @@ export function FinalCTA() {
           Aus deiner Idee wird ein fertiges Reel.
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-[#b2b5ba]">
-          Im Studio startest du mit einer verfügbaren Transformation. Poolbau ist aktuell die erste Kategorie — weitere werden schrittweise ergänzt.
+          Im Studio startest du mit Poolbau-Transformationen – klar aufgebaut und bereit für
+          aufmerksamkeitsstarke Short-Form-Videos.
         </p>
         <Link
           href="/kundenbereich/neu"
