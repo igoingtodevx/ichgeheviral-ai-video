@@ -9,6 +9,7 @@ import { HowItWorks } from "../components/HowItWorks";
 import { PotentialCalculator } from "../components/PotentialCalculator";
 import { NoCreditsSection } from "../components/NoCreditsSection";
 import { SocialProof } from "../components/SocialProof";
+import { TestimonialsSection } from "../components/TestimonialsSection";
 import { FounderSection } from "../components/FounderSection";
 import { Pricing } from "../components/Pricing";
 import { FAQ } from "../components/FAQ";
@@ -34,6 +35,7 @@ export default function LandingPage() {
         <FounderSection />
         <PotentialCalculator />
         <TransformationShowcase onOpenVideo={setVideoSrc} />
+        <TestimonialsSection />
         <WhyViral />
         <HowItWorks />
         <NoCreditsSection />
