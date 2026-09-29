@@ -39,7 +39,11 @@ function ReelCard({ reel, compact = false }: { reel: StudioReel; compact?: boole
             <span className={`h-2 w-2 rounded-full ${reel.isDemo ? "bg-[#d99a24]" : "bg-[#35b978]"}`} />
             {reel.status}
           </span>
-          <span className="absolute inset-0 m-auto grid h-12 w-12 place-items-center rounded-full bg-white/95 text-[#5d4de1] shadow-xl transition group-hover:scale-105">
+          <span
+            className={`absolute grid place-items-center rounded-full bg-white/95 text-[#5d4de1] shadow-xl transition group-hover:scale-105 ${
+              compact ? "right-3 top-3 h-10 w-10" : "inset-0 m-auto h-12 w-12"
+            }`}
+          >
             {reel.isDemo ? <Eye className="h-5 w-5" /> : <Play className="ml-0.5 h-5 w-5 fill-current" />}
           </span>
           {!compact ? (
@@ -69,7 +73,7 @@ function ReelCard({ reel, compact = false }: { reel: StudioReel; compact?: boole
             className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-black text-[#5d4de1] transition hover:text-[#3f31bd]"
           >
             <Eye className="h-3.5 w-3.5" />
-            Bildvorschau ansehen
+            Beispiel ansehen
           </Link>
         </div>
       ) : (
@@ -94,7 +98,7 @@ function ReelCard({ reel, compact = false }: { reel: StudioReel; compact?: boole
               </a>
             ) : (
               <span className="inline-flex items-center rounded-xl border border-dashed border-[#dedbe7] px-3.5 py-2.5 text-[10px] font-bold text-[#989ca2]">
-                Nur Bildvorschau
+                Beispielansicht
               </span>
             )}
           </div>
@@ -119,8 +123,8 @@ export default function StudioDashboardPage() {
               Meine Reels
             </h1>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-[#686c73] sm:text-base">
-              Hier findest du deine fertigen Poolbau-Reels und vorbereitete Beispiele für deine
-              Präsentation. Über „Neues Reel“ startest du ein weiteres Reel.
+              Deine Poolbau-Reels auf einen Blick – ergänzt um Präsentationsbeispiele. Über „Neues Reel“
+              erstellst du dein nächstes Reel.
             </p>
           </div>
 
@@ -137,7 +141,7 @@ export default function StudioDashboardPage() {
           {[
             [String(totalReels), "Einträge in deiner Bibliothek"],
             [String(REAL_STUDIO_REELS.length), "fertige Reels"],
-            [String(MARKETING_SEED_REELS.length), "vorbereitete Beispiele"],
+            [String(MARKETING_SEED_REELS.length), "Präsentationsbeispiele"],
           ].map(([value, label]) => (
             <div key={label} className="rounded-2xl border border-[#e4e1ec] bg-white p-5">
               <div className="text-3xl font-black tracking-[-0.04em] text-[#101114]">{value}</div>
@@ -173,14 +177,14 @@ export default function StudioDashboardPage() {
             <div>
               <span className="text-xs font-black uppercase tracking-[0.16em] text-[#9b6b11]">Für deine Präsentation</span>
               <h2 className="mt-2 text-xl font-black tracking-[-0.03em] text-[#101114]">
-                {MARKETING_SEED_REELS.length} vorbereitete Beispiele
+                {MARKETING_SEED_REELS.length} Präsentationsbeispiele
               </h2>
               <p className="mt-2 max-w-3xl text-sm leading-6 text-[#756b57]">
-                Vorbereitete Poolbau-Beispiele, die dir zeigen, wie vielfältig das Ergebnis aussehen kann.
+                Weitere Poolbau-Beispiele für deine Präsentation – von der ersten Idee bis zum fertigen Ergebnis.
               </p>
             </div>
             <span className="mt-4 inline-flex shrink-0 items-center rounded-full border border-[#ead39f] bg-white/70 px-3 py-2 text-[11px] font-black text-[#9b6b11] sm:mt-0">
-              Nur Bildvorschau
+              Beispielansicht
             </span>
           </div>
 

@@ -1,4 +1,4 @@
-export type StudioReelStatus = "Fertig" | "Vorschau";
+export type StudioReelStatus = "Fertig" | "Beispiel";
 
 export interface StudioReel {
   slug: string;
@@ -56,34 +56,34 @@ export const REAL_STUDIO_REELS: StudioReel[] = [
 ];
 
 const MARKETING_SEED_TITLES = [
-  "Stadtgarten mit Infinity-Pool",
-  "Kompakte Poolterrasse mit Naturstein",
-  "Hinterhof mit Abendbeleuchtung",
-  "Familienpool mit Loungezone",
+  "Infinity-Pool im Stadtgarten",
+  "Kompakte Poolterrasse",
+  "Pool im Abendlicht",
+  "Familienpool mit Lounge",
   "Mediterrane Gartenkante",
   "Pooldeck aus warmem Holz",
   "Minimalistische Betonoptik",
-  "Pool mit integrierter Sitzbank",
-  "Gartenhang mit Wasserlauf",
-  "Kleine Oase mit Außendusche",
-  "Naturstein-Pool mit Feuerstelle",
-  "Terrasse mit ruhiger Wasserlinie",
-  "Innenhof zur Wellness-Oase",
+  "Pool mit Sitzbank",
+  "Pool am Gartenhang",
+  "Oase mit Außendusche",
+  "Naturstein-Pool mit Feuer",
+  "Ruhige Poolterrasse",
+  "Innenhof als Wellness-Oase",
   "Poolgarten mit Pergola",
-  "Baugrundstück zum Designgarten",
+  "Baugrundstück zum Pool",
   "Organische Lagunenform",
-  "Schmaler Garten, großes Ergebnis",
+  "Pool im schmalen Garten",
   "Pool mit versenkter Lounge",
   "Sommergarten mit Wasserfall",
   "Modernes Becken im Altbauhof",
   "Travertin-Terrasse mit Spa",
-  "Gartenumbau mit klarer Geometrie",
-  "Poolbereich mit mediterraner Bepflanzung",
-  "Wasserfläche zwischen Naturstein",
+  "Gartenumbau mit Geometrie",
+  "Mediterraner Poolbereich",
+  "Wasser zwischen Naturstein",
   "Dachterrasse als Mini-Oase",
-  "Pool mit gestufter Holzterrasse",
-  "Lichtkonzept für die Abendstimmung",
-  "Finale Pooloase mit Outdoor-Küche",
+  "Pool mit Holzterrasse",
+  "Abendlicht am Pool",
+  "Pooloase mit Outdoor-Küche",
 ] as const;
 
 const MARKETING_SEED_POSTERS = Array.from(
@@ -101,18 +101,17 @@ export const MARKETING_SEED_REELS: StudioReel[] = MARKETING_SEED_TITLES.map((tit
   return {
     slug: `marketing-demo-${String(index + 1).padStart(2, "0")}`,
     title,
-    subtitle: "Vorbereitetes Beispiel für eine Poolbau-Transformation",
-    status: "Vorschau",
-    duration: "Bildvorschau",
+    subtitle: "Beispiel für eine Poolbau-Transformation",
+    status: "Beispiel",
+    duration: "Ansicht",
     phaseCount: 8,
     videoSrc: null,
     posterSrc,
     stateImages: [posterSrc],
     styleLabel: `Poolbau · Beispiel ${String(index + 1).padStart(2, "0")}`,
-    summary:
-      "Vorbereitete Vorschau für deine Präsentation.",
+    summary: "Ein Beispiel für deine Poolbau-Präsentation.",
     isDemo: true,
-    sourceLabel: "Vorbereitetes Beispiel",
+    sourceLabel: "Beispielansicht",
   };
 });
 
@@ -122,7 +121,7 @@ export const STUDIO_REELS: StudioReel[] = [...REAL_STUDIO_REELS, ...MARKETING_SE
 export const PRODUCTION_STEPS = [
   {
     title: "Transformation bestätigt",
-    description: "Die freigegebene Transformation und das feste Zielbild stehen fest.",
+    description: "Die freigegebene Transformation und das Zielbild sind definiert.",
   },
   {
     title: "Szenen aufgebaut",

@@ -26,7 +26,7 @@ export const PACKAGES: ProductPackage[] = [
   {
     id: "ai-video",
     name: "Transformations-Reel",
-    tagline: "Ein fertiges Reel aus der aktuell verfügbaren Kategorie",
+    tagline: "Ein fertiges Reel aus dem Poolbau-Format",
     priceEUR: null,
     addCourse: false,
     highlight: true,
@@ -54,7 +54,7 @@ export const PACKAGES: ProductPackage[] = [
 ];
 
 export function formatPrice(value: number | null): string {
-  if (value === null) return "Preis folgt vor dem Verkaufsstart";
+  if (value === null) return "Individuelles Angebot";
   return new Intl.NumberFormat("de-DE", {
     style: "currency",
     currency: "EUR",

@@ -23,8 +23,8 @@ export default function NewReelPage() {
             Ein Klick. Dein nächstes Reel.
           </h1>
           <p className="mt-4 max-w-2xl text-sm leading-6 text-[#686c73] sm:text-base">
-            Keine Presets, keine Promptfelder, keine technischen Entscheidungen. Du startest die
-            Erstellung mit einem Klick; die genaue Ausgestaltung bleibt im Hintergrund.
+            Ein Klick genügt: Die passende Poolbau-Idee und der Aufbau des Reels bleiben im Hintergrund,
+            damit du dich auf das Ergebnis konzentrieren kannst.
           </p>
         </div>
 
@@ -33,18 +33,14 @@ export default function NewReelPage() {
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.14em] text-[#c5beff]">
                 <span className="h-2 w-2 rounded-full bg-[#8f82ff]" />
-                Poolbau · aktuell verfügbar
+                Poolbau · dein Format
               </span>
               <h2 className="mt-5 max-w-xl text-3xl font-black tracking-[-0.04em] sm:text-4xl">
                 Bereit für eine neue Transformation?
               </h2>
               <p className="mt-4 max-w-xl text-sm leading-6 text-white/60 sm:text-base">
-                Drücke Generate. Danach siehst du, wie aus dem Ausgangszustand ein fertiges Reel
-                mit sichtbarem Fortschritt entsteht. Bei jedem Start entsteht eine neue Variante.
-              </p>
-              <p className="mt-5 max-w-xl rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-xs leading-5 text-white/55">
-                <strong className="text-white/80">Vorschau-Modus:</strong> Dieser Button zeigt hier
-                den Ablauf. Die echte Erstellung und der Download werden im Backend angebunden.
+                Drücke Generate und sieh, wie aus dem Ausgangszustand ein fertiges Reel mit sichtbarem
+                Fortschritt entsteht. Bei jedem Start entwickelt sich eine eigene Variante.
               </p>
 
               <button
@@ -80,10 +76,7 @@ export default function NewReelPage() {
           ))}
         </section>
 
-        <p className="mt-7 text-center text-xs leading-5 text-[#a1a5ab]">
-          Vorschau-Modus: Der Ablauf ist vorbereitet. Konto-, Job- und Download-Anbindung folgen mit
-          dem Backend.
-        </p>
+
       </div>
     </div>
   );
