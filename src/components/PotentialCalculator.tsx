@@ -129,7 +129,7 @@ export function PotentialCalculator() {
               </div>
             </div>
 
-            <p className="mt-7 border-t border-white/10 pt-5 text-xs leading-5 text-white/50">
+            <p className="mt-7 border-t border-white/10 pt-5 text-sm leading-6 text-white/70">
               * Orientierung bei {VIDEOS_PER_MONTH} Videos/Monat und {rpmFormatter.format(RPM_EUR)} € RPM
               (pro 1.000 Views). Keine Garantie; Vergütung, qualifizierte Views, Region und
               Plattformregeln variieren.

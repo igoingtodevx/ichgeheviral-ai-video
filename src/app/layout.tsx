@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ThemeProvider } from "../components/ThemeProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -32,8 +34,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="de" className={`${geistSans.variable} ${geistMono.variable} h-full`}>
-      <body className="min-h-screen bg-white text-[#101114] antialiased">{children}</body>
+    <html
+      lang="de"
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable} h-full`}
+    >
+      <Script id="theme-init" strategy="beforeInteractive">
+        {`(() => {
+          try {
+            const key = "ichgeheviral-theme";
+            const stored = window.localStorage.getItem(key);
+            const theme = stored === "dark" || stored === "light"
+              ? stored
+              : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+            document.documentElement.dataset.theme = theme;
+            document.documentElement.style.colorScheme = theme;
+          } catch {
+            document.documentElement.dataset.theme = "light";
+          }
+        })();`}
+      </Script>
+      <body className="min-h-screen antialiased">
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }

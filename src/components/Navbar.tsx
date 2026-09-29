@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Menu, X } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const LINKS = [
   { href: "#ergebnisse", label: "Ergebnisse" },
@@ -32,6 +33,7 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           <Link
             href="/kundenbereich"
             className="hidden items-center gap-2 rounded-xl bg-[#6d5dfc] px-5 py-3 text-xs font-black text-white transition hover:bg-[#5947e8] sm:inline-flex"

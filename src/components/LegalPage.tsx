@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function LegalPage({
   title,
@@ -17,12 +18,15 @@ export function LegalPage({
           <Link href="/" className="text-xl font-black tracking-[-0.05em]">
             IchGehe<span className="text-[#6d5dfc]">Viral</span>
           </Link>
-          <Link
-            href="/"
-            className="rounded-full border border-[#dddbe7] bg-white px-4 py-2 text-sm font-bold text-[#4f545b] transition hover:border-[#6d5dfc] hover:text-[#101114]"
-          >
-            Zur Website
-          </Link>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <Link
+              href="/"
+              className="rounded-full border border-[#dddbe7] bg-white px-4 py-2 text-sm font-bold text-[#4f545b] transition hover:border-[#6d5dfc] hover:text-[#101114]"
+            >
+              Zur Website
+            </Link>
+          </div>
         </div>
       </header>
 
