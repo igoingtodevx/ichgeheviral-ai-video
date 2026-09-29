@@ -1,4 +1,4 @@
-export type StudioReelStatus = "Fertig" | "Marketing-Demo";
+export type StudioReelStatus = "Fertig" | "Vorschau";
 
 export interface StudioReel {
   slug: string;
@@ -29,11 +29,11 @@ export const REAL_STUDIO_REELS: StudioReel[] = [
     stateImages: Array.from({ length: 8 }, (_, index) =>
       `/media/states/run1/state_${String(index + 1).padStart(2, "0")}.jpg`
     ),
-    styleLabel: "Golden V1 · Modern",
+    styleLabel: "Poolbau · Modern",
     summary:
-      "Vom verwilderten Hinterhof bis zur fertigen modernen Pooloase in acht sichtbaren Bauphasen.",
+      "Vom verwilderten Hinterhof bis zur fertigen modernen Pooloase in acht sichtbaren Szenen.",
     isDemo: false,
-    sourceLabel: "Echte Golden-V1-MP4",
+    sourceLabel: "Fertiges Poolbau-Reel",
   },
   {
     slug: "mediterrane-lagune",
@@ -47,11 +47,11 @@ export const REAL_STUDIO_REELS: StudioReel[] = [
     stateImages: Array.from({ length: 8 }, (_, index) =>
       `/media/states/run2/state_${String(index + 1).padStart(2, "0")}.jpg`
     ),
-    styleLabel: "Golden V1 · Mediterran",
+    styleLabel: "Poolbau · Mediterran",
     summary:
       "Eine mediterrane Außenanlage entwickelt sich Schritt für Schritt zur organischen Pool-Lagune.",
     isDemo: false,
-    sourceLabel: "Echte Golden-V1-MP4",
+    sourceLabel: "Fertiges Poolbau-Reel",
   },
 ];
 
@@ -72,7 +72,7 @@ const MARKETING_SEED_TITLES = [
   "Poolgarten mit Pergola",
   "Baugrundstück zum Designgarten",
   "Organische Lagunenform",
-  "Schmaler Garten, großer Reveal",
+  "Schmaler Garten, großes Ergebnis",
   "Pool mit versenkter Lounge",
   "Sommergarten mit Wasserfall",
   "Modernes Becken im Altbauhof",
@@ -92,27 +92,27 @@ const MARKETING_SEED_POSTERS = Array.from(
 );
 
 /**
- * Marketing-only seed records keep the dashboard visually useful before real
- * customer accounts exist. Their poster derivatives are made from existing
- * Golden-V1 state frames; they intentionally do not point to a generated MP4.
+ * The marketing dashboard stays visually useful before the customer-account
+ * backend is connected. Preview records use prepared poster views and
+ * intentionally do not point to a generated MP4.
  */
 export const MARKETING_SEED_REELS: StudioReel[] = MARKETING_SEED_TITLES.map((title, index) => {
   const posterSrc = MARKETING_SEED_POSTERS[index % MARKETING_SEED_POSTERS.length];
   return {
     slug: `marketing-demo-${String(index + 1).padStart(2, "0")}`,
     title,
-    subtitle: "Marketing-Beispiel für eine Poolbau-Transformation",
-    status: "Marketing-Demo",
-    duration: "Demo-Ansicht",
+    subtitle: "Vorbereitetes Beispiel für eine Poolbau-Transformation",
+    status: "Vorschau",
+    duration: "Bildvorschau",
     phaseCount: 8,
     videoSrc: null,
     posterSrc,
     stateImages: [posterSrc],
-    styleLabel: `Poolbau · Demo ${String(index + 1).padStart(2, "0")}`,
+    styleLabel: `Poolbau · Beispiel ${String(index + 1).padStart(2, "0")}`,
     summary:
-      "Marketing-Demo-Ansicht zur Darstellung der Videobibliothek — kein separates MP4 und keine eigene Generation ausgelöst.",
+      "Vorbereitete Vorschau für deine Präsentation.",
     isDemo: true,
-    sourceLabel: "Marketing-Demo · abgeleitete Poster-Ansicht",
+    sourceLabel: "Vorbereitetes Beispiel",
   };
 });
 
@@ -138,6 +138,6 @@ export const PRODUCTION_STEPS = [
   },
   {
     title: "Finales Reel",
-    description: "Alle Phasen werden zu deinem fertigen vertikalen Reel mit über 60 Sekunden Laufzeit zusammengesetzt.",
+    description: "Alle Szenen werden zu deinem fertigen vertikalen Reel mit über 60 Sekunden Laufzeit zusammengesetzt.",
   },
 ] as const;

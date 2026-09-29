@@ -8,8 +8,8 @@ import { SHOWCASE_VIDEOS } from "../lib/constants";
 const FACTS: [string, string][] = [
   ["60+ Sek.", "fertiges Reel"],
   ["9:16", "Shortform-nativ"],
-  ["8", "Transformationsphasen"],
-  ["1", "erste Kategorie"],
+  ["8", "Szenen im Aufbau"],
+  ["1", "Kategorie verfügbar"],
 ];
 
 export function Hero({ onOpenVideo }: { onOpenVideo: () => void }) {
@@ -24,11 +24,11 @@ export function Hero({ onOpenVideo }: { onOpenVideo: () => void }) {
 
         <h1 className="mx-auto mt-6 max-w-5xl text-4xl font-black leading-[0.98] tracking-[-0.065em] text-[#101114] sm:text-7xl lg:text-[80px]">
           Aus Veränderungen werden{" "}
-          <span className="text-[#6d5dfc]">Videos, die Menschen stoppen.</span>
+          <span className="text-[#6d5dfc]">Videos, bei denen man nicht sofort weiterscrollt.</span>
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-[#686c73] sm:text-lg">
-          IchGeheViral baut aus einer Veränderung ein zusammenhängendes 60+ Sekunden Reel mit sichtbarem Fortschritt und starkem Final-Reveal. Poolbau ist die erste verfügbare Kategorie; weitere werden schrittweise ergänzt.
+          IchGeheViral macht aus einer Veränderung ein zusammenhängendes 60+ Sekunden Reel: vom Ausgangspunkt bis zum fertigen Ergebnis. Poolbau ist aktuell die erste Kategorie; weitere folgen schrittweise.
         </p>
 
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
@@ -36,7 +36,7 @@ export function Hero({ onOpenVideo }: { onOpenVideo: () => void }) {
             href="/kundenbereich/neu"
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-7 py-4 text-sm font-black text-white shadow-[0_14px_38px_rgba(109,93,252,.24)] transition hover:bg-[#5947e8]"
           >
-            Studio starten <ArrowRight className="h-4 w-4" />
+            Studio ansehen <ArrowRight className="h-4 w-4" />
           </Link>
           <button
             onClick={onOpenVideo}
@@ -53,7 +53,7 @@ export function Hero({ onOpenVideo }: { onOpenVideo: () => void }) {
           >
             <img
               src={demo.posterSrc}
-              alt="Echtes Golden-V1-Beispiel einer Poolbau-Transformation"
+              alt="Fertiges Poolbau-Beispiel einer sichtbaren Transformation"
               className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
@@ -61,9 +61,9 @@ export function Hero({ onOpenVideo }: { onOpenVideo: () => void }) {
               <Play className="h-7 w-7 fill-current" />
             </span>
             <span className="absolute bottom-6 left-6 text-left text-white">
-              <b className="block text-lg">Echtes Golden-V1-Beispiel</b>
+              <b className="block text-lg">Fertiges Poolbau-Beispiel</b>
               <small className="text-white/75">
-                {demo.duration} · 9:16 · {demo.stateCount} Phasen · Poolbau
+                {demo.duration} · 9:16 · {demo.stateCount} Szenen · Poolbau
               </small>
             </span>
           </button>

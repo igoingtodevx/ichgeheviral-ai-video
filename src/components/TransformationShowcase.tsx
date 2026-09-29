@@ -19,8 +19,8 @@ export function TransformationShowcase({ onOpenVideo }: { onOpenVideo: (videoSrc
             Eine Idee. Ein zusammenhängendes Reel.
           </h2>
           <p className="mt-5 text-base leading-7 text-[#686c73] sm:text-lg">
-            Kein Zusammenschneiden einzelner Clips. Das System baut mehrere aufeinander
-            abgestimmte Phasen auf einer stabilen Kameraperspektive auf — bis zum finalen Reveal.
+            Kein Zusammenschneiden einzelner Clips. Aus einer Ausgangsszene entstehen mehrere
+            aufeinander abgestimmte Bilder mit stabiler Perspektive — bis zum fertigen Ergebnis.
           </p>
         </div>
 
@@ -48,7 +48,7 @@ export function TransformationShowcase({ onOpenVideo }: { onOpenVideo: (videoSrc
                 <button
                   key={state.id}
                   onClick={() => setActiveState(i)}
-                  aria-label={`Phase ${state.phaseNumber}: ${state.title}`}
+                  aria-label={`Szene ${state.phaseNumber}: ${state.title}`}
                   className={`h-11 w-11 shrink-0 overflow-hidden rounded-xl border-2 transition ${
                     i === activeState ? "border-[#6d5dfc]" : "border-transparent opacity-60 hover:opacity-100"
                   }`}
@@ -58,7 +58,7 @@ export function TransformationShowcase({ onOpenVideo }: { onOpenVideo: (videoSrc
               ))}
             </div>
             <p className="mt-4 text-xs font-bold uppercase tracking-wider text-[#a1a5ab]">
-              Phase {current.phaseNumber} von {GOLDEN_V1_STATES.length} — zieh dich durch, um den Aufbau zu sehen
+              Szene {current.phaseNumber} von {GOLDEN_V1_STATES.length} · Wähle eine Szene, um den Aufbau zu sehen
             </p>
           </div>
         </div>

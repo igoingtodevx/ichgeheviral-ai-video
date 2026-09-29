@@ -36,7 +36,7 @@ export function Navbar() {
             href="/kundenbereich"
             className="hidden items-center gap-2 rounded-xl bg-[#6d5dfc] px-5 py-3 text-xs font-black text-white transition hover:bg-[#5947e8] sm:inline-flex"
           >
-            Studio starten <ArrowRight className="h-3.5 w-3.5" />
+            Studio ansehen <ArrowRight className="h-3.5 w-3.5" />
           </Link>
           <button
             onClick={() => setOpen((v) => !v)}
@@ -66,7 +66,7 @@ export function Navbar() {
               href="/kundenbereich"
               className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-5 py-3 text-sm font-black text-white"
             >
-              Studio starten <ArrowRight className="h-4 w-4" />
+              Studio ansehen <ArrowRight className="h-4 w-4" />
             </Link>
           </nav>
         </div>

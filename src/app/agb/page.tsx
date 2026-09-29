@@ -25,7 +25,7 @@ export default function AgbPage() {
             Gegenstand der Hauptleistung ist die Erstellung eines KI-gestützten, vertikalen
             Poolbau-Transformations-Videos auf Grundlage einer vom Kunden ausgewählten, freigegebenen
             Pool-Variante. Der aktuell dargestellte Leistungsumfang umfasst insbesondere ein zusammenhängendes
-            9:16-Video mit einer Laufzeit von 60+ Sekunden und mehreren aufeinander aufbauenden Bauphasen.
+            9:16-Video mit einer Laufzeit von 60+ Sekunden und mehreren aufeinander aufbauenden Szenen.
           </p>
           <p>
             Soweit ein Paket zusätzlich einen Marketing-Kurs enthält, gehört dieser nur dann zum Vertragsumfang,

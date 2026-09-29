@@ -9,13 +9,13 @@ const STEPS = [
     num: "01",
     icon: CheckCircle2,
     title: "Generate klicken",
-    desc: "Du brauchst keine Konzept- oder Stilmaske. Ein Klick genügt — die interne Variation bleibt im System.",
+    desc: "Du brauchst keine Konzept- oder Stilmaske. Ein Klick genügt — die weitere Ausgestaltung passiert im Hintergrund.",
   },
   {
     num: "02",
     icon: CheckCircle2,
     title: "Dein Reel entsteht",
-    desc: "Aus der Poolbau-Transformation wird ein zusammenhängendes Short-Form-Video mit Fortschritt und Reveal-Moment.",
+    desc: "Aus der Poolbau-Transformation wird ein zusammenhängendes Short-Form-Video mit sichtbarer Entwicklung und klarem Abschluss.",
   },
   {
     num: "03",
@@ -51,13 +51,12 @@ export function HowItWorks() {
         <div className="mt-10 rounded-[22px] border border-[#e6e4ef] bg-white p-6 sm:p-8">
           <b className="text-sm font-black uppercase tracking-wider text-[#101114]">Aktuelle Kategorie</b>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[#686c73]">
-            Poolbau ist die erste verfügbare Transformations-Kategorie. Die Auswahl der konkreten
-            Variante und die kontrollierte interne Variation bleiben bewusst im Hintergrund.
+            Poolbau ist aktuell verfügbar. Welche Variante am besten passt, wird im Hintergrund gewählt.
           </p>
           <div className="mt-5 grid gap-3 sm:grid-cols-3">
             {[
               ["Poolbau", "Eine klar abgegrenzte erste Nische"],
-              ["8 Phasen", "Sichtbarer Fortschritt bis zum Reveal"],
+              ["8 Szenen", "Sichtbare Entwicklung bis zum fertigen Ergebnis"],
               ["60+ Sek.", "Ein fertiges vertikales Reel"],
             ].map(([label, description]) => (
               <div key={label} className="rounded-2xl border border-[#efedf3] bg-[#faf9fc] p-5">
@@ -71,7 +70,7 @@ export function HowItWorks() {
               href="/kundenbereich/neu"
               className="inline-flex items-center gap-2 text-sm font-black text-[#6d5dfc] hover:text-[#5947e8]"
             >
-              Studio starten <ArrowRight className="h-4 w-4" />
+              Studio ansehen <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/kundenbereich/reel/modern-rechteckig"

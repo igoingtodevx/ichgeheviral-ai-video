@@ -11,10 +11,10 @@ export function Pricing() {
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <span className="text-xs font-black uppercase tracking-[0.18em] text-[#5947e8]">
-            Starte deine erste Transformation
+            Dein Einstieg
           </span>
           <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
-            Prelaunch ohne Preisversprechen.
+            Pakete stehen fest. Preise folgen.
           </h2>
           <p className="mt-5 text-[#686c73]">
             {PRICING_LAUNCHED
@@ -66,7 +66,7 @@ export function Pricing() {
                     : "mt-8 flex items-center justify-center gap-2 rounded-xl border border-[#e6e4ef] bg-white px-6 py-4 text-sm font-black text-[#101114] transition hover:border-[#b9b0ff]"
                 }
               >
-                Studio starten <ArrowRight className="h-4 w-4" />
+                Studio ansehen <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           ))}

@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "IchGeheViral — Transformations-Reels für starken Content",
   description:
-    "Aus einer verfügbaren Transformation entsteht ein fertiges 60+ Sekunden 9:16 Reel mit sichtbarer Entwicklung und starkem Final-Reveal. Poolbau ist die erste verfügbare Kategorie.",
+    "Aus einer verfügbaren Transformation entsteht ein fertiges 60+ Sekunden 9:16 Reel mit sichtbarer Entwicklung und klarem Finale. Poolbau ist die erste verfügbare Kategorie.",
   openGraph: {
     title: "IchGeheViral — Transformations-Reels für starken Content",
     description:

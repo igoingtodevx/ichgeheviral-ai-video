@@ -12,12 +12,12 @@ const POINTS = [
   {
     icon: Zap,
     title: "Sichtbare Progression",
-    desc: "Jede Phase verändert erkennbar etwas am Motiv — der Zuschauer bleibt dran, um zu sehen, was als Nächstes kommt.",
+    desc: "Jede Szene verändert erkennbar etwas am Motiv — der Zuschauer bleibt dran, um zu sehen, was als Nächstes kommt.",
   },
   {
     icon: Zap,
-    title: "Final Reveal",
-    desc: "Der Aufbau führt bewusst auf einen visuellen Payoff hin, statt einfach aufzuhören.",
+    title: "Klares Finale",
+    desc: "Der Aufbau führt bewusst auf einen sichtbaren Abschluss hin, statt einfach aufzuhören.",
   },
   {
     icon: Smartphone,

@@ -19,7 +19,7 @@ export function FinalCTA() {
           href="/kundenbereich/neu"
           className="mt-8 inline-flex items-center gap-2 rounded-xl bg-[#6d5dfc] px-8 py-4 text-sm font-black text-white transition hover:bg-[#5947e8]"
         >
-          Studio starten <ArrowRight className="h-4 w-4" />
+          Studio ansehen <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
     </section>

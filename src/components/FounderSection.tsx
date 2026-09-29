@@ -24,8 +24,8 @@ export function FounderSection() {
                 zusammenhängendes Transformations-Reel macht.
               </p>
               <p>
-                Das Video wird direkt hier eingebunden, sobald die Aufnahme vorliegt. Der Platz ist
-                bereits für das finale Hochformat-Video vorbereitet.
+                Timos persönliche Erklärung erscheint hier, sobald die Aufnahme vorliegt. Bis dahin
+                kannst du dir direkt oben das fertige Beispiel ansehen.
               </p>
             </div>
 
@@ -65,7 +65,7 @@ export function FounderSection() {
               <div className="relative aspect-video w-full">
                 <Image
                   src={FOUNDER_VIDEO_POSTER}
-                  alt="Platzhalter für Timos persönliches IchGeheViral-Video"
+                  alt="Timos persönliches Erklärvideo"
                   fill
                   sizes="(min-width: 1024px) 55vw, 100vw"
                   className="object-cover opacity-75"
@@ -73,13 +73,13 @@ export function FounderSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-black/10" />
                 <div className="absolute inset-x-6 bottom-6 text-white sm:inset-x-8 sm:bottom-8">
                   <span className="inline-flex rounded-full border border-white/20 bg-black/30 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-white/80">
-                    Video-Platzhalter
+                    Timos Video folgt
                   </span>
                   <div className="mt-3 text-2xl font-black tracking-[-0.03em] sm:text-3xl">
                     Timos persönliche Erklärung
                   </div>
                   <p className="mt-2 max-w-md text-sm leading-6 text-white/70">
-                    Die fertige Aufnahme wird hier ohne Layoutänderung eingebettet.
+                    Sobald die Aufnahme vorliegt, erscheint sie hier.
                   </p>
                 </div>
               </div>
