@@ -4,21 +4,20 @@ import React, { useEffect, useState } from "react";
 import { SHOWCASE_VIDEOS } from "../lib/constants";
 import { fetchSocialProof, socialProofMediaUrl, type SocialProofItem } from "../lib/socialProof";
 
-function GoldenV1Fallback() {
+function ExampleFallback() {
   return (
     <section className="bg-[#f7f7fb] py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <span className="text-xs font-black uppercase tracking-[0.18em] text-[#5947e8]">
-            Echte Golden-V1-Beispiele
+            Fertige Poolbau-Beispiele
           </span>
           <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
             Zwei fertige Poolbau-Reels.
           </h2>
           <p className="mt-5 text-base leading-7 text-[#686c73] sm:text-lg">
-            Die öffentliche Beispielbibliothek ist noch nicht mit weiteren Social-Proof-Einträgen
-            verbunden. Deshalb zeigen wir hier die beiden vorhandenen Golden-V1-MP4s — ohne
-            erfundene Kundenstatistiken.
+            Zwei fertige Beispiele zeigen, wie sich eine Veränderung Schritt für Schritt
+            in ein zusammenhängendes Reel verwandelt — ohne erfundene Kundenstatistiken.
           </p>
         </div>
 
@@ -42,7 +41,7 @@ function GoldenV1Fallback() {
               <div className="p-5">
                 <h3 className="text-lg font-extrabold text-[#101114]">{video.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-[#686c73]">
-                  Golden V1 · {video.duration} · {video.stateCount} Poolbau-Phasen
+                  {video.duration} · {video.stateCount} Poolbau-Szenen
                 </p>
               </div>
             </article>
@@ -64,7 +63,7 @@ export function SocialProof() {
       .finally(() => setLoaded(true));
   }, []);
 
-  if (!loaded || items.length === 0) return <GoldenV1Fallback />;
+  if (!loaded || items.length === 0) return <ExampleFallback />;
 
   return (
     <section className="bg-[#f7f7fb] py-20 lg:py-28">

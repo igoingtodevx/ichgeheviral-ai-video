@@ -5,7 +5,7 @@ import { ArrowRight, Check, Gauge, Layers3, Smartphone } from "lucide-react";
 
 const BENEFITS = [
   ["60+ Sek.", "fertiges vertikales Reel", Gauge],
-  ["8 Phasen", "sichtbarer Aufbau bis zum Reveal", Layers3],
+  ["8 Szenen", "sichtbarer Aufbau bis zum Ergebnis", Layers3],
   ["9:16", "Short-Form-Format", Smartphone],
 ] as const;
 
@@ -23,8 +23,8 @@ export default function NewReelPage() {
             Ein Klick. Dein nächstes Reel.
           </h1>
           <p className="mt-4 max-w-2xl text-sm leading-6 text-[#686c73] sm:text-base">
-            Keine Presets, keine Promptfelder, keine technischen Entscheidungen. Das Studio hält die
-            aktuelle Poolbau-Kategorie und die kontrollierte Variation im Hintergrund.
+            Keine Presets, keine Promptfelder, keine technischen Entscheidungen. Du startest die
+            Erstellung mit einem Klick; die genaue Ausgestaltung bleibt im Hintergrund.
           </p>
         </div>
 
@@ -39,13 +39,12 @@ export default function NewReelPage() {
                 Bereit für eine neue Transformation?
               </h2>
               <p className="mt-4 max-w-xl text-sm leading-6 text-white/60 sm:text-base">
-                Drücke Generate. Die Produktionsansicht zeigt dir anschließend, wie aus dem
-                Ausgangszustand ein fertiges Reel mit sichtbarem Fortschritt entsteht.
+                Drücke Generate. Danach siehst du, wie aus dem Ausgangszustand ein fertiges Reel
+                mit sichtbarem Fortschritt entsteht. Bei jedem Start entsteht eine neue Variante.
               </p>
               <p className="mt-5 max-w-xl rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-xs leading-5 text-white/55">
-                <strong className="text-white/80">Visuelle Demo:</strong> Generate startet hier
-                keinen echten Job und keinen Download. Du siehst den Ablauf anhand eines vorhandenen
-                Golden-V1-Beispiels.
+                <strong className="text-white/80">Vorschau-Modus:</strong> Dieser Button zeigt hier
+                den Ablauf. Die echte Erstellung und der Download werden im Backend angebunden.
               </p>
 
               <button
@@ -60,7 +59,7 @@ export default function NewReelPage() {
             <div className="rounded-[24px] border border-white/10 bg-white/[0.05] p-5">
               <div className="text-xs font-black uppercase tracking-[0.14em] text-white/45">Was du erhältst</div>
               <ul className="mt-4 space-y-3">
-                {["Ein zusammenhängendes Reel", "Kontrollierte kreative Variation", "Keine Credits in der Demo"].map((item) => (
+                {["Ein zusammenhängendes Reel", "Bei jedem Start eine neue Variante", "Keine komplizierten Einstellungen"].map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm font-semibold text-white/80">
                     <Check className="h-4 w-4 shrink-0 text-[#9b8fff]" />
                     {item}
@@ -82,8 +81,8 @@ export default function NewReelPage() {
         </section>
 
         <p className="mt-7 text-center text-xs leading-5 text-[#a1a5ab]">
-          Studio-Vorschau: Der Generate-Button führt aktuell in die visuelle Produktionsdemo. Echte
-          Kundenkonten, Jobs und Downloads werden in der nächsten Backend-Phase angebunden.
+          Vorschau-Modus: Der Ablauf ist vorbereitet. Konto-, Job- und Download-Anbindung folgen mit
+          dem Backend.
         </p>
       </div>
     </div>

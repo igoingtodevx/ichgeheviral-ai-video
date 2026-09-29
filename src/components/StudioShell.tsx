@@ -8,7 +8,7 @@ import type { ReactNode } from "react";
 const NAV_ITEMS = [
   { href: "/kundenbereich", label: "Meine Reels", mobileLabel: "Meine Reels", icon: Home },
   { href: "/kundenbereich/neu", label: "Neues Reel", mobileLabel: "Neues Reel", icon: PlusCircle },
-  { href: "/kundenbereich/produktion", label: "Dein Reel entsteht", mobileLabel: "Entstehung", icon: Gauge },
+  { href: "/kundenbereich/produktion", label: "Ablauf ansehen", mobileLabel: "Ablauf", icon: Gauge },
 ];
 
 export function StudioShell({ children }: { children: ReactNode }) {

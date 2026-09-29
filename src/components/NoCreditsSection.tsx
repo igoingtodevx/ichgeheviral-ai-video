@@ -26,7 +26,7 @@ export function NoCreditsSection() {
             Klarer Ablauf
           </span>
           <h2 className="mt-3 text-3xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
-            Du bekommst ein Ergebnis. Keine Produktionsrechnung.
+            Ein Klick. Ein fertiges Reel.
           </h2>
           <p className="mt-5 text-base leading-7 text-[#686c73] sm:text-lg">
             Du bestellst ein klar definiertes, fertiges Reel — ohne dich durch technische Einzelschritte oder einzelne Clips arbeiten zu müssen.

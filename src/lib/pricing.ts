@@ -33,7 +33,7 @@ export const PACKAGES: ProductPackage[] = [
     features: [
       "1 fertiges 60+ Sekunden Transformations-Reel",
       "Natives 9:16 Format",
-      "8 aufeinander aufbauende Phasen",
+      "8 aufeinander aufbauende Szenen",
       "Kein Videoschnitt nötig",
       "Kein Credit-System",
     ],
