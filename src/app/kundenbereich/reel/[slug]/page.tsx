@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Check, Download, Eye, Gauge, Layers3, PlayCircle } from "lucide-react";
+import { ArrowLeft, Check, Download, Gauge, Layers3, PlayCircle } from "lucide-react";
 import { STUDIO_REELS } from "../../../../lib/studio";
 
 export function generateStaticParams() {
@@ -49,14 +49,13 @@ export default async function ReelDetailPage({
                   className="object-cover opacity-80"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/10" />
-                <div className="absolute inset-x-5 bottom-5">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.14em] text-white/80">
-                    <Eye className="h-3.5 w-3.5" />
-                    Beispielansicht
+                <div className="absolute inset-0 grid place-items-center">
+                  <span className="grid h-14 w-14 place-items-center rounded-full bg-white/95 text-[#5d4de1] shadow-xl">
+                    <PlayCircle className="h-7 w-7" />
                   </span>
-                  <p className="mt-3 text-sm leading-5 text-white/70">
-                    Beispielansicht für deine Präsentation.
-                  </p>
+                </div>
+                <div className="absolute inset-x-5 bottom-5 text-sm font-black text-white">
+                  {reel.duration} · {reel.phaseCount} Szenen
                 </div>
               </div>
             )}
@@ -64,14 +63,10 @@ export default async function ReelDetailPage({
 
           <div>
             <span
-              className={`inline-flex items-center gap-2 rounded-full px-3 py-2 text-[11px] font-black uppercase tracking-[0.14em] ${
-                reel.isDemo
-                  ? "border border-[#f0dfb8] bg-[#fff8e7] text-[#9b6b11]"
-                  : "border border-[#cdebdc] bg-[#f1fbf6] text-[#2f9b66]"
-              }`}
+              className="inline-flex items-center gap-2 rounded-full border border-[#cdebdc] bg-[#f1fbf6] px-3 py-2 text-[11px] font-black uppercase tracking-[0.14em] text-[#2f9b66]"
             >
-              {reel.isDemo ? <Eye className="h-3.5 w-3.5" /> : <Check className="h-3.5 w-3.5" />}
-              {reel.isDemo ? "Beispielansicht" : "Reel fertig"}
+              <Check className="h-3.5 w-3.5" />
+              Reel fertig
             </span>
             <h1 className="mt-4 text-4xl font-black tracking-[-0.055em] text-[#101114] sm:text-5xl">
               {reel.title}
@@ -81,18 +76,18 @@ export default async function ReelDetailPage({
             <div className="mt-7 grid gap-3 sm:grid-cols-3">
               <div className="rounded-2xl border border-[#e4e1ec] bg-white p-4">
                 <PlayCircle className="h-5 w-5 text-[#6d5dfc]" />
-                <div className="mt-3 text-xs font-bold uppercase tracking-wider text-[#989ca2]">{reel.isDemo ? "Ansicht" : "Laufzeit"}</div>
-                <div className="mt-1 text-lg font-black">{reel.isDemo ? "Ansicht" : reel.duration}</div>
+                <div className="mt-3 text-xs font-bold uppercase tracking-wider text-[#989ca2]">Laufzeit</div>
+                <div className="mt-1 text-lg font-black">{reel.duration}</div>
               </div>
               <div className="rounded-2xl border border-[#e4e1ec] bg-white p-4">
                 <Layers3 className="h-5 w-5 text-[#6d5dfc]" />
-                <div className="mt-3 text-xs font-bold uppercase tracking-wider text-[#989ca2]">{reel.isDemo ? "Umfang" : "Szenen"}</div>
-                <div className="mt-1 text-lg font-black">{reel.isDemo ? "1 Ansicht" : reel.phaseCount}</div>
+                <div className="mt-3 text-xs font-bold uppercase tracking-wider text-[#989ca2]">Szenen</div>
+                <div className="mt-1 text-lg font-black">{reel.phaseCount}</div>
               </div>
               <div className="rounded-2xl border border-[#e4e1ec] bg-white p-4">
                 <Gauge className="h-5 w-5 text-[#6d5dfc]" />
-                <div className="mt-3 text-xs font-bold uppercase tracking-wider text-[#989ca2]">{reel.isDemo ? "Verwendung" : "Format"}</div>
-                <div className="mt-1 text-lg font-black">{reel.isDemo ? "Präsentation" : "9:16"}</div>
+                <div className="mt-3 text-xs font-bold uppercase tracking-wider text-[#989ca2]">Format</div>
+                <div className="mt-1 text-lg font-black">9:16</div>
               </div>
             </div>
 
@@ -104,13 +99,9 @@ export default async function ReelDetailPage({
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-6 py-4 text-sm font-black text-white shadow-[0_12px_32px_rgba(109,93,252,.22)] transition hover:bg-[#5947e8]"
                 >
                   <Download className="h-4 w-4" />
-                  MP4 herunterladen
+                  Video herunterladen
                 </a>
-              ) : (
-                <span className="inline-flex items-center justify-center gap-2 rounded-xl border border-dashed border-[#dedbe7] bg-[#faf9fd] px-6 py-4 text-sm font-black text-[#858991]">
-                  Nur ansehen
-                </span>
-              )}
+              ) : null}
               <Link
                 href="/kundenbereich/produktion"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#dedbe7] bg-white px-6 py-4 text-sm font-black text-[#101114] transition hover:border-[#b9b0ff]"
@@ -119,29 +110,27 @@ export default async function ReelDetailPage({
               </Link>
             </div>
 
-            <div className="mt-9">
-              <h2 className="text-xl font-black tracking-[-0.03em]">
-                {reel.isDemo ? "Beispielansicht" : "Die 8 Szenen"}
-              </h2>
-              <div className={`mt-4 grid gap-2 ${reel.isDemo ? "max-w-[120px] grid-cols-1" : "grid-cols-4 sm:grid-cols-8"}`}>
-                {reel.stateImages.map((src, index) => (
-                  <div key={`${src}-${index}`} className="relative aspect-[4/5] overflow-hidden rounded-xl border border-[#e4e1ec] bg-white">
-                    <Image
-                      src={src}
-                      alt={reel.isDemo ? "Beispiel-Poster" : `Szene ${index + 1}`}
-                      fill
-                      sizes="120px"
-                      className="object-cover"
-                    />
-                    {!reel.isDemo && (
+            {!reel.isDemo && (
+              <div className="mt-9">
+                <h2 className="text-xl font-black tracking-[-0.03em]">Die 8 Szenen</h2>
+                <div className="mt-4 grid grid-cols-4 gap-2 sm:grid-cols-8">
+                  {reel.stateImages.map((src, index) => (
+                    <div key={`${src}-${index}`} className="relative aspect-[4/5] overflow-hidden rounded-xl border border-[#e4e1ec] bg-white">
+                      <Image
+                        src={src}
+                        alt={`Szene ${index + 1}`}
+                        fill
+                        sizes="120px"
+                        className="object-cover"
+                      />
                       <span className="absolute bottom-1.5 left-1.5 rounded-md bg-black/65 px-1.5 py-1 text-[9px] font-black text-white">
                         {index + 1}
                       </span>
-                    )}
-                  </div>
-                ))}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
