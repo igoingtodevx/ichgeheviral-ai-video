@@ -200,7 +200,7 @@ export default function ProductionDemoPage() {
                   href="/kundenbereich/reel/modern-rechteckig"
                   className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-5 py-4 text-sm font-black text-white"
                 >
-                  Beispiel ansehen
+                  Reel ansehen
                 </Link>
 
               </>

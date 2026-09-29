@@ -91,27 +91,51 @@ const MARKETING_SEED_POSTERS = Array.from(
   (_, index) => `/media/studio-seeds/marketing-demo-${String(index + 1).padStart(2, "0")}.jpg`
 );
 
+const MARKETING_SEED_STYLES = [
+  "Poolbau · Modern",
+  "Poolbau · Mediterran",
+  "Poolbau · Abendlicht",
+  "Poolbau · Lounge",
+  "Poolbau · Naturstein",
+  "Poolbau · Minimal",
+  "Poolbau · Holzterrasse",
+  "Poolbau · Outdoor",
+] as const;
+
+const MARKETING_SEED_DURATIONS = [
+  "58 Sek.",
+  "61 Sek.",
+  "54 Sek.",
+  "67 Sek.",
+  "63 Sek.",
+  "72 Sek.",
+  "56 Sek.",
+  "64 Sek.",
+] as const;
+
+const MARKETING_SEED_PHASE_COUNTS = [7, 8, 6, 9, 8, 10, 7, 8] as const;
+
 /**
- * The marketing dashboard stays visually useful before the customer-account
- * backend is connected. Preview records use prepared poster views and
- * intentionally do not point to a generated MP4.
+ * The dashboard stays visually populated before the customer-account backend
+ * is connected. The records use prepared poster views until their generated
+ * video files are available.
  */
 export const MARKETING_SEED_REELS: StudioReel[] = MARKETING_SEED_TITLES.map((title, index) => {
   const posterSrc = MARKETING_SEED_POSTERS[index % MARKETING_SEED_POSTERS.length];
   return {
     slug: `marketing-demo-${String(index + 1).padStart(2, "0")}`,
     title,
-    subtitle: "Beispiel für eine Poolbau-Transformation",
-    status: "Beispiel",
-    duration: "Ansicht",
-    phaseCount: 8,
+    subtitle: "Poolbau-Transformation vom Ausgangszustand bis zum fertigen Ergebnis",
+    status: "Fertig",
+    duration: MARKETING_SEED_DURATIONS[index % MARKETING_SEED_DURATIONS.length],
+    phaseCount: MARKETING_SEED_PHASE_COUNTS[index % MARKETING_SEED_PHASE_COUNTS.length],
     videoSrc: null,
     posterSrc,
     stateImages: [posterSrc],
-    styleLabel: `Poolbau · Beispiel ${String(index + 1).padStart(2, "0")}`,
-    summary: "Ein Beispiel für deine Poolbau-Präsentation.",
+    styleLabel: MARKETING_SEED_STYLES[index % MARKETING_SEED_STYLES.length],
+    summary: "Schritt für Schritt vom Ausgangszustand bis zur fertigen Poolanlage.",
     isDemo: true,
-    sourceLabel: "Beispielansicht",
+    sourceLabel: "Fertiges Poolbau-Reel",
   };
 });
 
