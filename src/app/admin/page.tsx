@@ -1,6 +1,7 @@
 "use client";
 
 import React, { FormEvent, useEffect, useState } from "react";
+import Link from "next/link";
 import {
   CheckCircle2,
   Image as ImageIcon,
@@ -20,6 +21,7 @@ import {
   socialProofMediaUrl,
   SocialProofItem,
 } from "../../lib/socialProof";
+import { AdminTestimonialsPanel } from "../../components/AdminTestimonialsPanel";
 
 const TOKEN_KEY = "igv-social-proof-admin";
 const MAX_BYTES = 20 * 1024 * 1024;
@@ -84,6 +86,12 @@ export default function SocialProofAdminPage() {
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [activeTab] = useState<"media" | "testimonials">(() => {
+    if (typeof window === "undefined") return "media";
+    return new URLSearchParams(window.location.search).get("tab") === "testimonials"
+      ? "testimonials"
+      : "media";
+  });
 
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
@@ -262,10 +270,12 @@ export default function SocialProofAdminPage() {
               IchGeheViral Admin
             </div>
             <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-              Social Proof
+              {activeTab === "testimonials" ? "Testimonials" : "Social Proof"}
             </h1>
             <p className="mt-2 text-sm sm:text-base text-slate-300">
-              Screenshot oder kurzen Clip hochladen → veröffentlichen → fertig.
+              {activeTab === "testimonials"
+                ? "Freigegebene Kundenstimmen verwalten und auf der Landingpage veröffentlichen."
+                : "Screenshot oder kurzen Clip hochladen → veröffentlichen → fertig."}
             </p>
           </div>
           <button
@@ -278,6 +288,29 @@ export default function SocialProofAdminPage() {
           </button>
         </header>
 
+        <nav className="mb-8 flex flex-wrap gap-2 rounded-2xl border border-white/10 bg-white/[0.03] p-1.5" aria-label="Admin-Bereiche">
+          <Link
+            href="/admin"
+            className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition ${
+              activeTab === "media" ? "bg-violet-500/20 text-violet-100" : "text-slate-400 hover:bg-white/5 hover:text-white"
+            }`}
+          >
+            Social Proof Medien
+          </Link>
+          <Link
+            href="/admin?tab=testimonials"
+            className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition ${
+              activeTab === "testimonials" ? "bg-violet-500/20 text-violet-100" : "text-slate-400 hover:bg-white/5 hover:text-white"
+            }`}
+          >
+            Testimonials
+          </Link>
+        </nav>
+
+        {activeTab === "testimonials" ? (
+          <AdminTestimonialsPanel token={token} />
+        ) : (
+          <>
         <section className="glass-panel rounded-3xl p-5 sm:p-8">
           <h2 className="text-xl font-bold">Neuen Eintrag veröffentlichen</h2>
           <p className="mt-1 text-sm text-slate-400">
@@ -412,6 +445,8 @@ export default function SocialProofAdminPage() {
             </div>
           )}
         </section>
+          </>
+        )}
       </div>
     </main>
   );
