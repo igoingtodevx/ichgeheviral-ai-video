@@ -73,7 +73,7 @@ export function HowItWorks() {
               Studio ansehen <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
-              href="/kundenbereich/reel/modern-rechteckig"
+              href="/kundenbereich/reel/mediterrane-lagune"
               className="inline-flex items-center gap-2 text-sm font-black text-[#555a62] hover:text-[#101114]"
             >
               <Gauge className="h-4 w-4 text-[#6d5dfc]" /> Beispiel-Reel ansehen

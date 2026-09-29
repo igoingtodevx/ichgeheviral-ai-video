@@ -7,14 +7,14 @@ import { Check, Circle, Pause, Play, RotateCcw } from "lucide-react";
 import { PRODUCTION_STEPS, STUDIO_REELS } from "../../../lib/studio";
 
 const PHASE_LABELS = [
-  "Ausgangszustand",
-  "Vermessung",
-  "Aushub",
-  "Bewehrung",
-  "Betonschale",
-  "Naturstein",
-  "Befüllung",
-  "Fertiges Reel",
+  "Ausgangslage",
+  "Lagunenform abstecken",
+  "Becken ausheben",
+  "Bewehrung & Technik",
+  "Beckenhülle herstellen",
+  "Oberflächen & Umfeld",
+  "Wasser einlassen",
+  "Mediterrane Lagunen-Oase mit Naturstein",
 ];
 
 export default function ProductionDemoPage() {
@@ -66,7 +66,7 @@ export default function ProductionDemoPage() {
               So entsteht dein Reel.
             </h1>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-[#686c73] sm:text-base">
-              Vom Ausgangszustand bis zum fertigen Ergebnis – acht Szenen machen jede Veränderung
+              Von der Ausgangslage bis zum fertigen Ergebnis – acht Szenen machen jede Veränderung
               sichtbar und führen zu einem klaren Finale.
             </p>
           </div>
@@ -197,7 +197,7 @@ export default function ProductionDemoPage() {
             {finished ? (
               <>
                 <Link
-                  href="/kundenbereich/reel/modern-rechteckig"
+                  href="/kundenbereich/reel/mediterrane-lagune"
                   className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-5 py-4 text-sm font-black text-white"
                 >
                   Reel ansehen
