@@ -15,12 +15,17 @@ function ReelCard({ reel, compact = false }: { reel: StudioReel; compact?: boole
       }`}
     >
       <Link href={`/kundenbereich/reel/${reel.slug}`} className="group block">
-        <div className={`relative overflow-hidden bg-[#111] ${compact ? "aspect-[4/5]" : "aspect-[16/10]"}`}>
+        <div className={`relative overflow-hidden bg-[#111] ${compact ? "aspect-video" : "aspect-[16/10]"}`}>
           <Image
             src={reel.posterSrc}
             alt={reel.title}
             fill
-            sizes={compact ? "(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw" : "(min-width: 1024px) 50vw, 100vw"}
+            sizes={
+              compact
+                ? "(min-width: 1280px) 20vw, (min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
+                : "(min-width: 1024px) 50vw, 100vw"
+            }
+            loading="eager"
             className="object-cover transition duration-500 group-hover:scale-[1.03]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent" />
@@ -37,52 +42,64 @@ function ReelCard({ reel, compact = false }: { reel: StudioReel; compact?: boole
           <span className="absolute inset-0 m-auto grid h-12 w-12 place-items-center rounded-full bg-white/95 text-[#5d4de1] shadow-xl transition group-hover:scale-105">
             {reel.isDemo ? <Eye className="h-5 w-5" /> : <Play className="ml-0.5 h-5 w-5 fill-current" />}
           </span>
-          <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3 text-white">
-            <div className="min-w-0">
-              <div className="truncate text-[10px] font-bold uppercase tracking-wider text-white/65">
-                {reel.styleLabel}
+          {!compact ? (
+            <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3 text-white">
+              <div className="min-w-0">
+                <div className="truncate text-[10px] font-bold uppercase tracking-wider text-white/65">
+                  {reel.styleLabel}
+                </div>
+                <div className="mt-1 text-xl font-black">{reel.title}</div>
               </div>
-              <div className={`${compact ? "min-h-[2.5rem] text-base leading-5" : "text-xl"} mt-1 font-black`}>
-                {reel.title}
+              <div className="shrink-0 text-right text-[10px] font-bold text-white/75">
+                {reel.duration}
+                <br />
+                {reel.phaseCount} Szenen
               </div>
             </div>
-            <div className="shrink-0 text-right text-[10px] font-bold text-white/75">
-              {reel.isDemo ? "Bildvorschau" : reel.duration}
-              <br />
-              {reel.isDemo ? "1 Bild" : `${reel.phaseCount} Szenen`}
-            </div>
-          </div>
+          ) : null}
         </div>
       </Link>
 
-      <div className={compact ? "p-4" : "p-5 sm:p-6"}>
-        <p className={`${compact ? "line-clamp-2 text-xs" : "text-sm"} leading-6 text-[#686c73]`}>{reel.summary}</p>
-        <div className="mt-4 flex flex-wrap gap-2">
+      {compact ? (
+        <div className="p-3 sm:p-4">
+          <div className="text-[10px] font-bold uppercase tracking-wider text-[#8a8e94]">{reel.styleLabel}</div>
+          <div className="mt-1 line-clamp-2 text-sm font-black leading-5 text-[#101114]">{reel.title}</div>
           <Link
             href={`/kundenbereich/reel/${reel.slug}`}
-            className={`inline-flex items-center gap-2 rounded-xl bg-[#101114] px-3.5 py-2.5 text-xs font-black text-white transition hover:bg-[#272832] ${
-              compact ? "w-full justify-center" : ""
-            }`}
+            className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-black text-[#5d4de1] transition hover:text-[#3f31bd]"
           >
-            {reel.isDemo ? <Eye className="h-3.5 w-3.5" /> : <Film className="h-3.5 w-3.5" />}
-            {reel.isDemo ? "Bildvorschau ansehen" : "Reel ansehen"}
+            <Eye className="h-3.5 w-3.5" />
+            Bildvorschau ansehen
           </Link>
-          {reel.videoSrc ? (
-            <a
-              href={reel.videoSrc}
-              download
-              className="inline-flex items-center gap-2 rounded-xl border border-[#dedbe7] bg-white px-3.5 py-2.5 text-xs font-black text-[#555a62] transition hover:border-[#b9b0ff] hover:text-[#101114]"
-            >
-              <Download className="h-3.5 w-3.5" />
-              Herunterladen
-            </a>
-          ) : (
-            <span className="inline-flex items-center rounded-xl border border-dashed border-[#dedbe7] px-3.5 py-2.5 text-[10px] font-bold text-[#989ca2]">
-              Nur Bildvorschau
-            </span>
-          )}
         </div>
-      </div>
+      ) : (
+        <div className="p-5 sm:p-6">
+          <p className="text-sm leading-6 text-[#686c73]">{reel.summary}</p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <Link
+              href={`/kundenbereich/reel/${reel.slug}`}
+              className="inline-flex items-center gap-2 rounded-xl bg-[#101114] px-3.5 py-2.5 text-xs font-black text-white transition hover:bg-[#272832]"
+            >
+              <Film className="h-3.5 w-3.5" />
+              Reel ansehen
+            </Link>
+            {reel.videoSrc ? (
+              <a
+                href={reel.videoSrc}
+                download
+                className="inline-flex items-center gap-2 rounded-xl border border-[#dedbe7] bg-white px-3.5 py-2.5 text-xs font-black text-[#555a62] transition hover:border-[#b9b0ff] hover:text-[#101114]"
+              >
+                <Download className="h-3.5 w-3.5" />
+                Herunterladen
+              </a>
+            ) : (
+              <span className="inline-flex items-center rounded-xl border border-dashed border-[#dedbe7] px-3.5 py-2.5 text-[10px] font-bold text-[#989ca2]">
+                Nur Bildvorschau
+              </span>
+            )}
+          </div>
+        </div>
+      )}
     </article>
   );
 }
@@ -167,7 +184,7 @@ export default function StudioDashboardPage() {
             </span>
           </div>
 
-          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {MARKETING_SEED_REELS.map((reel) => (
               <ReelCard key={reel.slug} reel={reel} compact />
             ))}
