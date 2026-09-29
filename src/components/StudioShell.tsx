@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { UserButton } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 import { Gauge, Home, PlusCircle, ExternalLink } from "lucide-react";
 import type { ReactNode } from "react";
@@ -47,6 +48,10 @@ export function StudioShell({ children }: { children: ReactNode }) {
           </nav>
 
           <div className="mt-auto px-4 pb-5">
+            <div className="mb-3 flex items-center gap-3 rounded-2xl border border-[#e6e4ef] bg-white p-3">
+              <UserButton />
+              <span className="text-xs font-bold text-[#777b82]">Mein Konto</span>
+            </div>
             <div className="mb-3 flex items-center justify-between rounded-2xl border border-[#e6e4ef] bg-white p-3">
               <span className="text-xs font-bold text-[#777b82]">Erscheinungsbild</span>
               <ThemeToggle />
@@ -78,6 +83,7 @@ export function StudioShell({ children }: { children: ReactNode }) {
                 <span className="text-sm text-[#a1a5ab]">Studio</span>
               </Link>
               <div className="flex shrink-0 items-center gap-2">
+                <UserButton />
                 <ThemeToggle className="h-9 w-9" />
                 <Link
                   href="/kundenbereich/neu"

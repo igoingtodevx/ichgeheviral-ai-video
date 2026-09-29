@@ -39,3 +39,26 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - Social proof CMS: protected `/admin` upload area with newest-first public proof feed.
 
 - Production deploys are connected to Vercel from `main`.
+
+## Customer authentication
+
+The customer area is protected by Clerk's Next.js middleware/proxy. The Railway
+API receives the Clerk session JWT as `Authorization: Bearer ...`; the API
+extracts the verified Clerk `sub` and scopes checkout drafts, jobs, and video
+access to that subject. The frontend never sends a customer ID.
+
+Required local/Vercel variables:
+
+```text
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=<Clerk publishable key>
+CLERK_SECRET_KEY=<Clerk secret key; server-side only>
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL=/kundenbereich
+NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL=/kundenbereich
+NEXT_PUBLIC_API_URL=<Railway API URL>
+```
+
+The accountless Clerk development app created by `npx -y clerk@latest init
+--accountless` is for local development only. Before production, claim/configure
+the Clerk app and set the production keys in Vercel; no keys belong in Git.

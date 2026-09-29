@@ -1,7 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useAuth } from "@clerk/nextjs";
 import { ArrowRight, Check, Gauge, Layers3, Smartphone } from "lucide-react";
+import { useState } from "react";
+import { api } from "../../../lib/api/client";
 
 const BENEFITS = [
   ["60+ Sek.", "fertiges vertikales Reel", Gauge],
@@ -10,7 +12,27 @@ const BENEFITS = [
 ] as const;
 
 export default function NewReelPage() {
-  const router = useRouter();
+  const { getToken } = useAuth();
+  const [starting, setStarting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function startCheckout() {
+    setStarting(true);
+    setError(null);
+    try {
+      const result = await api.createCheckout(
+        {
+          concept: "Poolbau-Transformation mit sichtbarem Vorher-Nachher-Aufbau",
+          add_course: false,
+        },
+        getToken,
+      );
+      window.location.assign(result.checkout_url);
+    } catch (reason: unknown) {
+      setError(reason instanceof Error ? reason.message : "Der Checkout konnte nicht gestartet werden.");
+      setStarting(false);
+    }
+  }
 
   return (
     <div className="px-4 py-8 sm:px-6 lg:px-10 lg:py-10">
@@ -45,11 +67,14 @@ export default function NewReelPage() {
 
               <button
                 type="button"
-                onClick={() => router.push("/kundenbereich/produktion")}
+                onClick={startCheckout}
+                disabled={starting}
                 className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-7 py-4 text-sm font-black text-white shadow-[0_12px_32px_rgba(109,93,252,.25)] transition hover:bg-[#7d6eff]"
               >
-                Generate <ArrowRight className="h-4 w-4" />
+                {starting ? "Checkout wird geöffnet …" : "Generate"} <ArrowRight className="h-4 w-4" />
               </button>
+              {error && <p className="mt-3 max-w-xl text-sm font-semibold text-[#ffb7b7]">{error}</p>}
+              <p className="mt-3 text-xs font-semibold text-white/45">Du wirst zum sicheren Shopify-Checkout weitergeleitet.</p>
             </div>
 
             <div className="rounded-[24px] border border-white/10 bg-white/[0.05] p-5">
