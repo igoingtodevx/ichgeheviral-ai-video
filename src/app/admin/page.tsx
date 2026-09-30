@@ -1,7 +1,8 @@
 "use client";
 
-import React, { FormEvent, useEffect, useState } from "react";
+import React, { FormEvent, Suspense, useEffect, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import {
   CheckCircle2,
   Image as ImageIcon,
@@ -74,6 +75,22 @@ function validateVideoDuration(file: File): Promise<void> {
 }
 
 export default function SocialProofAdminPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="min-h-screen bg-black text-white grid place-items-center">
+          <Loader2 className="animate-spin" size={24} />
+        </main>
+      }
+    >
+      <SocialProofAdminContent />
+    </Suspense>
+  );
+}
+
+function SocialProofAdminContent() {
+  const searchParams = useSearchParams();
+  const activeTab = searchParams.get("tab") === "testimonials" ? "testimonials" : "media";
   const [token, setToken] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
@@ -86,12 +103,6 @@ export default function SocialProofAdminPage() {
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [activeTab] = useState<"media" | "testimonials">(() => {
-    if (typeof window === "undefined") return "media";
-    return new URLSearchParams(window.location.search).get("tab") === "testimonials"
-      ? "testimonials"
-      : "media";
-  });
 
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
