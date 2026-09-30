@@ -1,7 +1,10 @@
 import { SignUp } from "@clerk/nextjs";
 import { AuthPageShell, AUTH_APPEARANCE } from "../../../components/AuthPageShell";
+import { ProtectedUnavailable } from "../../../components/ProtectedUnavailable";
+import { isClerkConfigured } from "../../../lib/auth";
 
 export default function SignUpPage() {
+  if (!isClerkConfigured) return <ProtectedUnavailable />;
   return (
     <AuthPageShell
       eyebrow="Neues Konto"

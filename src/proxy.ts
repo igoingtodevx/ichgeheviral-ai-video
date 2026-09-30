@@ -1,8 +1,16 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
 import { NextResponse, type NextFetchEvent, type NextRequest } from "next/server";
+import { isClerkConfigured } from "./lib/auth";
 
 function isProtectedPath(pathname: string): boolean {
-  return pathname === "/kundenbereich" || pathname.startsWith("/kundenbereich/");
+  return (
+    pathname === "/kundenbereich" ||
+    pathname.startsWith("/kundenbereich/") ||
+    pathname === "/admin/overview" ||
+    pathname.startsWith("/admin/overview/") ||
+    pathname === "/admin/memberships" ||
+    pathname.startsWith("/admin/memberships/")
+  );
 }
 
 const clerkHandler = clerkMiddleware(async (auth, req) => {
@@ -12,6 +20,7 @@ const clerkHandler = clerkMiddleware(async (auth, req) => {
 });
 
 export default function proxy(request: NextRequest, event: NextFetchEvent) {
+  if (!isClerkConfigured) return NextResponse.next();
   if (isProtectedPath(request.nextUrl.pathname) || request.nextUrl.pathname === "/__clerk" || request.nextUrl.pathname.startsWith("/__clerk/")) {
     return clerkHandler(request, event);
   }
