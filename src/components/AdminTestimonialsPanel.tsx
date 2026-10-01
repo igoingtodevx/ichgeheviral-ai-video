@@ -1,6 +1,7 @@
 "use client";
 
 import React, { FormEvent, useEffect, useState } from "react";
+import type { TokenProvider } from "../lib/api/client";
 import { CheckCircle2, Loader2, Quote, Trash2 } from "lucide-react";
 import {
   createTestimonial,
@@ -9,7 +10,12 @@ import {
   type TestimonialItem,
 } from "../lib/testimonials";
 
-export function AdminTestimonialsPanel({ token }: { token: string }) {
+export function AdminTestimonialsPanel({ getToken }: { getToken: TokenProvider }) {
+  const requireToken = async () => {
+    const token = await getToken();
+    if (!token) throw new Error("Deine Anmeldung ist abgelaufen. Bitte melde dich erneut an.");
+    return token;
+  };
   const [items, setItems] = useState<TestimonialItem[]>([]);
   const [quote, setQuote] = useState("");
   const [authorName, setAuthorName] = useState("");
@@ -63,7 +69,7 @@ export function AdminTestimonialsPanel({ token }: { token: string }) {
 
     setBusy(true);
     try {
-      await createTestimonial(token, {
+      await createTestimonial(await requireToken(), {
         quote: quote.trim(),
         author_name: authorName.trim(),
         author_role: authorRole.trim(),
@@ -87,7 +93,7 @@ export function AdminTestimonialsPanel({ token }: { token: string }) {
     setDeletingId(item.id);
     setError(null);
     try {
-      await deleteTestimonial(token, item.id);
+      await deleteTestimonial(await requireToken(), item.id);
       setItems((current) => current.filter((candidate) => candidate.id !== item.id));
     } catch (err) {
       setError(err instanceof Error ? err.message : "Testimonial konnte nicht gelöscht werden.");

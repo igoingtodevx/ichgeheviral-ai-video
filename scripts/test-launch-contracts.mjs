@@ -239,3 +239,15 @@ test("local video download authenticates same-origin content; storage never rece
     assert.equal(target.temporary, true); assert.match(target.url, /^blob:/); URL.revokeObjectURL(target.url); assert.equal(count, 2);
   } finally { globalThis.fetch = original; }
 });
+
+test("content administration uses fresh Clerk sessions, never a shared browser key", () => {
+  const page = readFileSync(resolve(root, "src/app/admin/page.tsx"), "utf8");
+  const panel = readFileSync(resolve(root, "src/components/AdminTestimonialsPanel.tsx"), "utf8");
+  assert.doesNotMatch(page, /sessionStorage|TOKEN_KEY|passwordInput|type="password"/);
+  assert.match(page, /checkSocialProofAdmin\(value\)/);
+  assert.match(page, /createSocialProof\(await requireToken\(\)/);
+  assert.match(page, /deleteSocialProof\(await requireToken\(\)/);
+  assert.match(page, /AdminTestimonialsPanel getToken=\{getToken\}/);
+  assert.match(panel, /createTestimonial\(await requireToken\(\)/);
+  assert.match(panel, /deleteTestimonial\(await requireToken\(\)/);
+});

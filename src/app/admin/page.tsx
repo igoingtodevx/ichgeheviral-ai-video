@@ -1,13 +1,13 @@
 "use client";
 
-import React, { FormEvent, Suspense, useEffect, useState } from "react";
+import React, { FormEvent, Suspense, useCallback, useEffect, useState } from "react";
+import { useAuth, useClerk } from "@clerk/nextjs";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
   CheckCircle2,
   Image as ImageIcon,
   Loader2,
-  LockKeyhole,
   LogOut,
   Trash2,
   Upload,
@@ -24,7 +24,6 @@ import {
 } from "../../lib/socialProof";
 import { AdminTestimonialsPanel } from "../../components/AdminTestimonialsPanel";
 
-const TOKEN_KEY = "igv-social-proof-admin";
 const MAX_BYTES = 20 * 1024 * 1024;
 const ALLOWED_TYPES = new Set([
   "image/jpeg",
@@ -91,8 +90,8 @@ export default function SocialProofAdminPage() {
 function SocialProofAdminContent() {
   const searchParams = useSearchParams();
   const activeTab = searchParams.get("tab") === "testimonials" ? "testimonials" : "media";
-  const [token, setToken] = useState("");
-  const [passwordInput, setPasswordInput] = useState("");
+  const { getToken } = useAuth();
+  const { signOut } = useClerk();
   const [authenticated, setAuthenticated] = useState(false);
   const [checking, setChecking] = useState(true);
   const [items, setItems] = useState<SocialProofItem[]>([]);
@@ -119,51 +118,31 @@ function SocialProofAdminContent() {
     };
   }, [file]);
 
-  const loadItems = async () => {
+  const loadItems = useCallback(async () => {
     const page = await fetchSocialProof(24, 0);
     setItems(page.items);
-  };
+  }, []);
+  const requireToken = useCallback(async () => {
+    const value = await getToken();
+    if (!value) throw new Error("Deine Anmeldung ist abgelaufen. Bitte melde dich erneut an.");
+    return value;
+  }, [getToken]);
 
   useEffect(() => {
-    const saved = typeof window !== "undefined" ? window.sessionStorage.getItem(TOKEN_KEY) || "" : "";
-    if (!saved || !hasSocialProofApi) {
-      queueMicrotask(() => setChecking(false));
-      return;
-    }
-    checkSocialProofAdmin(saved)
-      .then(async () => {
-        setToken(saved);
+    let active = true;
+    requireToken().then(async (value) => {
+      await checkSocialProofAdmin(value);
+      if (active) {
         setAuthenticated(true);
         await loadItems();
-      })
-      .catch(() => window.sessionStorage.removeItem(TOKEN_KEY))
-      .finally(() => setChecking(false));
-  }, []);
+      }
+    }).catch((reason: unknown) => {
+      if (active) setError(reason instanceof Error ? reason.message : "Admin-Zugriff konnte nicht bestätigt werden.");
+    }).finally(() => { if (active) setChecking(false); });
+    return () => { active = false; };
+  }, [requireToken, loadItems]);
 
-  const login = async (event: FormEvent) => {
-    event.preventDefault();
-    setError(null);
-    setBusy(true);
-    try {
-      await checkSocialProofAdmin(passwordInput);
-      window.sessionStorage.setItem(TOKEN_KEY, passwordInput);
-      setToken(passwordInput);
-      setAuthenticated(true);
-      setPasswordInput("");
-      await loadItems();
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Anmeldung fehlgeschlagen.");
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  const logout = () => {
-    window.sessionStorage.removeItem(TOKEN_KEY);
-    setToken("");
-    setAuthenticated(false);
-    setItems([]);
-  };
+  const logout = () => { void signOut({ redirectUrl: "/sign-in" }); };
 
   const publish = async (event: FormEvent) => {
     event.preventDefault();
@@ -186,7 +165,7 @@ function SocialProofAdminContent() {
     try {
       await validateVideoDuration(file);
       const data_base64 = await fileToBase64(file);
-      await createSocialProof(token, {
+      await createSocialProof(await requireToken(), {
         filename: file.name,
         mime_type: file.type,
         title: title.trim(),
@@ -210,7 +189,7 @@ function SocialProofAdminContent() {
     setDeletingId(item.id);
     setError(null);
     try {
-      await deleteSocialProof(token, item.id);
+      await deleteSocialProof(await requireToken(), item.id);
       setItems((current) => current.filter((candidate) => candidate.id !== item.id));
     } catch (err) {
       setError(err instanceof Error ? err.message : "Löschen fehlgeschlagen.");
@@ -241,36 +220,7 @@ function SocialProofAdminContent() {
   }
 
   if (!authenticated) {
-    return (
-      <main className="min-h-screen bg-[#07060B] text-white flex items-center justify-center px-5 radial-glow-hero">
-        <form onSubmit={login} className="glass-panel w-full max-w-md rounded-3xl p-7 sm:p-9">
-          <div className="w-11 h-11 rounded-2xl bg-violet-500/15 border border-violet-500/30 flex items-center justify-center mb-5">
-            <LockKeyhole className="w-5 h-5 text-violet-300" />
-          </div>
-          <h1 className="text-2xl font-extrabold">Social Proof verwalten</h1>
-          <Link href="/admin/overview" className="mt-3 inline-block text-sm font-bold text-violet-300">Administration →</Link>
-          <p className="mt-2 text-sm text-slate-300">
-            Zusätzlichen Inhaltsschlüssel eingeben. Nur der globale Administrator erhält Zugang; der Schlüssel wird ausschließlich in dieser Browser-Sitzung gespeichert.
-          </p>
-          <input
-            type="password"
-            value={passwordInput}
-            onChange={(event) => setPasswordInput(event.target.value)}
-            placeholder="Admin-Passwort"
-            autoFocus
-            className="mt-6 w-full rounded-xl bg-black/50 border border-white/15 px-4 py-3 text-sm text-white focus:outline-none focus:border-violet-500"
-          />
-          {error && <p className="mt-3 text-sm text-rose-300">{error}</p>}
-          <button
-            type="submit"
-            disabled={busy || !passwordInput}
-            className="btn-electric mt-5 w-full rounded-xl py-3 text-sm font-semibold disabled:opacity-50"
-          >
-            {busy ? "Prüfe..." : "Einloggen"}
-          </button>
-        </form>
-      </main>
-    );
+    return <main className="min-h-screen bg-[#07060B] text-white flex items-center justify-center px-5"><div className="glass-panel w-full max-w-md rounded-3xl p-7"><h1 className="text-2xl font-extrabold">Admin-Zugriff nicht verfügbar</h1><p role="alert" className="mt-3 text-sm text-slate-300">{error || "Deine Anmeldung konnte nicht bestätigt werden."}</p><button type="button" onClick={() => window.location.reload()} className="mt-5 rounded-xl bg-violet-600 px-5 py-3 text-sm font-bold">Erneut prüfen</button></div></main>;
   }
 
   return (
@@ -321,7 +271,7 @@ function SocialProofAdminContent() {
         </nav>
 
         {activeTab === "testimonials" ? (
-          <AdminTestimonialsPanel token={token} />
+          <AdminTestimonialsPanel getToken={getToken} />
         ) : (
           <>
         <section className="glass-panel rounded-3xl p-5 sm:p-8">
