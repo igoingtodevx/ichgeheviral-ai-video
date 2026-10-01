@@ -9,7 +9,7 @@ export default function SignInPage() {
     <AuthPageShell
       eyebrow="Kundenbereich"
       title="Willkommen zurück"
-      description="Melde dich an, um deine Reels und laufenden Aufträge zu sehen."
+      description="Melde dich bitte mit demselben Google-Konto an, mit dem der Account erstellt wurde, um deine Videos und Aufträge zu verwalten."
     >
       <SignIn appearance={AUTH_APPEARANCE} />
     </AuthPageShell>

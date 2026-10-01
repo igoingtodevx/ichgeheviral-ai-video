@@ -3,9 +3,11 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
+import { packageHref } from "../lib/business-config";
 
 const PACKAGES = [
   {
+    id: "starter",
     number: "Paket 1",
     name: "Starter",
     price: "49 €",
@@ -13,6 +15,7 @@ const PACKAGES = [
     highlight: false,
   },
   {
+    id: "premium-9",
     number: "Paket 2",
     name: "Premium",
     price: "99 €",
@@ -20,6 +23,7 @@ const PACKAGES = [
     highlight: true,
   },
   {
+    id: "premium-30",
     number: "Paket 3",
     name: "Premium",
     price: "297 €",
@@ -82,7 +86,7 @@ export function Pricing() {
               </ul>
 
               <Link
-                href="/kundenbereich/neu"
+                href={packageHref(pkg.id)}
                 className={
                   pkg.highlight
                     ? "mt-8 flex items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-6 py-4 text-sm font-black text-white transition hover:bg-[#5947e8]"

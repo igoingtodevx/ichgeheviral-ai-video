@@ -38,6 +38,12 @@ export function AuthPageShell({
             <h1 className="mt-2 text-3xl font-black tracking-[-0.05em]">{title}</h1>
             <p className="mt-2 text-sm leading-6 text-[#686c73]">{description}</p>
           </div>
+          <div className="mb-6 rounded-xl border border-[#dedbe7] bg-[#f8f7ff] p-3.5 text-xs text-[#5140d8]">
+            <p className="font-bold">Google-Anmeldung:</p>
+            <p className="mt-1 leading-5 text-[#5947e8]">
+              Melde dich bitte mit demselben Google-Konto an, mit dem der Account erstellt wurde.
+            </p>
+          </div>
           {children}
         </div>
         <p className="mt-6 text-center text-xs font-semibold text-[#8a8e94]">

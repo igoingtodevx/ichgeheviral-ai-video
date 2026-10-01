@@ -9,13 +9,13 @@ import { api, type CustomerJob, type CustomerJobStatus } from "../../../lib/api/
 import { formatDateTime, progressPercent, STATUS_LABELS } from "../../../lib/jobs";
 
 const STEPS: Array<{ status: CustomerJobStatus; title: string; description: string }> = [
-  { status: "preparing", title: "Auftrag vorbereitet", description: "Der bestätigte Auftrag wird für die Verarbeitung bereitgestellt." },
-  { status: "queued", title: "In der Warteschlange", description: "Der Auftrag wartet auf einen freigegebenen Worker." },
-  { status: "generating_images", title: "Bilder werden erstellt", description: "Die Szenenbilder entstehen aus dem Auftrag." },
-  { status: "generating_videos", title: "Übergänge werden erstellt", description: "Die Bildfolgen werden als Videosequenzen ausgearbeitet." },
-  { status: "assembling", title: "Reel wird zusammengesetzt", description: "Die Sequenzen werden zu einem Reel verbunden." },
-  { status: "upload_pending", title: "Video wird gespeichert", description: "Das fertige Artefakt wird verifiziert gespeichert." },
-  { status: "completed", title: "Reel fertig", description: "Das Backend meldet den Auftrag als abgeschlossen." },
+  { status: "preparing", title: "Auftrag erfasst", description: "Dein Auftrag wird für die Erstellung vorbereitet." },
+  { status: "queued", title: "In Warteschlange", description: "Der Auftrag wartet auf die Zuweisung an die Erstellungs-Pipeline." },
+  { status: "generating_images", title: "KI-Bilderstellung", description: "Die fotorealistischen Baufortschritts-Szenen werden generiert." },
+  { status: "generating_videos", title: "Szenen-Animation", description: "Die Übergänge und Bewegungen zwischen den Bauphasen entstehen." },
+  { status: "assembling", title: "Finaler Schnitt", description: "Die Sequenzen werden zum fertigen 60+ Sekunden Video zusammengesetzt." },
+  { status: "upload_pending", title: "Fertigstellung", description: "Das fertige Video wird geprüft und im Speicher bereitgestellt." },
+  { status: "completed", title: "Video bereit zum Download", description: "Das fertige KI-Building-Video steht für dich zum Abrufen bereit." },
 ];
 
 const STATUS_INDEX = new Map(STEPS.map((step, index) => [step.status, index]));
@@ -36,7 +36,7 @@ function StatusTimeline({ job }: { job: CustomerJob }) {
 
 export default function ProductionStatusPage() {
   return (
-    <Suspense fallback={<div className="flex min-h-[55vh] items-center justify-center gap-3 text-sm font-bold text-[#686c73]">Produktionsstatus wird geladen …</div>}>
+    <Suspense fallback={<div className="flex min-h-[55vh] items-center justify-center gap-3 text-sm font-bold text-[#686c73]">Status & Fortschritt wird geladen …</div>}>
       <ProductionStatusContent />
     </Suspense>
   );
@@ -62,7 +62,7 @@ function ProductionStatusContent() {
       }
       setError(null);
     } catch (reason: unknown) {
-      setError(reason instanceof Error ? reason.message : "Der Produktionsstatus konnte nicht geladen werden.");
+      setError(reason instanceof Error ? reason.message : "Der Status konnte nicht geladen werden.");
     } finally {
       setLoading(false);
     }
@@ -77,11 +77,88 @@ function ProductionStatusContent() {
 
   const choices = useMemo(() => jobs.length ? jobs : job ? [job] : [], [job, jobs]);
 
-  if (!isLoaded || !isSignedIn || loading) return <div className="flex min-h-[55vh] items-center justify-center gap-3 text-sm font-bold text-[#686c73]"><LoaderCircle className="h-5 w-5 animate-spin text-[#6d5dfc]" /> Produktionsstatus wird geladen …</div>;
+  if (!isLoaded || !isSignedIn || loading) return <div className="flex min-h-[55vh] items-center justify-center gap-3 text-sm font-bold text-[#686c73]"><LoaderCircle className="h-5 w-5 animate-spin text-[#6d5dfc]" /> Status & Fortschritt wird geladen …</div>;
 
-  return <div className="px-4 py-8 sm:px-6 lg:px-10 lg:py-10"><div className="mx-auto max-w-5xl"><div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"><div><span className="text-xs font-black uppercase tracking-[0.16em] text-[#5d4de1]">Echter Auftragsstatus</span><h1 className="mt-3 text-4xl font-black tracking-[-0.055em] sm:text-5xl">So steht dein Auftrag.</h1><p className="mt-3 max-w-2xl text-sm leading-6 text-[#686c73]">Diese Ansicht zeigt ausschließlich Status und Fortschritt aus dem Backend. Sie simuliert keine Produktion.</p></div><button type="button" onClick={() => void load()} className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#dedbe7] bg-white px-4 py-3 text-sm font-black"><RefreshCw className="h-4 w-4" /> Aktualisieren</button></div>
-      {error && <div className="mt-6 flex items-start gap-3 rounded-2xl border border-[#f0caca] bg-[#fff5f5] p-4 text-sm font-semibold text-[#9c3c3c]"><AlertCircle className="mt-0.5 h-4 w-4" />{error}</div>}
-      {choices.length > 1 && <div className="mt-8"><label htmlFor="job-select" className="text-xs font-black uppercase tracking-[0.14em] text-[#8a8e94]">Auftrag auswählen</label><select id="job-select" value={job?.id || ""} onChange={(event) => { const next = choices.find((item) => item.id === event.target.value); if (next) setJob(next); }} className="mt-2 w-full rounded-xl border border-[#e4e1ec] bg-white px-4 py-3 text-sm font-bold sm:max-w-xl">{choices.map((item) => <option key={item.id} value={item.id}>{item.concept}</option>)}</select></div>}
-      {!job ? <section className="mt-10 rounded-[26px] border border-dashed border-[#d9d6e2] bg-white px-6 py-16 text-center"><h2 className="text-2xl font-black">Noch kein Auftrag ausgewählt</h2><p className="mx-auto mt-3 max-w-md text-sm leading-6 text-[#686c73]">Nach einem bestätigten Kauf erscheint der echte Produktionsstatus hier.</p><Link href="/kundenbereich" className="mt-7 inline-flex rounded-xl bg-[#6d5dfc] px-5 py-3.5 text-sm font-black text-white">Zu Meine Reels</Link></section> : <section className="mt-10 grid gap-6 lg:grid-cols-[1fr_280px]"><div className="rounded-[26px] border border-[#e4e1ec] bg-white p-6 shadow-[0_18px_60px_rgba(37,31,68,.06)] sm:p-8"><StatusTimeline job={job} /></div><aside className="rounded-[26px] border border-[#e4e1ec] bg-white p-6"><div className="text-xs font-black uppercase tracking-[0.14em] text-[#8a8e94]">Auftrag</div><h2 className="mt-3 text-lg font-black leading-6">{job.concept}</h2><dl className="mt-6 space-y-4 text-sm"><div><dt className="text-xs font-bold uppercase tracking-wider text-[#8a8e94]">Erstellt</dt><dd className="mt-1 font-semibold">{formatDateTime(job.created_at)}</dd></div><div><dt className="text-xs font-bold uppercase tracking-wider text-[#8a8e94]">Letzte Aktualisierung</dt><dd className="mt-1 font-semibold">{formatDateTime(job.updated_at)}</dd></div></dl>{job.status === "completed" && <Link href={`/kundenbereich/reel/${encodeURIComponent(job.id)}`} className="mt-7 flex w-full justify-center rounded-xl bg-[#6d5dfc] px-4 py-3.5 text-sm font-black text-white">Reel öffnen</Link>}</aside></section>}
-    </div></div>;
+  return (
+    <div className="px-4 py-8 sm:px-6 lg:px-10 lg:py-10">
+      <div className="mx-auto max-w-5xl">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <span className="text-xs font-black uppercase tracking-[0.16em] text-[#5d4de1]">Status & Fortschritt</span>
+            <h1 className="mt-3 text-4xl font-black tracking-[-0.055em] sm:text-5xl">So steht dein Auftrag.</h1>
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-[#686c73]">Diese Ansicht zeigt den echten Verarbeitungsstatus aus dem Backend von der Auftragserfassung bis zum fertigen Video.</p>
+          </div>
+          <button type="button" onClick={() => void load()} className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#dedbe7] bg-white px-4 py-3 text-sm font-black">
+            <RefreshCw className="h-4 w-4" /> Aktualisieren
+          </button>
+        </div>
+
+        {/* User-friendly Workflow Explanation: Auftrag -> Verarbeitung -> Fertiges Video */}
+        <section className="mt-8 rounded-2xl border border-[#e4e1ec] bg-white p-5 sm:p-6 shadow-sm">
+          <div className="text-xs font-black uppercase tracking-[0.16em] text-[#5d4de1]">
+            Der Erstellungsablauf
+          </div>
+          <h2 className="mt-1 text-lg font-black text-[#101114]">Von deiner Idee zum fertigen viralen Video</h2>
+          <div className="mt-4 grid gap-4 sm:grid-cols-3">
+            <div className="flex items-start gap-3 rounded-xl border border-[#f0edff] bg-[#faf9ff] p-4">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#6d5dfc] text-xs font-black text-white">1</span>
+              <div>
+                <div className="text-sm font-black text-[#101114]">Auftrag</div>
+                <p className="mt-1 text-xs leading-5 text-[#686c73]">Paket und Video-Konzept werden verbindlich erfasst und vorbereitet.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 rounded-xl border border-[#f0edff] bg-[#faf9ff] p-4">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#6d5dfc] text-xs font-black text-white">2</span>
+              <div>
+                <div className="text-sm font-black text-[#101114]">Verarbeitung</div>
+                <p className="mt-1 text-xs leading-5 text-[#686c73]">Die KI generiert den sichtbaren Baufortschritt von der ersten bis zur letzten Szene.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 rounded-xl border border-[#f0edff] bg-[#faf9ff] p-4">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#6d5dfc] text-xs font-black text-white">3</span>
+              <div>
+                <div className="text-sm font-black text-[#101114]">Fertiges Video</div>
+                <p className="mt-1 text-xs leading-5 text-[#686c73]">60+ Sekunden Video im Hochformat (9:16) herunterladen und auf TikTok posten.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {error && <div className="mt-6 flex items-start gap-3 rounded-2xl border border-[#f0caca] bg-[#fff5f5] p-4 text-sm font-semibold text-[#9c3c3c]"><AlertCircle className="mt-0.5 h-4 w-4" />{error}</div>}
+        {choices.length > 1 && <div className="mt-8"><label htmlFor="job-select" className="text-xs font-black uppercase tracking-[0.14em] text-[#8a8e94]">Auftrag auswählen</label><select id="job-select" value={job?.id || ""} onChange={(event) => { const next = choices.find((item) => item.id === event.target.value); if (next) setJob(next); }} className="mt-2 w-full rounded-xl border border-[#e4e1ec] bg-white px-4 py-3 text-sm font-bold sm:max-w-xl">{choices.map((item) => <option key={item.id} value={item.id}>{item.concept}</option>)}</select></div>}
+        {!job ? (
+          <section className="mt-10 rounded-[26px] border border-dashed border-[#d9d6e2] bg-white px-6 py-16 text-center">
+            <h2 className="text-2xl font-black">Noch kein Auftrag ausgewählt</h2>
+            <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-[#686c73]">Nach einem bestätigten Kauf erscheint der echte Verarbeitungsstatus hier.</p>
+            <Link href="/kundenbereich" className="mt-7 inline-flex rounded-xl bg-[#6d5dfc] px-5 py-3.5 text-sm font-black text-white">Zu Meine Reels</Link>
+          </section>
+        ) : (
+          <section className="mt-10 grid gap-6 lg:grid-cols-[1fr_280px]">
+            <div className="rounded-[26px] border border-[#e4e1ec] bg-white p-6 shadow-[0_18px_60px_rgba(37,31,68,.06)] sm:p-8">
+              <StatusTimeline job={job} />
+            </div>
+            <aside className="rounded-[26px] border border-[#e4e1ec] bg-white p-6">
+              <div className="text-xs font-black uppercase tracking-[0.14em] text-[#8a8e94]">Auftrag</div>
+              <h2 className="mt-3 text-lg font-black leading-6">{job.concept}</h2>
+              <dl className="mt-6 space-y-4 text-sm">
+                <div>
+                  <dt className="text-xs font-bold uppercase tracking-wider text-[#8a8e94]">Erstellt</dt>
+                  <dd className="mt-1 font-semibold">{formatDateTime(job.created_at)}</dd>
+                </div>
+                <div>
+                  <dt className="text-xs font-bold uppercase tracking-wider text-[#8a8e94]">Letzte Aktualisierung</dt>
+                  <dd className="mt-1 font-semibold">{formatDateTime(job.updated_at)}</dd>
+                </div>
+              </dl>
+              {job.status === "completed" && (
+                <Link href={`/kundenbereich/reel/${encodeURIComponent(job.id)}`} className="mt-7 flex w-full justify-center rounded-xl bg-[#6d5dfc] px-4 py-3.5 text-sm font-black text-white">
+                  Video öffnen
+                </Link>
+              )}
+            </aside>
+          </section>
+        )}
+      </div>
+    </div>
+  );
 }
