@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useAuth } from "@clerk/nextjs";
 import { ArrowRight, Check, Gauge, Layers3, Smartphone } from "lucide-react";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { api } from "../../../lib/api/client";
 import { getPackage, PRICING_LAUNCHED } from "../../../lib/pricing";
 import { rememberPurchase } from "../../../lib/purchases";
@@ -16,6 +16,14 @@ const BENEFITS = [
 ] as const;
 
 export default function NewReelPage() {
+  return (
+    <Suspense fallback={<div className="flex min-h-[55vh] items-center justify-center text-sm font-bold text-[#686c73]">Paket wird geladen …</div>}>
+      <NewReelContent />
+    </Suspense>
+  );
+}
+
+function NewReelContent() {
   const searchParams = useSearchParams();
   const { getToken } = useAuth();
   const selected = searchParams.get("package") === "ai-video-course" ? "ai-video-course" : "ai-video";

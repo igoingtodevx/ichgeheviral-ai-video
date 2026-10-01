@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useAuth } from "@clerk/nextjs";
 import { AlertCircle, Check, Circle, LoaderCircle, RefreshCw } from "lucide-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { api, type CustomerJob, type CustomerJobStatus } from "../../../lib/api/client";
 import { formatDateTime, progressPercent, STATUS_LABELS } from "../../../lib/jobs";
@@ -35,6 +35,14 @@ function StatusTimeline({ job }: { job: CustomerJob }) {
 }
 
 export default function ProductionStatusPage() {
+  return (
+    <Suspense fallback={<div className="flex min-h-[55vh] items-center justify-center gap-3 text-sm font-bold text-[#686c73]">Produktionsstatus wird geladen …</div>}>
+      <ProductionStatusContent />
+    </Suspense>
+  );
+}
+
+function ProductionStatusContent() {
   const { getToken, isLoaded, isSignedIn } = useAuth();
   const searchParams = useSearchParams();
   const requestedJobId = searchParams.get("job_id");
