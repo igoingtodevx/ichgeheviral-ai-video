@@ -1,38 +1,92 @@
 "use client";
 
 import React, { useState } from "react";
-import { Play } from "lucide-react";
-import { GOLDEN_V1_STATES, SHOWCASE_VIDEOS } from "../lib/constants";
 
-export function TransformationShowcase({ onOpenVideo }: { onOpenVideo: (videoSrc: string) => void }) {
+const BUILDING_STAGES = [
+  {
+    phaseNumber: 1,
+    stageName: "Szene 1 · Ausgangspunkt",
+    title: "Grundstück vorbereiten",
+    description: "Ein klarer Ausgangspunkt eröffnet die Geschichte und macht neugierig auf das fertige Gebäude.",
+    imageSrc: "/media/studio-seeds/marketing-demo-05.jpg",
+  },
+  {
+    phaseNumber: 2,
+    stageName: "Szene 2 · Fundament",
+    title: "Fundament entsteht",
+    description: "Die ersten sichtbaren Veränderungen geben dem Zuschauer einen Grund, weiterzuschauen.",
+    imageSrc: "/media/studio-seeds/marketing-demo-06.jpg",
+  },
+  {
+    phaseNumber: 3,
+    stageName: "Szene 3 · Konstruktion",
+    title: "Der Rohbau wächst",
+    description: "Aus einzelnen Bauschritten entsteht ein erkennbarer Fortschritt mit stabiler Perspektive.",
+    imageSrc: "/media/studio-seeds/marketing-demo-07.jpg",
+  },
+  {
+    phaseNumber: 4,
+    stageName: "Szene 4 · Baufortschritt",
+    title: "Die Form wird sichtbar",
+    description: "Das Gebäude nimmt Gestalt an und die Spannung auf das Ergebnis steigt.",
+    imageSrc: "/media/studio-seeds/marketing-demo-23.jpg",
+  },
+  {
+    phaseNumber: 5,
+    stageName: "Szene 5 · Architektur",
+    title: "Hausform steht",
+    description: "Architektur, Raum und Material werden als zusammenhängendes Motiv sichtbar.",
+    imageSrc: "/media/studio-seeds/marketing-demo-01.jpg",
+  },
+  {
+    phaseNumber: 6,
+    stageName: "Szene 6 · Außenraum",
+    title: "Fassade & Umgebung",
+    description: "Die Umgebung ergänzt das Gebäude und führt die visuelle Entwicklung weiter.",
+    imageSrc: "/media/studio-seeds/marketing-demo-16.jpg",
+  },
+  {
+    phaseNumber: 7,
+    stageName: "Szene 7 · Finish",
+    title: "Details werden fertig",
+    description: "Materialien, Licht und Außenraum bringen die Szene Schritt für Schritt zum Finale.",
+    imageSrc: "/media/studio-seeds/marketing-demo-22.jpg",
+  },
+  {
+    phaseNumber: 8,
+    stageName: "Szene 8 · Fertiges Ergebnis",
+    title: "Das fertige KI-Building",
+    description: "Ein klares Finale belohnt die Aufmerksamkeit und macht das Ergebnis sofort verständlich.",
+    imageSrc: "/media/studio-seeds/marketing-demo-27.jpg",
+  },
+];
+
+export function TransformationShowcase() {
   const [activeState, setActiveState] = useState(0);
-  const current = GOLDEN_V1_STATES[activeState];
+  const current = BUILDING_STAGES[activeState];
 
   return (
-    <section id="ergebnisse" className="bg-white py-20 lg:py-28">
+    <section id="ergebnisse" className="scroll-mt-28 bg-white py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <span className="text-xs font-black uppercase tracking-[0.18em] text-[#5947e8]">
-            Erstelltes Beispiel
+            KI-Building Nische erklärt
           </span>
           <h2 className="mt-3 text-3xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
-            Eine Idee. Ein zusammenhängendes Reel.
+            KI-Building Nische ist der virale Hit!
           </h2>
           <p className="mt-5 text-base leading-7 text-[#686c73] sm:text-lg">
-            Kein Zusammenschneiden einzelner Clips. Aus einer Ausgangsszene entstehen mehrere
-            aufeinander abgestimmte Bilder mit stabiler Perspektive — bis zum fertigen Ergebnis.
+            Kein Zusammenschneiden einzelner Clips. Ein einziger Knopfdruck – und dein komplettes
+            KI-Building-Video ist fertig. KI-Building-Videos eignen sich besonders für TikTok, da sie
+            durch visuell spannende Bauprozesse, kontinuierliche Veränderungen und einen starken
+            „Was passiert am Ende?“-Effekt die Zuschauer zum Dranbleiben animieren können.
           </p>
         </div>
 
-        {/* Phase scrubber using the real generated states */}
         <div className="mt-14 grid gap-8 lg:grid-cols-[1.1fr_.9fr]">
           <div className="overflow-hidden rounded-[24px] border border-[#e8e5f0] bg-[#111] shadow-[0_24px_70px_rgba(89,49,20,.14)]">
             <div className="aspect-[4/5] w-full">
-              <img
-                src={current.imageSrc}
-                alt={current.title}
-                className="h-full w-full object-cover"
-              />
+              <img src={current.imageSrc} alt={current.title} className="h-full w-full object-cover" />
             </div>
           </div>
 
@@ -44,9 +98,9 @@ export function TransformationShowcase({ onOpenVideo }: { onOpenVideo: (videoSrc
             <p className="mt-4 text-sm leading-6 text-[#686c73] sm:text-base">{current.description}</p>
 
             <div className="mt-8 flex flex-wrap gap-2">
-              {GOLDEN_V1_STATES.map((state, i) => (
+              {BUILDING_STAGES.map((state, i) => (
                 <button
-                  key={state.id}
+                  key={state.phaseNumber}
                   onClick={() => setActiveState(i)}
                   aria-label={`Szene ${state.phaseNumber}: ${state.title}`}
                   className={`h-11 w-11 shrink-0 overflow-hidden rounded-xl border-2 transition ${
@@ -58,38 +112,9 @@ export function TransformationShowcase({ onOpenVideo }: { onOpenVideo: (videoSrc
               ))}
             </div>
             <p className="mt-4 text-xs font-bold uppercase tracking-wider text-[#a1a5ab]">
-              Szene {current.phaseNumber} von {GOLDEN_V1_STATES.length} · Wähle eine Szene, um den Aufbau zu sehen
+              Szene {current.phaseNumber} von {BUILDING_STAGES.length} · Wähle eine Szene, um den Aufbau zu sehen
             </p>
           </div>
-        </div>
-
-        {/* Two real finished reels */}
-        <div className="mt-16 grid gap-6 sm:grid-cols-2">
-          {SHOWCASE_VIDEOS.map((video) => (
-            <button
-              key={video.id}
-              onClick={() => onOpenVideo(video.videoSrc)}
-              className="group relative overflow-hidden rounded-[22px] border border-[#e6e4ef] bg-[#111] text-left shadow-[0_18px_50px_rgba(54,39,27,.08)]"
-            >
-              <div className="aspect-[4/5] overflow-hidden">
-                <img
-                  src={video.posterSrc}
-                  alt={video.title}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
-              <span className="absolute inset-0 m-auto grid h-16 w-16 place-items-center rounded-full bg-[#6d5dfc] text-white shadow-[0_10px_30px_rgba(109,93,252,.32)]">
-                <Play className="h-6 w-6 fill-current" />
-              </span>
-              <div className="absolute bottom-5 left-5 right-5 text-white">
-                <b className="block text-base">{video.title}</b>
-                <span className="mt-1 block text-xs text-white/75">
-                  {video.duration} · {video.tag}
-                </span>
-              </div>
-            </button>
-          ))}
         </div>
       </div>
     </section>

@@ -9,8 +9,8 @@ import { RoleNavigation } from "./RoleNavigation";
 const LINKS = [
   { href: "#ergebnisse", label: "Ergebnisse" },
   { href: "#so-funktionierts", label: "So funktioniert's" },
-  { href: "#rechner", label: "Rechner" },
-  { href: "#keine-credits", label: "Klarer Ablauf" },
+  { href: "#rechner", label: "Geld-Rechner" },
+  { href: "#einfacher-ablauf", label: "Einfacher Ablauf" },
   { href: "#preise", label: "Preise" },
   { href: "#faq", label: "FAQ" },
 ];
@@ -36,10 +36,10 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <ThemeToggle />
           <Link
-            href="/kundenbereich"
+            href="/kundenbereich/neu"
             className="hidden items-center gap-2 rounded-xl bg-[#6d5dfc] px-5 py-3 text-xs font-black text-white transition hover:bg-[#5947e8] sm:inline-flex"
           >
-            Studio ansehen <ArrowRight className="h-3.5 w-3.5" />
+            Video generieren <ArrowRight className="h-3.5 w-3.5" />
           </Link>
           <button
             onClick={() => setOpen((v) => !v)}
@@ -52,7 +52,9 @@ export function Navbar() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8"><RoleNavigation className="flex flex-wrap items-center justify-end gap-4 pb-2 text-xs font-bold text-[#686c73]" /></div>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <RoleNavigation className="flex flex-wrap items-center justify-end gap-4 pb-2 text-xs font-bold text-[#686c73]" />
+      </div>
 
       {open && (
         <div className="border-t border-[#e6e4ef] bg-white px-4 py-4 lg:hidden">
@@ -68,10 +70,10 @@ export function Navbar() {
               </a>
             ))}
             <Link
-              href="/kundenbereich"
+              href="/kundenbereich/neu"
               className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-5 py-3 text-sm font-black text-white"
             >
-              Studio ansehen <ArrowRight className="h-4 w-4" />
+              Video generieren <ArrowRight className="h-4 w-4" />
             </Link>
           </nav>
         </div>

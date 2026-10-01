@@ -19,13 +19,13 @@ const geistMono = Geist_Mono({
 });
 
 const baseMetadata: Metadata = {
-  title: "IchGeheViral — Transformations-Reels für starken Content",
+  title: "IchGeheViral — Virale KI-Building Videos auf Knopfdruck",
   description:
-    "Aus einer verfügbaren Transformation entsteht ein fertiges 60+ Sekunden 9:16 Reel mit sichtbarer Entwicklung und klarem Finale. Poolbau ist die erste verfügbare Kategorie.",
+    "IchGeheViral erstellt vollautomatisch KI-Building-Videos im 9:16-Format – von der ersten Idee bis zum fertigen Short-Form-Video.",
   openGraph: {
-    title: "IchGeheViral — Transformations-Reels für starken Content",
+    title: "IchGeheViral — Virale KI-Building Videos auf Knopfdruck",
     description:
-      "Erstellte Transformations-Reels für TikTok, Instagram Reels und YouTube Shorts — 60+ Sekunden, 9:16. Poolbau ist die erste verfügbare Kategorie.",
+      "Vollautomatisch erstellte KI-Building-Videos für TikTok, Instagram Reels und YouTube Shorts.",
     siteName: "IchGeheViral",
     locale: "de_DE",
     type: "website",

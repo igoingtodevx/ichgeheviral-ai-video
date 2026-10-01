@@ -12,15 +12,11 @@ export function FinalCTA() {
         <h2 className="mt-4 text-4xl font-black tracking-[-0.05em] sm:text-6xl">
           Aus deiner Idee wird ein fertiges Reel.
         </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-[#b2b5ba]">
-          Im Studio startest du mit Poolbau-Transformationen – klar aufgebaut und bereit für
-          aufmerksamkeitsstarke Short-Form-Videos.
-        </p>
         <Link
           href="/kundenbereich/neu"
           className="mt-8 inline-flex items-center gap-2 rounded-xl bg-[#6d5dfc] px-8 py-4 text-sm font-black text-white transition hover:bg-[#5947e8]"
         >
-          Studio ansehen <ArrowRight className="h-4 w-4" />
+          Jetzt generieren <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
     </section>

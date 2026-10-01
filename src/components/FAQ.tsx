@@ -2,13 +2,13 @@
 
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { FAQ_ITEMS } from "../lib/constants";
+import { FAQ_ITEMS } from "../lib/landing-content";
 
 export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="bg-[#f7f7fb] py-20 lg:py-28">
+    <section id="faq" className="scroll-mt-28 bg-[#f7f7fb] py-20 lg:py-28">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <span className="text-xs font-black uppercase tracking-[0.18em] text-[#5947e8]">

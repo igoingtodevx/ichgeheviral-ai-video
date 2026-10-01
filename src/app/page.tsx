@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { Navbar } from "../components/Navbar";
 import { Hero } from "../components/Hero";
 import { TransformationShowcase } from "../components/TransformationShowcase";
@@ -8,47 +8,37 @@ import { WhyViral } from "../components/WhyViral";
 import { HowItWorks } from "../components/HowItWorks";
 import { PotentialCalculator } from "../components/PotentialCalculator";
 import { NoCreditsSection } from "../components/NoCreditsSection";
-import { SocialProof } from "../components/SocialProof";
 import { TestimonialsSection } from "../components/TestimonialsSection";
 import { FounderSection } from "../components/FounderSection";
 import { Pricing } from "../components/Pricing";
 import { FAQ } from "../components/FAQ";
 import { FinalCTA } from "../components/FinalCTA";
 import { Footer } from "../components/Footer";
-import { VideoModal } from "../components/VideoModal";
-import { SHOWCASE_VIDEOS } from "../lib/constants";
-import { useBusinessConfig } from "../components/BusinessConfigProvider";
 
 export default function LandingPage() {
-  const { config } = useBusinessConfig();
-  const [videoSrc, setVideoSrc] = useState<string | null>(null);
-
   return (
     <div className="min-h-screen bg-white text-[#101114]">
       <div className="grid h-7 place-items-center bg-[#101114] text-[10px] font-black uppercase tracking-[0.16em] text-white">
-        TRANSFORMATIONS-REELS FÜR STARKEN CONTENT
+        Virale KI-Building Videos auf Knopfdruck
       </div>
 
       <Navbar />
 
       <main>
-        <Hero onOpenVideo={() => setVideoSrc(config.content.hero_video_url || SHOWCASE_VIDEOS[0].videoSrc)} />
+        <Hero />
         <Pricing />
-        <FounderSection />
         <PotentialCalculator />
-        <TransformationShowcase onOpenVideo={setVideoSrc} />
         <TestimonialsSection />
+        <FounderSection />
+        <TransformationShowcase />
         <WhyViral />
         <HowItWorks />
         <NoCreditsSection />
-        <SocialProof />
         <FAQ />
         <FinalCTA />
       </main>
 
       <Footer />
-
-      {videoSrc && <VideoModal src={videoSrc} onClose={() => setVideoSrc(null)} />}
     </div>
   );
 }

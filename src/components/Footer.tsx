@@ -22,18 +22,26 @@ export function Footer() {
             <b className="text-base text-white">
               IchGehe<span className="text-[#6d5dfc]">Viral</span>
             </b>
-            <div>Transformations-Reels</div>
+            <div>Virale KI-Building Videos</div>
             {config.content.legal_entity && <div className="mt-2">{config.content.legal_entity}</div>}
             {config.content.support_email && <a className="mt-1 inline-block hover:text-white" href={`mailto:${config.content.support_email}`}>{config.content.support_email}</a>}
           </div>
 
-          <nav className="flex flex-wrap gap-x-4 gap-y-2">
-            {LEGAL_LINKS.map((link) => (
-              <Link key={link.href} href={link.href} className="transition hover:text-white">
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+          <div className="flex flex-col items-start gap-4 sm:items-end">
+            <Link
+              href="/kundenbereich/neu"
+              className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 font-semibold text-[#101114] transition hover:bg-[#ecebff]"
+            >
+              Jetzt generieren <span aria-hidden="true">→</span>
+            </Link>
+            <nav className="flex flex-wrap gap-x-4 gap-y-2 sm:justify-end">
+              {LEGAL_LINKS.map((link) => (
+                <Link key={link.href} href={link.href} className="transition hover:text-white">
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
         </div>
 
         <div className="mt-5 border-t border-[#202126] pt-5 sm:text-right">

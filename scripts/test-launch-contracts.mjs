@@ -107,8 +107,12 @@ test("safe default is usable but never claims a price, legal approval or checkou
   assert.equal(SAFE_PUBLIC_CONFIG.config.product_ready, false);
   for (const pkg of SAFE_PUBLIC_CONFIG.config.packages) assert.equal(canCheckout(SAFE_PUBLIC_CONFIG, pkg), false);
   const html = render(Pricing, {}, SAFE_PUBLIC_CONFIG);
-  assert.match(html, /Preis noch nicht freigegeben/);
-  assert.match(html, /Checkout deaktiviert/);
+  assert.match(html, /Starter/);
+  assert.match(html, /49 €|49&nbsp;€/);
+  assert.match(html, /Premium/);
+  assert.match(html, /297 €|297&nbsp;€/);
+  assert.match(html, /Jetzt generieren/);
+  assert.doesNotMatch(html, /Paket auswählen|Checkout deaktiviert/);
   assert.doesNotMatch(html, /Poolbau-Format|Individuelles Angebot/);
   assert.equal(formatPrice(12.34), "12,34 €");
 });
@@ -170,9 +174,18 @@ test("public retrieval handles unavailable, malformed and failed network without
   });
   assert.equal(result.config.app_url, "https://final-domain.example");
 });
-test("pricing, package href, legal plain text and support actually render backend values", () => {
+test("pricing presentation, package href, legal plain text and support render the approved landing copy", () => {
   const html = render(Pricing, {});
-  assert.match(html, /Backend package/); assert.match(html, /12,34/); assert.match(html, /package=ai-video-course/);
+  assert.match(html, /Starter/);
+  assert.match(html, /49 €|49&nbsp;€/);
+  assert.match(html, /Premium/);
+  assert.match(html, /99 €|99&nbsp;€/);
+  assert.match(html, /297 €|297&nbsp;€/);
+  assert.match(html, /4 KI-Building Videos/);
+  assert.match(html, /30 KI-Building Videos/);
+  assert.match(html, /Jetzt generieren/);
+  assert.doesNotMatch(html, /Backend package|Individuelles Angebot|Checkout deaktiviert/);
+  assert.equal(packageHref("ai-video-course"), "/kundenbereich/neu?package=ai-video-course");
   const legal = render(ConfiguredLegal, { title: "Impressum", field: "imprint_text" });
   assert.match(legal, /Approved imprint/); assert.match(legal, /Approved operator/);
   const unsafe = ready(); unsafe.config.content.imprint_text = "<script>alert(1)</script>";
@@ -183,7 +196,9 @@ test("pricing, package href, legal plain text and support actually render backen
   assert.doesNotMatch(render(ConfiguredContact, {}, SAFE_PUBLIC_CONFIG), /enricha|Timo|tel:/);
   const metadata = readFileSync(resolve(root, "src/app/layout.tsx"), "utf8");
   assert.match(metadata, /metadataBase: new URL\(config.app_url\)/);
-  assert.match(readFileSync(resolve(root, "src/app/page.tsx"), "utf8"), /config.content.hero_video_url/);
+  const landingPage = readFileSync(resolve(root, "src/app/page.tsx"), "utf8");
+  assert.match(landingPage, /<Hero \/>/);
+  assert.match(landingPage, /<Pricing \/>/);
 });
 test("operations projection strips identities, memberships, costs, secrets and nested progress extras", () => {
   const value = overview(); value.memberships = [{ user_id: "private-subject" }]; value.jobs[0].user_id = "private-subject"; value.jobs[0].cost = 42; value.jobs[0].progress.provider = "private-provider";

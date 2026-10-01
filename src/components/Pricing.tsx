@@ -3,59 +3,77 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
-import { formatPrice } from "../lib/pricing";
-import { useBusinessConfig } from "./BusinessConfigProvider";
-import { canCheckout, packageHref } from "../lib/business-config";
+
+const PACKAGES = [
+  {
+    number: "Paket 1",
+    name: "Starter",
+    price: "49 €",
+    videos: "4 KI-Building Videos",
+    highlight: false,
+  },
+  {
+    number: "Paket 2",
+    name: "Premium",
+    price: "99 €",
+    videos: "9 KI-Building Videos",
+    highlight: true,
+  },
+  {
+    number: "Paket 3",
+    name: "Premium",
+    price: "297 €",
+    videos: "30 KI-Building Videos",
+    highlight: false,
+  },
+];
+
+const FEATURES = [
+  "Fertige KI-TikTok-Videos per Knopfdruck",
+  "Viral optimierte Video-Konzepte",
+  "60+ Sekunden Videolänge",
+  "Hochformat 9:16",
+  "Vollautomatische Erstellung",
+  "Kein Videoschnitt nötig",
+  "Kein Credit-System",
+];
 
 export function Pricing() {
-  const state = useBusinessConfig();
-  const packages = state.config.packages;
-  const launched = packages.some((pkg) => canCheckout(state, pkg));
   return (
-    <section id="preise" className="bg-white py-20 lg:py-28">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+    <section id="preise" className="scroll-mt-28 bg-white py-20 lg:py-28">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <span className="text-xs font-black uppercase tracking-[0.18em] text-[#5947e8]">
             Dein Einstieg
           </span>
           <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
-            Pakete für deinen Content
+            Dein Paket. Dein Content. Deine Chance.
           </h2>
-          <p className="mt-5 text-[#686c73]">
-            {launched
-              ? "Wähle das passende Paket und starte direkt im sicheren Checkout."
-              : "Wähle den Umfang, der zu deinem nächsten Content-Projekt passt."}
-          </p>
         </div>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
-          {packages.map((pkg) => (
-            <div
-              key={pkg.id}
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {PACKAGES.map((pkg) => (
+            <article
+              key={`${pkg.price}-${pkg.name}`}
               className={
                 pkg.highlight
-                  ? "rounded-[24px] border-2 border-[#b9b0ff] bg-[#f7f5ff] p-7 sm:p-9"
-                  : "rounded-[24px] border border-[#e6e4ef] bg-white p-7 sm:p-9"
+                  ? "rounded-[24px] border-2 border-[#b9b0ff] bg-[#f7f5ff] p-7 shadow-[0_18px_55px_rgba(109,93,252,.12)] sm:p-8"
+                  : "rounded-[24px] border border-[#e6e4ef] bg-white p-7 sm:p-8"
               }
             >
-              <span
-                className={
-                  pkg.highlight
-                    ? "text-xs font-black uppercase tracking-widest text-[#5947e8]"
-                    : "text-xs font-black uppercase tracking-widest text-[#686c73]"
-                }
-              >
-                {pkg.add_course ? "Mit Marketing-Kurs" : "Transformations-Reel"}
+              <span className="text-xs font-black uppercase tracking-widest text-[#5947e8]">
+                {pkg.number} · KI-TikTok Paket
               </span>
               <h3 className="mt-3 text-3xl font-black text-[#101114]">{pkg.name}</h3>
-              <p className="mt-2 text-sm text-[#686c73]">{pkg.tagline}</p>
+              <div className="mt-5 text-3xl font-black text-[#101114]">{pkg.price}</div>
+              <p className="mt-2 text-sm font-bold text-[#686c73]">{pkg.videos}</p>
 
-              <div className="mt-5 text-2xl font-black text-[#101114]">
-                {formatPrice(pkg.price_eur)}
-              </div>
+              <p className="mt-5 text-sm leading-6 text-[#686c73]">
+                Erstelle virale KI-Videos auf Knopfdruck und baue dir damit ein eigenes TikTok-Einkommen auf.
+              </p>
 
               <ul className="mt-6 space-y-3 text-sm text-[#4f555d]">
-                {pkg.features.map((feature) => (
+                {[pkg.videos, ...FEATURES].map((feature) => (
                   <li key={feature} className="flex gap-2">
                     <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#6d5dfc]" />
                     {feature}
@@ -64,16 +82,16 @@ export function Pricing() {
               </ul>
 
               <Link
-                href={packageHref(pkg.id)}
+                href="/kundenbereich/neu"
                 className={
                   pkg.highlight
                     ? "mt-8 flex items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-6 py-4 text-sm font-black text-white transition hover:bg-[#5947e8]"
                     : "mt-8 flex items-center justify-center gap-2 rounded-xl border border-[#e6e4ef] bg-white px-6 py-4 text-sm font-black text-[#101114] transition hover:border-[#b9b0ff]"
                 }
               >
-                {canCheckout(state, pkg) ? "Paket auswählen" : "Paket ansehen · Checkout deaktiviert"} <ArrowRight className="h-4 w-4" />
+                Jetzt generieren <ArrowRight className="h-4 w-4" />
               </Link>
-            </div>
+            </article>
           ))}
         </div>
       </div>

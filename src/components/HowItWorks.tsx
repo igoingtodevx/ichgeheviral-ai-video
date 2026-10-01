@@ -1,37 +1,36 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
-import { ArrowRight, CheckCircle2, DownloadCloud, Gauge } from "lucide-react";
+import { CheckCircle2, DownloadCloud } from "lucide-react";
 
 const STEPS = [
   {
     num: "01",
     icon: CheckCircle2,
-    title: "Generate klicken",
-    desc: "Du brauchst keine Konzept- oder Stilmaske. Ein Klick genügt — die weitere Ausgestaltung passiert im Hintergrund.",
+    title: "Generieren klicken",
+    desc: "Du brauchst keine Konzept- oder Stilmaske. Ein Klick genügt – die weitere Ausgestaltung passiert im Hintergrund.",
   },
   {
     num: "02",
     icon: CheckCircle2,
-    title: "Dein Reel entsteht",
-    desc: "Aus der Poolbau-Transformation wird ein zusammenhängendes Short-Form-Video mit sichtbarer Entwicklung und klarem Abschluss.",
+    title: "Dein KI-Building-Video entsteht",
+    desc: "Aus einer KI-Building-Idee wird ein zusammenhängendes Short-Form-Video mit sichtbarem Fortschritt und klarem Abschluss.",
   },
   {
     num: "03",
     icon: DownloadCloud,
-    title: "Fertiges Reel erhalten",
-    desc: "Du bekommst ein vertikales Video, bereit für TikTok, Instagram Reels und YouTube Shorts.",
+    title: "Fertiges Video erhalten",
+    desc: "Du bekommst ein vertikales KI-Building-Video, bereit für TikTok, Instagram Reels und YouTube Shorts.",
   },
 ];
 
 export function HowItWorks() {
   return (
-    <section id="so-funktionierts" className="bg-[#f7f7fb] py-20 lg:py-28">
+    <section id="so-funktionierts" className="scroll-mt-28 bg-[#f7f7fb] py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-6xl">
-            Von der Transformation zum fertigen Reel.
+            So funktioniert IchGeheViral
           </h2>
         </div>
 
@@ -46,39 +45,6 @@ export function HowItWorks() {
               <p className="mt-3 text-sm leading-6 text-[#686c73]">{desc}</p>
             </div>
           ))}
-        </div>
-
-        <div className="mt-10 rounded-[22px] border border-[#e6e4ef] bg-white p-6 sm:p-8">
-          <b className="text-sm font-black uppercase tracking-wider text-[#101114]">Poolbau im Studio</b>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-[#686c73]">
-            Klare Vorher-Nachher-Geschichten mit sichtbarer Entwicklung bis zum fertigen Ergebnis.
-          </p>
-          <div className="mt-5 grid gap-3 sm:grid-cols-3">
-            {[
-              ["Poolbau", "Eine klare Kategorie für sichtbare Veränderungen"],
-              ["8 Szenen", "Sichtbare Entwicklung bis zum fertigen Ergebnis"],
-              ["60+ Sek.", "Ein fertiges vertikales Reel"],
-            ].map(([label, description]) => (
-              <div key={label} className="rounded-2xl border border-[#efedf3] bg-[#faf9fc] p-5">
-                <div className="text-sm font-black text-[#101114]">{label}</div>
-                <p className="mt-2 text-sm leading-6 text-[#686c73]">{description}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-6 flex flex-wrap gap-4">
-            <Link
-              href="/kundenbereich/neu"
-              className="inline-flex items-center gap-2 text-sm font-black text-[#6d5dfc] hover:text-[#5947e8]"
-            >
-              Studio ansehen <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link
-              href="/kundenbereich/reel/mediterrane-lagune"
-              className="inline-flex items-center gap-2 text-sm font-black text-[#555a62] hover:text-[#101114]"
-            >
-              <Gauge className="h-4 w-4 text-[#6d5dfc]" /> Beispiel-Reel ansehen
-            </Link>
-          </div>
         </div>
       </div>
     </section>
