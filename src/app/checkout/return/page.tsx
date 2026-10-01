@@ -7,16 +7,25 @@ import { Suspense, useEffect, useState } from "react";
 import { api, type PurchaseStatus } from "../../../lib/api/client";
 import { isClerkConfigured } from "../../../lib/auth";
 import { ProtectedUnavailable } from "../../../components/ProtectedUnavailable";
+import { pendingPurchaseId } from "../../../lib/purchases";
 
 export default function CheckoutReturnPage() {
   return isClerkConfigured ? <Suspense fallback={<p className="p-8">Kaufstatus wird geladen …</p>}><PurchaseReturn /></Suspense> : <ProtectedUnavailable />;
 }
 
 function PurchaseReturn() {
-  const requestId = useSearchParams().get("request_id");
+  const requestedId = useSearchParams().get("request_id");
+  const [savedId, setSavedId] = useState<string | null>(null);
+  const requestId = requestedId || savedId;
   const { getToken, isLoaded, isSignedIn } = useAuth();
   const [purchase, setPurchase] = useState<PurchaseStatus | null>(null);
   const [error, setError] = useState<string | null>(null);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      try { setSavedId(pendingPurchaseId(window.sessionStorage)); } catch { setSavedId(null); }
+    }, 0);
+    return () => clearTimeout(timer);
+  }, []);
   useEffect(() => {
     if (!requestId || !isLoaded || !isSignedIn) return;
     let cancelled = false;
@@ -33,5 +42,5 @@ function PurchaseReturn() {
     return () => { cancelled = true; clearTimeout(timeout); };
   }, [requestId, getToken, isLoaded, isSignedIn]);
   const paid = purchase?.status === "paid" || purchase?.status === "paid_no_video";
-  return <main className="min-h-screen bg-[#f7f7fb] px-5 py-16 text-[#101114]"><section className="mx-auto max-w-lg rounded-3xl border border-[#e4e1ec] bg-white p-8"><h1 className="text-3xl font-black">{paid ? "Kauf bestätigt" : "Kaufstatus prüfen"}</h1><p className="mt-4 text-sm leading-6 text-[#686c73]">{!requestId ? "Die Kaufreferenz fehlt. Es wurde kein Auftrag angelegt." : error || (purchase ? paid ? "Das Backend hat deinen Kauf bestätigt." : `Aktueller Status: ${purchase.status}. Ein Redirect ist kein Zahlungsnachweis.` : "Wir prüfen deine Kaufreferenz im Backend. Es wird keine Zahlung und keine Generierung ausgelöst.")}</p>{purchase?.video_job_id && <Link href={`/kundenbereich/produktion?job_id=${encodeURIComponent(purchase.video_job_id)}`} className="mt-7 inline-block rounded-xl bg-[#6d5dfc] px-5 py-3 text-sm font-black text-white">Zum Auftrag</Link>}{purchase?.add_course && <p className="mt-5 text-sm text-[#686c73]">Kursbereitstellung: {purchase.course_fulfillment || "noch nicht bestätigt"}</p>}<Link href="/kundenbereich" className="mt-6 block text-sm font-bold text-[#5d4de1]">Meine Reels →</Link></section></main>;
+  return <main className="min-h-screen bg-[#f7f7fb] px-5 py-16 text-[#101114]"><section className="mx-auto max-w-lg rounded-3xl border border-[#e4e1ec] bg-white p-8"><h1 className="text-3xl font-black">{paid ? "Kauf bestätigt" : "Kaufstatus prüfen"}</h1><p className="mt-4 text-sm leading-6 text-[#686c73]">{!requestId ? "Die Kaufreferenz fehlt. Öffne deinen Kundenbereich oder den Rückkehrlink aus dem Checkout." : error || (purchase ? paid ? "Das Backend hat deinen Kauf bestätigt." : `Aktueller Status: ${purchase.status}. Ein Redirect ist kein Zahlungsnachweis.` : "Wir prüfen deine Kaufreferenz im Backend. Es wird keine Zahlung und keine Generierung ausgelöst.")}</p>{purchase?.video_job_id && <Link href={`/kundenbereich/produktion?job_id=${encodeURIComponent(purchase.video_job_id)}`} className="mt-7 inline-block rounded-xl bg-[#6d5dfc] px-5 py-3 text-sm font-black text-white">Zum Auftrag</Link>}{purchase?.add_course && <p className="mt-5 text-sm text-[#686c73]">Kursbereitstellung: {purchase.course_fulfillment || "noch nicht bestätigt"}</p>}<Link href="/kundenbereich" className="mt-6 block text-sm font-bold text-[#5d4de1]">Meine Reels →</Link></section></main>;
 }
