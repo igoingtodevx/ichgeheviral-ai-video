@@ -177,8 +177,8 @@ class ApiClient {
     });
   }
 
-  async getVideoUrl(jobId: string, getToken: TokenProvider): Promise<VideoResponse> {
-    const payload = await this.json<VideoResponse>(`/jobs/${encodeURIComponent(jobId)}/video`, getToken);
+  async getVideoUrl(jobId: string, getToken: TokenProvider, download = false): Promise<VideoResponse> {
+    const payload = await this.json<VideoResponse>(`/jobs/${encodeURIComponent(jobId)}/video${download ? "?download=1" : ""}`, getToken);
     if (!payload.url || !/^https?:\/\//i.test(payload.url) || !Number.isFinite(payload.expires_in)) {
       throw new ApiError("Das Videoziel ist ungültig oder abgelaufen.", 502, "invalid_video_url");
     }

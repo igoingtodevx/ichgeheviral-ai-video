@@ -12,7 +12,7 @@ export const STATUS_LABELS: Record<CustomerJobStatus, string> = {
   failed: "Fehlgeschlagen",
 };
 
-export const TERMINAL_STATUSES = new Set<CustomerJobStatus>(["completed", "failed"]);
+export const TERMINAL_STATUSES = new Set<CustomerJobStatus>(["completed", "failed", "interrupted"]);
 
 export function progressPercent(job: CustomerJob): number | null {
   const percent = job.progress?.percent;

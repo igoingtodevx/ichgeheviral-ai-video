@@ -6,6 +6,7 @@ function isProtectedPath(pathname: string): boolean {
   return (
     pathname === "/kundenbereich" ||
     pathname.startsWith("/kundenbereich/") ||
+    pathname === "/checkout/return" ||
     pathname === "/admin/overview" ||
     pathname.startsWith("/admin/overview/") ||
     pathname === "/admin/memberships" ||
