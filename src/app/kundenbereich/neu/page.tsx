@@ -7,6 +7,7 @@ import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { api } from "../../../lib/api/client";
 import { getPackage, PRICING_LAUNCHED } from "../../../lib/pricing";
+import { rememberPurchase } from "../../../lib/purchases";
 
 const BENEFITS = [
   ["60+ Sek.", "fertiges vertikales Reel", Gauge],
@@ -32,6 +33,7 @@ export default function NewReelPage() {
         package: "single",
         add_course: pkg.addCourse,
       }, getToken);
+      try { rememberPurchase(window.sessionStorage, result.request_id); } catch { /* Storage access must not block checkout navigation. */ }
       window.location.assign(result.checkout_url);
     } catch (reason: unknown) {
       setError(reason instanceof Error ? reason.message : "Der Checkout konnte nicht gestartet werden.");

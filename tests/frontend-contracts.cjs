@@ -37,5 +37,16 @@ function client(apiUrl, fetch) {
   await assert.rejects(api.listJobs(async () => null), error => error.status === 401);
   const missing = client('', () => { throw new Error('must not fetch'); });
   await assert.rejects(missing.api.listJobs(getToken), error => error.code === 'api_unconfigured');
+  const references = { exports: {} };
+  vm.runInNewContext(ts.transpileModule(fs.readFileSync('src/lib/purchases.ts', 'utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS } }).outputText, references);
+  const { rememberPurchase, pendingPurchaseId } = references.exports;
+  let stored = null;
+  const storage = { setItem: (_key, value) => { stored = value; }, getItem: () => stored };
+  rememberPurchase(storage, 'request_fixture');
+  assert.equal(pendingPurchaseId(storage), 'request_fixture', 'return without query can look up the last purchase, but must still authenticate with backend');
+  stored = '../../untrusted';
+  assert.equal(pendingPurchaseId(storage), null);
+  rememberPurchase({ setItem: () => { throw new Error('browser storage unavailable'); } }, 'request_fixture');
+  assert.equal(pendingPurchaseId({ getItem: () => { throw new Error('unavailable'); } }), null);
   console.log('PASS frontend contracts: package/course, disabled checkout, empty jobs, signed video JSON, missing auth/config');
 })().catch(error => { console.error(error); process.exitCode = 1; });
