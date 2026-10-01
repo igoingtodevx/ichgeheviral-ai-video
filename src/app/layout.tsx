@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "../components/ThemeProvider";
+import { CLERK_PUBLISHABLE_KEY, isClerkConfigured } from "../lib/auth";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -56,9 +57,13 @@ export default function RootLayout({
         })();`}
       </Script>
       <body className="min-h-screen antialiased">
-        <ClerkProvider>
+        {isClerkConfigured ? (
+          <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY}>
+            <ThemeProvider>{children}</ThemeProvider>
+          </ClerkProvider>
+        ) : (
           <ThemeProvider>{children}</ThemeProvider>
-        </ClerkProvider>
+        )}
       </body>
     </html>
   );
