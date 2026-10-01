@@ -3,9 +3,14 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
-import { PACKAGES, PRICING_LAUNCHED, formatPrice } from "../lib/pricing";
+import { formatPrice } from "../lib/pricing";
+import { useBusinessConfig } from "./BusinessConfigProvider";
+import { canCheckout, packageHref } from "../lib/business-config";
 
 export function Pricing() {
+  const state = useBusinessConfig();
+  const packages = state.config.packages;
+  const launched = packages.some((pkg) => canCheckout(state, pkg));
   return (
     <section id="preise" className="bg-white py-20 lg:py-28">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
@@ -17,14 +22,14 @@ export function Pricing() {
             Pakete für deinen Content
           </h2>
           <p className="mt-5 text-[#686c73]">
-            {PRICING_LAUNCHED
+            {launched
               ? "Wähle das passende Paket und starte direkt im sicheren Checkout."
               : "Wähle den Umfang, der zu deinem nächsten Content-Projekt passt."}
           </p>
         </div>
 
         <div className="mt-12 grid gap-5 md:grid-cols-2">
-          {PACKAGES.map((pkg) => (
+          {packages.map((pkg) => (
             <div
               key={pkg.id}
               className={
@@ -40,13 +45,13 @@ export function Pricing() {
                     : "text-xs font-black uppercase tracking-widest text-[#686c73]"
                 }
               >
-                {pkg.addCourse ? "Mit Marketing-Kurs" : "Transformations-Reel"}
+                {pkg.add_course ? "Mit Marketing-Kurs" : "Transformations-Reel"}
               </span>
               <h3 className="mt-3 text-3xl font-black text-[#101114]">{pkg.name}</h3>
               <p className="mt-2 text-sm text-[#686c73]">{pkg.tagline}</p>
 
               <div className="mt-5 text-2xl font-black text-[#101114]">
-                {formatPrice(pkg.priceEUR)}
+                {formatPrice(pkg.price_eur)}
               </div>
 
               <ul className="mt-6 space-y-3 text-sm text-[#4f555d]">
@@ -59,14 +64,14 @@ export function Pricing() {
               </ul>
 
               <Link
-                href="/kundenbereich/neu"
+                href={packageHref(pkg.id)}
                 className={
                   pkg.highlight
                     ? "mt-8 flex items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-6 py-4 text-sm font-black text-white transition hover:bg-[#5947e8]"
                     : "mt-8 flex items-center justify-center gap-2 rounded-xl border border-[#e6e4ef] bg-white px-6 py-4 text-sm font-black text-[#101114] transition hover:border-[#b9b0ff]"
                 }
               >
-                Studio ansehen <ArrowRight className="h-4 w-4" />
+                {canCheckout(state, pkg) ? "Paket auswählen" : "Paket ansehen · Checkout deaktiviert"} <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           ))}

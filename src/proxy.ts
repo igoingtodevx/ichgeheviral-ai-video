@@ -1,18 +1,7 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
 import { NextResponse, type NextFetchEvent, type NextRequest } from "next/server";
 import { isClerkConfigured } from "./lib/auth";
-
-function isProtectedPath(pathname: string): boolean {
-  return (
-    pathname === "/kundenbereich" ||
-    pathname.startsWith("/kundenbereich/") ||
-    pathname === "/checkout/return" ||
-    pathname === "/admin/overview" ||
-    pathname.startsWith("/admin/overview/") ||
-    pathname === "/admin/memberships" ||
-    pathname.startsWith("/admin/memberships/")
-  );
-}
+import { isProtectedPath } from "./lib/access";
 
 const clerkHandler = clerkMiddleware(async (auth, req) => {
   if (isProtectedPath(req.nextUrl.pathname)) {

@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { ArrowRight, Play } from "lucide-react";
 import { SHOWCASE_VIDEOS } from "../lib/constants";
+import { useBusinessConfig } from "./BusinessConfigProvider";
 
 const FACTS: [string, string][] = [
   ["60+ Sek.", "fertiges Reel"],
@@ -14,6 +15,8 @@ const FACTS: [string, string][] = [
 
 export function Hero({ onOpenVideo }: { onOpenVideo: () => void }) {
   const demo = SHOWCASE_VIDEOS[0];
+  const { config } = useBusinessConfig();
+  const heroVideo = config.content.hero_video_url;
 
   return (
     <section className="overflow-hidden bg-white pt-14 sm:pt-20">
@@ -51,19 +54,19 @@ export function Hero({ onOpenVideo }: { onOpenVideo: () => void }) {
             onClick={onOpenVideo}
             className="group relative block aspect-[16/8.7] w-full overflow-hidden"
           >
-            <img
+            {heroVideo ? <video src={heroVideo} muted playsInline preload="metadata" aria-label="Freigegebenes Beispiel-Reel" className="h-full w-full object-cover" /> : <img
               src={demo.posterSrc}
               alt="Fertiges Poolbau-Beispiel einer sichtbaren Transformation"
               className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-            />
+            />}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
             <span className="absolute inset-0 m-auto grid h-20 w-20 place-items-center rounded-full bg-[#6d5dfc] text-white shadow-[0_10px_35px_rgba(109,93,252,.32)]">
               <Play className="h-7 w-7 fill-current" />
             </span>
             <span className="absolute bottom-6 left-6 text-left text-white">
-              <b className="block text-lg">Fertiges Poolbau-Beispiel</b>
+              <b className="block text-lg">{heroVideo ? "Beispiel-Reel" : "Fertiges Poolbau-Beispiel"}</b>
               <small className="text-white/75">
-                {demo.duration} · 9:16 · {demo.stateCount} Szenen · Poolbau
+                {heroVideo ? "Freigegebenes Video" : `${demo.duration} · 9:16 · ${demo.stateCount} Szenen · Poolbau`}
               </small>
             </span>
           </button>

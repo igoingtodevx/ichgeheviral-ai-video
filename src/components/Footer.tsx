@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { useBusinessConfig } from "./BusinessConfigProvider";
 
 const LEGAL_LINKS = [
   { href: "/impressum", label: "Impressum" },
@@ -12,6 +13,7 @@ const LEGAL_LINKS = [
 ];
 
 export function Footer() {
+  const { config } = useBusinessConfig();
   return (
     <footer className="border-t border-[#202126] bg-[#080a0d] py-8 text-white">
       <div className="mx-auto max-w-6xl px-4 text-xs text-[#8d9299] sm:px-6 lg:px-8">
@@ -21,6 +23,8 @@ export function Footer() {
               IchGehe<span className="text-[#6d5dfc]">Viral</span>
             </b>
             <div>Transformations-Reels</div>
+            {config.content.legal_entity && <div className="mt-2">{config.content.legal_entity}</div>}
+            {config.content.support_email && <a className="mt-1 inline-block hover:text-white" href={`mailto:${config.content.support_email}`}>{config.content.support_email}</a>}
           </div>
 
           <nav className="flex flex-wrap gap-x-4 gap-y-2">

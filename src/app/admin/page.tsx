@@ -248,9 +248,9 @@ function SocialProofAdminContent() {
             <LockKeyhole className="w-5 h-5 text-violet-300" />
           </div>
           <h1 className="text-2xl font-extrabold">Social Proof verwalten</h1>
-          <Link href="/admin/overview" className="mt-3 inline-block text-sm font-bold text-violet-300">Accounts & Produktion →</Link>
+          <Link href="/admin/overview" className="mt-3 inline-block text-sm font-bold text-violet-300">Administration →</Link>
           <p className="mt-2 text-sm text-slate-300">
-            Admin-Passwort eingeben. Es wird nur für diese Browser-Sitzung gespeichert.
+            Zusätzlichen Inhaltsschlüssel eingeben. Nur der globale Administrator erhält Zugang; der Schlüssel wird ausschließlich in dieser Browser-Sitzung gespeichert.
           </p>
           <input
             type="password"
@@ -301,7 +301,7 @@ function SocialProofAdminContent() {
         </header>
 
         <nav className="mb-8 flex flex-wrap gap-2 rounded-2xl border border-white/10 bg-white/[0.03] p-1.5" aria-label="Admin-Bereiche">
-          <Link href="/admin/overview" className="rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-400 hover:text-white">Accounts & Produktion</Link>
+          <Link href="/admin/overview" className="rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-400 hover:text-white">Administration</Link>
           <Link
             href="/admin"
             className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition ${

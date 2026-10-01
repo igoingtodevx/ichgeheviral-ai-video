@@ -8,6 +8,7 @@ import { ProtectedUnavailable } from "../../../components/ProtectedUnavailable";
 import { api, type AdminOverview } from "../../../lib/api/client";
 import { isClerkConfigured } from "../../../lib/auth";
 import { formatDateTime, STATUS_LABELS } from "../../../lib/jobs";
+import { OperatorGrantsPanel } from "../../../components/OperatorGrantsPanel";
 
 type Role = "owner" | "admin" | "customer";
 
@@ -73,11 +74,12 @@ function AdminOverviewContent() {
       <div className="mx-auto max-w-7xl">
         <header className="flex flex-col gap-5 border-b border-[#e4e1ec] pb-7 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.16em] text-[#5d4de1]"><Shield className="h-4 w-4" /> Timo Control</div>
+            <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.16em] text-[#5d4de1]"><Shield className="h-4 w-4" /> Administration</div>
             <h1 className="mt-3 text-4xl font-black tracking-[-0.055em] sm:text-5xl">Accounts & Produktion</h1>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-[#686c73]">Echte Account-Zuordnung, Rollen, Aufträge und Usage-Events aus dem Backend. Keine Demo-Daten.</p>
           </div>
           <div className="flex gap-2">
+            <Link href="/operations" className="inline-flex items-center rounded-xl border border-[#dedbe7] bg-white px-4 py-3 text-sm font-black">Betrieb</Link>
             <Link href="/admin" className="inline-flex items-center rounded-xl border border-[#dedbe7] bg-white px-4 py-3 text-sm font-black">Testimonials</Link>
             <button type="button" onClick={() => void load()} className="inline-flex items-center gap-2 rounded-xl bg-[#6d5dfc] px-4 py-3 text-sm font-black text-white"><RefreshCw className="h-4 w-4" /> Aktualisieren</button>
           </div>
@@ -110,6 +112,7 @@ function AdminOverviewContent() {
           </div>
 
           <aside className="min-w-0 space-y-6">
+            <OperatorGrantsPanel />
             <section className="rounded-2xl border border-[#e4e1ec] bg-white p-5"><h2 className="font-black">Rolle vergeben</h2><p className="mt-2 text-xs leading-5 text-[#858991]">Nur ein globaler Admin darf Memberships ändern. Die vorhandene Account-Ownership bleibt erhalten.</p><form onSubmit={addMembership} className="mt-5 space-y-3"><label className="block text-xs font-black uppercase tracking-wider text-[#8a8e94]">Account</label><select value={accountId} onChange={(event) => setAccountId(event.target.value)} className="w-full rounded-xl border border-[#dedbe7] bg-white px-3 py-3 text-sm font-semibold"><option value="">Account wählen …</option>{overview.accounts.map((account) => <option key={account.id} value={account.id}>{account.name} · {account.id}</option>)}</select><label className="block text-xs font-black uppercase tracking-wider text-[#8a8e94]">Clerk User ID</label><input value={userId} onChange={(event) => setUserId(event.target.value)} placeholder="user_…" className="w-full rounded-xl border border-[#dedbe7] px-3 py-3 text-sm font-mono" /><label className="block text-xs font-black uppercase tracking-wider text-[#8a8e94]">Rolle</label><select value={role} onChange={(event) => setRole(event.target.value as Role)} className="w-full rounded-xl border border-[#dedbe7] bg-white px-3 py-3 text-sm font-semibold"><option value="customer">customer</option><option value="admin">admin</option><option value="owner">owner</option></select><button type="submit" disabled={busy || !accountId || !userId.trim()} className="w-full rounded-xl bg-[#6d5dfc] px-4 py-3 text-sm font-black text-white disabled:cursor-not-allowed disabled:opacity-50">{busy ? "Speichere …" : "Membership speichern"}</button></form></section>
             <section className="rounded-2xl border border-[#e4e1ec] bg-white p-5"><h2 className="font-black">Usage-Events</h2><p className="mt-2 text-xs leading-5 text-[#858991]">Append-only Kostensignale; unbekannte Kosten bleiben unbekannt.</p>{overview.usage.length === 0 ? <p className="mt-5 text-sm text-[#858991]">Noch keine Events.</p> : <ul className="mt-5 space-y-3">{overview.usage.slice(0, 12).map((event) => <li key={String(event.id)} className="rounded-xl bg-[#faf9fc] p-3 text-xs"><div className="font-bold">{String(event.kind)} · {String(event.execution_mode)}</div><div className="mt-1 text-[#686c73]">{event.cost_usd == null ? "Kosten unbekannt" : `$${Number(event.cost_usd).toFixed(4)}`} · {formatDateTime(typeof event.created_at === "string" ? event.created_at : null)}</div></li>)}</ul>}</section>
           </aside>

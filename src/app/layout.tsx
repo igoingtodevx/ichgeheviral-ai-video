@@ -5,6 +5,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "../components/ThemeProvider";
 import { CLERK_PUBLISHABLE_KEY, isClerkConfigured } from "../lib/auth";
 import "./globals.css";
+import { BusinessConfigProvider } from "../components/BusinessConfigProvider";
+import { loadPublicConfig } from "../lib/business-config-server";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,7 +18,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "IchGeheViral — Transformations-Reels für starken Content",
   description:
     "Aus einer verfügbaren Transformation entsteht ein fertiges 60+ Sekunden 9:16 Reel mit sichtbarer Entwicklung und klarem Finale. Poolbau ist die erste verfügbare Kategorie.",
@@ -30,11 +32,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+// Config is read per request: backend approval/domain changes do not require a rebuild.
+export const dynamic = "force-dynamic";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { config } = await loadPublicConfig();
+  return { ...baseMetadata, ...(config.app_url ? { metadataBase: new URL(config.app_url), alternates: { canonical: "./" } } : {}) };
+}
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const publicConfig = await loadPublicConfig();
+  const content = <BusinessConfigProvider value={publicConfig}><ThemeProvider>{children}</ThemeProvider></BusinessConfigProvider>;
   return (
     <html
       lang="de"
@@ -59,11 +71,9 @@ export default function RootLayout({
       <body className="min-h-screen antialiased">
         {isClerkConfigured ? (
           <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY}>
-            <ThemeProvider>{children}</ThemeProvider>
+            {content}
           </ClerkProvider>
-        ) : (
-          <ThemeProvider>{children}</ThemeProvider>
-        )}
+        ) : content}
       </body>
     </html>
   );

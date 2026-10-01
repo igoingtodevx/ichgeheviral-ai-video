@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Gauge, Home, PlusCircle, ExternalLink } from "lucide-react";
 import type { ReactNode } from "react";
 import { ThemeToggle } from "./ThemeToggle";
+import { RoleNavigation } from "./RoleNavigation";
 
 const NAV_ITEMS = [
   { href: "/kundenbereich", label: "Meine Reels", mobileLabel: "Meine Reels", icon: Home },
@@ -28,6 +29,7 @@ export function StudioShell({ children }: { children: ReactNode }) {
           </div>
 
           <nav className="px-3">
+            <RoleNavigation />
             {NAV_ITEMS.map(({ href, label, icon: Icon }) => {
               const active = pathname === href || (href !== "/kundenbereich" && pathname.startsWith(href));
               return (
@@ -95,6 +97,7 @@ export function StudioShell({ children }: { children: ReactNode }) {
               </div>
             </div>
             <nav className="flex overflow-x-auto px-3 pb-2">
+              <RoleNavigation />
               {NAV_ITEMS.map(({ href, label, mobileLabel, icon: Icon }) => {
                 const active = pathname === href || (href !== "/kundenbereich" && pathname.startsWith(href));
                 return (

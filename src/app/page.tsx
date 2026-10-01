@@ -17,8 +17,10 @@ import { FinalCTA } from "../components/FinalCTA";
 import { Footer } from "../components/Footer";
 import { VideoModal } from "../components/VideoModal";
 import { SHOWCASE_VIDEOS } from "../lib/constants";
+import { useBusinessConfig } from "../components/BusinessConfigProvider";
 
 export default function LandingPage() {
+  const { config } = useBusinessConfig();
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
 
   return (
@@ -30,7 +32,7 @@ export default function LandingPage() {
       <Navbar />
 
       <main>
-        <Hero onOpenVideo={() => setVideoSrc(SHOWCASE_VIDEOS[0].videoSrc)} />
+        <Hero onOpenVideo={() => setVideoSrc(config.content.hero_video_url || SHOWCASE_VIDEOS[0].videoSrc)} />
         <Pricing />
         <FounderSection />
         <PotentialCalculator />

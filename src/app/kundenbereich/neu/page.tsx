@@ -6,7 +6,9 @@ import { ArrowRight, Check, Gauge, Layers3, Smartphone } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
 import { api } from "../../../lib/api/client";
-import { getPackage, PRICING_LAUNCHED } from "../../../lib/pricing";
+import { formatPrice } from "../../../lib/pricing";
+import { useBusinessConfig } from "../../../components/BusinessConfigProvider";
+import { canCheckout, fetchPublicConfig, safeHttpUrl } from "../../../lib/business-config";
 import { rememberPurchase } from "../../../lib/purchases";
 
 const BENEFITS = [
@@ -27,21 +29,28 @@ function NewReelContent() {
   const searchParams = useSearchParams();
   const { getToken } = useAuth();
   const selected = searchParams.get("package") === "ai-video-course" ? "ai-video-course" : "ai-video";
-  const pkg = getPackage(selected);
+  const state = useBusinessConfig();
+  const pkg = state.config.packages.find((item) => item.id === selected)!;
+  const checkoutEnabled = canCheckout(state, pkg);
   const [starting, setStarting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   async function startCheckout() {
-    if (!PRICING_LAUNCHED) return;
+    if (!checkoutEnabled) return;
     setStarting(true);
     setError(null);
     try {
+      // Recheck the live backend gate before posting; stale layouts cannot enable checkout.
+      const fresh = await fetchPublicConfig("/api");
+      const currentPackage = fresh.config.packages.find((item) => item.id === selected);
+      if (!currentPackage || !canCheckout(fresh, currentPackage)) throw new Error("Checkout ist derzeit deaktiviert.");
       const result = await api.createCheckout({
         concept: "Poolbau-Transformation mit sichtbarem Vorher-Nachher-Aufbau",
-        package: "single",
-        add_course: pkg.addCourse,
+        package: currentPackage.id,
+        add_course: currentPackage.add_course,
       }, getToken);
       try { rememberPurchase(window.sessionStorage, result.request_id); } catch { /* Storage access must not block checkout navigation. */ }
+      if (!safeHttpUrl(result.checkout_url)) throw new Error("Das Checkoutziel ist ungültig.");
       window.location.assign(result.checkout_url);
     } catch (reason: unknown) {
       setError(reason instanceof Error ? reason.message : "Der Checkout konnte nicht gestartet werden.");
@@ -63,9 +72,10 @@ function NewReelContent() {
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.14em] text-[#c5beff]"><span className="h-2 w-2 rounded-full bg-[#8f82ff]" /> {pkg.name}</span>
               <h2 className="mt-5 max-w-xl text-3xl font-black tracking-[-0.04em] sm:text-4xl">{pkg.tagline}</h2>
-              <p className="mt-4 max-w-xl text-sm leading-6 text-white/60 sm:text-base">{PRICING_LAUNCHED ? "Nach dem sicheren Checkout wird der Kaufstatus hier verifiziert." : "Checkout und Zahlung sind aktuell deaktiviert. Es wird kein Auftrag und kein Kauf erstellt."}</p>
-              <button type="button" onClick={startCheckout} disabled={starting || !PRICING_LAUNCHED} className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-7 py-4 text-sm font-black text-white shadow-[0_12px_32px_rgba(109,93,252,.25)] transition hover:bg-[#7d6eff] disabled:cursor-not-allowed disabled:opacity-60">
-                {starting ? "Checkout wird geöffnet …" : PRICING_LAUNCHED ? "Sicher zum Checkout" : "Checkout derzeit deaktiviert"} <ArrowRight className="h-4 w-4" />
+              <p className="mt-4 text-xl font-black">{formatPrice(pkg.price_eur)}</p>
+              <p className="mt-4 max-w-xl text-sm leading-6 text-white/60 sm:text-base">{checkoutEnabled ? "Nach dem sicheren Checkout wird der Kaufstatus hier verifiziert." : "Checkout und Zahlung sind aktuell deaktiviert. Es wird kein Auftrag und kein Kauf erstellt."}</p>
+              <button type="button" onClick={startCheckout} disabled={starting || !checkoutEnabled} className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-7 py-4 text-sm font-black text-white shadow-[0_12px_32px_rgba(109,93,252,.25)] transition hover:bg-[#7d6eff] disabled:cursor-not-allowed disabled:opacity-60">
+                {starting ? "Checkout wird geöffnet …" : checkoutEnabled ? "Sicher zum Checkout" : "Checkout derzeit deaktiviert"} <ArrowRight className="h-4 w-4" />
               </button>
               {error && <p className="mt-3 max-w-xl text-sm font-semibold text-[#ffb7b7]">{error}</p>}
               <p className="mt-3 text-xs font-semibold text-white/45">Der Kaufstatus wird ausschließlich vom Backend bestätigt; URL-Parameter sind kein Zahlungsnachweis.</p>

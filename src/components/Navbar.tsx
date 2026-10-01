@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
+import { RoleNavigation } from "./RoleNavigation";
 
 const LINKS = [
   { href: "#ergebnisse", label: "Ergebnisse" },
@@ -50,6 +51,8 @@ export function Navbar() {
           </button>
         </div>
       </div>
+
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8"><RoleNavigation className="flex flex-wrap items-center justify-end gap-4 pb-2 text-xs font-bold text-[#686c73]" /></div>
 
       {open && (
         <div className="border-t border-[#e6e4ef] bg-white px-4 py-4 lg:hidden">

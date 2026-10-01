@@ -1,3 +1,6 @@
+import { safeHttpUrl } from "../business-config";
+import { parseOperationsOverview, type OperationsOverview, type OperatorGrant } from "../operations";
+
 const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "").replace(/\/$/, "");
 
 export const hasApiConfiguration = Boolean(API_BASE);
@@ -17,7 +20,7 @@ export type CustomerJobStatus =
 
 export interface CheckoutRequest {
   concept: string;
-  package: "single";
+  package: "single" | "ai-video" | "ai-video-course";
   add_course: boolean;
 }
 
@@ -69,6 +72,7 @@ export interface MeResponse {
   user_id: string;
   account_role: "owner" | "admin" | "customer" | string;
   is_global_admin: boolean;
+  is_operator: boolean;
 }
 
 export interface AdminOverview {
@@ -107,7 +111,7 @@ interface VideoResponse {
   expires_in: number;
 }
 
-class ApiClient {
+export class ApiClient {
   constructor(private readonly baseUrl: string = API_BASE) {}
 
   private requireConfigured() {
@@ -141,7 +145,7 @@ class ApiClient {
     return this.json<CheckoutResponse>("/checkout", getToken, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ concept: req.concept, package: "single", add_course: req.add_course }),
+      body: JSON.stringify({ concept: req.concept, package: req.package, add_course: req.add_course }),
     });
   }
 
@@ -164,6 +168,48 @@ class ApiClient {
 
   async getAdminOverview(getToken: TokenProvider): Promise<AdminOverview> {
     return this.json<AdminOverview>("/admin/overview", getToken);
+  }
+
+  async getOperationsOverview(getToken: TokenProvider): Promise<OperationsOverview> {
+    const value = parseOperationsOverview(await this.json<unknown>("/operations/overview", getToken));
+    if (!value) throw new ApiError("Die Betriebsdaten sind unvollständig oder ungültig.", 502, "invalid_operations");
+    return value;
+  }
+
+  async getOperators(getToken: TokenProvider): Promise<OperatorGrant[]> {
+    const payload = await this.json<{ items: OperatorGrant[] }>("/admin/operators", getToken);
+    if (!Array.isArray(payload.items) || !payload.items.every((item) => typeof item.user_id === "string" && typeof item.enabled === "boolean")) throw new ApiError("Die Betriebsfreigaben sind ungültig.", 502);
+    return payload.items;
+  }
+
+  async setOperator(input: { user_id: string; enabled: boolean }, getToken: TokenProvider): Promise<OperatorGrant> {
+    return this.json("/admin/operators", getToken, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ user_id: input.user_id, enabled: input.enabled }) });
+  }
+
+  async getOperationsVideoUrl(jobId: string, getToken: TokenProvider): Promise<VideoResponse> {
+    const value = await this.json<VideoResponse>(`/operations/jobs/${encodeURIComponent(jobId)}/video?download=1`, getToken);
+    const base = new URL(this.baseUrl);
+    let url = value.url;
+    if (typeof url === "string" && url.startsWith("/")) {
+      const resolved = new URL(url, base);
+      if (resolved.origin !== base.origin || !resolved.pathname.startsWith("/operations/jobs/")) throw new ApiError("Das Videoziel ist ungültig.", 502, "invalid_video_url");
+      url = resolved.toString();
+    }
+    if (!safeHttpUrl(url) || !Number.isFinite(value.expires_in) || value.expires_in <= 0) throw new ApiError("Das Videoziel ist ungültig oder abgelaufen.", 502, "invalid_video_url");
+    return { url, expires_in: value.expires_in };
+  }
+
+  async operationsDownloadTarget(jobId: string, getToken: TokenProvider): Promise<{ url: string; temporary: boolean }> {
+    const { url } = await this.getOperationsVideoUrl(jobId, getToken);
+    const target = new URL(url);
+    const base = new URL(this.baseUrl);
+    if (target.origin === base.origin && (target.pathname.startsWith("/operations/jobs/") || target.pathname.startsWith(`${base.pathname.replace(/\/$/, "")}/operations/jobs/`))) {
+      // Local storage content still needs verified authentication. Never forward bearer tokens to a signed storage URL.
+      const response = await fetch(url, { headers: await this.authHeaders(getToken), cache: "no-store", redirect: "error" });
+      if (!response.ok) throw new ApiError("Das Video konnte nicht heruntergeladen werden.", response.status);
+      return { url: URL.createObjectURL(await response.blob()), temporary: true };
+    }
+    return { url, temporary: false };
   }
 
   async addMembership(
