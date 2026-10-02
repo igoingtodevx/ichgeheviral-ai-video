@@ -76,15 +76,17 @@ test("explicit operator and sole global-admin flags, never account ownership", (
   }
   assert.equal(canOperate({ is_operator: true }), true);
   assert.equal(canAdmin({ is_operator: true }), false);
-  assert.deepEqual(privilegedLinks({ is_operator: true }), [{ href: "/operations", label: "Betrieb" }]);
-  assert.deepEqual(privilegedLinks({ is_global_admin: true }).map((link) => link.label), ["Betrieb", "Administration"]);
+  assert.deepEqual(privilegedLinks({ is_operator: true }), [{ href: "/operations", label: "Betrieb" }, { href: "/admin?tab=testimonials", label: "Testimonials" }]);
+  assert.deepEqual(privilegedLinks({ is_global_admin: true }).map((link) => link.label), ["Betrieb", "Testimonials", "Administration"]);
 });
 test("all admin and operations routes protected; global identity gate precedes token controls", () => {
   for (const path of ["/admin", "/admin/overview", "/admin?unused", "/admin/content", "/admin/operators", "/operations", "/operations/jobs/a", "/kundenbereich", "/checkout/return"]) {
     assert.equal(isProtectedPath(path.split("?")[0]), true);
   }
   for (const path of ["/", "/administrator", "/operations-public", "/impressum"]) assert.equal(isProtectedPath(path), false);
-  assert.match(readFileSync(resolve(root, "src/app/admin/layout.tsx"), "utf8"), /<AccessGate mode="admin">\{children\}<\/AccessGate>/);
+  // Content management admits approved operators; system administration stays sole-global-admin.
+  assert.match(readFileSync(resolve(root, "src/app/admin/layout.tsx"), "utf8"), /<AccessGate mode="operations">\{children\}<\/AccessGate>/);
+  assert.match(readFileSync(resolve(root, "src/app/admin/overview/layout.tsx"), "utf8"), /<AccessGate mode="admin">\{children\}<\/AccessGate>/);
   assert.match(readFileSync(resolve(root, "src/app/operations/layout.tsx"), "utf8"), /<AccessGate mode="operations">/);
   const cockpit = readFileSync(resolve(root, "src/app/operations/page.tsx"), "utf8");
   assert.doesNotMatch(cockpit, /getAdminOverview|addMembership|setOperator|socialProof|sessionStorage|cost_usd|Clerk User/);
