@@ -25,9 +25,6 @@ export function FounderSection() {
             <span className="text-xs font-black uppercase tracking-[0.18em] text-[#5947e8]">
               In besten Händen bei Timo
             </span>
-            <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] text-[#101114] sm:text-5xl">
-              Warum dieses Format?
-            </h2>
 
             <ul className="mt-7 space-y-4 text-base font-bold leading-7 text-[#34383f]">
               {TRUST_POINTS.map((point) => (
