@@ -7,27 +7,27 @@ import { ArrowRight } from "lucide-react";
 const PHONE_STAGES = [
   {
     step: "01",
-    label: "Ausgangspunkt",
-    src: "/media/studio-seeds/marketing-demo-05.jpg",
-    alt: "Grundstück als Ausgangspunkt für ein KI-Building-Video",
+    label: "Fundament",
+    src: "/media/house/house-01.jpg",
+    alt: "Bodenplatte als Ausgangspunkt für ein KI-Building-Video",
   },
   {
     step: "02",
-    label: "Fundament",
-    src: "/media/studio-seeds/marketing-demo-06.jpg",
-    alt: "Fundament und Rohbau als nächster Schritt",
+    label: "Rohbau",
+    src: "/media/house/house-02.jpg",
+    alt: "Erdgeschoss im Rohbau als nächster Schritt",
   },
   {
     step: "03",
-    label: "Rohbau",
-    src: "/media/studio-seeds/marketing-demo-07.jpg",
-    alt: "Sichtbarer Fortschritt beim Hausbau",
+    label: "Dachstuhl",
+    src: "/media/house/house-03.jpg",
+    alt: "Dachstuhl und sichtbarer Fortschritt beim Hausbau",
   },
   {
     step: "04",
-    label: "Fertiges Ergebnis",
-    src: "/media/studio-seeds/marketing-demo-22.jpg",
-    alt: "Fertiges modernes Haus als Abschluss des KI-Building-Videos",
+    label: "Fertiges Haus",
+    src: "/media/house/house-04.jpg",
+    alt: "Fertiges Haus als Abschluss des KI-Building-Videos",
   },
 ];
 

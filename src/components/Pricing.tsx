@@ -70,14 +70,13 @@ export function Pricing() {
               </span>
               <h3 className="mt-3 text-3xl font-black text-[#101114]">{pkg.name}</h3>
               <div className="mt-5 text-3xl font-black text-[#101114]">{pkg.price}</div>
-              <p className="mt-2 text-sm font-bold text-[#686c73]">{pkg.videos}</p>
 
               <p className="mt-5 text-sm leading-6 text-[#686c73]">
                 Erstelle virale KI-Videos auf Knopfdruck und baue dir damit ein eigenes TikTok-Einkommen auf.
               </p>
 
               <ul className="mt-6 space-y-3 text-sm text-[#4f555d]">
-                {[pkg.videos, ...FEATURES].map((feature) => (
+                {[`${pkg.videos} mit maximalem Viral-Potenzial`, ...FEATURES].map((feature) => (
                   <li key={feature} className="flex gap-2">
                     <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#6d5dfc]" />
                     {feature}

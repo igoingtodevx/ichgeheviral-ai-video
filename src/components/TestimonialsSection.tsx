@@ -10,19 +10,19 @@ const FORMAT_EXAMPLES = [
     label: "Formatbeispiel 01",
     title: "Vom Grundstück zum Rohbau",
     copy: "Ein klarer visueller Einstieg und sichtbarer Baufortschritt in einem zusammenhängenden Short-Form-Format.",
-    imageSrc: "/media/studio-seeds/marketing-demo-05.jpg",
+    imageSrc: "/media/house/house-01.jpg",
   },
   {
     label: "Formatbeispiel 02",
     title: "Architektur nimmt Gestalt an",
     copy: "Jede Szene baut auf der vorherigen auf und führt die Aufmerksamkeit bis zum fertigen Gebäude.",
-    imageSrc: "/media/studio-seeds/marketing-demo-23.jpg",
+    imageSrc: "/media/house/house-03.jpg",
   },
   {
     label: "Formatbeispiel 03",
     title: "Das fertige KI-Building",
     copy: "Ein verständliches Finale, das den Aufbau auflöst und als vertikales Video direkt veröffentlichbar ist.",
-    imageSrc: "/media/studio-seeds/marketing-demo-27.jpg",
+    imageSrc: "/media/house/house-04.jpg",
   },
 ];
 
