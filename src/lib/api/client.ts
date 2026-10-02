@@ -1,4 +1,4 @@
-import { safeHttpUrl } from "../business-config";
+import { safeHttpUrl, type PackageId } from "../business-config";
 import { parseOperationsOverview, type OperationsOverview, type OperatorGrant } from "../operations";
 
 const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "").replace(/\/$/, "");
@@ -20,7 +20,7 @@ export type CustomerJobStatus =
 
 export interface CheckoutRequest {
   concept: string;
-  package: "single" | "ai-video" | "ai-video-course";
+  package: PackageId | "single";
   add_course: boolean;
 }
 

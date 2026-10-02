@@ -8,7 +8,7 @@ export function canOperate(identity: AccessIdentity | null | undefined): boolean
 }
 export function privilegedLinks(identity: AccessIdentity | null | undefined) {
   return [
-    ...(canOperate(identity) ? [{ href: "/operations", label: "Betrieb" }] : []),
+    ...(canOperate(identity) ? [{ href: "/operations", label: "Betrieb" }, { href: "/admin?tab=testimonials", label: "Testimonials" }] : []),
     ...(canAdmin(identity) ? [{ href: "/admin/overview", label: "Administration" }] : []),
   ];
 }

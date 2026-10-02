@@ -1,8 +1,11 @@
+export type PackageId = "starter" | "premium-9" | "premium-30" | "ai-video" | "ai-video-course";
+
 export interface BusinessPackage {
-  id: "ai-video" | "ai-video-course";
+  id: PackageId;
   name: string;
   tagline: string;
   price_eur: number | null;
+  videos_count?: number;
   add_course: boolean;
   features: string[];
   highlight: boolean;
@@ -42,8 +45,63 @@ export const SAFE_PUBLIC_CONFIG: PublicConfig = {
     app_url: null,
     shopify: { store_domain: null, video_product_id: null, video_variant_id: null, course_product_id: null, course_variant_id: null },
     packages: [
-      { id: "ai-video", name: "Transformations-Reel", tagline: "Ein fertiges Reel aus einer sichtbaren Veränderung", price_eur: null, add_course: false, features: [], highlight: true },
-      { id: "ai-video-course", name: "Transformations-Reel + Marketing-Kurs", tagline: "Video mit zusätzlichem Marketing-Kurs", price_eur: null, add_course: true, features: [], highlight: false },
+      {
+        id: "starter",
+        name: "Starter",
+        tagline: "4 KI-Building Videos",
+        price_eur: null,
+        videos_count: 4,
+        add_course: false,
+        features: [
+          "4 KI-Building Videos mit maximalem Viral-Potenzial",
+          "Fertige KI-TikTok-Videos per Knopfdruck",
+          "Viral optimierte Video-Konzepte",
+          "60+ Sekunden Videolänge",
+          "Hochformat 9:16",
+          "Vollautomatische Erstellung",
+          "Kein Videoschnitt nötig",
+          "Kein Credit-System",
+        ],
+        highlight: false,
+      },
+      {
+        id: "premium-9",
+        name: "Premium",
+        tagline: "9 KI-Building Videos",
+        price_eur: null,
+        videos_count: 9,
+        add_course: false,
+        features: [
+          "9 KI-Building Videos mit maximalem Viral-Potenzial",
+          "Fertige KI-TikTok-Videos per Knopfdruck",
+          "Viral optimierte Video-Konzepte",
+          "60+ Sekunden Videolänge",
+          "Hochformat 9:16",
+          "Vollautomatische Erstellung",
+          "Kein Videoschnitt nötig",
+          "Kein Credit-System",
+        ],
+        highlight: true,
+      },
+      {
+        id: "premium-30",
+        name: "Premium",
+        tagline: "30 KI-Building Videos",
+        price_eur: null,
+        videos_count: 30,
+        add_course: false,
+        features: [
+          "30 KI-Building Videos mit maximalem Viral-Potenzial",
+          "Fertige KI-TikTok-Videos per Knopfdruck",
+          "Viral optimierte Video-Konzepte",
+          "60+ Sekunden Videolänge",
+          "Hochformat 9:16",
+          "Vollautomatische Erstellung",
+          "Kein Videoschnitt nötig",
+          "Kein Credit-System",
+        ],
+        highlight: false,
+      },
     ],
     content: { hero_video_url: null, support_email: null, legal_entity: null, imprint_text: null, privacy_text: null, terms_text: null },
     product_ready: false,
@@ -69,12 +127,15 @@ export function safeHttpUrl(value: unknown): value is string {
   } catch { return false; }
 }
 
+const EXPECTED_LEGACY = new Set(["ai-video", "ai-video-course"]);
+const EXPECTED_NEW = new Set(["starter", "premium-9", "premium-30"]);
+
 /** Validate the complete public boundary, then project only allowed public fields. */
 export function parsePublicConfig(value: unknown): PublicConfig | null {
   if (!record(value) || typeof value.checkout_enabled !== "boolean" || !Array.isArray(value.launch_missing) || !value.launch_missing.every(text)) return null;
   const c = value.config;
   if (!record(c) || c.version !== 1 || typeof c.product_ready !== "boolean" || !(c.app_url === null || safeHttpUrl(c.app_url))) return null;
-  if (!record(c.shopify) || !record(c.content) || !Array.isArray(c.packages) || c.packages.length !== 2) return null;
+  if (!record(c.shopify) || !record(c.content) || !Array.isArray(c.packages) || (c.packages.length !== 2 && c.packages.length !== 3)) return null;
   const s = c.shopify;
   const t = c.content;
   for (const key of ["store_domain", "video_product_id", "video_variant_id", "course_product_id", "course_variant_id"]) {
@@ -86,12 +147,31 @@ export function parsePublicConfig(value: unknown): PublicConfig | null {
   }
   if (t.support_email !== null && (typeof t.support_email !== "string" || !/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(t.support_email))) return null;
   if (!(t.hero_video_url === null || safeHttpUrl(t.hero_video_url))) return null;
+  const isLegacy = c.packages.length === 2;
+  const expectedSet = isLegacy ? EXPECTED_LEGACY : EXPECTED_NEW;
   const packages: BusinessPackage[] = [];
   for (const p of c.packages) {
-    if (!record(p) || typeof p.id !== "string" || !["ai-video", "ai-video-course"].includes(p.id) || !text(p.name) || !text(p.tagline) || typeof p.add_course !== "boolean" || typeof p.highlight !== "boolean") return null;
+    if (!record(p) || typeof p.id !== "string" || !expectedSet.has(p.id) || !text(p.name) || !text(p.tagline) || typeof p.add_course !== "boolean" || typeof p.highlight !== "boolean") return null;
     if (p.price_eur !== null && (typeof p.price_eur !== "number" || !Number.isFinite(p.price_eur) || p.price_eur <= 0)) return null;
-    if (!Array.isArray(p.features) || !p.features.every(text) || p.add_course !== (p.id === "ai-video-course") || packages.some((other) => other.id === p.id)) return null;
-    packages.push({ id: p.id as BusinessPackage["id"], name: p.name, tagline: p.tagline, price_eur: p.price_eur as number | null, add_course: p.add_course, features: p.features, highlight: p.highlight });
+    if (!Array.isArray(p.features) || !p.features.every(text) || packages.some((other) => other.id === p.id)) return null;
+    if (isLegacy) {
+      if (p.add_course !== (p.id === "ai-video-course")) return null;
+    } else {
+      if (p.add_course !== false) return null;
+    }
+    const pkg: BusinessPackage = {
+      id: p.id as PackageId,
+      name: p.name,
+      tagline: p.tagline,
+      price_eur: p.price_eur as number | null,
+      add_course: p.add_course,
+      features: p.features,
+      highlight: p.highlight,
+    };
+    if (typeof p.videos_count === "number" && Number.isInteger(p.videos_count) && p.videos_count > 0) {
+      pkg.videos_count = p.videos_count;
+    }
+    packages.push(pkg);
   }
   const config: BusinessConfig = {
     version: 1, app_url: c.app_url as string | null, product_ready: c.product_ready,
@@ -120,6 +200,6 @@ export async function fetchPublicConfig(baseUrl: string, fetcher: typeof fetch =
   } catch { return SAFE_PUBLIC_CONFIG; }
 }
 
-export function packageHref(id: BusinessPackage["id"]): string {
+export function packageHref(id: PackageId | string): string {
   return `/kundenbereich/neu?package=${encodeURIComponent(id)}`;
 }

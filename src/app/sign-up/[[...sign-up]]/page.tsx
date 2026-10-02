@@ -9,7 +9,7 @@ export default function SignUpPage() {
     <AuthPageShell
       eyebrow="Neues Konto"
       title="Account erstellen"
-      description="Lege deinen Zugang an und behalte alle Bestellungen und Reels an einem Ort."
+      description="Erstelle deinen Zugang mit deinem Google-Konto. Melde dich bitte künftig mit demselben Google-Konto an, mit dem der Account erstellt wurde."
     >
       <SignUp appearance={AUTH_APPEARANCE} />
     </AuthPageShell>

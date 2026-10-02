@@ -47,7 +47,7 @@ function JobCard({
       </div>
 
       <div className="p-4">
-        <div className="text-[10px] font-bold uppercase tracking-wider text-[#8a8e94]">Poolbau-Reel · {formatDate(job.created_at)}</div>
+        <div className="text-[10px] font-bold uppercase tracking-wider text-[#8a8e94]">KI-Building Video · {formatDate(job.created_at)}</div>
         <Link href={`/kundenbereich/reel/${encodeURIComponent(job.id)}`} className="mt-1 block min-h-10 line-clamp-2 text-sm font-black leading-5 text-[#101114] hover:text-[#5d4de1]">
           {job.concept}
         </Link>
@@ -77,7 +77,7 @@ function JobCard({
         )}
         {!TERMINAL_STATUSES.has(job.status) && (
           <Link href={`/kundenbereich/produktion?job_id=${encodeURIComponent(job.id)}`} className="mt-3 inline-flex text-[11px] font-black text-[#777b82] hover:text-[#101114]">
-            Produktionsstatus öffnen →
+            Status & Fortschritt öffnen →
           </Link>
         )}
       </div>
@@ -149,7 +149,7 @@ export default function StudioDashboardPage() {
               <RefreshCw className="h-4 w-4" /> Aktualisieren
             </button>
             <Link href="/kundenbereich/neu" className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-5 py-3.5 text-sm font-black text-white shadow-[0_12px_32px_rgba(109,93,252,.22)]">
-              <Plus className="h-4 w-4" /> Neues Reel
+              <Plus className="h-4 w-4" /> Neues Video
             </Link>
           </div>
         </div>
@@ -165,7 +165,7 @@ export default function StudioDashboardPage() {
             <Film className="mx-auto h-10 w-10 text-[#b0b3ba]" />
             <h2 className="mt-5 text-2xl font-black tracking-[-0.04em] text-[#101114]">Noch kein Auftrag vorhanden</h2>
             <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-[#686c73]">Nach einem bestätigten Kauf erscheint dein Auftrag hier. Beispiele findest du getrennt unter <Link href="/beispiele" className="font-bold text-[#5d4de1]">Beispiele</Link>.</p>
-            <Link href="/kundenbereich/neu" className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-5 py-3.5 text-sm font-black text-white"><Plus className="h-4 w-4" /> Erstes Reel starten</Link>
+            <Link href="/kundenbereich/neu" className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-[#6d5dfc] px-5 py-3.5 text-sm font-black text-white"><Plus className="h-4 w-4" /> Erstes Video starten</Link>
           </section>
         ) : (
           <section className="mt-10">

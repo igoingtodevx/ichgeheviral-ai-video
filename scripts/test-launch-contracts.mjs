@@ -51,6 +51,7 @@ function ready() {
   state.config.packages[0].name = "Backend package";
   state.config.packages[0].price_eur = 12.34;
   state.config.packages[1].price_eur = 23.45;
+  state.config.packages[2].price_eur = 34.56;
   state.checkout_enabled = true;
   state.launch_missing = [];
   return state;
@@ -75,15 +76,17 @@ test("explicit operator and sole global-admin flags, never account ownership", (
   }
   assert.equal(canOperate({ is_operator: true }), true);
   assert.equal(canAdmin({ is_operator: true }), false);
-  assert.deepEqual(privilegedLinks({ is_operator: true }), [{ href: "/operations", label: "Betrieb" }]);
-  assert.deepEqual(privilegedLinks({ is_global_admin: true }).map((link) => link.label), ["Betrieb", "Administration"]);
+  assert.deepEqual(privilegedLinks({ is_operator: true }), [{ href: "/operations", label: "Betrieb" }, { href: "/admin?tab=testimonials", label: "Testimonials" }]);
+  assert.deepEqual(privilegedLinks({ is_global_admin: true }).map((link) => link.label), ["Betrieb", "Testimonials", "Administration"]);
 });
 test("all admin and operations routes protected; global identity gate precedes token controls", () => {
   for (const path of ["/admin", "/admin/overview", "/admin?unused", "/admin/content", "/admin/operators", "/operations", "/operations/jobs/a", "/kundenbereich", "/checkout/return"]) {
     assert.equal(isProtectedPath(path.split("?")[0]), true);
   }
   for (const path of ["/", "/administrator", "/operations-public", "/impressum"]) assert.equal(isProtectedPath(path), false);
-  assert.match(readFileSync(resolve(root, "src/app/admin/layout.tsx"), "utf8"), /<AccessGate mode="admin">\{children\}<\/AccessGate>/);
+  // Content management admits approved operators; system administration stays sole-global-admin.
+  assert.match(readFileSync(resolve(root, "src/app/admin/layout.tsx"), "utf8"), /<AccessGate mode="operations">\{children\}<\/AccessGate>/);
+  assert.match(readFileSync(resolve(root, "src/app/admin/overview/layout.tsx"), "utf8"), /<AccessGate mode="admin">\{children\}<\/AccessGate>/);
   assert.match(readFileSync(resolve(root, "src/app/operations/layout.tsx"), "utf8"), /<AccessGate mode="operations">/);
   const cockpit = readFileSync(resolve(root, "src/app/operations/page.tsx"), "utf8");
   assert.doesNotMatch(cockpit, /getAdminOverview|addMembership|setOperator|socialProof|sessionStorage|cost_usd|Clerk User/);
@@ -154,9 +157,12 @@ test("backend OFF/missing approval cannot be overridden by frontend package or U
     (s) => { s.config.content.terms_text = null; }, (s) => { s.config.content.legal_entity = null; },
     (s) => { s.config.shopify.video_variant_id = null; }, (s) => { s.config.packages[0].price_eur = null; },
   ]) { const state = ready(); mutate(state); assert.equal(canCheckout(state, state.config.packages[0]), false); }
-  const state = ready(); state.config.shopify.course_variant_id = null;
+  const state = ready(); state.config.packages[1].add_course = true; state.config.shopify.course_variant_id = null;
   assert.equal(canCheckout(state, state.config.packages[1]), false);
   assert.equal(packageHref("ai-video-course"), "/kundenbereich/neu?package=ai-video-course");
+  assert.equal(packageHref("starter"), "/kundenbereich/neu?package=starter");
+  assert.equal(packageHref("premium-9"), "/kundenbereich/neu?package=premium-9");
+  assert.equal(packageHref("premium-30"), "/kundenbereich/neu?package=premium-30");
   const checkout = readFileSync(resolve(root, "src/app/kundenbereich/neu/page.tsx"), "utf8");
   assert.ok(checkout.indexOf("await fetchPublicConfig") < checkout.indexOf("await api.createCheckout"));
   assert.match(checkout, /canCheckout\(fresh, currentPackage\)/);

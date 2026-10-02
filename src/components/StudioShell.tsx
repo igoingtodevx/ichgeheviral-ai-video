@@ -3,15 +3,16 @@
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
-import { Gauge, Home, PlusCircle, ExternalLink } from "lucide-react";
+import { BookOpen, Gauge, Home, PlusCircle, ExternalLink } from "lucide-react";
 import type { ReactNode } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { RoleNavigation } from "./RoleNavigation";
 
 const NAV_ITEMS = [
   { href: "/kundenbereich", label: "Meine Reels", mobileLabel: "Meine Reels", icon: Home },
-  { href: "/kundenbereich/neu", label: "Neues Reel", mobileLabel: "Neues Reel", icon: PlusCircle },
-  { href: "/kundenbereich/produktion", label: "Produktionsstatus", mobileLabel: "Status", icon: Gauge },
+  { href: "/kundenbereich/neu", label: "Neues Video", mobileLabel: "Neues Video", icon: PlusCircle },
+  { href: "/kundenbereich/produktion", label: "Status & Fortschritt", mobileLabel: "Status & Fortschritt", icon: Gauge },
+  { href: "/kundenbereich/kurs", label: "Richtig Uploaden = Viral gehen", mobileLabel: "Richtig Uploaden = Viral gehen", icon: BookOpen },
 ];
 
 export function StudioShell({ children }: { children: ReactNode }) {
@@ -61,10 +62,10 @@ export function StudioShell({ children }: { children: ReactNode }) {
             <div className="rounded-2xl border border-[#e3dfff] bg-[#f8f7ff] p-4">
               <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-[#6555e8]">
                 <Gauge className="h-4 w-4" />
-                Poolbau-Reels
+                KI-Building Videos
               </div>
               <p className="mt-2 text-xs leading-5 text-[#777b82]">
-                Klare Vorher-Nachher-Geschichten für dein Studio.
+                Virale Kurzvideos mit sichtbarem Aufbau für deinen Kanal.
               </p>
             </div>
             <Link
@@ -92,7 +93,7 @@ export function StudioShell({ children }: { children: ReactNode }) {
                   className="inline-flex items-center gap-2 rounded-full bg-[#6d5dfc] px-4 py-2.5 text-xs font-black text-white"
                 >
                   <PlusCircle className="h-4 w-4" />
-                  Neues Reel
+                  Neues Video
                 </Link>
               </div>
             </div>
