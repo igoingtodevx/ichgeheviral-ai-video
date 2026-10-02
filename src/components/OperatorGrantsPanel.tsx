@@ -45,7 +45,6 @@ function GrantsContent() {
   }
   return <section className="rounded-2xl border border-[#e4e1ec] bg-white p-5">
     <h2 className="font-black">Betriebszugriff verwalten</h2>
-    <p className="mt-2 text-xs leading-5 text-[#858991]">Eine ausdrückliche Freigabe erlaubt ausschließlich Kunden-, Bestell- und Videoübersicht sowie Downloads. Sie gewährt keine globalen Adminrechte und keine Rollen-, System- oder Zahlungsverwaltung.</p>
     {error && <p role="alert" className="mt-4 text-sm text-[#9c3c3c]">{error}</p>}
     {message && <p role="status" className="mt-4 text-sm text-[#25805b]">{message}</p>}
     {loading ? <p className="mt-4 text-xs text-[#858991]">Freigaben werden geladen …</p> : <ul className="mt-4 space-y-2">{items.map((item) => <li key={item.user_id} className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-[#faf9fc] p-3 text-xs"><span className="break-all font-mono">{item.user_id}</span><span className="font-bold">{item.enabled ? "Freigegeben" : "Entzogen"}</span><button type="button" disabled={busy} onClick={() => { setUserId(item.user_id); setEnabled(!item.enabled); }} className="font-bold text-[#6555e8]">{item.enabled ? "Entzug vorbereiten" : "Freigabe vorbereiten"}</button></li>)}</ul>}
