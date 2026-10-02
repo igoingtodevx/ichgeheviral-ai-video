@@ -12,7 +12,6 @@ const LINKS = [
   { href: "#rechner", label: "Geld-Rechner" },
   { href: "#einfacher-ablauf", label: "Einfacher Ablauf" },
   { href: "#preise", label: "Preise" },
-  { href: "#faq", label: "FAQ" },
 ];
 
 export function Navbar() {
